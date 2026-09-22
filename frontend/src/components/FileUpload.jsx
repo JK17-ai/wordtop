@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as pdfjsLib from "pdfjs-dist";
 import pdfWorker from "pdfjs-dist/build/pdf.worker.min.mjs?url";
 import mammoth from "mammoth";
@@ -13,6 +13,26 @@ export default function FileUpload() {
 
   const [allWords, setAllWords] = useState([]);   // 전체 단어
   const [words, setWords] = useState([]);         // 화면에 보여줄 단어
+
+    useEffect(() => {
+
+        fetch("/books/2027.json")
+            .then(res => res.json())
+            .then(data => {
+
+                setAllWords(data);
+                setWords(data);
+
+            })
+            .catch(err => {
+
+                console.log("기본 단어장 없음", err);
+
+            });
+
+    }, []);
+
+
 
   // ==========================
   // PDF 파싱
@@ -235,6 +255,34 @@ export default function FileUpload() {
             ? 0
             : Math.round((knownCount / totalCount) * 100);
 
+    const downloadJson = () => {
+
+        if (allWords.length === 0) {
+
+            alert("먼저 PDF를 업로드하세요.");
+
+            return;
+
+        }
+
+        const json = JSON.stringify(allWords, null, 2);
+
+        const blob = new Blob([json], {
+            type: "application/json"
+        });
+
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement("a");
+
+        a.href = url;
+        a.download = "2027.json";
+
+        a.click();
+
+        URL.revokeObjectURL(url);
+
+    };
 
     const toggleWord = (id) => {
 
@@ -281,6 +329,22 @@ export default function FileUpload() {
         accept=".pdf,.docx"
         onChange={handleFile}
       />
+
+    <button
+        onClick={downloadJson}
+        style={{
+            marginLeft: 15,
+            padding: "10px 20px",
+            cursor: "pointer"
+        }}
+    >
+        💾 JSON 저장
+    </button>
+
+    <div style={{ marginTop: 15 }}>
+        <b>{fileName}</b>
+    </div>
+
 
     <div style={{ marginTop:20 }}>
 
