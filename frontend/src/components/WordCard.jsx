@@ -12,6 +12,9 @@ export default function WordCard({ item, onToggle }) {
       }}
     >
 
+      <div className="word-visual" aria-hidden="true">
+        <span>{item.word?.slice(0, 1).toUpperCase()}</span>
+      </div>
       <div
         style={{
           display: "flex",
@@ -24,11 +27,7 @@ export default function WordCard({ item, onToggle }) {
         type="checkbox"
         checked={item.checked}
         onChange={() => onToggle(item.id)}
-        style={{
-            transform: "scale(2.3)",
-            marginRight: 20,
-            cursor: "pointer"
-        }}
+        style={{ display: "none" }}
         />
 
         <div>
