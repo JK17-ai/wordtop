@@ -7,16 +7,17 @@ import WordCard from "./WordCard";
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
 
 export default function FileUpload() {
+  const [viewMode, setViewMode] = useState("phone");
 
   const [page, setPage] = useState(0);
-  const PAGE_SIZE = 20;
+  const PAGE_SIZE = 4;
   const [touchStart, setTouchStart] = useState(null);
 
   const [fileName, setFileName] = useState("");
   const [text, setText] = useState("");
 
-  const [allWords, setAllWords] = useState([]);   // 전체 단어
-  const [words, setWords] = useState([]);         // 화면에 보여줄 단어
+  const [allWords, setAllWords] = useState([]);   // ??????????諛몃마嶺뚮?????????????硫λ젒???????
+  const [words, setWords] = useState([]);         // ????????????????????⑤벡???????????????
 
     useEffect(() => {
 
@@ -30,7 +31,7 @@ export default function FileUpload() {
             })
             .catch(err => {
 
-                console.log("기본 단어장 없음", err);
+                console.log("Failed to load default words", err);
 
             });
 
@@ -39,13 +40,13 @@ export default function FileUpload() {
 
 
   // ==========================
-  // PDF 파싱
+  // PDF ?????
   // ==========================
 
   const parsePdfWords = (text) => {
 
     text = text
-      .replace(/□/g, " ")
+      .replace(/[\\r\\n]+/g, " ")
       .replace(/\s+/g, " ")
       .trim();
 
@@ -64,7 +65,7 @@ export default function FileUpload() {
       }
 
       // --------------------
-      // 영어(숙어)
+      // ?????????????????????
       // --------------------
 
       let eng = tokens[i];
@@ -85,7 +86,7 @@ export default function FileUpload() {
       if (/^\d/.test(eng)) continue;
 
       // --------------------
-      // 뜻
+      // ??
       // --------------------
 
       let kor = "";
@@ -103,14 +104,14 @@ export default function FileUpload() {
 
       kor = kor.trim();
 
-      if (!/[가-힣]/.test(kor)) continue;
+      if (!/[\uAC00-\uD7A3]/.test(kor)) continue;
 
-      // 숫자만 있는 뜻 제거
+      // ?????????????????????????????????????
       if (/^\d/.test(kor)) continue;
 
-      // 본문 표시 제거
+      // ??????????⑤벡???????븐뼐???????????????????????????????????
       kor = kor
-        .replace(/본문.*?쪽/g, "")
+        .replace(/\([^)]*\)/g, "")
         .replace(/\(\s*pl\..*?\)/g, "")
         .trim();
 
@@ -137,7 +138,7 @@ export default function FileUpload() {
   };
 
   // ==========================
-  // Word 파싱
+  // Word ?????
   // ==========================
 
   const parseWordWords = (text) => {
@@ -167,7 +168,7 @@ export default function FileUpload() {
   };
 
   // ==========================
-  // 파일 업로드
+  // ????????????
   // ==========================
 
   const handleFile = async (e) => {
@@ -188,7 +189,7 @@ export default function FileUpload() {
 
     } else {
 
-      alert("PDF 또는 DOCX만 가능합니다.");
+      alert("PDF ?????DOCX?????????????????????????ㅼ뒧???嫄??????????????????살몝??");
 
     }
 
@@ -275,7 +276,7 @@ export default function FileUpload() {
 
         if (allWords.length === 0) {
 
-            alert("먼저 PDF를 업로드하세요.");
+            alert("?????????Β?щ엠?????饔낅떽?????? PDF?????????????????????嫄?????????");
 
             return;
 
@@ -302,7 +303,7 @@ export default function FileUpload() {
 
     const toggleWord = (id) => {
 
-          console.log("클릭!", id);
+          console.log("?????", id);
 
     const updated = allWords.map(word => {
 
@@ -335,120 +336,28 @@ export default function FileUpload() {
     };
 
   return (
-
-    <div className="app-shell" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
-
-      <h1>WORDTOP</h1>
-
-      <input
-        type="file"
-        accept=".pdf,.docx"
-        onChange={handleFile}
-      />
-
-    <button
-        onClick={downloadJson}
-        style={{
-            marginLeft: 15,
-            padding: "10px 20px",
-            cursor: "pointer"
-        }}
-    >
-        💾 JSON 저장
-    </button>
-
-    <div style={{ marginTop: 15 }}>
-        <b>{fileName}</b>
+    <div className={`app-shell preview-${viewMode}`} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+      <div className="device-switcher"><button className={viewMode === "phone" ? "active" : ""} onClick={() => setViewMode("phone")}>Phone</button><button className={viewMode === "tablet" ? "active" : ""} onClick={() => setViewMode("tablet")}>Tablet</button><button className={viewMode === "pc" ? "active" : ""} onClick={() => setViewMode("pc")}>PC</button></div>
+      <header className="topbar">
+        <h1>WORDTOP</h1>
+        <p className="welcome-line">Welcome back · Start today&apos;s words</p>
+        <label className="upload-button">+ Upload<input type="file" accept=".pdf,.docx" onChange={handleFile} /></label>
+        <button className="save-button" onClick={downloadJson}>Save JSON</button>
+        {totalCount > 0 && <span className="upload-status">Upload complete · {totalCount.toLocaleString()} words</span>}
+      </header>
+      <section className="mission-bar">
+        <div className="mission-copy"><strong>Today&apos;s Mission</strong><span>{page * PAGE_SIZE + 1}–{Math.min((page + 1) * PAGE_SIZE, totalCount)} of {totalCount || words.length} words</span></div>
+        <div className="progress-track"><span style={{width: `${totalCount ? ((Math.min((page + 1) * PAGE_SIZE, totalCount) / totalCount) * 100) : 0}%`}} /></div>
+      </section>
+      <main className="word-feed">
+        {pageWords.map(item => <WordCard key={item.id} item={item} onToggle={toggleWord} />)}
+      </main>
+      <nav className="stats-nav" aria-label="Study navigation">
+        <div><span>H</span><small>Home</small><b>{totalCount}</b></div>
+        <div><span>D</span><small>Decks</small><b>{knownCount}</b></div>
+        <div><span>+</span><small>Upload</small><b>{unknownCount}</b></div>
+        <div><span>R</span><small>Records</small><b>{progress}%</b></div>
+      </nav>
     </div>
-
-
-    <div style={{ marginTop:20 }}>
-
-        <h3>{fileName}</h3>
-
-        {
-
-            totalCount > 0 &&
-
-            <div
-                style={{
-                    marginTop:10,
-                    padding:15,
-                    borderRadius:10,
-                    background:"#e8f5e9",
-                    color:"#2e7d32",
-                    fontWeight:"bold"
-                }}
-            >
-                ✅ 업로드 완료 · {totalCount.toLocaleString()}개 단어
-            </div>
-
-        }
-
-    </div>
-
-
-      <hr style={{ margin: "40px 0" }} />
-
-<div
-  style={{
-    display: "grid",
-    gridTemplateColumns: "repeat(4,1fr)",
-    gap: 15,
-    marginTop: 30,
-    marginBottom: 30
-  }}
->    
-
-        <div style={statCard}>
-            <div style={{fontSize:30}}>📚</div>
-            <div>전체</div>
-            <h2>{totalCount}</h2>
-        </div>
-
-        <div style={statCard}>
-            <div style={{fontSize:30}}>✅</div>
-            <div>완료</div>
-            <h2>{knownCount}</h2>
-        </div>
-
-        <div style={statCard}>
-            <div style={{fontSize:30}}>📖</div>
-            <div>복습</div>
-            <h2>{unknownCount}</h2>
-        </div>
-
-        <div style={statCard}>
-            <div style={{fontSize:30}}>📈</div>
-            <div>진행률</div>
-            <h2>{progress}%</h2>
-        </div>
-
-        </div>
-
-  
-    <div
-    style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(450px, 1fr))",
-        gap: 20
-    }}
-    >
-    <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",margin:"20px 0"}}>
-      <strong>🔥 Today's Mission · Page {Math.min(page + 1, pageCount)} / {pageCount}</strong>
-      <div><button disabled={page === 0} onClick={() => setPage(page - 1)}>← 이전</button> <button disabled={page >= pageCount - 1} onClick={() => setPage(page + 1)}>다음 →</button></div>
-    </div>
-    {pageWords.map(item => (
-        <WordCard
-        key={item.id}
-        item={item}
-        onToggle={toggleWord}
-        />
-    ))}
-    </div>
-
-    </div>
-
   );
-
 }

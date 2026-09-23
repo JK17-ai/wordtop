@@ -1,4 +1,4 @@
-.app-shell { min-height: 100vh; padding: 28px max(18px, 4vw) 48px; background: #fafafa; color: #171717; }
+.app-shell { min-height: 100vh; width: min(100%, 430px); margin: 0 auto; box-sizing: border-box; padding: 18px 14px 104px; background: #fafafa; color: #171717; }
 .app-shell > h1 { max-width: 680px; margin: 0 auto 18px; letter-spacing: -0.08em; font-size: clamp(2rem, 5vw, 3rem); }
 .app-shell > input, .app-shell > button { display: inline-block; }
 .app-shell hr { border: 0; border-top: 1px solid #e5e5e5; max-width: 680px; margin: 26px auto; }
@@ -16,4 +16,105 @@
 .app-shell .mission-bar button { border: 1px solid #ddd; border-radius: 999px; padding: 8px 12px; background: white; cursor: pointer; }
 .app-shell .mission-bar button:disabled { opacity: .35; cursor: default; }
 @media (max-width: 700px) { .app-shell { padding: 20px 12px 96px; } .app-shell .stats-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; } .app-shell .word-card { padding: 14px !important; gap: 12px; min-height: 112px; } .app-shell .word-visual { flex-basis: 52px; width: 52px; height: 52px; border-radius: 15px; font-size: 22px; } .app-shell .word-card div[style*="fontSize: 28"] { font-size: 22px !important; } .app-shell .word-card div[style*="fontSize: 18"] { font-size: 15px !important; } .app-shell .word-card button { min-width: 70px; min-height: 50px; padding: 8px 10px !important; } .app-shell .mission-bar { font-size: 13px; } }
-@media (min-width: 701px) and (max-width: 1100px) { .app-shell { max-width: 900px; margin: auto; } }
+@media (min-width: 701px) { .app-shell { width: min(100% - 48px, 900px); padding: 28px 24px 72px; } }
+
+/* Mission-first floating mobile layout */
+html, body, #root { min-height: 100%; }
+body { margin: 0; background: rgba(225, 48, 108, .13); }
+body::before { content: ""; position: fixed; inset: 0; pointer-events: none; background: radial-gradient(circle at 50% 0%, rgba(255,70,95,.24), transparent 46%); animation: heartbeat 2.8s ease-in-out infinite; }
+@keyframes heartbeat { 0%,100% { opacity: .55; transform: scale(1); } 50% { opacity: .9; transform: scale(1.025); } }
+.app-shell { position: relative; z-index: 1; margin: 22px auto; border-radius: 28px; background: rgba(255,255,255,.96); box-shadow: 0 18px 60px rgba(116,25,52,.2); overflow: visible; }
+.app-shell > h1 { padding-top: 4px; }
+.app-shell .mission-bar { position: sticky; top: 10px; z-index: 10; margin: 12px -2px 20px; padding: 12px 14px; border-radius: 16px; background: rgba(255,255,255,.92); box-shadow: 0 8px 22px rgba(94,23,45,.14); }
+.app-shell .word-card { min-height: 104px; box-sizing: border-box; align-items: center; gap: 14px; }
+.app-shell .word-card > div:nth-child(2) { align-self: center; }
+.app-shell .word-card button { flex: 0 0 auto; }
+@media (max-width:700px) { .app-shell { margin: 12px 10px; border-radius: 24px; } .app-shell .mission-bar { top: 8px; } }
+
+html, body, #root { min-height: 100%; }
+body { margin: 0; background: rgba(225, 48, 108, .13); }
+body::before { content: ""; position: fixed; inset: 0; pointer-events: none; background: radial-gradient(circle at 50% 0%, rgba(255,70,95,.24), transparent 46%); animation: heartbeat 2.8s ease-in-out infinite; }
+@keyframes heartbeat { 0%,100% { opacity: .55; transform: scale(1); } 50% { opacity: .9; transform: scale(1.025); } }
+.app-shell { position: relative; z-index: 1; margin: 22px auto; border-radius: 28px; background: rgba(255,255,255,.96); box-shadow: 0 18px 60px rgba(116,25,52,.2); overflow: visible; }
+.app-shell .mission-bar { position: sticky; top: 10px; z-index: 10; margin: 12px -2px 20px; padding: 12px 14px; border-radius: 16px; background: rgba(255,255,255,.92); box-shadow: 0 8px 22px rgba(94,23,45,.14); }
+.app-shell .word-card { min-height: 104px; box-sizing: border-box; align-items: center; gap: 14px; }
+@media (max-width:700px) { .app-shell { margin: 12px 10px; border-radius: 24px; } .app-shell .mission-bar { top: 8px; } }
+/* Force the study feed into a single, centered column. */
+.app-shell > div[style*="repeat(auto-fit"] { display: grid !important; grid-template-columns: minmax(0, 1fr) !important; gap: 14px !important; }
+.app-shell > div[style*="repeat(4"] { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 10px !important; }
+@media (min-width: 701px) { .app-shell > div[style*="repeat(auto-fit"] { max-width: 680px; margin-left: auto; margin-right: auto; } }
+
+/* Compact stats and one-hand study row */
+.app-shell > div[style*="repeat(4"] { display: flex !important; grid-template-columns: none !important; justify-content: space-between; gap: 6px !important; margin-top: 14px !important; margin-bottom: 18px !important; }
+.app-shell > div[style*="repeat(4"] > div { flex: 1; padding: 10px 4px !important; border-radius: 14px !important; box-shadow: none !important; background: rgba(255,255,255,.7) !important; }
+.app-shell > div[style*="repeat(4"] > div > div:first-child { font-size: 20px !important; }
+.app-shell > div[style*="repeat(4"] h2 { font-size: 18px; margin-top: 2px; }
+.app-shell .word-card { display: flex !important; align-items: center; gap: 12px; min-height: 86px; padding: 14px 12px !important; }
+.app-shell .word-card input { display: none; }
+.app-shell .word-copy { flex: 1; min-width: 0; }
+.app-shell .word-term { font-size: 23px; font-weight: 800; line-height: 1.1; }
+.app-shell .word-meaning { margin-top: 5px; color: #6b6b6b; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.app-shell .line-glyph { flex: 0 0 42px; width: 42px; height: 42px; color: #222; opacity: .8; }
+.app-shell .line-glyph svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.app-shell .kill-button { flex: 0 0 auto; min-width: 66px !important; min-height: 42px !important; border-radius: 999px; border: 0; background: #171717; color: #fff; font-size: 12px; font-weight: 800; }
+@media (max-width: 420px) { .app-shell > div[style*="repeat(4"] > div { padding: 8px 2px !important; font-size: 12px; } .app-shell > div[style*="repeat(4"] h2 { font-size: 16px; } .app-shell .word-term { font-size: 21px; } .app-shell .line-glyph { flex-basis: 36px; width: 36px; height: 36px; } .app-shell .kill-button { min-width: 60px !important; } }
+
+/* Bottom navigation and recall-first cards */
+.app-shell { padding-bottom: 122px; }
+.app-shell .stats-nav { position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%); z-index: 30; width: min(calc(100% - 28px), 430px); margin: 0 !important; padding: 8px !important; border: 1px solid rgba(0,0,0,.08); border-radius: 20px; background: rgba(255,255,255,.94); box-shadow: 0 10px 30px rgba(90,24,52,.2); backdrop-filter: blur(16px); }
+.app-shell .stats-nav > div { padding: 6px 2px !important; background: transparent !important; box-shadow: none !important; }
+.app-shell .stats-nav > div > div:first-child { font-size: 17px !important; }
+.app-shell .stats-nav > div > div:nth-child(2) { font-size: 11px; }
+.app-shell .stats-nav h2 { font-size: 15px; }
+.app-shell .recall-card { min-height: 96px; padding: 15px 12px !important; }
+.app-shell .recall-card .word-term { font-size: 28px; letter-spacing: -.02em; }
+.app-shell .recall-card .word-meaning { margin-top: 6px; color: #9a9a9a; font-size: 13px; }
+.app-shell .recall-card .word-meaning.is-revealed { color: #4b4b4b; font-size: 16px; }
+.app-shell .meaning-trigger { flex: 0 0 74px; min-height: 54px; padding: 6px 3px; border: 0; background: transparent; color: #222; cursor: pointer; }
+.app-shell .difficulty-stars { display: block; font-size: 13px; letter-spacing: -2px; white-space: nowrap; }
+.app-shell .meaning-hint { display: block; margin-top: 5px; font-size: 10px; color: #888; }
+@media (max-width:700px) { .app-shell .recall-card .word-term { font-size: 27px; } .app-shell .stats-nav { bottom: 9px; } }
+
+.app-shell { width: min(100% - 20px, 430px); margin: 12px auto 0; padding: 16px 14px 116px; }
+.topbar { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.topbar h1 { flex: 1 0 100%; margin: 0; font-size: 38px; letter-spacing: -.08em; }
+.upload-button, .save-button { display: inline-flex; align-items: center; justify-content: center; min-height: 38px; padding: 0 13px; border: 0; border-radius: 999px; background: #e1306c; color: #fff; font-weight: 700; font-size: 12px; cursor: pointer; }
+.upload-button input { display: none; }.save-button { background: #222; }.upload-status { flex: 1 1 auto; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: #2e7d32; font-size: 12px; font-weight: 700; }
+.app-shell .mission-bar { position: sticky; top: 8px; z-index: 10; margin: 8px 0 14px; padding: 10px 12px; border-radius: 15px; }
+.app-shell .word-feed { display: grid !important; grid-template-columns: 1fr !important; gap: 10px !important; }
+.app-shell .stats-nav { position: fixed; left: 50%; bottom: 8px; transform: translateX(-50%); width: min(calc(100% - 20px), 430px); height: 64px; z-index: 40; display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 2px !important; margin: 0 !important; padding: 6px !important; border-radius: 18px; background: rgba(255,255,255,.96); box-shadow: 0 10px 28px rgba(80,20,40,.22); }
+.app-shell .stats-nav > div { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 !important; background: transparent !important; box-shadow: none !important; }.app-shell .stats-nav span { font-size: 16px; line-height: 1; }.app-shell .stats-nav small { font-size: 10px; }.app-shell .stats-nav b { font-size: 13px; }
+.app-shell .recall-card { min-height: 98px; padding: 14px 10px !important; }.app-shell .recall-card .word-term { font-size: 28px; }.app-shell .meaning-trigger { flex-basis: 86px; }.app-shell .difficulty-stars { font-size: 16px; letter-spacing: -1px; }.app-shell .kill-button { display: none; }
+@media (min-width: 700px) { .app-shell { width: min(100% - 48px, 900px); }.app-shell .stats-nav { width: min(calc(100% - 48px), 900px); }.topbar h1 { flex: 0 0 auto; }.upload-status { margin-left: auto; } }
+.app-shell .pronunciation { display: block; margin-top: 3px; color: #777; font-size: 11px; font-family: Georgia, serif; }
+.app-shell .meaning-trigger { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 0 0 92px; }
+.app-shell .star-button { border: 0; background: transparent; padding: 0; cursor: pointer; }
+.app-shell .difficulty-stars { font-size: 17px; letter-spacing: -1px; color: #222; }
+.app-shell .word-meaning { min-height: 16px; margin-top: 3px; color: #444; font-size: 13px; }
+.app-shell .pronounce-button { border: 0; background: transparent; color: #555; font-size: 10px; padding: 2px 0 0; cursor: pointer; }
+.device-switcher { position: fixed; top: 10px; right: 12px; z-index: 60; display: flex; gap: 3px; padding: 3px; border-radius: 999px; background: rgba(25,25,25,.78); }
+.device-switcher button { border: 0; border-radius: 999px; padding: 5px 8px; color: #ddd; background: transparent; font-size: 10px; cursor: pointer; }.device-switcher button.active { color: #222; background: #fff; }
+.topbar { position: relative; }.topbar h1 { text-align: center; width: 100%; }.topbar .upload-button, .topbar .save-button { margin-top: 2px; }.topbar .upload-status { margin-top: 2px; }
+.app-shell .recall-card { min-height: 82px; padding: 10px 10px !important; }.app-shell .recall-card .word-term { font-size: 30px; }.app-shell .pronunciation { font-size: 12px; }
+.preview-tablet { width: min(100% - 32px, 700px); }.preview-tablet .word-feed { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }.preview-tablet .stats-nav { width: min(calc(100% - 32px), 700px); }
+.preview-pc { width: min(100% - 48px, 1080px); }.preview-pc .word-feed { grid-template-columns: repeat(3, minmax(0,1fr)) !important; }.preview-pc .stats-nav { width: min(calc(100% - 48px), 1080px); }
+.app-shell { padding-top: 26px; }
+.topbar h1 { line-height: 1.1; padding-top: 2px; }
+
+/* Final bottom navigation override */
+.app-shell nav.stats-nav { position: fixed !important; left: 50% !important; right: auto !important; bottom: 12px !important; top: auto !important; transform: translateX(-50%) !important; display: grid !important; grid-template-columns: repeat(4, 1fr) !important; width: min(calc(100vw - 24px), 430px) !important; height: 66px !important; margin: 0 !important; padding: 7px 6px !important; border-radius: 22px !important; background: rgba(255,255,255,.97) !important; border: 1px solid rgba(0,0,0,.08) !important; box-shadow: 0 12px 30px rgba(40,20,30,.25) !important; z-index: 999 !important; }
+.app-shell nav.stats-nav > div { display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; gap: 2px !important; padding: 0 !important; margin: 0 !important; background: transparent !important; box-shadow: none !important; border: 0 !important; }
+.app-shell nav.stats-nav span { display: block !important; font-size: 19px !important; line-height: 20px !important; }
+.app-shell nav.stats-nav small { display: block !important; color: #777 !important; font-size: 10px !important; line-height: 12px !important; }
+.app-shell nav.stats-nav b { display: block !important; color: #222 !important; font-size: 13px !important; line-height: 14px !important; }
+.welcome-line { width: 100%; margin: -3px 0 10px; color: #555; font-size: 13px; text-align: center; }
+.app-shell .recall-card:nth-child(4n+1) { background: #fff1b8 !important; }.app-shell .recall-card:nth-child(4n+2) { background: #ffd0d8 !important; }.app-shell .recall-card:nth-child(4n+3) { background: #cfe6ff !important; }.app-shell .recall-card:nth-child(4n) { background: #c9f1dc !important; }
+.app-shell .mission-bar strong { font-size: 13px; }.app-shell .mission-bar { box-shadow: 0 8px 20px rgba(50,30,40,.12); }
+
+/* Mobile-first study feed refresh */
+.app-shell { width: min(100% - 20px, 460px); padding: 18px 14px 122px; }
+.topbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }.topbar h1 { width: 100%; margin: 0; text-align: center; font-size: 36px; }.welcome-line { width: 100%; margin: -4px 0 6px; text-align: center; color: #6d6875; }
+.upload-button,.save-button { min-height: 44px; padding: 0 14px; border-radius: 14px; }.upload-status { flex: 1; font-size: 12px; }
+.mission-bar { display: block !important; padding: 14px !important; border-radius: 18px !important; background: #fff !important; }.mission-copy { display: flex; justify-content: space-between; align-items: baseline; }.mission-copy strong { font-size: 16px; }.mission-copy span { color: #777; font-size: 12px; }.progress-track { height: 8px; margin-top: 10px; overflow: hidden; border-radius: 999px; background: #f0e8ed; }.progress-track span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg,#ff8fab,#e85d9e); transition: width .3s; }
+.word-feed { padding-bottom: 8px; }.app-shell .word-card { display: block !important; min-height: 0; padding: 18px !important; border-radius: 24px !important; box-shadow: 0 8px 24px rgba(62,35,45,.1) !important; }.card-topline { display: flex; justify-content: space-between; align-items: center; }.part-of-speech { color: #8f6a7b; font-size: 11px; font-weight: 800; letter-spacing: .12em; }.app-shell .word-card .word-term { margin: 8px 0 0; font-size: 34px; line-height: 1.05; }.app-shell .word-card .pronunciation { margin-top: 6px; color: #777; font-size: 14px; }.meaning-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 44px; margin-top: 10px; }.word-meaning { color: #39323a; font-size: 18px; font-weight: 700; }.meaning-button,.listen-button,.complete-button { min-height: 44px; border: 0; border-radius: 12px; padding: 0 13px; font-weight: 700; cursor: pointer; }.meaning-button { background: rgba(255,255,255,.7); color: #7b3f61; }.example-line { margin: 12px 0; color: #6e636b; font-size: 13px; }.card-actions { display: flex; gap: 8px; }.listen-button { flex: 1; background: #f8f4f6; color: #4e4149; }.complete-button { flex: 1; background: #201b20; color: #fff; }.difficulty-stars { font-size: 18px !important; color: #222; letter-spacing: -1px; }
+.app-shell nav.stats-nav { width: min(calc(100vw - 20px), 460px) !important; height: 70px !important; border-radius: 22px !important; }.app-shell nav.stats-nav span { font-size: 21px !important; }.app-shell nav.stats-nav small { font-size: 11px !important; }
