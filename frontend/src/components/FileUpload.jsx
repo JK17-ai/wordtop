@@ -8,6 +8,10 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
 
 export default function FileUpload() {
 
+  const [page, setPage] = useState(0);
+  const PAGE_SIZE = 20;
+  const [touchStart, setTouchStart] = useState(null);
+
   const [fileName, setFileName] = useState("");
   const [text, setText] = useState("");
 
@@ -255,6 +259,18 @@ export default function FileUpload() {
             ? 0
             : Math.round((knownCount / totalCount) * 100);
 
+    const pageCount = Math.max(1, Math.ceil(words.length / PAGE_SIZE));
+    const pageWords = words.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
+    const movePage = (direction) => setPage((value) => Math.max(0, Math.min(pageCount - 1, value + direction)));
+    const onTouchStart = (event) => setTouchStart({ x: event.touches[0].clientX, y: event.touches[0].clientY });
+    const onTouchEnd = (event) => {
+      if (!touchStart) return;
+      const dx = event.changedTouches[0].clientX - touchStart.x;
+      const dy = event.changedTouches[0].clientY - touchStart.y;
+      if (Math.max(Math.abs(dx), Math.abs(dy)) > 45) movePage((dx < -45 || dy < -45) ? 1 : -1);
+      setTouchStart(null);
+    };
+
     const downloadJson = () => {
 
         if (allWords.length === 0) {
@@ -320,7 +336,7 @@ export default function FileUpload() {
 
   return (
 
-    <div style={{ padding: 30 }}>
+    <div className="app-shell" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
 
       <h1>WORDTOP</h1>
 
@@ -418,7 +434,11 @@ export default function FileUpload() {
         gap: 20
     }}
     >
-    {words.map(item => (
+    <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",margin:"20px 0"}}>
+      <strong>🔥 Today's Mission · Page {Math.min(page + 1, pageCount)} / {pageCount}</strong>
+      <div><button disabled={page === 0} onClick={() => setPage(page - 1)}>← 이전</button> <button disabled={page >= pageCount - 1} onClick={() => setPage(page + 1)}>다음 →</button></div>
+    </div>
+    {pageWords.map(item => (
         <WordCard
         key={item.id}
         item={item}

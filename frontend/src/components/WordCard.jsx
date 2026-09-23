@@ -2,9 +2,9 @@ export default function WordCard({ item, onToggle }) {
 
   return (
 
-    <div
+    <div className={`word-card ${item.checked ? "is-killed" : ""}`}
       style={{
-        background: "#fff",
+        background: item.checked ? "#e8f5e9" : "#fff",
         padding: 20,
         borderRadius: 15,
         marginBottom: 15,
@@ -55,6 +55,7 @@ export default function WordCard({ item, onToggle }) {
         </div>
 
       </div>
+      <button onClick={() => onToggle(item.id)} style={{marginLeft:"auto",padding:"10px 14px",borderRadius:999,border:0,background:item.checked?"#1d6b3b":"#18201a",color:"white",fontWeight:700,cursor:"pointer"}}>{item.checked ? "KILLED ✓" : "KILL"}</button>
 
     </div>
 
