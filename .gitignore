@@ -7,3 +7,5 @@ frontend/dist/
 *.log
 .vercel
 .env*
+
+!.env.example

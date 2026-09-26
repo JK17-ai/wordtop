@@ -1,14 +1,18 @@
 import FitWord from "./FitWord";
+import { profileKey } from "../lib/profiles";
 import { useEffect, useRef, useState } from "react";
 import { importDeck } from "./importDeck";
 import WordCard from "./WordCard";
+import { getFeed, answerWord, restorePositions, rebuildStudyDeck } from "./studyState";
 import ScrapPreview from "./ScrapPreview";
+import UpdateNotice from "./UpdateNotice";
 import useAccuracy, { AccuracyStats } from "./useAccuracy";
 
 
 
-export default function FileUpload() {
-  const accuracy = useAccuracy();
+export default function FileUpload({ profile }) {
+  const deckStorageKey = profileKey(profile?.id, "wordtop-current-deck");
+  const accuracy = useAccuracy(profileKey(profile?.id, "wordtop-daily-accuracy-v1"));
   const shellRef = useRef(null);
   useEffect(() => {
     const shell = shellRef.current;
@@ -52,8 +56,10 @@ export default function FileUpload() {
   const [viewMode, setViewMode] = useState("phone");
   const [activeTab, setActiveTab] = useState("all");
 
-  const [page, setPage] = useState(() => Number(localStorage.getItem("wordtop-page") || 0));
-  const PAGE_SIZE = 1;
+  const [positions, setPositions] = useState({ all: 0, scrap: 0, mastered: 0 });
+  const page = positions[activeTab];
+  const setPage = value => setPositions(previous => ({ ...previous, [activeTab]: typeof value === "function" ? value(previous[activeTab]) : value }));
+
   const [touchStart, setTouchStart] = useState(null);
 
   const [deckName, setDeckName] = useState("2027 수능 EBS영단어");
@@ -62,7 +68,7 @@ export default function FileUpload() {
   const [ready, setReady] = useState(false);
   const [deckVersion, setDeckVersion] = useState(0);
   const [allWords, setAllWords] = useState([]);
-  const [words, setWords] = useState([]);
+
   const picker = useRef(null);
   const importing = useRef(false);
   const streak = useRef(0);
@@ -83,13 +89,14 @@ export default function FileUpload() {
     (async () => {
       try {
         let saved;
-        try { saved = JSON.parse(localStorage.getItem("wordtop-current-deck")); } catch { /* Use bundled deck. */ }
+        try { saved = JSON.parse(localStorage.getItem(deckStorageKey)); } catch { /* Use bundled deck. */ }
         const data = saved?.words?.length ? saved.words : await fetch("/books/2027.json").then(res => {
           if (!res.ok) throw new Error("단어장을 불러오지 못했어요.");
           return res.json();
         });
         if (cancelled) return;
-        setAllWords(data); setWords(data);
+        const rebuilt = rebuildStudyDeck(data);
+        setAllWords(rebuilt); setPositions(restorePositions(rebuilt, saved?.cursors));
         if (saved?.name) setDeckName(saved.name);
         setReady(true);
       } catch (error) { if (!cancelled) setNotice(error.message); }
@@ -98,9 +105,9 @@ export default function FileUpload() {
   }, []);
   useEffect(() => {
     if (!ready) return;
-    try { localStorage.setItem("wordtop-current-deck", JSON.stringify({ name: deckName, words: allWords })); }
+    try { localStorage.setItem(deckStorageKey, JSON.stringify({ name: deckName, words: allWords, cursors: Object.fromEntries(["all", "scrap", "mastered"].map(tab => [tab, getFeed(allWords, tab)[positions[tab]]?.id ?? null])) })); }
     catch { setNotice("저장 공간이 부족해 새로고침 후 단어장이 유지되지 않을 수 있어요."); }
-  }, [ready, deckName, allWords]);
+  }, [ready, deckName, allWords, positions, deckStorageKey]);
   const handleFile = async event => {
     const file = event.target.files?.[0];
     event.target.value = "";
@@ -108,9 +115,9 @@ export default function FileUpload() {
     importing.current = true; setBusy(true); setNotice("단어장 만드는 중…");
     try {
       const imported = await importDeck(file, setNotice);
-      setAllWords(imported); setWords(imported);
+      setAllWords(imported); setPositions({ all: 0, scrap: 0, mastered: 0 });
       setDeckName(file.name.replace(/\.[^.]+$/, ""));
-      setPage(0); setActiveTab("all"); setDeckVersion(v => v + 1);
+      setActiveTab("all"); setDeckVersion(v => v + 1);
       streak.current = 0; setToast(null);
       try { localStorage.setItem("wordtop-page", "0"); } catch { /* Memory still works. */ }
       setNotice(imported.length.toLocaleString() + "개 단어로 새 단어장을 만들었어요.");
@@ -121,7 +128,7 @@ export default function FileUpload() {
     const totalCount = allWords.length;
 
     const knownCount =
-        allWords.filter(word => word.checked).length;
+        getFeed(allWords, "mastered").length;
 
     const unknownCount =
         totalCount - knownCount;
@@ -131,11 +138,12 @@ export default function FileUpload() {
             ? 0
             : Math.round((knownCount / totalCount) * 100);
 
-    const filteredWords = activeTab === "all" ? words : words.filter(word => word.status === activeTab || (activeTab === "mastered" && word.checked));
+    const filteredWords = getFeed(allWords, activeTab);
+    const pendingCount = getFeed(allWords, "all").length;
     const pageCount = Math.max(1, filteredWords.length);
-    const safePage = Math.min(page, pageCount - 1);
+    const safePage = Math.max(0, Math.min(page, pageCount - 1));
     const pageWords = filteredWords.slice(safePage, safePage + 1);
-    const movePage = (direction) => setPage((value) => { const next = Math.max(0, Math.min(pageCount - 1, value + direction)); localStorage.setItem("wordtop-page", String(next)); return next; });
+    const movePage = (direction) => setPage((value) => { const next = Math.max(0, Math.min(pageCount - 1, value + direction)); return next; });
     const onTouchStart = (event) => setTouchStart({ x: event.touches[0].clientX, y: event.touches[0].clientY });
     const onTouchEnd = (event) => {
       if (!touchStart) return;
@@ -144,7 +152,7 @@ export default function FileUpload() {
       if (Math.max(Math.abs(dx), Math.abs(dy)) > 45) {
         if (Math.abs(dx) > Math.abs(dy)) {
           setActiveTab(dx < 0 ? "mastered" : "scrap");
-          setPage(0);
+
         } else {
           movePage(dy < 0 ? 1 : -1);
         }
@@ -154,19 +162,25 @@ export default function FileUpload() {
 
   return (
     <div ref={shellRef} className={`app-shell preview-${viewMode} reel-feed`}>
+      <UpdateNotice />
       <div className="device-switcher"><button onClick={() => setViewMode("phone")}>Phone</button><button onClick={() => setViewMode("tablet")}>Tablet</button><button onClick={() => setViewMode("pc")}>PC</button></div>
-      <header className="topbar"><h1>WORDTOP</h1><div className="deck-toolbar"><button className="upload-button" disabled={busy || !ready} onClick={() => picker.current?.click()}>{busy ? "읽는 중…" : "+ 업로드"}</button><input ref={picker} hidden type="file" accept=".pdf,.docx,.txt,.csv,image/*" onChange={handleFile} /><strong className="deck-name" title={deckName}>{deckName}</strong></div></header>
+      <header className="topbar"><h1>WORDTOP</h1>{profile && <div className="active-profile">{profile.avatar} {profile.name}</div>}<div className="deck-toolbar"><button className="upload-button" disabled={busy || !ready} onClick={() => picker.current?.click()}>{busy ? "읽는 중…" : "+ 업로드"}</button><input ref={picker} hidden type="file" accept=".pdf,.docx,.txt,.csv,image/*" onChange={handleFile} /><strong className="deck-name" title={deckName}>{deckName}</strong></div></header>
       {notice && <div className="import-notice" role="status" onClick={() => !busy && setNotice("")}>{notice}</div>}
       {toast && <div key={toast.count} className="streak-toast" role="status"><strong>{toast.text}</strong><span>🔥 {toast.count}연속 정답</span></div>}
-       <nav className="feed-tabs"><button className={activeTab === "all" ? "active" : ""} onClick={() => { setActiveTab("all"); setPage(0); }}>ALL FEED<small>({allWords.length.toLocaleString()})</small></button><button className={activeTab === "scrap" ? "active" : ""} onClick={() => { setActiveTab("scrap"); setPage(0); }}>SCRAP<small>({allWords.filter(word => word.status === "scrap").length.toLocaleString()})</small></button><button className={activeTab === "mastered" ? "active" : ""} onClick={() => { setActiveTab("mastered"); setPage(0); }}>MASTERED<small>({knownCount.toLocaleString()})</small></button></nav>
-      <section className="mission-bar"><div className="mission-copy"><strong>Today&apos;s Mission</strong><span>{page + 1} / {pageCount}</span></div><div className="progress-track"><span style={{width: `${totalCount ? ((knownCount / totalCount) * 100) : 0}%`}} /></div><AccuracyStats live={accuracy.live} today={accuracy.today} /></section>
-      <div className="study-scroll"><main className="reel-stage" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>{pageWords.map(item => <WordCard key={`${deckVersion}-${activeTab}-${item.id}`} item={item} suspended={busy} choices={allWords.filter(word => word.id !== item.id).map(word => word.meaning).slice(0, 8)} onNext={() => { if (activeTab === "all") movePage(1); }} onAnswer={(id, correct) => { accuracy.record(correct); celebrate(correct); const next = allWords.map(word => word.id === id ? { ...word, status: correct ? "mastered" : "scrap", checked: correct } : word); setAllWords(next); setWords(next); localStorage.setItem("wordtop-progress", JSON.stringify({ id, status: correct ? "mastered" : "scrap" })); }} onScrap={(id) => { const next = allWords.map(word => word.id === id ? { ...word, status: "scrap" } : word); setAllWords(next); setWords(next); }} />)}</main>
-       <div className="next-preview"><FitWord maxSize={22}>{filteredWords[(page + 1) % Math.max(filteredWords.length, 1)]?.word || "End of feed"}</FitWord></div>
+       <nav className="feed-tabs"><button className={activeTab === "all" ? "active" : ""} onClick={() => { setActiveTab("all");  }}>ALL FEED<small>({pendingCount.toLocaleString()})</small></button><button className={activeTab === "scrap" ? "active" : ""} onClick={() => { setActiveTab("scrap");  }}>SCRAP<small>({allWords.filter(word => word.status === "scrap").length.toLocaleString()})</small></button><button className={activeTab === "mastered" ? "active" : ""} onClick={() => { setActiveTab("mastered");  }}>MASTERED<small>({knownCount.toLocaleString()})</small></button></nav>
+      <section className="mission-bar"><div className="mission-copy"><strong>Today&apos;s Mission</strong><span>{filteredWords.length ? safePage + 1 : 0} / {filteredWords.length}</span></div><div className="progress-track"><span style={{width: `${totalCount ? ((knownCount / totalCount) * 100) : 0}%`}} /></div><AccuracyStats live={accuracy.live} today={accuracy.today} /></section>
+      <div className="study-scroll"><main className="reel-stage" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>{pageWords.map(item => <WordCard key={`${deckVersion}-${activeTab}-${item.id}`} item={item} suspended={busy} choices={allWords.filter(word => word.id !== item.id).map(word => word.meaning).slice(0, 8)} onAnswer={(id, correct) => {
+        const next = answerWord(allWords, activeTab, safePage, id, correct);
+        accuracy.record(correct); celebrate(correct);
+        setAllWords(next.words); setPage(next.index);
+        setDeckVersion(value => value + 1);
+      }} />)}{ready && !pageWords.length && <div className="empty-feed">{activeTab === "all" ? "전체 학습 완료! 스크랩함에서 복습해 보세요." : "아직 담긴 단어가 없어요."}</div>}</main>
+       <div className="next-preview"><FitWord maxSize={22}>{filteredWords.length > 1 ? filteredWords[(safePage + 1) % filteredWords.length]?.word : "다음 단어 없음"}</FitWord></div>
        <ScrapPreview words={allWords} cardKey={`${activeTab}-${pageWords[0]?.id ?? "empty"}`} />
 </div><nav className="stats-nav polished-nav" aria-label="학습 메뉴">
-  <button className={activeTab === "all" ? "selected" : ""} onClick={() => { setActiveTab("all"); setPage(0); }}><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10H3Z M9 20v-7h6v7" /></svg><small>전체</small><b>{totalCount.toLocaleString()}</b></button>
-  <button className={activeTab === "scrap" ? "selected" : ""} onClick={() => { setActiveTab("scrap"); setPage(0); }}><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4Z" /></svg><small>스크랩</small><b>{allWords.filter(w => w.status === "scrap").length}</b></button>
-  <button className={activeTab === "mastered" ? "selected" : ""} onClick={() => { setActiveTab("mastered"); setPage(0); }}><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m7 12 3 3 7-7"/></svg><small>마스터</small><b>{knownCount}</b></button>
+  <button className={activeTab === "all" ? "selected" : ""} onClick={() => { setActiveTab("all");  }}><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10H3Z M9 20v-7h6v7" /></svg><small>전체</small><b>{pendingCount.toLocaleString()}</b></button>
+  <button className={activeTab === "scrap" ? "selected" : ""} onClick={() => { setActiveTab("scrap");  }}><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4Z" /></svg><small>스크랩</small><b>{allWords.filter(w => w.status === "scrap").length}</b></button>
+  <button className={activeTab === "mastered" ? "selected" : ""} onClick={() => { setActiveTab("mastered");  }}><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m7 12 3 3 7-7"/></svg><small>마스터</small><b>{knownCount}</b></button>
   <div className="nav-progress"><svg viewBox="0 0 24 24"><path d="M4 20V13m8 7V8m8 12V3"/></svg><small>달성률</small><b>{progress}%</b></div>
 </nav>
     </div>
