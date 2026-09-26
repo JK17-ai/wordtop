@@ -1,0 +1,9 @@
+node_modules/
+frontend/dist/
+.vercel/
+.env
+.env.*
+!.env.example
+*.log
+.vercel
+.env*

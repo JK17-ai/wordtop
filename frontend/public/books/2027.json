@@ -121,7 +121,7 @@
   },
   {
     "id": 20,
-    "word": "hol d ~ i n high regard",
+    "word": "hold ~in high regard",
     "meaning": "~을 매우 중시[존경]하다, ~을 높이 평가하다",
     "checked": false
   },
@@ -1417,7 +1417,7 @@
   },
   {
     "id": 236,
-    "word": "ru b ~ t he wrong way",
+    "word": "rub ~ the wrong way",
     "meaning": "(말 · 행동을 잘못하여 의도치 않게) ~을 불쾌하게 만들다",
     "checked": false
   },
@@ -1735,7 +1735,7 @@
   },
   {
     "id": 289,
-    "word": "balanc e ~ a gainst",
+    "word": "balance ~ against",
     "meaning": "... ~과 …을 비교하다",
     "checked": false
   },
@@ -1903,7 +1903,7 @@
   },
   {
     "id": 317,
-    "word": "identif y ~ a s",
+    "word": "identify ~ as",
     "meaning": "... ~을 …이라고 여기다",
     "checked": false
   },
@@ -4291,7 +4291,7 @@
   },
   {
     "id": 715,
-    "word": "tak e ~ f or granted",
+    "word": "take ~ for granted",
     "meaning": "~을 당연시하다",
     "checked": false
   },
@@ -4339,7 +4339,7 @@
   },
   {
     "id": 723,
-    "word": "bea r ~ o ut",
+    "word": "bear ~ out",
     "meaning": "~을 뒷받침하다, ~이 옳음을 증명하다",
     "checked": false
   },
@@ -4514,7 +4514,7 @@
   {
     "id": 752,
     "word": "humanoid",
-    "meaning": "휴머노이드의; 휴머노이드, 인간에 가까운 기계 0 1~ 0 2",
+    "meaning": "휴머노이드의; 휴머노이드, 인간에 가까운 기계 또는 로봇",
     "checked": false
   },
   {
@@ -4568,7 +4568,7 @@
   {
     "id": 761,
     "word": "evolution",
-    "meaning": "진화 0 3~ 0 5",
+    "meaning": "진화",
     "checked": false
   },
   {
@@ -4687,7 +4687,7 @@
   },
   {
     "id": 781,
-    "word": "tak e ~ a t face value",
+    "word": "take ~ at face value",
     "meaning": "~을 곧이곧대로 받아들이다",
     "checked": false
   },
@@ -4735,7 +4735,7 @@
   },
   {
     "id": 789,
-    "word": "wra p ~ u p",
+    "word": "wrap ~ up",
     "meaning": "~을 마무리하다",
     "checked": false
   },
@@ -4951,7 +4951,7 @@
   },
   {
     "id": 825,
-    "word": "thin k ~ t hrough",
+    "word": "think ~ through",
     "meaning": "~을 충분히 생각하다 12",
     "checked": false
   },
@@ -5893,7 +5893,7 @@
   },
   {
     "id": 982,
-    "word": "range fro m ~ t o",
+    "word": "range from ~ to",
     "meaning": "... (범위가) ~에서 …까지 이르다",
     "checked": false
   },
@@ -6440,7 +6440,7 @@
   {
     "id": 1073,
     "word": "import",
-    "meaning": "중요성, 수입 43~45",
+    "meaning": "중요성, 수입",
     "checked": false
   },
   {
@@ -6691,7 +6691,7 @@
   },
   {
     "id": 1115,
-    "word": "ge t ~ c overed",
+    "word": "get ~ covered",
     "meaning": "~을 준비하다, ~을 처리하다",
     "checked": false
   },
@@ -6956,7 +6956,7 @@
   {
     "id": 1159,
     "word": "survey",
-    "meaning": "설문 조사 16 ~17",
+    "meaning": "설문 조사",
     "checked": false
   },
   {
@@ -7513,7 +7513,7 @@
   },
   {
     "id": 1252,
-    "word": "deriv e ~ f rom",
+    "word": "derive ~ from",
     "meaning": "... …에서 ~을 얻다",
     "checked": false
   },
@@ -8083,7 +8083,7 @@
   },
   {
     "id": 1347,
-    "word": "attribut e ~ t o",
+    "word": "attribute ~ to",
     "meaning": "... ~은 …에 기인한다고 생각하다",
     "checked": false
   },
@@ -8234,7 +8234,7 @@
   {
     "id": 1372,
     "word": "routine",
-    "meaning": "틀에 박힌; 일상 43~45",
+    "meaning": "틀에 박힌; 일상",
     "checked": false
   },
   {
@@ -8624,7 +8624,7 @@
   {
     "id": 1437,
     "word": "bother",
-    "meaning": "신경 쓰이게 하다, 괴롭히다 16 ~17",
+    "meaning": "신경 쓰이게 하다, 괴롭히다",
     "checked": false
   },
   {
@@ -9607,8 +9607,8 @@
   },
   {
     "id": 1601,
-    "word": "pu t ~ a t ease",
-    "meaning": "~을 편안하게 해 주다 39",
+    "word": "put ~ at ease",
+    "meaning": "~을 편안하게 해 주다",
     "checked": false
   },
   {
@@ -10165,7 +10165,7 @@
   },
   {
     "id": 1694,
-    "word": "tak e ~ o ff",
+    "word": "take ~ off",
     "meaning": "~을 휴가를 내다[쉬다]",
     "checked": false
   },
@@ -10285,7 +10285,7 @@
   },
   {
     "id": 1714,
-    "word": "driv e ~ a way",
+    "word": "drive ~ away",
     "meaning": "~을 쫓아내다",
     "checked": false
   },
@@ -10525,7 +10525,7 @@
   },
   {
     "id": 1754,
-    "word": "at onc e ~ a nd",
+    "word": "at once ~ and",
     "meaning": "... ~이기도 하고 …이기도 한",
     "checked": false
   },
@@ -11383,7 +11383,7 @@
   },
   {
     "id": 1897,
-    "word": "pu t ~ o ff",
+    "word": "put ~ off",
     "meaning": "~을 미루다",
     "checked": false
   },
@@ -12067,7 +12067,7 @@
   },
   {
     "id": 2011,
-    "word": "se t ~ a part",
+    "word": "set ~ apart",
     "meaning": "~을 구별하다[떼어 놓다]",
     "checked": false
   },
@@ -12313,7 +12313,7 @@
   },
   {
     "id": 2052,
-    "word": "no mor e ~ t han",
+    "word": "no more ~ than",
     "meaning": "... …과 마찬가지로 ~이 아닌 46",
     "checked": false
   },
@@ -12686,7 +12686,7 @@
   {
     "id": 2114,
     "word": "starve",
-    "meaning": "굶주리다 41~42",
+    "meaning": "굶주리다",
     "checked": false
   },
   {
@@ -12716,7 +12716,7 @@
   {
     "id": 2119,
     "word": "complementarity",
-    "meaning": "상호 보완성 43~45",
+    "meaning": "상호 보완성",
     "checked": false
   },
   {
@@ -12763,7 +12763,7 @@
   },
   {
     "id": 2127,
-    "word": "credi t ~ w ith",
+    "word": "credit ~ with",
     "meaning": "... …을 ~의 덕분으로 여기다",
     "checked": false
   },
