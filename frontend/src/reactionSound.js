@@ -1,7 +1,8 @@
 // Short synthetic cartoon reactions; no recording or external audio requests.
 let context;
 let resuming;
-export function unlockSound() {
+let lastAudioError = null;
+export function unlockSound(userGesture = false) {
   try {
     const Audio = window.AudioContext || window.webkitAudioContext;
     if (!Audio) return Promise.resolve(false);
@@ -19,15 +20,19 @@ export function unlockSound() {
       }
     }
     if (context.state === 'running') return Promise.resolve(true);
+    // A pending resume can remain unresolved on mobile. A new gesture must retry it.
+    if (userGesture && resuming) {
+      void context.resume().catch(error => { lastAudioError = { name:error.name, message:error.message }; });
+    }
     if (!resuming) {
-      resuming = context.resume().then(() => context.state === 'running', () => false)
+      resuming = context.resume().then(() => context.state === 'running', error => { lastAudioError = { name:error.name, message:error.message }; return false; })
         .finally(() => { resuming = null; });
     }
     return resuming;
-  } catch { return Promise.resolve(false); }
+  } catch (error) { lastAudioError = { name:error.name, message:error.message }; return Promise.resolve(false); }
 }
 export function installSoundUnlock(target = document) {
-  const unlock = () => { void unlockSound(); };
+  const unlock = () => { void unlockSound(true); };
   target.addEventListener('pointerdown', unlock, true);
   target.addEventListener('keydown', unlock, true);
   target.addEventListener('touchend', unlock, { capture: true, passive: true });
@@ -48,8 +53,9 @@ export async function playReaction(correct, { streak = 0, badge = false } = {}) 
     new Promise(resolve => { timeout = setTimeout(() => resolve(false), 600); }),
   ]);
   clearTimeout(timeout);
-  if (!ready || !context || context.state !== 'running') return;
-  if (generation !== soundGeneration || window.speechSynthesis?.speaking) return;
+  if (!ready || !context || context.state !== 'running') return { outcome:'activation-failed' };
+  if (generation !== soundGeneration) return { outcome:'superseded' };
+  if (window.speechSynthesis?.speaking) return { outcome:'speech-active' };
   for (const oscillator of activeTones) { try { oscillator.stop(); } catch { /* Already ended. */ } }
   activeTones.clear();
   const pitches = !correct ? [260,220] : badge ? [523.25,659.25,783.99,1046.5] : streak >= 5 && streak % 5 === 0 ? [523.25,659.25,783.99,987.77] : [659.25,783.99,987.77];
@@ -67,4 +73,34 @@ export async function playReaction(correct, { streak = 0, badge = false } = {}) 
     activeTones.add(oscillator);
     oscillator.onended=()=>{activeTones.delete(oscillator);oscillator.disconnect();gain.disconnect();};
   });
+  return { outcome:'scheduled' };
+}
+
+// Diagnostic only: browser state cannot establish whether the speaker is audible.
+export async function diagnoseSound() {
+  const started = performance.now();
+  const gesture = window.navigator?.userActivation?.isActive ?? null;
+  lastAudioError = null;
+  void unlockSound(true);
+  let result;
+  try { result = await playReaction(true); }
+  catch (error) { lastAudioError = { name:error.name, message:error.message }; result = { outcome:'exception' }; }
+  const audio = context;
+  const before = audio?.currentTime ?? null;
+  await new Promise(resolve => setTimeout(resolve, 300));
+  return {
+    version:'audio-diagnostic-1',
+    outcome:result?.outcome,
+    state:audio?.state ?? 'unavailable',
+    clockAdvanced:before === null ? null : audio.currentTime > before,
+    resumePending:!!resuming,
+    error:lastAudioError,
+    elapsedMs:Math.round(performance.now() - started),
+    userGesture:gesture,
+    speechActive:!!window.speechSynthesis?.speaking,
+    visibility:document.visibilityState,
+    standalone:window.navigator?.standalone ?? window.matchMedia?.('(display-mode: standalone)').matches ?? false,
+    audioSession:window.navigator?.audioSession?.type ?? 'unsupported',
+    userAgent:window.navigator?.userAgent,
+  };
 }
