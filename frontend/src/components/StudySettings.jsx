@@ -17,6 +17,7 @@ export default function StudySettings({ settings, onChange, stage, onStage, onCl
     <p>듣기 버튼을 누르면 미국식 음성을 재생합니다. 듣는 동안은 시간이 멈추고, 다시 듣기 전 고민한 시간은 유지됩니다.</p>
     <button className="panel-refresh" disabled={testingAudio} onClick={testAudio}>{testingAudio ? '소리 상태 확인 중…' : '🔊 효과음 확인'}</button>
     {audioReport && <section className="audio-diagnostics" aria-label="효과음 진단"><p role="status">{audioReport.outcome === 'scheduled' ? '브라우저에 재생을 요청했습니다. 실제 소리가 들리는지는 직접 확인해 주세요.' : '재생이 진행되지 않았습니다. 아래 진단 정보를 보내주세요.'}</p><textarea readOnly aria-label="복사할 오디오 진단 정보" value={JSON.stringify(audioReport,null,2)} rows={9} style={{width:'100%',boxSizing:'border-box',fontSize:12}}/><button onClick={async()=>{try{await navigator.clipboard.writeText(JSON.stringify(audioReport,null,2));setCopyStatus('복사했습니다.');}catch{setCopyStatus('위 내용을 길게 눌러 복사해 주세요.');}}}>진단 정보 복사</button><span role="status">{copyStatus}</span></section>}
+    <section aria-label="일반 오디오 출력 비교"><h3>일반 오디오 비교</h3><p>아래 재생 버튼으로 1초 확인음을 들어보세요. 위 효과음과 소리가 나는지 비교해 주세요.</p><audio controls preload="auto" src="/audio/output-check.wav" style={{width:'100%'}} onError={event => setAudioReport({version:'audio-file-check-1',outcome:'media-error',code:event.currentTarget.error?.code,message:event.currentTarget.error?.message})}/></section>
     <button className="panel-refresh" onClick={onTutorial}>사용 가이드 다시 보기</button>
   </section>;
 }
