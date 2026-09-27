@@ -1,3 +1,4 @@
+import { isStorageQuotaError } from '../lib/studyBackup.js';
 import { useEffect, useRef, useState } from 'react';
 import { getSupabase } from '../lib/supabase';
 import { createStudySync } from '../lib/studySync.js';
@@ -20,10 +21,11 @@ export default function useStudySync({ profileId, storageKey, ready, snapshot, h
   const [restoredTick, setRestoredTick] = useState(0);
   const report = value => {
     if (!active.current) return;
+    if (value.state === 'error' && isStorageQuotaError(value)) value = { ...value, state:'storage-full', message:'기기 저장 공간이 부족해 자동 재시도를 멈췄어요. 앱 데이터를 삭제하지 말고 저장 공간 확보 후 다시 시도해 주세요.' };
     statusRef.current = value.state;
     setStatus(previous => ({ ...value, uploadSequence: (previous.uploadSequence || 0) + Number(value.uploaded === true) }));
-    if (value.state === 'saved' || value.state === 'conflict') {
-      clearTimeout(retryTimer.current); failures.current = 0;
+    if (value.state === 'saved' || value.state === 'conflict' || value.state === 'storage-full') {
+      clearTimeout(retryTimer.current); clearTimeout(dirtyTimer.current); failures.current = 0;
     }
     if (value.state === 'error') {
       clearTimeout(retryTimer.current);
@@ -49,7 +51,7 @@ export default function useStudySync({ profileId, storageKey, ready, snapshot, h
         await restore(result.snapshot);
         initialized.current = true;
         if (result.shouldSave) { controller.current.queue(result.snapshot); await controller.current.flush(); }
-      } else await controller.current.flush();
+      } else { controller.current.queue(refs.current.snapshot); await controller.current.flush(); }
     } catch (error) { report({ state: 'error', message: error.message }); }
     finally { initializing.current = false; }
   };
@@ -64,7 +66,7 @@ export default function useStudySync({ profileId, storageKey, ready, snapshot, h
   }, [profileId, storageKey]);
   useEffect(() => { if (ready) void retry(); }, [ready]);
   useEffect(() => {
-    if (!ready || !initialized.current || restoring.current) return;
+    if (!ready || !initialized.current || restoring.current || ['conflict','storage-full'].includes(statusRef.current)) return;
     try { controller.current.queue(snapshot); }
     catch (error) { report({ state: 'error', message: '기기 저장 공간을 확인해 주세요. ' + error.message }); return; }
     clearTimeout(dirtyTimer.current);
@@ -74,7 +76,7 @@ export default function useStudySync({ profileId, storageKey, ready, snapshot, h
   }, [ready, snapshot]);
   useEffect(() => { restoring.current = false; }, [restoredTick]);
   useEffect(() => {
-    const online = () => { clearTimeout(retryTimer.current); void retryRef.current?.(); };
+    const online = () => { if (['conflict','storage-full'].includes(statusRef.current)) return; clearTimeout(retryTimer.current); void retryRef.current?.(); };
     const foreground = () => { if (document.visibilityState === 'visible' && statusRef.current === 'error') online(); };
     window.addEventListener('online', online);
     document.addEventListener('visibilitychange', foreground);

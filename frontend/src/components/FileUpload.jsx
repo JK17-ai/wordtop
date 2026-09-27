@@ -128,7 +128,7 @@ export default function FileUpload({ profile }) {
   };
   const sync = useStudySync({ profileId: profile?.id, storageKey: deckStorageKey, ready,
     snapshot, hasLocal: hadLocalRecords.current, onRestore: restoreSnapshot });
-  const syncBlocked = sync.state === 'loading' || sync.state === 'conflict';
+  const syncBlocked = sync.state === 'loading' || sync.state === 'conflict' || sync.state === 'storage-full';
 
   const picker = useRef(null);
   const importing = useRef(false);

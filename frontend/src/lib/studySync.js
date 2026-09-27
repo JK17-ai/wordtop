@@ -1,3 +1,4 @@
+import { openStudyBackupStore, migrateStudyBackups } from './studyBackup.js';
 // Snapshot sync deliberately stops on conflicting device edits instead of merging guesses.
 export function validateSnapshot(value) {
   if (value?.schemaVersion !== 1 || !Array.isArray(value.deck?.words) || !value.deck.words.length
@@ -47,9 +48,11 @@ export function createStudySync({ rpc, storage, key, profileId, status = () => {
     storage.setItem(metaKey, JSON.stringify({ revision: rev, hash: await snapshotHash(snapshot) }));
     revision = rev;
   };
-  const backup = (local, remote) => {
+  const backup = async (local, remote) => {
     const backupKey = key + ':sync-backup:' + Date.now() + ':' + crypto.randomUUID();
     const value = JSON.stringify({ local, remote });
+    const archive = await openStudyBackupStore();
+    if (archive) { try { await archive.put(backupKey, value); } finally { archive.close(); } return; }
     storage.setItem(backupKey, value);
     if (storage.getItem(backupKey) !== value) throw Error('기록 백업에 실패했습니다.');
   };
@@ -57,6 +60,8 @@ export function createStudySync({ rpc, storage, key, profileId, status = () => {
   return {
     async initialize(local, hasLocal) {
       status({ state: 'loading' });
+      const archive = await openStudyBackupStore();
+      if (archive) { try { await migrateStudyBackups(storage, key, archive); } finally { archive.close(); } }
       const savedPending = read(pendingKey);
       if (savedPending && !hasLocal) { local = validateSnapshot(savedPending); hasLocal = true; }
       const remote = await call('wordtop_load_study');
@@ -67,7 +72,7 @@ export function createStudySync({ rpc, storage, key, profileId, status = () => {
       }
       const hash = await snapshotHash(local);
       if (!hasLocal || hash === await snapshotHash(remote.snapshot) || (meta?.hash === hash)) {
-        if (hasLocal && hash !== await snapshotHash(remote.snapshot)) backup(local, remote.snapshot);
+        if (hasLocal && hash !== await snapshotHash(remote.snapshot)) await backup(local, remote.snapshot);
         await acknowledge(remote.snapshot, remote.revision);
         storage.removeItem(pendingKey);
         status({ state: 'saved' });
@@ -131,7 +136,7 @@ export function createStudySync({ rpc, storage, key, profileId, status = () => {
     async resolve(choice, local) {
       if (!remoteConflict) return null;
       const remote = remoteConflict;
-      backup(local, remote.snapshot);
+      await backup(local, remote.snapshot);
       if (choice === 'remote') {
         await acknowledge(remote.snapshot, remote.revision);
         pending = null;

@@ -12,6 +12,7 @@ export default function StudySyncStatus({ sync, snapshot }) {
     const timer = setTimeout(() => setShowUploaded(false), 1600);
     return () => clearTimeout(timer);
   }, [sync.uploadSequence]);
+  if (sync.state === 'storage-full') return <div className="study-sync" role="alert"><strong>기기 저장 공간 확인이 필요해요</strong><p>{sync.message}</p><button onClick={sync.retry}>저장 다시 시도</button></div>;
   if (sync.state === 'conflict') return <div className="study-sync conflict" role="alert">
     <strong>두 기기의 기록이 달라요.</strong>
     <p>양쪽 기록을 백업한 뒤 선택한 기록으로 이어갑니다. 자동으로 합치지는 않습니다.</p>
