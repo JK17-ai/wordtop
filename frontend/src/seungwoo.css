@@ -92,3 +92,14 @@ body { background:#f5f5f7 !important; color:var(--sw-ink); font-family:Pretendar
 .family-badge-summary { display:flex; flex-direction:column; gap:8px; border-radius:12px; background:#f8f5f7; padding:12px; margin:10px 0; font-size:13px; }
 .family-medal-line { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
 .family-medal-line strong { margin-left:auto; color:#b5365c; font-size:17px; }
+
+/* Fit the measured free space, including short mobile viewports. */
+.companion-space { overflow:hidden; }
+.seungwoo-companion { display:flex; }
+.seungwoo-companion .seungwoo-face,.seungwoo-companion > .moa-mark { width:var(--companion-size,48px); height:var(--companion-size,48px); }
+.companion-space[data-caption="false"] .companion-caption { display:none; }
+/* Reactions keep their full size and may overlap the pause/card area. */
+.seungwoo-companion > .moa-mark { width:68px; height:68px; }
+.seungwoo-companion.reaction-overlay { position:fixed; inset:auto; height:145px; z-index:1000; display:flex; pointer-events:none; }
+.seungwoo-companion.reaction-overlay .seungwoo-face { width:112px; height:112px; }
+.reaction-overlay .companion-caption { background:rgba(255,255,255,.94); border-radius:10px; padding:3px 10px; height:auto; line-height:17px; box-shadow:0 2px 8px #0001; }

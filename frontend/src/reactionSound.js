@@ -1,11 +1,23 @@
-﻿// Short synthetic cartoon reactions; no recording or external audio requests.
+// Short synthetic cartoon reactions; no recording or external audio requests.
 let context;
 let resuming;
 export function unlockSound() {
   try {
     const Audio = window.AudioContext || window.webkitAudioContext;
     if (!Audio) return Promise.resolve(false);
-    if (!context || context.state === 'closed') context = new Audio({ latencyHint: 'interactive' });
+    // Supported mobile browsers can route effects through the media audio session.
+    try { if (window.navigator?.audioSession) window.navigator.audioSession.type = 'playback'; } catch { /* Optional API. */ }
+    if (!context || context.state === 'closed') {
+      context = new Audio({ latencyHint: 'interactive' });
+      // Prime the output synchronously inside the initial user gesture.
+      if (context.createBufferSource && context.createBuffer) {
+        const source = context.createBufferSource();
+        source.buffer = context.createBuffer(1, 1, context.sampleRate);
+        source.connect(context.destination);
+        source.onended = () => source.disconnect();
+        source.start(0);
+      }
+    }
     if (context.state === 'running') return Promise.resolve(true);
     if (!resuming) {
       resuming = context.resume().then(() => context.state === 'running', () => false)
@@ -33,7 +45,7 @@ export async function playReaction(correct, { streak = 0, badge = false } = {}) 
   let timeout;
   const ready = await Promise.race([
     unlockSound(),
-    new Promise(resolve => { timeout = setTimeout(() => resolve(false), 140); }),
+    new Promise(resolve => { timeout = setTimeout(() => resolve(false), 600); }),
   ]);
   clearTimeout(timeout);
   if (!ready || !context || context.state !== 'running') return;
@@ -48,7 +60,7 @@ export async function playReaction(correct, { streak = 0, badge = false } = {}) 
     const time=start+i*(badge ? .11 : .065), duration=correct ? .15 : .12;
     oscillator.frequency.setValueAtTime(pitch,time);
     gain.gain.setValueAtTime(0,time);
-    gain.gain.linearRampToValueAtTime(correct ? .045 : .03,time+.012);
+    gain.gain.linearRampToValueAtTime(correct ? .14 : .10,time+.012);
     gain.gain.exponentialRampToValueAtTime(.001,time+duration);
     oscillator.connect(gain); gain.connect(context.destination);
     oscillator.start(time); oscillator.stop(time+duration+.02);
