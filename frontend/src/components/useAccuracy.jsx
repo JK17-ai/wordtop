@@ -27,8 +27,14 @@ export default function useAccuracy(key = "wordtop-daily-accuracy-v1") {
     try { localStorage.setItem(key, JSON.stringify(next)); } catch { /* The live counter still works. */ }
     setToday(next);
   };
-  return { live, today, record };
+  const restore = value => {
+    const next = value?.date === day() ? value : empty();
+    localStorage.setItem(key, JSON.stringify(next));
+    setToday(next);
+    setLive({ total: 0, correct: 0 });
+  };
+  return { live, today, record, restore };
 }
 export function AccuracyStats({ live, today }) {
-  return <div className="accuracy-stats">{[['실시간 정답률', live], ['오늘의 정답률', today]].map(([label, value]) => <div key={label}><span>{label}</span><strong>{value.total ? `${Math.round(value.correct / value.total * 100)}%` : '—'}</strong><small>{value.correct} / {value.total} 정답</small></div>)}</div>;
+  return <div className="accuracy-stats">{[['실시간 정답률', live], ['오늘의 정답률', today]].map(([label, value]) => <div key={label}><span>{label}</span><strong>{value.total ? `${Math.round(value.correct / value.total * 100)}%` : '—'}</strong>{/* 기존 집계 문구 보관: <small>{value.correct} / {value.total} 정답</small> */}</div>)}</div>;
 }

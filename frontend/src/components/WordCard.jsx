@@ -6,7 +6,9 @@ import { unlockSound, playReaction } from "../reactionSound";
 // false로 바꾸면 기존 타이머 바·숫자 표시로 되돌립니다.
 const USE_WORD_COLOR_TIMER = true;
 
-export default function WordCard({ item, onAnswer, suspended = false, choices = [], paused = false, onPausedChange, onFinish, reviewMode = false }) {
+export default function WordCard({ item, onAnswer, suspended = false, choices = [], paused = false, onPausedChange, onFinish, reviewMode = false, exercise = "meaning" }) {
+  const [recalling, setRecalling] = useState(exercise === "recall");
+  const answer = exercise === "reverse" ? item.word : item.meaning;
   const [remaining, setRemaining] = useState(10000);
   const setPaused = value => onPausedChange?.(typeof value === "function" ? value(paused) : value);
   const [result, setResult] = useState(null);
@@ -28,14 +30,14 @@ export default function WordCard({ item, onAnswer, suspended = false, choices = 
       }
       return values;
     };
-    return shuffle([item.meaning, ...shuffle([...new Set(choices)].filter(x => x && x !== item.meaning)).slice(0, 3)]);
+    return shuffle([answer, ...shuffle([...new Set(choices)].filter(x => x && x !== answer)).slice(0, 3)]);
   });
   const finish = (correct, choice = null) => {
     if (done.current || suspended) return;
     done.current = true;
     responseClock.current.stop();
     const responseMs = choice === null ? 10000 : Math.round(responseClock.current.elapsed());
-    const timing = { responseMs, responseStage: responseStage(responseMs), timedOut: choice === null };
+    const timing = { responseMs, responseStage: responseStage(responseMs), timedOut: choice === null, selectedMeaning: choice === null ? null : exercise === "reverse" ? (correct ? item.meaning : "[reverse incorrect] " + choice) : choice };
     onFinish?.();
     clearInterval(timerRef.current);
     setPaused(false);
@@ -59,7 +61,7 @@ export default function WordCard({ item, onAnswer, suspended = false, choices = 
   };  const finishRef = useRef(finish);
   finishRef.current = finish;
   useEffect(() => {
-    if (paused || result || suspended) return;
+    if (paused || result || suspended || recalling) return;
     responseClock.current.start();
     const timer = timerRef.current = setInterval(() => {
       const left = 10000 - responseClock.current.elapsed();
@@ -67,7 +69,7 @@ export default function WordCard({ item, onAnswer, suspended = false, choices = 
       if (left <= 0) { clearInterval(timer); finishRef.current(false); }
     }, 50);
     return () => { clearInterval(timer); responseClock.current.stop(); };
-  }, [paused, result, suspended]);
+  }, [paused, result, suspended, recalling]);
   const elapsed = Math.max(0, Math.min(1, 1 - remaining / 10000));
   const start = elapsed < 0.5 ? [25, 25, 25] : [112, 43, 43];
   const end = elapsed < 0.5 ? [112, 43, 43] : [190, 35, 45];
@@ -85,14 +87,14 @@ export default function WordCard({ item, onAnswer, suspended = false, choices = 
           <span className="response-stars" role="img" aria-label={`최근 응답 시간 ${item.responseStage}단계${item.timedOut ? ', 시간 초과' : ''}`} title="별 1개: 3초 이내 · 2개: 3~6초 · 3개: 6초 초과">
             {Array.from({ length: item.responseStage }, (_, index) => <span key={index} aria-hidden="true">★</span>)}
           </span>
-        )}>{item.word}</FitWord>
+        )}>{exercise === "reverse" ? item.meaning : item.word}</FitWord>
       </div>
       {USE_WORD_COLOR_TIMER && (
         <div className="thin-timer" role="progressbar" aria-label="남은 시간" aria-valuemin={0} aria-valuemax={10} aria-valuenow={Math.ceil(remaining / 1000)}>
           {[0, 1, 2, 3, 4].map(index => <i key={index} className={index < Math.ceil(remaining / 2000) ? "lit" : ""} />)}
         </div>
       )}
-        {item.ipa && (
+        {item.ipa && exercise !== "reverse" && (
           <div
             lang="en-US"
             aria-label="미국식 발음기호"
@@ -109,8 +111,8 @@ export default function WordCard({ item, onAnswer, suspended = false, choices = 
       {/* 이전 카드 내부 멈춤 버튼 보관
       <button className="pause-button" disabled={!!result || suspended} onClick={() => setPaused(v => !v)}>{paused ? '다시 시작' : '멈춤'}</button>
       */}
-      <div className="quiz-prompt" role="status">{result ? result.correct ? '정답! 마스터함에 담아요 ✓' : result.choice === null ? '' : '괜찮아요! 정답을 기억하고 스크랩해요' : '올바른 뜻을 선택하세요'}</div>
-      <div className="choice-grid">{options.map(choice => <button key={choice} data-correct={choice === item.meaning} disabled={!!result || suspended} className={result ? choice === item.meaning ? 'answer-reveal' : choice === result.choice ? 'answer-wrong' : 'answer-muted' : ''} onClick={() => finish(choice === item.meaning, choice)}>{choice}</button>)}</div>
+      <div className="quiz-prompt" role="status">{result ? result.correct ? '정답! 마스터함에 담아요 ✓' : result.choice === null ? '' : '괜찮아요! 정답을 기억하고 스크랩해요' : recalling ? "먼저 뜻을 떠올려 보세요 · 시간은 아직 흐르지 않아요" : exercise === "reverse" ? "알맞은 영어 단어를 선택하세요" : "올바른 뜻을 선택하세요"}</div>
+      <div className="choice-grid">{recalling ? <button className="recall-ready" disabled={suspended} onClick={() => setRecalling(false)}>떠올렸어요 · 퀴즈 시작</button> : options.map(choice => <button key={choice} data-correct={choice === answer} disabled={!!result || suspended} className={result ? choice === answer ? 'answer-reveal' : choice === result.choice ? 'answer-wrong' : 'answer-muted' : ''} onClick={() => finish(choice === answer, choice)}>{choice}</button>)}</div>
     </article>
     {flight && createPortal(<div aria-hidden="true" className={`answer-flight ${result.correct ? 'to-mastered' : 'to-scrap'}`} style={{ left: flight.left, top: flight.top, width: flight.width, minHeight: flight.height, '--fly-x': `${flight.dx}px`, '--fly-y': `${flight.dy}px` }}>{item.meaning}<span>✦</span></div>, document.body)}
   </>;
