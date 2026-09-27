@@ -15,7 +15,7 @@ body::before { animation:none; background:radial-gradient(ellipse at 50% 0,#d9ef
 .today-counts > div { border-color:var(--line); }
 .app-shell.quiet-study .reel-stage .word-card { background:#fff; border:1px solid #d8dfd2; border-top:4px solid var(--ink); box-shadow:0 5px 16px #16210e08 !important; border-radius:18px !important; }
 .app-shell.quiet-study .choice-grid button { background:#f4f6ef; color:var(--ink); border:1px solid #d7dfcf; border-radius:12px; font-weight:700; }
-.app-shell.quiet-study .choice-grid button:not(:disabled):hover { background:#eaf5d5; border-color:#7f9b51; }
+/* No hover fill: touch browsers can retain :hover after the next card renders. */
 .app-shell.quiet-study .choice-grid button.answer-reveal { background:var(--lime); border:2px solid #567d13; color:var(--ink); }
 .app-shell.quiet-study .choice-grid button.answer-wrong { background:#ffe5dd; border-color:#cc694e; color:#7b2a1a; }
 .app-shell.quiet-study .word-ipa { color:#6d7666; }
@@ -55,3 +55,5 @@ body::before { animation:none; background:radial-gradient(ellipse at 50% 0,#d9ef
 .seungwoo-companion.mood-idle .companion-caption,
 .seungwoo-companion.mood-paused .companion-caption { padding:0 8px; line-height:17px; height:17px; clip-path:none; border-radius:4px; }
 .reaction-overlay .companion-caption { padding:6px 16px; font-size:16px; }
+
+.app-shell.quiet-study .choice-grid button { -webkit-tap-highlight-color:transparent; }
