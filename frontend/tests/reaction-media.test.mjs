@@ -28,3 +28,30 @@ test('sprite playback stops before the next effect and stale handlers cannot sto
  player.ontimeupdate(); assert.equal(pauses,before);
  player.currentTime=1.81; player.ontimeupdate(); assert.equal(pauses,before+1);
 });
+
+test('touch primes Web Audio even when HTML Audio exists, so timeout feedback works',async()=>{
+ let starts=0;const listeners={};
+ const param={setValueAtTime(){},linearRampToValueAtTime(){},exponentialRampToValueAtTime(){}};
+ globalThis.window={Audio:class{load(){}},AudioContext:class{
+ state='suspended';currentTime=0;destination={};
+ resume(){this.state='running';return Promise.resolve();}
+ createOscillator(){return{frequency:param,connect(){},disconnect(){},start(){starts++;},stop(){}};}
+ createGain(){return{gain:param,connect(){},disconnect(){}};}
+ }};
+ const sound=await import('../src/reactionSound.js?both-engines');
+ const cleanup=sound.installSoundUnlock({addEventListener:(name,fn)=>listeners[name]=fn,removeEventListener(){}});
+ listeners.pointerdown();
+ await Promise.resolve();
+ const result=await sound.playReaction(false);
+ assert.equal(result.engine,'web-audio');assert.ok(starts>0);cleanup();
+});
+test('blocked media falls back to a resumable Web Audio engine',async()=>{
+ const param={setValueAtTime(){},linearRampToValueAtTime(){},exponentialRampToValueAtTime(){}};
+ globalThis.window={Audio:class{load(){}pause(){}play(){return Promise.reject(Error('blocked'));}},AudioContext:class{
+ state='running';currentTime=0;destination={};
+ createOscillator(){return{frequency:param,connect(){},disconnect(){},start(){},stop(){}};}
+ createGain(){return{gain:param,connect(){},disconnect(){}};}
+ }};
+ const sound=await import('../src/reactionSound.js?fallback');
+ assert.equal((await sound.playReaction(true)).engine,'web-audio');
+});

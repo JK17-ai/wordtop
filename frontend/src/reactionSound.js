@@ -33,7 +33,7 @@ export function unlockSound(userGesture = false) {
 }
 export function installSoundUnlock(target = document) {
   prepareMedia();
-  const unlock = () => { if (!window.Audio) void unlockSound(true); };
+  const unlock = () => { void unlockSound(true); };
   target.addEventListener('pointerdown', unlock, true);
   target.addEventListener('keydown', unlock, true);
   target.addEventListener('touchend', unlock, { capture: true, passive: true });
@@ -74,7 +74,7 @@ async function playSynthReaction(correct, { streak = 0, badge = false } = {}) {
     activeTones.add(oscillator);
     oscillator.onended=()=>{activeTones.delete(oscillator);oscillator.disconnect();gain.disconnect();};
   });
-  return { outcome:'scheduled' };
+  return { outcome:'scheduled', engine:'web-audio' };
 }
 
 // Diagnostic only: browser state cannot establish whether the speaker is audible.
@@ -82,20 +82,21 @@ export async function diagnoseSound() {
   const started = performance.now();
   const gesture = window.navigator?.userActivation?.isActive ?? null;
   lastAudioError = null;
-  if (!window.Audio) void unlockSound(true);
+  void unlockSound(true);
   let result;
   try { result = await playReaction(true); }
   catch (error) { lastAudioError = { name:error.name, message:error.message }; result = { outcome:'exception' }; }
-  const audio = window.Audio ? media : context;
+  const usingMedia = result?.engine === 'audio-file';
+  const audio = usingMedia ? media : context;
   const before = audio?.currentTime ?? null;
   await new Promise(resolve => setTimeout(resolve, 300));
   return {
-    version:'audio-file-2',
+    version:'gesture-fallback-3',
     outcome:result?.outcome,
-    state:window.Audio ? (media?.paused ? 'paused' : 'playing') : audio?.state ?? 'unavailable',
+    state:usingMedia ? (media?.paused ? 'paused' : 'playing') : audio?.state ?? 'unavailable',
     clockAdvanced:before === null ? null : audio.currentTime > before,
     resumePending:!!resuming,
-    error:window.Audio ? mediaFailure : lastAudioError,
+    error:usingMedia ? mediaFailure : lastAudioError,
     elapsedMs:Math.round(performance.now() - started),
     userGesture:gesture,
     speechActive:!!window.speechSynthesis?.speaking,
@@ -118,7 +119,7 @@ function prepareMedia() {
   return media;
 }
 export async function playReaction(correct, { streak = 0, badge = false } = {}) {
-  if (!window.Audio) return playSynthReaction(correct, { streak, badge });
+  if (!window.Audio || context?.state === 'running') return playSynthReaction(correct, { streak, badge });
   const token = ++mediaToken;
   const player = prepareMedia();
   clearTimeout(mediaStop);
@@ -149,6 +150,7 @@ export async function playReaction(correct, { streak = 0, badge = false } = {}) 
   } catch (error) {
     if (token !== mediaToken) return { outcome:'superseded' };
     mediaFailure = { name:error.name, message:error.message };
-    return { outcome:'media-error', engine:'audio-file' };
+    const fallback = await playSynthReaction(correct, { streak, badge });
+    return fallback.outcome === 'scheduled' ? fallback : { outcome:'media-error', engine:'audio-file' };
   }
 }

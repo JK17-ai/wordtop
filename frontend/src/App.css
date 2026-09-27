@@ -499,3 +499,24 @@ html, body, #root { height: 100%; overflow: hidden; }
 @keyframes moa-nod { 0%,100% { transform:translateY(0); } 45% { transform:translateY(-5px) rotate(-5deg); } }
 @keyframes moa-tilt { 0%,100% { transform:rotate(0); } 50% { transform:rotate(5deg); } }
 @media(prefers-reduced-motion:reduce) { .moa-companion .moa-mark { animation:none !important; } }
+
+/* Primary study controls: visible in panels and on the study card. */
+.learning-panel .back-to-study {
+  display:inline-flex; align-items:center; justify-content:center;
+  flex-shrink:0; min-height:48px; padding:10px 18px;
+  background:#51316d; color:#fff; border:2px solid #51316d;
+  border-radius:14px; font:inherit; font-size:16px; font-weight:800;
+  box-shadow:0 3px 9px #51316d25; cursor:pointer;
+}
+.app-shell.quiet-study .next-preview.study-pause {
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  flex-basis:48px; height:48px; min-height:48px;
+  background:#51316d; color:#fff; border:2px solid #51316d;
+  border-radius:14px; font-size:17px; font-weight:800;
+  box-shadow:0 3px 9px #51316d25;
+}
+.app-shell.quiet-study .next-preview.study-pause[aria-pressed="true"] {
+  background:#16634c; border-color:#16634c; color:#fff;
+}
+.back-to-study:focus-visible,.study-pause:focus-visible { outline:3px solid #df8b23 !important; outline-offset:3px; }
+.back-to-study:active,.study-pause:active { transform:translateY(1px); }
