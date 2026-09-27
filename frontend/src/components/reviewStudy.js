@@ -2,7 +2,7 @@ import { getFeed } from './studyState.js';
 export function reviewFeed(words, tab, stage = 'all') {
   const feed = getFeed(words, tab);
   if (tab === 'all' || stage === 'all') return feed;
-  return feed.filter(word => stage === 'unrated' ? ![1, 2, 3].includes(word.responseStage) : word.responseStage === Number(stage));
+  return feed.filter(word => stage === 'unrated' ? word.responseStageSource === 'legacy-default' || ![1, 2, 3].includes(word.responseStage) : (word.responseStage || 1) === Number(stage));
 }
 export function nextReviewIndex(before, after, index, id) {
   if (!after.length) return 0;

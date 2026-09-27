@@ -4,7 +4,10 @@ export function rebuildStudyDeck(words) {
     const raw = String(word.status || "").trim().toLowerCase();
     const status = raw === "scrap" ? "scrap"
       : raw === "mastered" || word.checked === true ? "mastered" : "new";
-    return { ...word, status, checked: status === "mastered" };
+    const legacyReview = status !== 'new' && ![1,2,3].includes(word.responseStage);
+    return { ...word, status, checked: status === "mastered",
+      ...(legacyReview ? { responseStage: 1, responseStageSource: 'legacy-default' } : {}),
+    };
   });
 }
 export function getFeed(words, tab) {
@@ -21,6 +24,7 @@ export function answerWord(words, tab, index, id, correct, timing) {
       ...(validTiming ? {
         responseMs: timing.responseMs,
         responseStage: timing.responseStage,
+        responseStageSource: 'measured',
         timedOut: timing.timedOut === true,
         exercise: timing.exercise || 'meaning',
         listenCount: Number.isInteger(timing.listenCount) ? timing.listenCount : 0,

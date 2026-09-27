@@ -25,35 +25,34 @@ export function installSoundUnlock(target = document) {
     target.removeEventListener('touchend', unlock, true);
   };
 }
-export async function playReaction(correct) {
+let soundGeneration = 0;
+const activeTones = new Set();
+export async function playReaction(correct, { streak = 0, badge = false } = {}) {
+  const generation = ++soundGeneration;
   // Wait for the first gesture's resume, but never play stale feedback later.
   let timeout;
   const ready = await Promise.race([
     unlockSound(),
-    new Promise(resolve => { timeout = setTimeout(() => resolve(false), 500); }),
+    new Promise(resolve => { timeout = setTimeout(() => resolve(false), 140); }),
   ]);
   clearTimeout(timeout);
   if (!ready || !context || context.state !== 'running') return;
-  const variant = Math.floor(Math.random() * 3);
-  const start = context.currentTime + .01;
-  const laugh = correct;
-  const count = laugh ? 3 + variant : 2 + (variant % 2);
-  for (let i = 0; i < count; i++) {
-    const oscillator = context.createOscillator();
-    const gain = context.createGain();
-    const filter = context.createBiquadFilter();
-    filter.type = 'lowpass'; filter.frequency.value = 1500;
-    oscillator.type = laugh ? 'triangle' : 'sawtooth';
-    const time = start + i * (laugh ? .13 : .22);
-    const duration = laugh ? .12 : .23;
-    const pitch = laugh ? 320 + variant * 70 + i * 45 : variant === 2 ? 900 : 440 + variant * 80;
-    oscillator.frequency.setValueAtTime(pitch, time);
-    oscillator.frequency.exponentialRampToValueAtTime(laugh ? pitch * .58 : pitch * .36, time + duration);
-    gain.gain.setValueAtTime(0, time);
-    gain.gain.linearRampToValueAtTime(.075, time + .02);
-    gain.gain.exponentialRampToValueAtTime(.001, time + duration);
-    oscillator.connect(filter); filter.connect(gain); gain.connect(context.destination);
-    oscillator.start(time); oscillator.stop(time + duration + .02);
-    oscillator.onended = () => { oscillator.disconnect(); filter.disconnect(); gain.disconnect(); };
-  }
+  if (generation !== soundGeneration || window.speechSynthesis?.speaking) return;
+  for (const oscillator of activeTones) { try { oscillator.stop(); } catch { /* Already ended. */ } }
+  activeTones.clear();
+  const pitches = !correct ? [260,220] : badge ? [523.25,659.25,783.99,1046.5] : streak >= 5 && streak % 5 === 0 ? [523.25,659.25,783.99,987.77] : [659.25,783.99,987.77];
+  const start = context.currentTime + .008;
+  pitches.forEach((pitch,i) => {
+    const oscillator=context.createOscillator(), gain=context.createGain();
+    oscillator.type='sine';
+    const time=start+i*(badge ? .11 : .065), duration=correct ? .15 : .12;
+    oscillator.frequency.setValueAtTime(pitch,time);
+    gain.gain.setValueAtTime(0,time);
+    gain.gain.linearRampToValueAtTime(correct ? .045 : .03,time+.012);
+    gain.gain.exponentialRampToValueAtTime(.001,time+duration);
+    oscillator.connect(gain); gain.connect(context.destination);
+    oscillator.start(time); oscillator.stop(time+duration+.02);
+    activeTones.add(oscillator);
+    oscillator.onended=()=>{activeTones.delete(oscillator);oscillator.disconnect();gain.disconnect();};
+  });
 }

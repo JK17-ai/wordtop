@@ -1,7 +1,7 @@
-﻿{
+{
   "id": "/",
-  "name": "WORDTOP",
-  "short_name": "WORDTOP",
+  "name": "단어모아",
+  "short_name": "단어모아",
   "lang": "ko",
   "start_url": "/",
   "scope": "/",

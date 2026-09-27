@@ -68,11 +68,11 @@ export default function WordCard({ item, onAnswer, suspended = false, choices = 
     responseClock.current.stop();
     const responseMs = choice === null ? 10000 : Math.round(responseClock.current.elapsed());
     const timing = { exercise, listenCount, responseMs, responseStage: responseStage(responseMs), timedOut: choice === null, selectedMeaning: choice === null ? null : exercise === "reverse" ? (correct ? item.meaning : "[reverse incorrect] " + choice) : choice };
-    onFinish?.();
+    onFinish?.(correct);
     clearInterval(timerRef.current);
     setPaused(false);
     setResult({ correct, choice });
-    void playReaction(correct).catch(() => { /* Audio must not block scoring. */ });
+    if (!onFinish) void playReaction(correct).catch(() => { /* Standalone preview fallback. */ });
     const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? true;
     // Score exactly once even if a browser cannot render an optional effect.
     completion.current = setTimeout(() => {
@@ -131,17 +131,12 @@ export default function WordCard({ item, onAnswer, suspended = false, choices = 
             className="word-ipa"
           >
             {item.ipa || "\u00a0"}
-            {item.ipaStatus === "components" && (
-              <small style={{ display: "block", fontSize: "11px" }}>
-                구성 단어별 참고 발음
-              </small>
-            )}
           </div>
         )}
       {/* 이전 카드 내부 멈춤 버튼 보관
       <button className="pause-button" disabled={!!result || suspended || speaking || paused || (exercise === "listening" && (!heard || !!speechError))} onClick={() => setPaused(v => !v)}>{paused ? '다시 시작' : '멈춤'}</button>
       */}
-      <div className="quiz-prompt" role="status">{speechError || (result ? item.meaning : recalling ? '뜻을 떠올린 뒤 시작하세요' : exercise === 'listening' && !heard ? '발음을 들은 뒤 뜻을 선택하세요' : '\u00a0')}</div>
+      <div className="quiz-prompt" role="status">{speechError || (result ? '\u00a0' : recalling ? '뜻을 떠올린 뒤 시작하세요' : exercise === 'listening' && !heard ? '발음을 들은 뒤 뜻을 선택하세요' : '\u00a0')}</div>
       <div className="choice-grid">{recalling ? <button className="recall-ready" disabled={suspended} onClick={() => setRecalling(false)}>떠올렸어요 · 퀴즈 시작</button> : options.map(choice => <button key={choice} data-correct={choice === answer} disabled={!!result || suspended} className={result ? choice === answer ? 'answer-reveal' : choice === result.choice ? 'answer-wrong' : 'answer-muted' : ''} onClick={() => finish(choice === answer, choice)}>{choice}</button>)}</div>
     </article>
     {flight && createPortal(<div aria-hidden="true" className={`answer-flight ${result.correct ? 'to-mastered' : 'to-scrap'}`} style={{ left: flight.left, top: flight.top, width: flight.width, minHeight: flight.height, '--fly-x': `${flight.dx}px`, '--fly-y': `${flight.dy}px` }}>{item.meaning}<span>✦</span></div>, document.body)}

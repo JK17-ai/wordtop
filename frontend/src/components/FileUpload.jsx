@@ -1,3 +1,8 @@
+import StudyTutorial from "./StudyTutorial";
+import SeungwooCompanion, { SeungwooFace } from "./SeungwooCompanion";
+import { MoaMark } from "./MoaCompanion";
+import { playReaction } from "../reactionSound";
+import PanelBoundary from "./PanelBoundary";
 import StudySettings from "./StudySettings";
 import { dailyRecord, dailyCounts, learningSettings, studyDay } from "./dailyStudy.js";
 import LearningPanel from "./LearningPanel";
@@ -22,33 +27,17 @@ export default function FileUpload({ profile }) {
   const deckStorageKey = profileKey(profile?.id, "wordtop-current-deck");
   const accuracy = useAccuracy(profileKey(profile?.id, "wordtop-daily-accuracy-v1"));
   const shellRef = useRef(null);
-  useEffect(() => {
-    const shell = shellRef.current;
-    const area = shell?.querySelector(".study-scroll");
-    if (!area) return;
-    let frame;
-    const fit = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        shell.dataset.density = "normal";
-        for (const density of ["compact", "tight"]) {
-          if (area.scrollHeight <= area.clientHeight + 1) break;
-          shell.dataset.density = density;
-        }
-      });
-    };
-    const observer = new ResizeObserver(fit);
-    observer.observe(area);
-    for (const child of area.children) observer.observe(child);
-    const mutations = new MutationObserver(fit);
-    mutations.observe(area, { childList: true, subtree: true, characterData: true });
-    window.visualViewport?.addEventListener("resize", fit);
-    fit();
-    return () => {
-      cancelAnimationFrame(frame); observer.disconnect(); mutations.disconnect();
-      window.visualViewport?.removeEventListener("resize", fit);
-    };
-  }, []);
+  const tutorialKey = profileKey(profile?.id, 'wordtop-tutorial-v1');
+  const [showTutorial, setShowTutorial] = useState(() => {
+    try { return localStorage.getItem(tutorialKey) !== 'hidden' && sessionStorage.getItem(tutorialKey) !== 'seen'; } catch { return true; }
+  });
+  const closeTutorial = permanently => {
+    try {
+      if (permanently) localStorage.setItem(tutorialKey, 'hidden');
+      sessionStorage.setItem(tutorialKey, 'seen');
+    } catch { /* Dismissal still works when browser storage is unavailable. */ }
+    setShowTutorial(false);
+  };
   useEffect(() => {
     const viewport = window.visualViewport;
     const update = () => document.documentElement.style.setProperty("--app-height", (viewport?.height || window.innerHeight) + "px");
@@ -61,6 +50,18 @@ export default function FileUpload({ profile }) {
       document.documentElement.style.removeProperty("--app-height");
     };
   }, []);
+  const [reaction, setReaction] = useState(null);
+  const reactionTimer = useRef(null);
+  useEffect(() => () => clearTimeout(reactionTimer.current), []);
+  const reactToAnswer = correct => {
+    clearTimeout(reactionTimer.current);
+    streak.current = correct ? streak.current + 1 : 0;
+    const count = streak.current;
+    const mood = correct && count >= 5 && count % 5 === 0 ? 'streak' : correct ? 'correct' : 'wrong';
+    setReaction({ mood, count, id: Date.now() });
+    void playReaction(correct, { streak: count }).catch(() => {});
+    reactionTimer.current = setTimeout(() => setReaction(null), 1700);
+  };
   const [studyPaused, setStudyPaused] = useState(false);
   const [pauseLocked, setPauseLocked] = useState(false);
   const [viewMode, setViewMode] = useState("phone");
@@ -73,7 +74,26 @@ export default function FileUpload({ profile }) {
   const today = dailyCounts(daily, todayDate);
   useEffect(() => { try { localStorage.setItem(deckStorageKey + ':settings', JSON.stringify(settings)); localStorage.setItem(deckStorageKey + ':daily', JSON.stringify(daily)); } catch { setNotice('기기 저장 공간을 확인해 주세요.'); } }, [settings,daily,deckStorageKey]);
   const awards = useAwards(profile?.id);
+  useEffect(() => {
+    if (!awards.latestAward) return;
+    clearTimeout(reactionTimer.current);
+    setReaction({ mood:'badge', tier:awards.latestAward.tier, id:awards.latestAward.id });
+    void playReaction(true, { badge:true }).catch(() => {});
+    reactionTimer.current = setTimeout(() => setReaction(null),2200);
+  }, [awards.latestAward]);
   const [activeTab, setActiveTab] = useState("all");
+  const [reviewHint, setReviewHint] = useState(false);
+  const reviewHintTimer = useRef(null);
+  useEffect(() => () => clearTimeout(reviewHintTimer.current), []);
+  useEffect(() => { if (panel) { clearTimeout(reviewHintTimer.current); setReviewHint(false); } }, [panel]);
+  const selectStudyTab = tab => {
+    clearTimeout(reviewHintTimer.current);
+    setPanel(null);
+    setActiveTab(tab);
+    const show = tab === 'scrap' || tab === 'mastered';
+    setReviewHint(show);
+    if (show) reviewHintTimer.current = setTimeout(() => setReviewHint(false), 2800);
+  };
   const exercise = activeTab === "all" ? "meaning" : settings[activeTab];
 
   const [positions, setPositions] = useState({ all: 0, scrap: 0, mastered: 0 });
@@ -201,7 +221,7 @@ export default function FileUpload({ profile }) {
       const dy = event.changedTouches[0].clientY - touchStart.y;
       if (Math.max(Math.abs(dx), Math.abs(dy)) > 45) {
         if (Math.abs(dx) > Math.abs(dy)) {
-          setActiveTab(dx < 0 ? "mastered" : "scrap");
+          selectStudyTab(dx < 0 ? "mastered" : "scrap");
 
         } else {
           movePage(dy < 0 ? 1 : -1);
@@ -211,19 +231,21 @@ export default function FileUpload({ profile }) {
     };
 
   return (
-    <div ref={shellRef} className={`app-shell preview-${viewMode} reel-feed quiet-study`}>
+    <><div inert={showTutorial ? true : undefined} ref={shellRef} className={`app-shell preview-${viewMode} reel-feed quiet-study`}>
       <UpdateNotice />
-      <header className="topbar"><h1>WORDTOP</h1>{profile && <div className="active-profile">{profile.avatar} {profile.name}</div>}</header>
+      {reviewHint && !panel && <div className="review-method-hint" role="status" aria-live="polite"><SeungwooFace mood="correct"/><span>설정에서 학습방법 변경 가능합니다.</span></div>}
+      <header className="topbar"><h1 className="moa-brand"><MoaMark/>단어모아</h1>{profile && <div className="active-profile">{profile.avatar} {profile.name}</div>}</header>
       <input ref={picker} hidden type="file" accept=".pdf,.docx,.txt,.csv,image/*" onChange={handleFile} />
-      {!panel && <div className="quiet-deck" title={deckName}>{deckName}</div>}
+      {!panel && <div className="quiet-deck" title={`현재학습 : ${deckName}`}>현재학습 : {deckName}</div>}
       <StudySyncStatus sync={sync} snapshot={snapshot} />
       {notice && <div className="import-notice" role="status" onClick={() => !busy && setNotice("")}>{notice}</div>}
       {/* Previous per-answer streak toast hidden for focused study. */}
-       {!panel && <><nav className="feed-tabs" inert={pauseLocked ? true : undefined}><button className={activeTab === "all" ? "active" : ""} onClick={() => { setPanel(null); setActiveTab("all");  }}>ALL FEED<small>({pendingCount.toLocaleString()})</small></button><button className={activeTab === "scrap" ? "active" : ""} onClick={() => { setPanel(null); setActiveTab("scrap");  }}>SCRAP<small>({allWords.filter(word => word.status === "scrap").length.toLocaleString()})</small></button><button className={activeTab === "mastered" ? "active" : ""} onClick={() => { setPanel(null); setActiveTab("mastered");  }}>MASTERED<small>({knownCount.toLocaleString()})</small></button></nav>
-      <section className="mission-bar"><div className="mission-copy"><strong>Today's Mission</strong></div><div className="today-counts"><span>Today</span><div><small>오늘 학습</small><strong>{today.total}</strong></div><div><small>스크랩</small><strong>{today.scrap}</strong></div><div><small>마스터</small><strong>{today.mastered}</strong></div></div></section></>}
-      <div className="study-scroll">{panel === "settings" ? <StudySettings settings={settings} onChange={value => { hadLocalRecords.current=true; setSettings(value); setDeckVersion(v=>v+1); }} stage={reviewStage} onStage={value => { setReviewStage(value); setPositions({all:0,scrap:0,mastered:0}); }} /> : panel ? <LearningPanel kind={panel} awards={awards} onClose={() => setPanel(null)} /> : <>
+       {!panel && <><nav className="feed-tabs" inert={pauseLocked ? true : undefined}><button className={activeTab === "all" ? "active" : ""} onClick={() => selectStudyTab("all")}>ALL FEED<small>({pendingCount.toLocaleString()})</small></button><button className={activeTab === "scrap" ? "active" : ""} onClick={() => selectStudyTab("scrap")}>SCRAP<small>({allWords.filter(word => word.status === "scrap").length.toLocaleString()})</small></button><button className={activeTab === "mastered" ? "active" : ""} onClick={() => selectStudyTab("mastered")}>MASTERED<small>({knownCount.toLocaleString()})</small></button></nav>
+      {/* 이전 제목 보관: Today's Mission / Today */}
+      <section className="mission-bar" aria-label="오늘 학습 현황"><div className="today-counts"><div><small>오늘학습</small><strong>{today.total}</strong></div><div><small>스크랩</small><strong>{today.scrap}</strong></div><div><small>마스터</small><strong>{today.mastered}</strong></div></div></section></>}
+      <div className={`study-scroll ${panel ? "panel-scroll" : "study-content"}`}>{panel === "settings" ? <StudySettings onTutorial={() => { setPanel(null); setShowTutorial(true); }} onClose={() => setPanel(null)} settings={settings} onChange={value => { hadLocalRecords.current=true; setSettings(value); setDeckVersion(v=>v+1); }} stage={reviewStage} onStage={value => { setReviewStage(value); setPositions({all:0,scrap:0,mastered:0}); }} /> : panel ? <PanelBoundary key={panel} onClose={() => setPanel(null)}><LearningPanel kind={panel} awards={awards} onClose={() => setPanel(null)} /></PanelBoundary> : <>
       {/* Previous inline review controls moved to Settings > 학습방법. */}
-      <main className="reel-stage" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>{pageWords.map(item => <WordCard key={`${deckVersion}-${activeTab}-${reviewStage}-${item.id}`} exercise={activeTab === "all" ? "meaning" : exercise} item={item} reviewMode={activeTab !== "all"} paused={studyPaused} onPausedChange={setStudyPaused} onFinish={() => setPauseLocked(true)} suspended={busy || syncBlocked || !!panel} choices={allWords.filter(word => word.id !== item.id).map(word => activeTab !== "all" && exercise === "reverse" ? word.word : word.meaning).slice(0, 8)} onAnswer={(id, correct, timing) => {
+      <main className="reel-stage" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>{pageWords.map(item => <WordCard key={`${deckVersion}-${activeTab}-${reviewStage}-${item.id}`} exercise={activeTab === "all" ? "meaning" : exercise} item={item} reviewMode={activeTab !== "all"} paused={studyPaused} onPausedChange={setStudyPaused} onFinish={correct => { setPauseLocked(true); reactToAnswer(correct); }} suspended={busy || syncBlocked || !!panel || reviewHint || showTutorial} choices={allWords.filter(word => word.id !== item.id).map(word => activeTab !== "all" && exercise === "reverse" ? word.word : word.meaning).slice(0, 8)} onAnswer={(id, correct, timing) => {
         const next = answerWord(allWords, activeTab, safePage, id, correct, timing);
         setActiveMs(value => value + (timing?.responseMs || 0));
         hadLocalRecords.current = true;
@@ -236,15 +258,16 @@ export default function FileUpload({ profile }) {
        <div className="next-preview"><FitWord maxSize={22}>{filteredWords.length > 1 ? filteredWords[(safePage + 1) % filteredWords.length]?.word : "다음 단어 없음"}</FitWord></div>
        */}
        <button type="button" className="next-preview study-pause" disabled={busy || !ready || syncBlocked || !pageWords.length || pauseLocked} aria-pressed={studyPaused} onClick={() => setStudyPaused(value => !value)}>{studyPaused ? "학습 계속하기" : "잠깐 멈춤"}</button>
+       <SeungwooCompanion paused={studyPaused} reaction={reaction}/>
        {/* Previous scrap preview retained: <ScrapPreview words={allWords} cardKey={`${activeTab}-${pageWords[0]?.id ?? "empty"}`} /> */}
 </>}</div><nav inert={pauseLocked ? true : undefined} className="stats-nav polished-nav" aria-label="하단 메뉴">
-  <button className={!panel ? 'selected' : ''} onClick={() => setPanel(null)}><span>⌂</span><small>학습</small></button>
+  {/* 이전 하단 학습 버튼 보관: <button onClick={() => setPanel(null)}>학습</button> */}
   <button disabled={busy || !ready || syncBlocked} onClick={() => picker.current?.click()}><span>＋</span><small>업로드</small></button>
   <button className={panel === 'family' ? 'selected' : ''} onClick={() => setPanel('family')}><span>♧</span><small>가족</small></button>
   <button className={panel === 'badges' ? 'selected' : ''} onClick={() => setPanel('badges')}><span>♔</span><small>배지</small></button>
   <button className={panel === 'settings' ? 'selected' : ''} onClick={() => setPanel('settings')}><span>⚙</span><small>설정</small></button>
 </nav>
-    </div>
+    </div>{showTutorial && <StudyTutorial onClose={closeTutorial}/>}</>
   );
-}  // Previous content-driven density resizing removed: stable layout avoids jumping.
-
+}
+  // Previous content-driven density resizing removed: stable layout avoids jumping.

@@ -27,5 +27,5 @@ test('both right and wrong answers retain stage and separate history counters', 
   assert.deepEqual(words[0].responseCounts,{correctStage3:1,incorrectStage1:1});
   const restored = rebuildStudyDeck(JSON.parse(JSON.stringify(words)));
   assert.deepEqual(restored,words);
-  assert.equal(rebuildStudyDeck([{id:2,checked:true}])[0].responseStage,undefined);
+  assert.equal(rebuildStudyDeck([{id:2,checked:true}])[0].responseStage,1);
 });

@@ -6,6 +6,7 @@ import { retryDelay } from '../lib/syncRetry.js';
 export default function useAwards(profileId) {
   const [pending, setPending] = useState(0);
   const [error, setError] = useState('');
+  const [latestAward, setLatestAward] = useState(null);
   const [version, setVersion] = useState(0);
   const outbox = useRef(null);
   const pump = useRef(null);
@@ -17,8 +18,9 @@ export default function useAwards(profileId) {
       changed: count => { if (active) setPending(count); },
       send: async event => {
         if (!client) throw Error('서버 연결 설정을 확인해 주세요.');
-        const { error: failure } = await client.rpc('wordtop_record_answer', event).abortSignal(AbortSignal.timeout(10000));
+        const { data: receipt, error: failure } = await client.rpc('wordtop_record_answer', event).abortSignal(AbortSignal.timeout(10000));
         if (failure) throw failure;
+        if (active && receipt?.badge && !receipt.duplicate) setLatestAward({ tier:receipt.badge, id:event.event_id });
       },
     });
     pump.current = async () => {
@@ -49,5 +51,5 @@ export default function useAwards(profileId) {
       void pump.current?.();
     } catch (failure) { setError('배지 기록을 기기에 저장하지 못했습니다: ' + failure.message); }
   };
-  return { record, pending, error, version, retry: () => pump.current?.() };
+  return { record, pending, error, version, latestAward, retry: () => pump.current?.() };
 }
