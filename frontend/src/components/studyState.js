@@ -22,6 +22,8 @@ export function answerWord(words, tab, index, id, correct, timing) {
         responseMs: timing.responseMs,
         responseStage: timing.responseStage,
         timedOut: timing.timedOut === true,
+        exercise: timing.exercise || 'meaning',
+        listenCount: Number.isInteger(timing.listenCount) ? timing.listenCount : 0,
         responseCounts: {
           ...word.responseCounts,
           [`${correct ? 'correct' : 'incorrect'}Stage${timing.responseStage}`]:

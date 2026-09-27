@@ -19,10 +19,12 @@ export default function StudySyncStatus({ sync, snapshot }) {
     <button onClick={() => sync.resolve('remote')}>서버 기록 사용 ({summary(sync.remote)})</button>
   </div>;
   // 이전 상시 완료 표시 보관: saved: '서버 저장 완료'
-  if (sync.state === 'saved' || sync.state === 'saving') return <>
-    {/* 이전 상시 완료 표시: <div className="study-sync" role="status">서버 저장 완료</div> */}
+  if (sync.state === 'saved' || sync.state === 'saving') return null;
+  /* Previous upload toast preserved, disabled for quiet study:
+  return <>
+    <div className="study-sync" role="status">서버 저장 완료</div>
     {showUploaded && <div key={sync.uploadSequence} className="study-upload-toast" role="status" aria-live="polite">서버 업로드 완료</div>}
-  </>;
+  </>; */
   const labels = { loading: '서버 기록 확인 중…', error: '이 기기 기록 유지 · 서버 저장 재시도 필요' };
   return <div className="study-sync" role="status"><span>{labels[sync.state]}</span>
     {sync.state === 'error' && <><small>{sync.message}</small><button onClick={sync.retry}>다시 연결</button></>}
