@@ -1,3 +1,4 @@
+import ResceneFace, { reactionMember, memberPhrase } from './ResceneFace';
 import { createPortal } from 'react-dom';
 import { useLayoutEffect, useRef, useState } from 'react';
 import { MoaMark } from './MoaCompanion';
@@ -31,11 +32,12 @@ export default function SeungwooCompanion({ paused, reaction }) {
   }, []);
   const height = bounds.height;
   const mood = paused ? 'paused' : reaction?.mood || 'idle';
+  const member = reactionMember(mood, reaction?.count);
   const label = paused ? '잠깐 충전 중' : mood === 'badge' ? `${reaction?.tier === 'gold' ? '금' : reaction?.tier === 'silver' ? '은' : '동'} 배지 획득!` : mood === 'streak' ? `${reaction.count}연속 정답` : mood === 'correct' ? '좋아, 기억했어.' : mood === 'wrong' ? '다음엔 기억하면 돼.' : '';
   const effect = mood !== 'idle' && mood !== 'paused';
   return <><div ref={space} className="companion-space">
     {!effect && height >= 96 && <div className={`seungwoo-companion mood-${mood}`}><MoaMark mood={mood}/><span className="companion-caption">{label}</span></div>}
   </div>{effect && createPortal(<div key={reaction?.id || mood} className={`seungwoo-companion reaction-overlay mood-${mood}`} style={{ left:bounds.left, top:bounds.top, width:bounds.width }}>
-    <SeungwooFace mood={mood}/><span className="companion-caption">{label}</span>
+    <ResceneFace member={member}/><span className="companion-caption">{label}</span>
   </div>, document.body)}</>;
 }

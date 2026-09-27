@@ -1,5 +1,6 @@
+import ResceneFace from './ResceneFace';
 import StudyTutorial from "./StudyTutorial";
-import SeungwooCompanion, { SeungwooFace } from "./SeungwooCompanion";
+import SeungwooCompanion from "./SeungwooCompanion";
 import { MoaMark } from "./MoaCompanion";
 import { playReaction } from "../reactionSound";
 import PanelBoundary from "./PanelBoundary";
@@ -233,7 +234,7 @@ export default function FileUpload({ profile }) {
   return (
     <><div inert={showTutorial ? true : undefined} ref={shellRef} className={`app-shell preview-${viewMode} reel-feed quiet-study`}>
       <UpdateNotice />
-      {reviewHint && !panel && <div className="review-method-hint" role="status" aria-live="polite"><SeungwooFace mood="correct"/><span>설정에서 학습방법 변경 가능합니다.</span></div>}
+      {reviewHint && !panel && <div className="review-method-hint" role="status" aria-live="polite"><ResceneFace member="liv"/><span>설정에서 학습방법 변경 가능합니다.</span></div>}
       <header className="topbar"><h1 className="moa-brand"><MoaMark/>단어모아</h1>{profile && <div className="active-profile">{profile.avatar} {profile.name}</div>}</header>
       <input ref={picker} hidden type="file" accept=".pdf,.docx,.txt,.csv,image/*" onChange={handleFile} />
       {!panel && <div className="quiet-deck" title={`현재학습 : ${deckName}`}>현재학습 : {deckName}</div>}
