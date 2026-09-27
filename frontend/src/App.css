@@ -358,3 +358,57 @@ html, body, #root { height: 100%; overflow: hidden; }
 .profile-screen [role=alert] { margin-top:18px; color:#b22254; font-size:13px; }
 .profile-screen [role=alert] button { min-height:44px; margin-top:8px; border:0; border-radius:12px; padding:8px 16px; }
 .active-profile { margin:auto; font-size:12px; font-weight:700; color:#8d5470; }
+
+/* Stable word/IPA rows; time is shown by the word color. */
+.app-shell.reel-feed .reel-stage .word-card {
+  grid-template-columns:minmax(0,1fr) 64px;
+  /* 이전 배치: "term pause" "ipa ipa" "prompt prompt" "choices choices" */
+  grid-template-areas:"term term" "bar bar" "ipa ipa" "prompt pause" "choices choices";
+  align-content:start; align-items:center;
+}
+.app-shell.reel-feed .reel-stage .word-card > .pause-button {
+  grid-area:pause; min-width:0; min-height:44px; margin:0; padding:0 !important;
+}
+.app-shell.reel-feed .reel-stage .word-card > .word-term {
+  grid-area:term; width:100%; min-width:0; color:var(--word-timer-color, #191919);
+}
+.app-shell.reel-feed .reel-stage .word-card > .word-ipa {
+  grid-area:ipa; min-width:0; max-width:100%; text-align:center;
+  font-size:16px; line-height:1.4; color:#65566b; margin:0 0 4px; overflow-wrap:anywhere;
+}
+.app-shell.reel-feed .reel-stage .word-card > .quiz-prompt { grid-area:prompt; }
+.app-shell.reel-feed .reel-stage .word-card > .choice-grid { grid-area:choices; min-width:0; }
+.timer-accessible { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+.app-shell.reel-feed .reel-stage .word-card > .thin-timer {
+  grid-area:bar; display:flex; justify-self:center; gap:5px;
+  width:60%; max-width:200px; height:3px; margin:3px 0 5px;
+}
+.thin-timer i { flex:1; height:3px; border-radius:3px; background:#d5cbb9; transition:background-color .15s; }
+.thin-timer i.lit { background:#d97c95; }
+
+/* 기존 타이머 CSS는 위에 보존. USE_WORD_COLOR_TIMER=false일 때 복원 배치. */
+.app-shell.reel-feed .reel-stage .word-card.legacy-timer {
+  grid-template-areas:"timer timer" "term pause" "ipa ipa" "prompt prompt" "choices choices";
+}
+.app-shell.reel-feed .reel-stage .word-card.legacy-timer > .card-topline {
+  grid-area:timer; display:flex; flex-direction:row; justify-content:center; gap:12px;
+}
+
+/* Pause control occupies the former next-word card, leaving the word centered. */
+.app-shell.reel-feed .reel-stage .word-card.color-timer {
+  grid-template-columns:minmax(0,1fr);
+  grid-template-areas:"term" "bar" "ipa" "prompt" "choices";
+}
+.app-shell.reel-feed .reel-stage .word-card.legacy-timer {
+  grid-template-columns:minmax(0,1fr);
+  grid-template-areas:"timer" "term" "ipa" "prompt" "choices";
+}
+.app-shell .next-preview.study-pause { display:block; width:100%; min-height:44px; margin-top:8px; background:#79639c; color:#fff; border:1px solid #6b568e; cursor:pointer; font:inherit; font-weight:700; }
+.app-shell .next-preview.study-pause:disabled { cursor:default; opacity:.55; }
+.app-shell .next-preview.study-pause:focus-visible { outline:2px solid #944c70; outline-offset:2px; }
+
+.app-shell.reel-feed .reel-stage .word-card > .word-heading {
+  grid-area:term; display:grid; grid-template-columns:22px minmax(0,1fr) 22px; align-items:center; width:100%; min-width:0;
+}
+.app-shell.reel-feed .reel-stage .word-card .word-heading .word-term { grid-column:2; grid-row:1; min-width:0; width:100%; text-align:center; color:var(--word-timer-color,#191919); }
+.word-heading .response-stars { position:absolute; right:calc(100% + 7px); top:calc(50% + 3px); transform:translateY(-50%); display:flex; flex-direction:column; align-items:center; gap:1px; color:#9a6116; font-size:13px; line-height:1; }

@@ -1,7 +1,7 @@
 ﻿import { useLayoutEffect, useRef } from 'react';
 
 // Measure rendered text, including the active font, rather than guessing by length.
-export default function FitWord({ children, className = '', as: Tag = 'span', maxSize = 46 }) {
+export default function FitWord({ children, leading, className = '', as: Tag = 'span', maxSize = 46 }) {
   const box = useRef(null);
   const text = useRef(null);
   useLayoutEffect(() => {
@@ -21,5 +21,5 @@ export default function FitWord({ children, className = '', as: Tag = 'span', ma
     document.fonts?.ready.then(fit);
     return () => { active = false; observer.disconnect(); };
   }, [children, maxSize]);
-  return <Tag ref={box} className={`fit-word ${className}`}><span ref={text}>{children}</span></Tag>;
+  return <Tag ref={box} className={`fit-word ${className}`}><span ref={text} style={{ position: 'relative' }}>{leading}{children}</span></Tag>;
 }

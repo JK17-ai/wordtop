@@ -14,9 +14,21 @@ export function getFeed(words, tab) {
   });
 }
 
-export function answerWord(words, tab, index, id, correct) {
+export function answerWord(words, tab, index, id, correct, timing) {
+  const validTiming = timing && Number.isFinite(timing.responseMs) && [1, 2, 3].includes(timing.responseStage);
   const updated = words.map(word => word.id === id
-    ? { ...word, status: correct ? "mastered" : "scrap", checked: correct }
+    ? { ...word, status: correct ? "mastered" : "scrap", checked: correct,
+      ...(validTiming ? {
+        responseMs: timing.responseMs,
+        responseStage: timing.responseStage,
+        timedOut: timing.timedOut === true,
+        responseCounts: {
+          ...word.responseCounts,
+          [`${correct ? 'correct' : 'incorrect'}Stage${timing.responseStage}`]:
+            (word.responseCounts?.[`${correct ? 'correct' : 'incorrect'}Stage${timing.responseStage}`] || 0) + 1,
+        },
+      } : {}),
+    }
     : word);
   const feed = getFeed(updated, tab);
   // Removing a card shifts its successor into the same slot.

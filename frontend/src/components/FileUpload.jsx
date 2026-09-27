@@ -1,5 +1,5 @@
 import { repairSavedDeck } from "./repairSavedDeck";
-import FitWord from "./FitWord";
+// 다음 단어 미리보기 복원 시 사용: import FitWord from "./FitWord";
 import { profileKey } from "../lib/profiles";
 import { useEffect, useRef, useState } from "react";
 import { importDeck } from "./importDeck";
@@ -54,6 +54,8 @@ export default function FileUpload({ profile }) {
       document.documentElement.style.removeProperty("--app-height");
     };
   }, []);
+  const [studyPaused, setStudyPaused] = useState(false);
+  const [pauseLocked, setPauseLocked] = useState(false);
   const [viewMode, setViewMode] = useState("phone");
   const [activeTab, setActiveTab] = useState("all");
 
@@ -146,6 +148,8 @@ export default function FileUpload({ profile }) {
     const pageCount = Math.max(1, filteredWords.length);
     const safePage = Math.max(0, Math.min(page, pageCount - 1));
     const pageWords = filteredWords.slice(safePage, safePage + 1);
+    const currentWordId = pageWords[0]?.id;
+    useEffect(() => { setStudyPaused(false); setPauseLocked(false); }, [currentWordId, activeTab, deckVersion]);
     const movePage = (direction) => setPage((value) => { const next = Math.max(0, Math.min(pageCount - 1, value + direction)); return next; });
     const onTouchStart = (event) => setTouchStart({ x: event.touches[0].clientX, y: event.touches[0].clientY });
     const onTouchEnd = (event) => {
@@ -172,13 +176,16 @@ export default function FileUpload({ profile }) {
       {toast && <div key={toast.count} className="streak-toast" role="status"><strong>{toast.text}</strong><span>🔥 {toast.count}연속 정답</span></div>}
        <nav className="feed-tabs"><button className={activeTab === "all" ? "active" : ""} onClick={() => { setActiveTab("all");  }}>ALL FEED<small>({pendingCount.toLocaleString()})</small></button><button className={activeTab === "scrap" ? "active" : ""} onClick={() => { setActiveTab("scrap");  }}>SCRAP<small>({allWords.filter(word => word.status === "scrap").length.toLocaleString()})</small></button><button className={activeTab === "mastered" ? "active" : ""} onClick={() => { setActiveTab("mastered");  }}>MASTERED<small>({knownCount.toLocaleString()})</small></button></nav>
       <section className="mission-bar"><div className="mission-copy"><strong>Today&apos;s Mission</strong><span>{filteredWords.length ? safePage + 1 : 0} / {filteredWords.length}</span></div><div className="progress-track"><span style={{width: `${totalCount ? ((knownCount / totalCount) * 100) : 0}%`}} /></div><AccuracyStats live={accuracy.live} today={accuracy.today} /></section>
-      <div className="study-scroll"><main className="reel-stage" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>{pageWords.map(item => <WordCard key={`${deckVersion}-${activeTab}-${item.id}`} item={item} suspended={busy} choices={allWords.filter(word => word.id !== item.id).map(word => word.meaning).slice(0, 8)} onAnswer={(id, correct) => {
-        const next = answerWord(allWords, activeTab, safePage, id, correct);
+      <div className="study-scroll"><main className="reel-stage" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>{pageWords.map(item => <WordCard key={`${deckVersion}-${activeTab}-${item.id}`} item={item} reviewMode={activeTab !== "all"} paused={studyPaused} onPausedChange={setStudyPaused} onFinish={() => setPauseLocked(true)} suspended={busy} choices={allWords.filter(word => word.id !== item.id).map(word => word.meaning).slice(0, 8)} onAnswer={(id, correct, timing) => {
+        const next = answerWord(allWords, activeTab, safePage, id, correct, timing);
         accuracy.record(correct); celebrate(correct);
         setAllWords(next.words); setPage(next.index);
         setDeckVersion(value => value + 1);
       }} />)}{ready && !pageWords.length && <div className="empty-feed">{activeTab === "all" ? "전체 학습 완료! 스크랩함에서 복습해 보세요." : "아직 담긴 단어가 없어요."}</div>}</main>
+       {/* 다음 단어 미리보기 보관
        <div className="next-preview"><FitWord maxSize={22}>{filteredWords.length > 1 ? filteredWords[(safePage + 1) % filteredWords.length]?.word : "다음 단어 없음"}</FitWord></div>
+       */}
+       <button type="button" className="next-preview study-pause" disabled={busy || !ready || !pageWords.length || pauseLocked} aria-pressed={studyPaused} onClick={() => setStudyPaused(value => !value)}>{studyPaused ? "학습 계속하기" : "잠깐 멈춤"}</button>
        <ScrapPreview words={allWords} cardKey={`${activeTab}-${pageWords[0]?.id ?? "empty"}`} />
 </div><nav className="stats-nav polished-nav" aria-label="학습 메뉴">
   <button className={activeTab === "all" ? "selected" : ""} onClick={() => { setActiveTab("all");  }}><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10H3Z M9 20v-7h6v7" /></svg><small>전체</small><b>{pendingCount.toLocaleString()}</b></button>
