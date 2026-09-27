@@ -40,7 +40,7 @@ export default function WordCard({ item, onAnswer, suspended = false, choices = 
     clearInterval(timerRef.current);
     setPaused(false);
     setResult({ correct, choice });
-    try { playReaction(correct); } catch { /* Audio must not block scoring. */ }
+    void playReaction(correct).catch(() => { /* Audio must not block scoring. */ });
     const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? true;
     // Score exactly once even if a browser cannot render an optional effect.
     completion.current = setTimeout(() => {

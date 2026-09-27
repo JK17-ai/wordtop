@@ -1,15 +1,41 @@
 ﻿// Short synthetic cartoon reactions; no recording or external audio requests.
 let context;
+let resuming;
 export function unlockSound() {
-  const Audio = window.AudioContext || window.webkitAudioContext;
-  if (!Audio) return;
-  context ||= new Audio();
-  if (context.state === 'suspended') context.resume().catch(() => {});
+  try {
+    const Audio = window.AudioContext || window.webkitAudioContext;
+    if (!Audio) return Promise.resolve(false);
+    if (!context || context.state === 'closed') context = new Audio({ latencyHint: 'interactive' });
+    if (context.state === 'running') return Promise.resolve(true);
+    if (!resuming) {
+      resuming = context.resume().then(() => context.state === 'running', () => false)
+        .finally(() => { resuming = null; });
+    }
+    return resuming;
+  } catch { return Promise.resolve(false); }
 }
-export function playReaction(correct) {
-  if (!context || context.state !== 'running') return;
+export function installSoundUnlock(target = document) {
+  const unlock = () => { void unlockSound(); };
+  target.addEventListener('pointerdown', unlock, true);
+  target.addEventListener('keydown', unlock, true);
+  target.addEventListener('touchend', unlock, { capture: true, passive: true });
+  return () => {
+    target.removeEventListener('pointerdown', unlock, true);
+    target.removeEventListener('keydown', unlock, true);
+    target.removeEventListener('touchend', unlock, true);
+  };
+}
+export async function playReaction(correct) {
+  // Wait for the first gesture's resume, but never play stale feedback later.
+  let timeout;
+  const ready = await Promise.race([
+    unlockSound(),
+    new Promise(resolve => { timeout = setTimeout(() => resolve(false), 500); }),
+  ]);
+  clearTimeout(timeout);
+  if (!ready || !context || context.state !== 'running') return;
   const variant = Math.floor(Math.random() * 3);
-  const start = context.currentTime;
+  const start = context.currentTime + .01;
   const laugh = correct;
   const count = laugh ? 3 + variant : 2 + (variant % 2);
   for (let i = 0; i < count; i++) {
