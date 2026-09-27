@@ -1,3 +1,4 @@
+import { repairSavedDeck } from "./repairSavedDeck";
 import FitWord from "./FitWord";
 import { profileKey } from "../lib/profiles";
 import { useEffect, useRef, useState } from "react";
@@ -95,7 +96,9 @@ export default function FileUpload({ profile }) {
           return res.json();
         });
         if (cancelled) return;
-        const rebuilt = rebuildStudyDeck(data);
+        const repaired = await repairSavedDeck(data, saved, deckStorageKey);
+        if (cancelled) return;
+        const rebuilt = rebuildStudyDeck(repaired);
         setAllWords(rebuilt); setPositions(restorePositions(rebuilt, saved?.cursors));
         if (saved?.name) setDeckName(saved.name);
         setReady(true);

@@ -63,6 +63,27 @@ export default function WordCard({ item, onAnswer, suspended = false, choices = 
     <article onPointerDown={() => { try { unlockSound(); } catch { /* Audio is optional. */ } }} ref={card} className={`word-card reel-card ${result ? result.correct ? 'answer-success' : 'answer-miss' : ''}`} onDoubleClick={event => { if (!done.current && !suspended && !event.target.closest('button')) setPaused(v => !v); }}>
       <div className="card-topline"><div className="timer-segments" role="progressbar" aria-label="남은 시간" aria-valuemin={0} aria-valuemax={10} aria-valuenow={Math.ceil(remaining / 1000)}>{[0,1,2,3,4].map(index => <i key={index} className={index < Math.ceil(remaining / 2000) ? "lit" : ""} />)}</div><span className="countdown-number">{Math.ceil(remaining / 1000)}</span></div>
       <FitWord as="h2" className="word-term" maxSize={46}>{item.word}</FitWord>
+        {item.ipa && (
+          <div
+            lang="en-US"
+            aria-label="미국식 발음기호"
+            style={{
+              textAlign: "center",
+              fontSize: "16px",
+              lineHeight: 1.4,
+              color: "#65566b",
+              margin: "2px 0 8px",
+              overflowWrap: "anywhere",
+            }}
+          >
+            {item.ipa}
+            {item.ipaStatus === "components" && (
+              <small style={{ display: "block", fontSize: "11px" }}>
+                구성 단어별 참고 발음
+              </small>
+            )}
+          </div>
+        )}
       <button className="pause-button" disabled={!!result || suspended} onClick={() => setPaused(v => !v)}>{paused ? '다시 시작' : '멈춤'}</button>
       <div className="quiz-prompt" role="status">{result ? result.correct ? '정답! 마스터함에 담아요 ✓' : result.choice === null ? '시간 종료 · 정답을 기억하고 스크랩해요' : '괜찮아요! 정답을 기억하고 스크랩해요' : '올바른 뜻을 선택하세요'}</div>
       <div className="choice-grid">{options.map(choice => <button key={choice} data-correct={choice === item.meaning} disabled={!!result || suspended} className={result ? choice === item.meaning ? 'answer-reveal' : choice === result.choice ? 'answer-wrong' : 'answer-muted' : ''} onClick={() => finish(choice === item.meaning, choice)}>{choice}</button>)}</div>
