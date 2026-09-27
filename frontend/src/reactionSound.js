@@ -32,7 +32,8 @@ export function unlockSound(userGesture = false) {
   } catch (error) { lastAudioError = { name:error.name, message:error.message }; return Promise.resolve(false); }
 }
 export function installSoundUnlock(target = document) {
-  const unlock = () => { void unlockSound(true); };
+  prepareMedia();
+  const unlock = () => { if (!window.Audio) void unlockSound(true); };
   target.addEventListener('pointerdown', unlock, true);
   target.addEventListener('keydown', unlock, true);
   target.addEventListener('touchend', unlock, { capture: true, passive: true });
@@ -44,7 +45,7 @@ export function installSoundUnlock(target = document) {
 }
 let soundGeneration = 0;
 const activeTones = new Set();
-export async function playReaction(correct, { streak = 0, badge = false } = {}) {
+async function playSynthReaction(correct, { streak = 0, badge = false } = {}) {
   const generation = ++soundGeneration;
   // Wait for the first gesture's resume, but never play stale feedback later.
   let timeout;
@@ -81,20 +82,20 @@ export async function diagnoseSound() {
   const started = performance.now();
   const gesture = window.navigator?.userActivation?.isActive ?? null;
   lastAudioError = null;
-  void unlockSound(true);
+  if (!window.Audio) void unlockSound(true);
   let result;
   try { result = await playReaction(true); }
   catch (error) { lastAudioError = { name:error.name, message:error.message }; result = { outcome:'exception' }; }
-  const audio = context;
+  const audio = window.Audio ? media : context;
   const before = audio?.currentTime ?? null;
   await new Promise(resolve => setTimeout(resolve, 300));
   return {
-    version:'audio-diagnostic-1',
+    version:'audio-file-2',
     outcome:result?.outcome,
-    state:audio?.state ?? 'unavailable',
+    state:window.Audio ? (media?.paused ? 'paused' : 'playing') : audio?.state ?? 'unavailable',
     clockAdvanced:before === null ? null : audio.currentTime > before,
     resumePending:!!resuming,
-    error:lastAudioError,
+    error:window.Audio ? mediaFailure : lastAudioError,
     elapsedMs:Math.round(performance.now() - started),
     userGesture:gesture,
     speechActive:!!window.speechSynthesis?.speaking,
@@ -103,4 +104,51 @@ export async function diagnoseSound() {
     audioSession:window.navigator?.audioSession?.type ?? 'unsupported',
     userAgent:window.navigator?.userAgent,
   };
+}
+let media;
+let mediaStop;
+let mediaToken = 0;
+let mediaFailure = null;
+function prepareMedia() {
+  if (!media && window.Audio) {
+    media = new window.Audio('/audio/reactions.wav');
+    media.preload = 'auto';
+    media.load();
+  }
+  return media;
+}
+export async function playReaction(correct, { streak = 0, badge = false } = {}) {
+  if (!window.Audio) return playSynthReaction(correct, { streak, badge });
+  const token = ++mediaToken;
+  const player = prepareMedia();
+  clearTimeout(mediaStop);
+  player.pause();
+  player.onplaying = null;
+  player.ontimeupdate = null;
+  const offset = !correct ? 1 : badge ? 3 : streak >= 5 && streak % 5 === 0 ? 2 : 0;
+  try {
+    player.currentTime = offset;
+    player.muted = false;
+    player.volume = 1;
+    mediaFailure = null;
+    player.ontimeupdate = () => {
+      if (token === mediaToken && player.currentTime >= offset + .8) {
+        player.pause(); clearTimeout(mediaStop);
+      }
+    };
+    player.onplaying = () => {
+      if (token !== mediaToken) return;
+      // Stop inside the silent tail, before the next reaction in the file.
+      clearTimeout(mediaStop);
+      const remaining = Math.max(0, offset + .8 - player.currentTime);
+      mediaStop = setTimeout(() => { if (token === mediaToken) player.pause(); }, remaining * 1000);
+    };
+    // Called directly inside the answer click: no await before play().
+    await player.play();
+    return { outcome:'scheduled', engine:'audio-file' };
+  } catch (error) {
+    if (token !== mediaToken) return { outcome:'superseded' };
+    mediaFailure = { name:error.name, message:error.message };
+    return { outcome:'media-error', engine:'audio-file' };
+  }
 }
