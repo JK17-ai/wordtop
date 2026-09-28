@@ -150,3 +150,7 @@
 
 .app-shell.quiet-study .daily-study-line{display:flex;align-items:center;justify-content:center;gap:clamp(3px,1.2vw,8px);flex:none;min-height:28px;padding:2px 0;box-sizing:border-box;font-size:clamp(10px,2.9vw,13px);line-height:1.5;color:#64705b;white-space:nowrap;}
 .daily-study-line strong{color:#2d401d;font-weight:800;font-variant-numeric:tabular-nums;}
+/* Keep bottom actions clear of the home gesture, with only 8px extra lift. */
+.app-shell.reel-feed.quiet-study {
+  padding-bottom:calc(max(8px, env(safe-area-inset-bottom, 0px)) + 8px);
+}
