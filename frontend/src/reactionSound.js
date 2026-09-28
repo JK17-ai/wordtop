@@ -154,3 +154,25 @@ export async function playReaction(correct, { streak = 0, badge = false } = {}) 
     return fallback.outcome === 'scheduled' ? fallback : { outcome:'media-error', engine:'audio-file' };
   }
 }
+// Gentle cabin-style confirmation, shared by all feed choices (not a right/wrong cue).
+export async function playFeedChime() {
+  const generation = ++soundGeneration;
+  let timeout;
+  const ready = await Promise.race([unlockSound(true), new Promise(resolve => { timeout=setTimeout(()=>resolve(false),350); })]);
+  clearTimeout(timeout);
+  if (!ready || generation !== soundGeneration || context?.state !== 'running') return;
+  for (const tone of activeTones) { try { tone.stop(); } catch { /* Finished. */ } }
+  activeTones.clear();
+  [880,659.25].forEach((pitch,i) => {
+    const tone=context.createOscillator(), gain=context.createGain();
+    const time=context.currentTime+.008+i*.18;
+    tone.type='sine';tone.frequency.setValueAtTime(pitch,time);
+    gain.gain.setValueAtTime(0,time);
+    gain.gain.linearRampToValueAtTime(.09,time+.015);
+    gain.gain.exponentialRampToValueAtTime(.001,time+.32);
+    tone.connect(gain);gain.connect(context.destination);
+    activeTones.add(tone);
+    tone.onended=()=>{activeTones.delete(tone);tone.disconnect();gain.disconnect();};
+    tone.start(time);tone.stop(time+.34);
+  });
+}

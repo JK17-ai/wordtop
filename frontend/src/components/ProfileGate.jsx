@@ -1,3 +1,4 @@
+import MoaLogo from './MoaLogo';
 import { useEffect, useState } from 'react';
 import { selectCharacter, loadProfile, migrateLocalRecords } from '../lib/profiles';
 import { readProfileCache } from '../lib/profileCache.js';
@@ -42,9 +43,9 @@ export default function ProfileGate({ children }) {
   if(profile) return children(profile);
   // Existing server sessions without the new cache get a neutral loading screen,
   // never a character picker while their identity is still being checked.
-  if(loading) return <main className="profile-screen" aria-busy="true"><header><b>단어모아</b></header><p role="status">학습 기록을 불러오는 중…</p></main>;
+  if(loading) return <main className="profile-screen" aria-busy="true"><header><b><MoaLogo/></b></header><p role="status">학습 기록을 불러오는 중…</p></main>;
   return <main className="profile-screen">
-    <header><b>단어모아</b><span>우리 가족의 작은 공부 습관</span></header>
+    <header><b><MoaLogo/></b><span>한 단어씩, 내 것으로.</span></header>
     <h1>누가 공부하나요?</h1>
     <p>처음 한 번 선택하면 이 기기에서 기억할게요.</p>
     {loading ? <p role="status">내 프로필 확인 중…</p> : <>

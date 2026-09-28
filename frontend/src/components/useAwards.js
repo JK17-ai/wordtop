@@ -1,3 +1,4 @@
+import { browserUUID } from '../lib/browserCrypto.js';
 import { useEffect, useRef, useState } from 'react';
 import { getSupabase } from '../lib/supabase';
 import { createAnswerOutbox } from '../lib/answerOutbox.js';
@@ -46,7 +47,7 @@ export default function useAwards(profileId) {
     // Uploaded decks cannot accidentally earn badges using colliding numeric IDs.
     if (!original || original.word !== item.word || original.meaning !== item.meaning) return;
     try {
-      outbox.current.enqueue({ event_id: crypto.randomUUID(), catalog_id: String(item.id),
+      outbox.current.enqueue({ event_id: browserUUID(), catalog_id: String(item.id),
         selected_meaning: timing.selectedMeaning ?? null, response_ms: timing.responseMs });
       void pump.current?.();
     } catch (failure) { setError('배지 기록을 기기에 저장하지 못했습니다: ' + failure.message); }

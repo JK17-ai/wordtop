@@ -3,7 +3,7 @@ import { getSupabase } from '../lib/supabase';
 import { validatePanelData } from './learningPanelData.js';
 const rewards = [{ tier: 'gold', label: '금메달', icon: '🥇', amount: 30000 }, { tier: 'silver', label: '은메달', icon: '🥈', amount: 20000 }, { tier: 'bronze', label: '동메달', icon: '🥉', amount: 10000 }];
 const tiers = { bronze: '🥉 동', silver: '🥈 은', gold: '🥇 금' };
-export default function LearningPanel({ kind, awards, onClose }) {
+export default function LearningPanel({ kind, awards, onClose, embedded = false }) {
   const [data, setData] = useState(null);
   const [error, setError] = useState('');
   const [refresh, setRefresh] = useState(0);
@@ -36,7 +36,7 @@ export default function LearningPanel({ kind, awards, onClose }) {
     return { ...period, counts, total:rewards.reduce((sum, { tier, amount }) => sum + counts[tier] * amount, 0) };
   });
   return <section className="learning-panel" aria-label={kind === 'family' ? '가족 학습 현황' : '배지 보관함'}>
-    <header><h2>{kind === 'family' ? '가족 학습 현황' : '배지 보관함'}</h2><button className="back-to-study" onClick={onClose}><span aria-hidden="true">← </span>학습으로</button></header>
+    {!embedded && <header><h2>{kind === 'family' ? '가족 학습 현황' : '배지 보관함'}</h2><button className="back-to-study" onClick={onClose}><span aria-hidden="true">← </span>학습으로</button></header>}
     {kind === 'badges' && <>
       <div className="medal-rewards" aria-label="메달별 보상 금액">
         {rewards.map(({ tier, icon, label, amount }) => <div key={tier}><span aria-hidden="true">{icon}</span><strong>{label}</strong><span>{amount / 10000}만원</span></div>)}

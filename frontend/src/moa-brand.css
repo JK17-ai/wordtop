@@ -1,0 +1,13 @@
+/* Shared brand: stacked word cards, a mieum silhouette, and a lime full stop. */
+.moa-logo { display:inline-flex; align-items:center; gap:7px; white-space:nowrap; }
+.moa-symbol { display:block; width:38px; height:38px; flex:none; }
+.moa-wordmark { font-family:Pretendard,'Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif; font-size:26px; font-weight:900; line-height:1.1; letter-spacing:-.065em; color:#171c18; }
+.moa-logo-dot { color:#659717; margin-left:1px; }
+.app-shell.quiet-study .topbar { height:42px; min-height:42px; }
+.app-shell.quiet-study .topbar .moa-brand { margin:0; }
+.app-shell.quiet-study .active-profile { border:1px solid #d5e3c2; background:#eff6e4; font-size:11px; }
+.profile-screen header .moa-symbol { width:56px; height:56px; }
+.profile-screen header .moa-wordmark { font-size:38px; }
+.profile-screen header .moa-logo { justify-content:center; }
+.moa-sprout .moa-symbol { width:84px; height:84px; }
+@media(max-width:360px) { .moa-wordmark { font-size:23px; } .moa-symbol { width:33px; height:33px; } .moa-logo { gap:4px; } }

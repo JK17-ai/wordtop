@@ -1,3 +1,4 @@
+import { withFeedExample } from './feedExamples';
 import { createResponseClock, responseStage } from "./responseTiming.js";
 import FitWord from "./FitWord";
 import { useEffect, useRef, useState } from "react";
@@ -6,7 +7,18 @@ import { unlockSound, playReaction } from "../reactionSound";
 // false로 바꾸면 기존 타이머 바·숫자 표시로 되돌립니다.
 const USE_WORD_COLOR_TIMER = true;
 
-export default function WordCard({ item, onAnswer, suspended = false, choices = [], paused = false, onPausedChange, onFinish, reviewMode = false, exercise = "meaning" }) {
+export default function WordCard({ item, onAnswer, suspended = false, choices = [], paused = false, onPausedChange, onFinish, reviewMode = false, exercise = "meaning", showFeedback = false }) {
+  const [pauseHint, setPauseHint] = useState(false);
+  const pauseHintTimer = useRef(null);
+  useEffect(() => {
+    if (!paused) setPauseHint(false);
+    return () => clearTimeout(pauseHintTimer.current);
+  }, [paused]);
+  const showPauseHint = () => {
+    clearTimeout(pauseHintTimer.current);
+    setPauseHint(true);
+    pauseHintTimer.current = setTimeout(() => setPauseHint(false), 2200);
+  };
   const [recalling, setRecalling] = useState(exercise === "recall");
   const [heard, setHeard] = useState(false);
   const [speaking, setSpeaking] = useState(false);
@@ -18,12 +30,13 @@ export default function WordCard({ item, onAnswer, suspended = false, choices = 
     if (speaking || suspended || result || paused) return;
     const synth = window.speechSynthesis;
     if (!synth || !window.SpeechSynthesisUtterance) { setSpeechError('이 브라우저는 듣기를 지원하지 않아요. 설정에서 학습방법을 바꿔 주세요.'); return; }
-    const voice = synth.getVoices().find(v => /^en[-_]US$/i.test(v.lang));
-    if (!voice) { setSpeechError('미국 영어 음성을 준비하지 못했어요. 다시 듣거나 기기의 영어 음성 설정을 확인해 주세요.'); return; }
+    const language = item.language || 'en-US';
+    const voice = synth.getVoices().find(v=>v.lang.toLowerCase()===language.toLowerCase()) || synth.getVoices().find(v=>v.lang.split(/[-_]/)[0]===language.split(/[-_]/)[0]);
+    if (!voice) { setSpeechError('이 단어의 언어 음성을 준비하지 못했어요. 다시 듣거나 기기의 음성 설정을 확인해 주세요.'); return; }
     responseClock.current.stop(); clearInterval(timerRef.current);
     setSpeaking(true); setSpeechError('');
     const utterance = new SpeechSynthesisUtterance(item.word); speechRef.current = utterance;
-    utterance.voice = voice; utterance.lang = 'en-US'; utterance.rate = 0.9;
+    utterance.voice = voice; utterance.lang = language; utterance.rate = 0.9;
     const finishSpeech = success => {
       if (speechRef.current !== utterance) return;
       speechRef.current = null; clearTimeout(speechTimeout.current); setSpeaking(false);
@@ -48,6 +61,7 @@ export default function WordCard({ item, onAnswer, suspended = false, choices = 
   const responseClock = useRef(null);
   if (!responseClock.current) responseClock.current = createResponseClock();
   const completion = useRef(null);
+  const confirmed = useRef(false);
   const timerRef = useRef(null);
   const callbacks = useRef({ onAnswer });
   callbacks.current = { onAnswer };
@@ -63,6 +77,7 @@ export default function WordCard({ item, onAnswer, suspended = false, choices = 
     return shuffle([answer, ...shuffle([...new Set(choices)].filter(x => x && x !== answer)).slice(0, 3)]);
   });
   const finish = (correct, choice = null) => {
+    if (paused && choice !== null && !done.current && !suspended) { showPauseHint(); return; }
     if (done.current || suspended || speaking || paused || (exercise === "listening" && (!heard || speechError))) return;
     done.current = true;
     responseClock.current.stop();
@@ -71,11 +86,11 @@ export default function WordCard({ item, onAnswer, suspended = false, choices = 
     onFinish?.(correct);
     clearInterval(timerRef.current);
     setPaused(false);
-    setResult({ correct, choice });
+    setResult({ correct, choice, timing });
     if (!onFinish) void playReaction(correct).catch(() => { /* Standalone preview fallback. */ });
     const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? true;
     // Score exactly once even if a browser cannot render an optional effect.
-    completion.current = setTimeout(() => {
+    if (!showFeedback) completion.current = setTimeout(() => {
       setFlight(null);
       callbacks.current.onAnswer?.(item.id, correct, timing);
     }, exercise === "listening" ? 2200 : reduced ? 650 : 1100);
@@ -136,9 +151,10 @@ export default function WordCard({ item, onAnswer, suspended = false, choices = 
       {/* 이전 카드 내부 멈춤 버튼 보관
       <button className="pause-button" disabled={!!result || suspended || speaking || paused || (exercise === "listening" && (!heard || !!speechError))} onClick={() => setPaused(v => !v)}>{paused ? '다시 시작' : '멈춤'}</button>
       */}
-      <div className="quiz-prompt" role="status">{speechError || (result ? '\u00a0' : recalling ? '뜻을 떠올린 뒤 시작하세요' : exercise === 'listening' && !heard ? '발음을 들은 뒤 뜻을 선택하세요' : '\u00a0')}</div>
-      <div className="choice-grid">{recalling ? <button className="recall-ready" disabled={suspended} onClick={() => setRecalling(false)}>떠올렸어요 · 퀴즈 시작</button> : options.map(choice => <button key={choice} data-correct={choice === answer} disabled={!!result || suspended} className={result ? choice === answer ? 'answer-reveal' : choice === result.choice ? 'answer-wrong' : 'answer-muted' : ''} onClick={() => finish(choice === answer, choice)}>{choice}</button>)}</div>
+      <div className="quiz-prompt" role="status" style={pauseHint ? {fontWeight:800,color:"#38551c",background:"#e5f3ce",borderRadius:8,padding:"6px 8px"} : undefined}>{(pauseHint && "학습 계속하기를 먼저 눌러주세요") || speechError || (result ? '\u00a0' : recalling ? '뜻을 떠올린 뒤 시작하세요' : exercise === 'listening' && !heard ? '발음을 들은 뒤 뜻을 선택하세요' : '\u00a0')}</div>
+      <div className="choice-grid">{recalling ? <button className="recall-ready" disabled={suspended} onClick={() => { if (paused) showPauseHint(); else setRecalling(false); }}>떠올렸어요 · 퀴즈 시작</button> : options.map(choice => <button key={choice} data-correct={choice === answer} disabled={!!result || suspended} className={result ? choice === answer ? 'answer-reveal' : choice === result.choice ? 'answer-wrong' : 'answer-muted' : ''} onClick={() => finish(choice === answer, choice)}>{choice}</button>)}</div>
     </article>
+    {showFeedback && result && <section className="quiz-feedback" role="status"><strong>{result.correct ? '기억 확인!' : '다시 익혀봐요'} · {item.word}</strong><p>{item.meaning}</p><p>{withFeedExample(item).example}</p><p>{withFeedExample(item).exampleTranslation}</p><button disabled={suspended} onClick={()=>{if(confirmed.current)return;confirmed.current=true;callbacks.current.onAnswer?.(item.id,result.correct,result.timing);}}>확인했어요 · 다음 →</button></section>}
     {flight && createPortal(<div aria-hidden="true" className={`answer-flight ${result.correct ? 'to-mastered' : 'to-scrap'}`} style={{ left: flight.left, top: flight.top, width: flight.width, minHeight: flight.height, '--fly-x': `${flight.dx}px`, '--fly-y': `${flight.dy}px` }}>{item.meaning}<span>✦</span></div>, document.body)}
   </>;
 }

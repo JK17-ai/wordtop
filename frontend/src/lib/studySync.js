@@ -1,3 +1,4 @@
+import { sha256Hex, browserUUID } from './browserCrypto.js';
 import { openStudyBackupStore, migrateStudyBackups } from './studyBackup.js';
 // Snapshot sync deliberately stops on conflicting device edits instead of merging guesses.
 export function validateSnapshot(value) {
@@ -21,8 +22,7 @@ export async function snapshotHash(snapshot) {
   const stable = value => Array.isArray(value) ? value.map(stable)
     : value && typeof value === 'object' ? Object.fromEntries(Object.keys(value).sort().map(key => [key, stable(value[key])])) : value;
   const data = new TextEncoder().encode(JSON.stringify(stable(snapshot)));
-  const digest = await crypto.subtle.digest('SHA-256', data);
-  return [...new Uint8Array(digest)].map(x => x.toString(16).padStart(2, '0')).join('');
+  return sha256Hex(data);
 }
 
 export function createStudySync({ rpc, storage, key, profileId, status = () => {} }) {
@@ -49,7 +49,7 @@ export function createStudySync({ rpc, storage, key, profileId, status = () => {
     revision = rev;
   };
   const backup = async (local, remote) => {
-    const backupKey = key + ':sync-backup:' + Date.now() + ':' + crypto.randomUUID();
+    const backupKey = key + ':sync-backup:' + Date.now() + ':' + browserUUID();
     const value = JSON.stringify({ local, remote });
     const archive = await openStudyBackupStore();
     if (archive) { try { await archive.put(backupKey, value); } finally { archive.close(); } return; }

@@ -1,10 +1,11 @@
+import { verifiedProgress } from './learningFlow.js';
 export function rebuildStudyDeck(words) {
   // Normalize older saves before deriving the three mutually exclusive feeds.
   return words.map(word => {
     const raw = String(word.status || "").trim().toLowerCase();
     const status = raw === "scrap" ? "scrap"
       : raw === "mastered" || word.checked === true ? "mastered" : "new";
-    const legacyReview = status !== 'new' && ![1,2,3].includes(word.responseStage);
+    const legacyReview = status !== 'new' && word.statusSource !== 'self' && ![1,2,3].includes(word.responseStage);
     return { ...word, status, checked: status === "mastered",
       ...(legacyReview ? { responseStage: 1, responseStageSource: 'legacy-default' } : {}),
     };
@@ -20,7 +21,7 @@ export function getFeed(words, tab) {
 export function answerWord(words, tab, index, id, correct, timing) {
   const validTiming = timing && Number.isFinite(timing.responseMs) && [1, 2, 3].includes(timing.responseStage);
   const updated = words.map(word => word.id === id
-    ? { ...word, status: correct ? "mastered" : "scrap", checked: correct,
+    ? { ...word, status: correct ? "mastered" : "scrap", checked: correct, ...verifiedProgress(word, correct),
       ...(validTiming ? {
         responseMs: timing.responseMs,
         responseStage: timing.responseStage,

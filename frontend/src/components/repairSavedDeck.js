@@ -1,12 +1,14 @@
-import { cleanEbsMeaning } from './cleanEbsMeaning.js';
+import { cleanEbsMeaning, cleanDanglingBrackets } from './cleanEbsMeaning.js';
 import { vocabularyCorrections } from './vocabularyCorrections.js';
 
 export async function repairSavedDeck(data, saved, storageKey) {
-  if (!saved?.words?.length) return data;
   const reference = vocabularyCorrections;
   const byId = new Map(reference.map(item => [item.id, item]));
   let changed = false;
-  const repaired = data.map(item => {
+  const repaired = data.map(original => {
+    const meaning = cleanDanglingBrackets(original.meaning);
+    const item = meaning === original.meaning ? original : { ...original, meaning };
+    if (item !== original) changed = true;
     const target = byId.get(item.id);
     if (!target || target.word !== item.word || typeof item.meaning !== 'string') return item;
     if (!/[가-힣]/u.test(target.meaning) || cleanEbsMeaning(item.meaning) !== target.meaning) return item;
