@@ -121,7 +121,7 @@ function FeedSession({ words:sourceWords, storageKey, disabled, onClassify, onQu
   };
   if (!word) return <p className="empty-feed">내 단어장에서 학습할 파일을 업로드해 주세요.</p>;
   return <section className="moa-feed" aria-label="모아학습">
-    <div className="moa-feed-heading"><div><small>오늘도 17개?</small><h2>모아학습</h2></div><span>{steps} / {target}개</span></div>
+
     <div className="moa-steps" role="progressbar" aria-label="작은 학습 목표" aria-valuemin={0} aria-valuemax={target} aria-valuenow={steps}>{Array.from({length:target},(_,i)=><span key={i} className={i<steps ? 'filled' : ''}>{i<steps ? '✓' : '·'}</span>)}</div>
     <p className="moa-today">오늘 벌써 <strong>{daily.keys.length}개</strong>를 살펴봤어요</p>
     {complete && !selection ? <section className="moa-celebration" aria-live="polite"><div className="moa-sprout" aria-hidden="true"><MoaSymbol/></div><h3>{resting ? '오늘은 여기까지도 좋아요' : `오, 벌써 ${target}개.`}</h3><p>{resting ? '쌓아둔 걸음은 그대로예요. 다음에 이어가요.' : '알아요도, 몰라요도 모두 한 걸음이에요.'}</p><strong>오늘 쌓은 단어 {daily.keys.length}개</strong><button onClick={()=>onQuiz?.(words.filter(w=>daily.keys.slice(daily.base).includes(wordKey(w))))}>방금 익힌 단어 퀴즈로 확인 →</button>{daily.keys.length < session.words.length ? <button onClick={() => { const next=[...words.slice(index+1),...words.slice(0,index+1)].find(item=>!daily.keys.includes(wordKey(item))); setState(value=>({...value,cursor:next ? wordKey(next) : value.cursor,daily:{...daily,base:daily.keys.length}})); setResting(false); }}> {resting ? '다시 이어가기' : `${Math.min(17,session.words.length-daily.keys.length)}개 더 만나보기`} →</button> : <p>오늘 이 단어장을 모두 살펴봤어요!</p>}{!resting && <button className="moa-rest" onClick={()=>setResting(true)}>오늘은 여기까지</button>}</section> : <>
@@ -144,9 +144,9 @@ function FeedSession({ words:sourceWords, storageKey, disabled, onClassify, onQu
       <div className="moa-judgments"><button disabled={disabled} aria-pressed={entry.judgment === 'unknown'} className={active && selection === 'unknown' ? 'feed-choice-confirmed' : ''} onClick={() => choose('unknown')}>♡ 몰라요</button><button disabled={disabled} aria-pressed={entry.judgment === 'known'} className={active && selection === 'known' ? 'feed-choice-confirmed' : ''} onClick={() => choose('known')}>✓ 알아요</button></div>
     </article>; })}
     </div></div>
-    <div className="moa-feed-controls"><button disabled={disabled || settling || !!selection || index === 0} onClick={() => move(-1)}>↑ 이전</button><span>위아래로 넘겨보세요</span><button disabled={disabled || settling || !!selection || index === words.length - 1} onClick={() => move(1)}>다음 ↓</button></div>
+
     </>}
-    <p className="moa-feed-message" role="status">{error || message || '한 걸음씩, 내 속도로 가면 돼요.'}</p>
+    {(error || message) && <p className="moa-feed-message" role="status">{error || message}</p>}
   </section>;
 }
 export function MoaLibrary({ words, name, onUpload, disabled, onClassify, onQuiz, progress, onProgress }) {

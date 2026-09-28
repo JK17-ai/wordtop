@@ -68,3 +68,39 @@
 .quiz-complete-primary{background:#baff48;color:#243316;border:1px solid #a6df50;}
 .quiz-complete-secondary{background:transparent;color:#58664c;border:1px solid #d3e4b9;}
 @media(max-width:360px){.quiz-session-heading>span{gap:4px;flex-wrap:wrap}.review-invitation-action{font-size:11px}.review-invitation-icon{width:30px;height:30px}}
+/* Size the swipe track to the available space; never crop an auto-height card. */
+.app-shell.quiet-study .study-content > .moa-feed{flex:1 0 430px;height:100%;min-height:430px;box-sizing:border-box;margin:0;gap:6px;padding:2px 0;}
+.app-shell.quiet-study .moa-feed .moa-feed-heading{flex:none;}
+.app-shell.quiet-study .moa-feed .moa-steps,.app-shell.quiet-study .moa-feed .moa-today{flex:none;}
+.app-shell.quiet-study .moa-feed .moa-swipe-viewport{flex:1 1 0;min-height:300px;}
+.app-shell.quiet-study .moa-feed .moa-swipe-track{height:100%;}
+.app-shell.quiet-study .moa-feed .moa-slide{height:100%;min-height:0;padding:10px 14px;gap:6px;}
+.app-shell.quiet-study .moa-feed .moa-card-tools{flex:none;min-height:44px;}
+.app-shell.quiet-study .moa-feed .moa-term{flex:none;padding:0;}
+.app-shell.quiet-study .moa-feed .moa-term h3{margin:0 0 4px;}
+.app-shell.quiet-study .moa-feed .moa-definition{flex:1 1 0;min-height:48px;max-height:none;padding:6px;overflow-y:auto;touch-action:pan-y;}
+.app-shell.quiet-study .moa-feed .moa-definition strong{font-size:21px;}
+.app-shell.quiet-study .moa-feed .moa-definition p{font-size:13px;line-height:1.45;}
+.app-shell.quiet-study .moa-feed .moa-judgments{flex:none;margin-top:0;}
+.app-shell.quiet-study .moa-feed .moa-feed-controls{flex:none;}
+.app-shell.quiet-study .moa-feed .moa-feed-message{flex:none;margin:0;font-size:11px;}
+@media(max-height:760px){
+ .app-shell.quiet-study{gap:6px;}
+ .app-shell.quiet-study .review-invitation{padding:8px 10px;margin:0;}
+ .app-shell.quiet-study .study-content > .moa-feed{min-height:390px;flex-basis:390px;}
+ .app-shell.quiet-study .moa-feed-heading small,.app-shell.quiet-study .moa-feed-message:empty{display:none;}
+ .app-shell.quiet-study .moa-feed .moa-feed-heading h2{font-size:19px;}
+ .app-shell.quiet-study .moa-feed .moa-feed-controls{display:none;}
+}
+/* A stable message/ad placement outside the moving card, above navigation. */
+.app-shell.quiet-study .feed-message-slot{flex:0 0 calc(var(--app-height,100dvh) * .08);min-height:0;box-sizing:border-box;display:flex;align-items:center;justify-content:center;padding:8px 16px;border-radius:14px;background:#f1f5eb;color:#68765a;text-align:center;overflow:hidden;}
+.feed-message-slot p{margin:0;font-size:12px;line-height:1.6;}
+.app-shell.quiet-study .study-content:has(>.moa-feed)>.moa-feed{min-height:350px;flex-basis:350px;}
+@media(max-height:760px){
+ .app-shell.quiet-study .study-content:has(>.moa-feed)>.moa-feed{min-height:300px;flex-basis:300px;}
+ .app-shell.quiet-study .moa-feed .moa-swipe-viewport{min-height:280px;}
+ .app-shell.quiet-study .moa-feed .moa-today{display:none;}
+ .app-shell.quiet-study .moa-feed .moa-term{position:relative;padding-right:58px;}
+ .app-shell.quiet-study .moa-feed .moa-term button{position:absolute;right:0;bottom:0;padding:4px;min-width:52px;font-size:12px;}
+ .app-shell.quiet-study .moa-feed .moa-term .moa-feed-ipa{font-size:12px!important;}
+}

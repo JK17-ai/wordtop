@@ -294,7 +294,7 @@ export default function FileUpload({ profile }) {
        <button type="button" className="next-preview study-pause" disabled={busy || !ready || syncBlocked || !pageWords.length || pauseLocked} aria-pressed={studyPaused} onClick={() => { settingsChanged.current=false; setStudyPaused(value => !value); }}><span aria-hidden="true">{studyPaused ? "▶" : "Ⅱ"}</span><span>{studyPaused ? "학습 계속하기" : "잠깐 멈춤"}</span></button>
        <SeungwooCompanion paused={studyPaused} reaction={reaction}/>
        {/* Previous scrap preview retained: <ScrapPreview words={allWords} cardKey={`${activeTab}-${pageWords[0]?.id ?? "empty"}`} /> */}
-</>}</section>}</div><nav inert={pauseLocked ? true : undefined} className="stats-nav polished-nav" aria-label="하단 메뉴">
+</>}</section>}</div>{!panel && mode === "feed" && <aside className="feed-message-slot" aria-label="학습 메시지" data-slot="learning-message-ad"><p>한 단어씩, 어제보다 한 걸음 더.</p></aside>}<nav inert={pauseLocked ? true : undefined} className="stats-nav polished-nav" aria-label="하단 메뉴">
   <button className={!panel && mode === 'feed' ? 'selected' : ''} aria-current={!panel && mode === 'feed' ? 'page' : undefined} onClick={() => { setPanel(null); setMode('feed'); }}><span>▤</span><small>모아학습</small></button>
   <button className={!panel && mode === 'quiz' ? 'selected' : ''} aria-current={!panel && mode === 'quiz' ? 'page' : undefined} onClick={() => { setPanel(null); setMode('quiz'); if(!quizSession) selectStudyTab(activeTab); }}><span>ϟ</span><small>모아퀴즈</small></button>
   <button className={panel === 'library' ? 'selected' : ''} onClick={() => setPanel('library')}><span>▥</span><small>내 단어장</small></button>
