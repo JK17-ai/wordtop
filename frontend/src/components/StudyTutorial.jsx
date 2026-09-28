@@ -1,16 +1,17 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { MoaMark } from './MoaCompanion';
+import { MoaSymbol } from './MoaLogo';
 const steps = [
-  { icon:'📖', title:'가볍게 시작하는 모아학습', menu:'모아학습 · 알아요·몰라요', text:'단어와 뜻을 함께 보며 위아래로 넘겨보세요. 알아요·몰라요를 선택하면 기록하고 다음 단어로 넘어가요. 타이머 없이 내 속도로 익힐 수 있어요.' },
-  { icon:'☆', title:'피드와 퀴즈는 따로 기록해요', menu:'내 단어장 · 모아퀴즈', text:'피드에서 저장한 단어와 알아요·몰라요 기록은 내 단어장에서 확인해요. 기존 스크랩·마스터와 퀴즈 기록은 그대로 유지돼요. 피드 진행은 현재 기기에 보관됩니다.' },
-  { icon:'👋', title:'단어모아에 오신 걸 환영해요', menu:'모아퀴즈 · 오늘학습', text:'상단에서 지금 공부하는 단어장과 오늘 학습한 단어 수를 확인해요. 스크랩·마스터 탭의 숫자는 누적된 단어 수예요.' },
-  { icon:'📖', title:'새 단어는 ALL FEED에서', menu:'ALL FEED · 잠깐 멈춤', text:'영어 단어에 맞는 뜻을 선택하세요. 단어 색과 얇은 막대가 남은 시간을 알려줘요. 잠깐 멈춤을 누르면 쉬어 갈 수 있어요.' },
-  { icon:'⭐', title:'헷갈린 단어는 스크랩으로', menu:'SCRAP · ★ / ★★ / ★★★', text:'틀린 단어를 다시 공부해요. 뜻을 먼저 떠올린 뒤 퀴즈를 풀거나 바로 퀴즈를 풀 수 있어요. 빠르게 답한 단어는 별 하나, 오래 고민한 단어는 별 세 개로 구분해요.' },
-  { icon:'🎧', title:'아는 단어도 한 번 더', menu:'MASTERED', text:'맞힌 단어는 마스터에서 복습해요. 한글 뜻을 보고 영어를 고르거나, 미국식 발음을 듣고 뜻을 고를 수 있어요. 첫 퀴즈에는 별이 없고 복습할 때 표시돼요.' },
-  { icon:'⚙', title:'나에게 맞게 학습해요', menu:'설정 → 학습방법', text:'스크랩·마스터의 퀴즈 방식과 복습할 별 단계를 바꿀 수 있어요. 이 안내도 설정에서 언제든 다시 볼 수 있어요.' },
-  { icon:'🏅', title:'함께 공부하고 배지를 모아요', menu:'내 단어장 → 업로드 · 내 기록 → 가족·배지', text:'업로드에서 공부할 파일을 불러오고, 가족에서 학습 현황을 확인해요. 배지에서는 연속 정답으로 모은 메달과 이번 달·올해의 보상 합계를 볼 수 있어요.' },
+  { icon:'📖', title:'가볍게 시작하는 모아학습', menu:'모아학습 · 알아요·몰라요', text:'단어와 뜻, 예문을 함께 보며 위아래로 넘겨보세요. 알아요·몰라요를 누르면 기록하고 다음 단어로 넘어가요. 타이머 없이 내 속도로 익힐 수 있어요.' },
+  { icon:'☆', title:'익힌 단어를 퀴즈로 연결해요', menu:'모아학습 → 모아퀴즈', text:'몰라요는 다시 익히기로, 알아요는 기억 다지기로 모여요. 알아요 표시는 퀴즈 정답 기록과 구분해요. 저장 버튼은 따로 다시 보고 싶은 단어를 표시해요.' },
+  { icon:'🌱', title:'한 번에 17개, 차근차근', menu:'모아학습 · 작은 목표', text:'17개씩 가볍게 익혀보세요. 목표를 채우면 방금 익힌 단어로 퀴즈를 풀거나, 다음 단어를 더 만나거나, 오늘 공부를 마칠 수 있어요.' },
+  { icon:'ϟ', title:'새 단어는 새로 익히기에서', menu:'모아퀴즈 · 새로 익히기', text:'영어 단어에 맞는 뜻을 선택하세요. 정답을 짧게 보여준 뒤 자동으로 다음 단어로 넘어가요. 시간이 지나면 다시 익히기로 모이고, 잠깐 멈춤으로 쉬어 갈 수 있어요.' },
+  { icon:'↻', title:'헷갈린 단어는 다시 익히기', menu:'다시 익히기 · 떠올리기·퀴즈', text:'모른다고 표시하거나 틀린 단어를 다시 공부해요. 뜻을 먼저 떠올린 뒤 퀴즈를 풀거나 바로 시작할 수 있어요. 별은 최근 퀴즈에서 답하는 데 걸린 시간을 나타내요.' },
+  { icon:'🎧', title:'아는 단어도 기억 다지기', menu:'기억 다지기 · 뜻·발음', text:'알아요로 표시하거나 맞힌 단어도 다시 확인해요. 한글 뜻을 보고 영어를 고르거나 발음을 듣고 뜻을 고를 수 있어요. 복습할 때가 되면 모아학습에서 알려드려요.' },
+  { icon:'⚙', title:'내 방식으로 공부해요', menu:'내 기록 → 학습 설정', text:'다시 익히기와 기억 다지기의 퀴즈 방식, 복습할 별 단계를 바꿀 수 있어요. 내 단어장에서는 검색·분류·저장과 한 단어 연습을 할 수 있어요. 이 가이드도 설정에서 다시 볼 수 있어요.' },
+  { icon:'🏅', title:'함께 쌓는 공부 습관', menu:'내 기록 · 가족·배지', text:'가족 학습 기록과 내 배지·보상을 펼쳐보세요. 서버에서 확인한 연속 정답으로 배지가 쌓여요. 알아요 표시나 한 단어 연습은 배지에 포함되지 않아요.' },
 ];
+
 export default function StudyTutorial({ onClose }) {
   const [step, setStep] = useState(0);
   const dialog = useRef(null);
@@ -33,14 +34,14 @@ export default function StudyTutorial({ onClose }) {
   const item = steps[step];
   return createPortal(<div className="tutorial-backdrop" onKeyDown={onKeyDown}>
     <section ref={dialog} className="tutorial-dialog" role="dialog" aria-modal="true" aria-labelledby="tutorial-heading" aria-describedby="tutorial-text">
-      <div className="tutorial-top"><MoaMark/><span>단어모아 사용 가이드</span><span>{step + 1} / {steps.length}</span></div>
+      <div className="tutorial-top"><MoaSymbol/><span>단어모아 사용 가이드</span><span>{step + 1} / {steps.length}</span></div>
       <div className="tutorial-icon" aria-hidden="true">{item.icon}</div>
       <h2 id="tutorial-heading" ref={heading} tabIndex={-1}>{item.title}</h2>
       <div className="tutorial-menu">{item.menu}</div>
       <p id="tutorial-text">{item.text}</p>
       <div className="tutorial-dots" aria-hidden="true">{steps.map((_, index) => <i key={index} className={index === step ? 'active' : ''}/>)}</div>
       <div className="tutorial-navigation"><button disabled={step === 0} onClick={() => setStep(value => value - 1)}>이전</button><button className="tutorial-next" onClick={() => step === steps.length - 1 ? onClose(false) : setStep(value => value + 1)}>{step === steps.length - 1 ? '학습 시작하기' : '다음'}</button></div>
-      <div className="tutorial-dismiss"><button onClick={() => onClose(true)}>다시 보지 않기</button><button onClick={() => onClose(false)}>Skip</button></div>
+      <div className="tutorial-dismiss"><button onClick={() => onClose(true)}>다시 보지 않기</button><button onClick={() => onClose(false)}>건너뛰기</button></div>
     </section>
   </div>, document.body);
 }

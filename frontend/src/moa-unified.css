@@ -165,3 +165,19 @@
 /* Reserved large creative placement; stays in the scrolling records content. */
 .app-shell.quiet-study .records-banner-slot{width:100%;box-sizing:border-box;margin:22px 0 4px;overflow:hidden;border-radius:18px;border:1px solid #dce5d0;background:#f2f6eb;}
 .records-banner-slot img{display:block;width:100%;height:auto;filter:saturate(.58) contrast(.88) brightness(1.08);opacity:.85;}
+
+/* The guide is portalled to body, so it needs its own brand surface. */
+.tutorial-backdrop{background:rgba(23,31,19,.56);}
+.tutorial-dialog{background:linear-gradient(155deg,#fefff9,#f4f8eb);color:#202d1a;border:1px solid #d6e3c5;border-radius:24px;}
+.tutorial-top{color:#6b785e;}
+.tutorial-top .moa-symbol{width:26px;height:26px;}
+.tutorial-icon{display:grid;place-items:center;width:72px;height:72px;margin:22px auto 16px;border-radius:22px;background:#e6f5cb;font-size:38px;}
+.tutorial-menu{background:#e7f3d5;color:#3c5626;border:1px solid #d4e6bc;font-weight:750;}
+.tutorial-dialog p{color:#58654c;}
+.tutorial-dots i{background:#dce5d2;}
+.tutorial-dots i.active{background:#8ec63c;}
+.tutorial-navigation>button{background:#eaf0e2;color:#465a35;}
+.tutorial-navigation>.tutorial-next{background:#baff48;color:#203014;font-weight:800;}
+.tutorial-dismiss button{color:#647356;}
+.tutorial-dialog button:focus-visible{outline:3px solid #719d21;}
+@media(max-height:600px){.tutorial-icon{width:48px;height:48px;font-size:28px;margin:8px auto;}}
