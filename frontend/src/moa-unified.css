@@ -154,3 +154,14 @@
 .app-shell.reel-feed.quiet-study {
   padding-bottom:calc(max(8px, env(safe-area-inset-bottom, 0px)) + 8px);
 }
+/* FitWord measures the same rendered typography in both learning modes. */
+.app-shell.quiet-study .moa-term h3>span,
+.app-shell.quiet-study .moa-quiz-body .word-heading .word-term>span {
+  font-family:Pretendard,system-ui,sans-serif;
+  font-weight:900;
+  letter-spacing:-.035em;
+  line-height:1.15;
+}
+/* Reserved large creative placement; stays in the scrolling records content. */
+.app-shell.quiet-study .records-banner-slot{width:100%;box-sizing:border-box;margin:22px 0 4px;overflow:hidden;border-radius:18px;border:1px solid #dce5d0;background:#f2f6eb;}
+.records-banner-slot img{display:block;width:100%;height:auto;filter:saturate(.58) contrast(.88) brightness(1.08);opacity:.85;}

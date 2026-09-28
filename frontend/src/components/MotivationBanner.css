@@ -1,0 +1,13 @@
+.app-shell.quiet-study .feed-message-slot.motivation-slot{padding:0;background:linear-gradient(115deg,#f7faed,#eaf4d6);border:1px solid #dce8c7;text-align:left;container-type:size;}
+.motivation-banner{width:100%;height:100%;display:flex;align-items:center;box-sizing:border-box;padding:5px 10px 5px 13px;gap:4px;overflow:hidden;}
+.motivation-copy{flex:1;min-width:0;}
+.motivation-copy strong{display:block;font-size:clamp(12px,3.3vw,15px);font-weight:850;line-height:1.35;letter-spacing:-.035em;color:#2a4021;word-break:keep-all;}
+.feed-message-slot .motivation-copy p{font-size:clamp(9px,2.5vw,11px);line-height:1.35;color:#667650;margin-top:3px;word-break:keep-all;}
+.motivation-art{width:24%;max-width:104px;align-self:stretch;flex-shrink:0;}
+.motivation-art svg{width:100%;height:100%;display:block;}
+@container (max-height:46px){.motivation-copy p{display:none;}.motivation-banner{padding-block:2px;}}
+@media(prefers-reduced-motion:no-preference){.motivation-banner{animation:motivation-appear .35s ease-out;}}
+@keyframes motivation-appear{from{opacity:0}to{opacity:1}}
+@font-face{font-family:'Moa Brush';src:url('/fonts/NanumBrushScript-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap;}
+.motivation-copy strong{font-family:'Moa Brush',Pretendard,sans-serif;font-size:clamp(20px,5.5vw,26px);font-weight:400;letter-spacing:0;line-height:1.05;}
+@container(max-height:46px){.motivation-copy strong{font-size:20px;}}

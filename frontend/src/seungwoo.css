@@ -15,7 +15,7 @@ body { background:#f5f5f7 !important; color:var(--sw-ink); font-family:Pretendar
 .app-shell.quiet-study .today-counts small { font-size:12px; color:var(--sw-muted); }
 .app-shell.quiet-study .today-counts strong { font-size:19px; font-weight:600; font-variant-numeric:tabular-nums; color:var(--sw-ink); }
 .app-shell.quiet-study .reel-stage .word-card { background:#fff !important; border:1px solid var(--sw-border); border-radius:18px; box-shadow:0 2px 8px #20212405; padding:20px 14px !important; gap:0 !important; animation:none; }
-.app-shell.quiet-study .word-term { font-family:Inter,Pretendard,system-ui,sans-serif; font-weight:600 !important; letter-spacing:-.025em; }
+/* Main word typography is shared by learning and quiz in moa-unified.css. */
 .app-shell.quiet-study .word-ipa { font-family:'Noto Sans','Segoe UI',Arial,sans-serif; font-size:16px; color:var(--sw-muted); }
 .app-shell.quiet-study .thin-timer i.lit { background:#cf6281; }
 .app-shell.quiet-study .thin-timer i:not(.lit) { background:#e5e5e9; }
