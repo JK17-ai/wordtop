@@ -1,0 +1,50 @@
+
+.phone-test-workbench{height:100dvh;overflow:auto;box-sizing:border-box;padding:20px;background:#e9edde;text-align:center;color:#26331d;font-family:system-ui;}
+.phone-test-workbench h1{font-size:20px;margin:0;}
+.phone-test-workbench p{font-size:13px;}
+.phone-test-workbench label{display:flex;align-items:center;justify-content:center;gap:12px;margin:12px;}
+.phone-test-workbench iframe{display:block;height:auto;border:1px solid #bdc8ae;border-radius:22px;margin:16px auto;background:#f5f5f7;}
+.app-shell.reel-feed.quiet-study.phone-ratio-test{width:100%;max-width:none;height:100dvh;margin:0;padding:2cqh 3cqw;box-sizing:border-box;display:grid;grid-template-rows:5fr 7fr 7fr 4fr 56fr 9fr 9fr;gap:1cqh;container-type:size;overflow:hidden;}
+.phone-ratio-test>*{min-height:0;min-width:0;box-sizing:border-box;}
+.phone-ratio-test .topbar h1{margin:0;}
+.phone-ratio-test .moa-logo{height:100%;}
+.phone-ratio-test .moa-symbol{width:8cqw;height:8cqw;}
+.phone-ratio-test .moa-wordmark{font-size:7cqw;}
+.phone-deck{display:flex;align-items:center;justify-content:center;gap:2cqw;background:#22291c;color:white;font-size:3.8cqw;}
+.phone-deck small{background:#baff32;color:#26331d;padding:1cqw;border-radius:4px;font-size:2.5cqw;}
+.phone-ratio-test .feed-tabs{height:100%!important;min-height:0!important;gap:2cqw;}
+.phone-ratio-test .feed-tabs button{height:100%!important;min-height:0!important;font-size:3.4cqw;padding:0!important;}
+.phone-ratio-test .feed-tabs small{font-size:3cqw!important;margin:0!important;}
+.phone-ratio-test .daily-study-line,.phone-progress{font-size:2.8cqw;display:flex;align-items:center;justify-content:center;gap:1cqw;}
+.phone-main{display:flex;flex-direction:column;gap:1cqh;overflow:hidden;}
+.phone-ratio-test .quiz-session-progress{flex:0 0 14%;margin:0;padding:1cqh 3cqw;}
+.phone-ratio-test .quiz-session-heading strong{font-size:5cqw;}
+.phone-ratio-test .quiz-session-heading small,.phone-ratio-test .quiz-session-heading strong span{font-size:3cqw;}
+.phone-ratio-test .moa-quiz-body{flex:1;min-height:0;margin:0;padding:0;display:flex;flex-direction:column;gap:1cqh;}
+.phone-ratio-test .moa-quiz-body .reel-stage{flex:1;min-height:0;height:0;}
+.app-shell.reel-feed.quiet-study.phone-ratio-test .word-card.korean-quiz{display:flex!important;gap:1cqh;padding:2cqh 3cqw!important;}
+.app-shell.reel-feed.quiet-study.phone-ratio-test .word-card.korean-quiz .context-question{font-size:4.3cqw;line-height:1.5;}
+.app-shell.reel-feed.quiet-study.phone-ratio-test .word-card.korean-quiz>.word-heading{flex:1;min-height:0;}
+.app-shell.reel-feed.quiet-study.phone-ratio-test .word-card.korean-quiz>.choice-grid{flex:0 0 49%;grid-template-rows:1fr 1fr;gap:1cqh;}
+.app-shell.reel-feed.quiet-study.phone-ratio-test .word-card.korean-quiz .choice-grid button{padding:1cqh!important;min-height:0;height:100%;}
+.phone-ratio-test .korean-choice-label strong{font-size:4.2cqw;}
+.phone-ratio-test .korean-choice-hanja{font-size:5.4cqw;}
+.app-shell.reel-feed.quiet-study.phone-ratio-test .word-card.korean-quiz>.quiz-prompt{font-size:2.7cqw;line-height:1.2;}
+.phone-ratio-test .study-pause{flex:0 0 9%;min-height:0!important;border:1px solid #769944;background:#baff32;border-radius:10px;font-size:3.6cqw;font-weight:750;}
+.phone-ratio-test .motivation-banner{height:100%;min-height:0;margin:0;}
+.app-shell.reel-feed.quiet-study.phone-ratio-test nav.polished-nav{height:100%!important;min-height:0;position:static!important;padding:1cqh!important;}
+.phone-ratio-test .phone-review{display:flex;align-items:center;gap:2cqw;font-size:3.4cqw;background:#f7ffe9;border:1px solid #d2dfbc;border-radius:12px;padding:2cqw;}
+.phone-review span{margin-left:auto;font-size:3cqw;}
+.phone-ratio-test .moa-feed{height:100%;min-height:0;flex:1;padding:0;margin:0;}
+.phone-ratio-test .moa-feed .korean-study-card{height:100%;padding:2cqh 3cqw;gap:1cqh;}
+.phone-ratio-test .moa-card-tools,.phone-ratio-test .moa-judgments{flex:0 0 12%;min-height:0;}
+.phone-ratio-test .moa-card-tools button,.phone-ratio-test .moa-judgments button{min-height:0;height:100%;font-size:3.7cqw;}
+.phone-ratio-test .korean-study-heading h3{font-size:7.8cqw;}
+.phone-ratio-test .korean-study-hanja{font-size:7.5cqw;}
+.phone-ratio-test .moa-feed .korean-study-meaning p{font-size:4.4cqw;line-height:1.5;}
+.actual-phone-preview{display:flex;flex-direction:column;gap:8px;padding:12px;overflow:hidden;}
+.actual-phone-preview header{flex:none;}
+.actual-phone-preview header p,.actual-phone-preview>p{margin:4px 0;font-size:12px;}
+.actual-phone-preview label{margin:4px;}
+.phone-preview-space{flex:1;min-height:0;display:flex;justify-content:center;align-items:center;}
+.actual-phone-preview iframe{position:absolute;inset:0;max-width:none;margin:0;border:0;box-shadow:0 0 0 3px #26331d;border-radius:22px;}

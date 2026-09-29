@@ -1,3 +1,4 @@
+import useScreenWakeLock from './useScreenWakeLock';
 import useCardFit from './useCardFit';
 import AccountPanel from './AccountPanel';
 import PortraitOnly, {usePortraitOnly} from './PortraitOnly';
@@ -41,6 +42,7 @@ import useAccuracy, { AccuracyStats } from "./useAccuracy";
 
 export default function FileUpload({ profile }) {
   useCardFit();
+  useScreenWakeLock();
   const landscape = usePortraitOnly();
   const [showAccount,setShowAccount] = useState(false);
   const deckStorageKey = profileKey(profile?.id, "wordtop-current-deck");

@@ -510,3 +510,67 @@ button.quiet-deck{width:100%;cursor:pointer;font:inherit;}button.quiet-deck:focu
 .app-shell.quiet-study .moa-feed .korean-study-meaning p{font-size:calc(18px * var(--card-fit,1));line-height:1.4;}
 @media(max-height:670px){.app-shell.quiet-study{gap:4px;padding-top:6px;}.app-shell.quiet-study .quiz-session-progress{padding:3px 10px;}.app-shell.quiet-study .moa-quiz-body{gap:4px;}.app-shell.quiet-study .review-invitation{padding:5px 8px;}}
 .app-shell.quiet-study .feed-tabs{height:44px;min-height:44px;gap:6px;}.app-shell.quiet-study .feed-tabs button{height:44px;min-height:44px;padding:3px 4px;font-size:13px;line-height:1.2;border-width:1px;}.app-shell.quiet-study .feed-tabs button small{font-size:11px;line-height:1.2;margin-top:2px;}
+
+/* Keep Korean quiz text readable; let the card scroll instead of clipping answers. */
+.app-shell.reel-feed.quiet-study .moa-quiz-body .reel-stage .word-card.korean-quiz{
+ --card-fit:1;display:flex!important;flex-direction:column;flex:1 1 0;min-height:0;justify-content:flex-start;overflow-y:auto!important;overflow-x:hidden!important;overscroll-behavior:contain;touch-action:pan-y;
+ gap:10px;padding:12px 14px!important;scroll-padding-block:12px;
+}
+.app-shell.reel-feed.quiet-study .reel-stage .word-card.korean-quiz>.word-heading{
+ flex:1 0 auto;min-height:min-content;justify-content:center;padding:4px 0;
+}
+.app-shell.reel-feed.quiet-study .word-card.korean-quiz .context-question{
+ font-size:var(--quiz-font,19px);line-height:1.5;text-align:left;word-break:keep-all;overflow-wrap:anywhere;
+}
+.app-shell.reel-feed.quiet-study .moa-quiz-body .word-card.korean-quiz>.choice-grid{
+ flex:none;gap:8px;padding-bottom:2px;
+}
+.app-shell.reel-feed.quiet-study .moa-quiz-body .word-card.korean-quiz .choice-grid button{
+ min-height:48px;padding:10px 12px!important;font-size:17px;line-height:1.5;
+}
+/* Short word choices share a row whenever their actual container has room. */
+.app-shell.reel-feed.quiet-study .moa-quiz-body .word-card.korean-quiz>.choice-grid:has(.korean-choice-label){
+ grid-template-columns:repeat(auto-fit,minmax(min(100%,112px),1fr));grid-template-rows:auto;
+}/* Reading content may scroll, while study actions keep their own visible row. */
+.app-shell.quiet-study .moa-feed .korean-study-content{
+ overflow-y:auto;overflow-x:hidden;justify-content:safe center;overscroll-behavior:contain;touch-action:pan-y;
+}
+.app-shell.quiet-study .moa-feed .korean-study-content>.korean-study-heading,
+.app-shell.quiet-study .moa-feed .korean-study-content>.korean-study-meaning{flex:none;}
+.app-shell.quiet-study .moa-feed .korean-study-meaning p{font-size:max(17px,calc(18px * var(--card-fit,1)));}
+.app-shell.quiet-study .moa-swipe-viewport:has(.korean-study-content){touch-action:pan-y;}
+.app-shell.quiet-study .moa-feed .korean-study-meaning{touch-action:pan-y;}
+.korean-inline-save{display:none;}
+.app-shell.quiet-study .korean-study-card[data-compact="true"] .moa-card-tools{display:none;}
+.app-shell.quiet-study .korean-study-card[data-compact="true"] .korean-study-hanja-row{display:flex;align-items:center;justify-content:center;gap:8px;}
+.app-shell.quiet-study .korean-study-card[data-compact="true"] .korean-inline-save{display:inline-flex;flex:none;}
+.app-shell.quiet-study .korean-study-card[data-compact="true"] .korean-inline-save button{min-height:44px;min-width:44px;padding:4px 7px;border:1px solid #d4dfc8;border-radius:10px;background:#f4f8ed;color:#263a15;font:inherit;font-size:12px;font-weight:700;white-space:nowrap;}
+.app-shell.quiet-study .korean-study-card[data-compact="true"] .korean-study-hanja{font-size:24px;letter-spacing:.04em;}
+/* Compact study layout spends the available height on the definition. */
+.app-shell.quiet-study .moa-feed .korean-study-card[data-compact="true"]{padding:6px 8px;gap:3px;}
+.app-shell.quiet-study .korean-study-card[data-compact="true"] .korean-study-content{gap:4px;}
+.app-shell.quiet-study .korean-study-card[data-compact="true"] .korean-study-heading>small,
+.app-shell.quiet-study .korean-study-card[data-compact="true"] .korean-study-meaning>small{display:none;}
+.app-shell.quiet-study .korean-study-card[data-compact="true"] .korean-study-heading h3{font-size:24px;margin:0 0 2px;line-height:1.2;}
+.app-shell.quiet-study .korean-study-card[data-compact="true"] .korean-study-hanja{font-size:20px;line-height:1.2;letter-spacing:.02em;}
+.app-shell.quiet-study .korean-study-card[data-compact="true"] .korean-inline-save button{min-height:32px;padding:3px 6px;}
+.app-shell.quiet-study .moa-feed .korean-study-card[data-compact="true"] .korean-study-meaning{padding:5px 6px;margin:0;}
+.app-shell.quiet-study .moa-feed .korean-study-card[data-compact="true"] .korean-study-meaning p{font-size:17px;line-height:1.4;}
+.app-shell.quiet-study .moa-feed .korean-study-card[data-compact="true"] .moa-judgments{min-height:36px;flex:0 0 36px;gap:6px;}
+.app-shell.quiet-study .moa-feed .korean-study-card[data-compact="true"] .moa-judgments button{height:36px;min-height:36px;padding:4px 6px;font-size:14px;line-height:1.2;}
+.app-shell.quiet-study .moa-feed .korean-study-content .korean-study-meaning{text-align:center;}
+.app-shell.reel-feed.quiet-study .word-card.korean-quiz .context-question{text-align:center;}
+/* On short phones, reserve screen height for the question and answer choices. */
+@media(max-width:480px) and (max-height:740px){
+ .app-shell.quiet-study:has(.moa-quiz-body)>.motivation-slot,
+ .app-shell.quiet-study:has(.moa-quiz-body)>.daily-study-line{display:none;}
+ .app-shell.quiet-study .moa-quiz-body>.quiz-session-progress{padding:3px 8px;}
+ .app-shell.quiet-study .moa-quiz-body .quiz-session-heading strong{font-size:18px;}
+ .app-shell.reel-feed.quiet-study .moa-quiz-body .reel-stage .word-card.korean-quiz{padding:8px!important;gap:6px;}
+ .app-shell.reel-feed.quiet-study .word-card.korean-quiz .context-question{line-height:1.4;}
+ .app-shell.reel-feed.quiet-study .word-card.korean-quiz>.quiz-prompt{font-size:11px;line-height:1.2;}
+ .app-shell.reel-feed.quiet-study .moa-quiz-body .word-card.korean-quiz>.choice-grid:has(.korean-choice-label){grid-template-columns:repeat(auto-fit,minmax(min(100%,100px),1fr));gap:6px;}
+ .app-shell.reel-feed.quiet-study .moa-quiz-body .word-card.korean-quiz .choice-grid button{padding:6px!important;min-height:44px;}
+ .app-shell.quiet-study .korean-choice-label strong{font-size:16px;}
+ .app-shell.quiet-study .korean-choice-hanja{font-size:20px;line-height:1.2;}
+}

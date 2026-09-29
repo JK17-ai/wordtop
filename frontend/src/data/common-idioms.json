@@ -1,0 +1,1490 @@
+[
+  {
+    "hanja": "雪上加霜",
+    "id": "idiom-설상가상",
+    "language": "ko-KR",
+    "meaning": "눈 위에 또 서리가 내린다는 뜻으로, 어려운 일이 겹침을 이름 또는 ‘환난이 거듭됨’을 비유하 여 이르는 말",
+    "status": "new",
+    "word": "설상가상"
+  },
+  {
+    "hanja": "事必歸正",
+    "id": "idiom-사필귀정",
+    "language": "ko-KR",
+    "meaning": "처음에는 시비곡직을 가리지 못하여 그릇되더라도 모든 일은 결국에 가서는 반드시 정리로 돌아감 (결국 모든 일은 바른 결과로 돌아간다는 의미)",
+    "status": "new",
+    "word": "사필귀정"
+  },
+  {
+    "hanja": "千載一遇",
+    "id": "idiom-천재일우",
+    "language": "ko-KR",
+    "meaning": "천 년에 한 번 만날 정도로, 좀처럼 얻기 어려운 좋은 기회를 이름",
+    "status": "new",
+    "word": "천재일우"
+  },
+  {
+    "hanja": "會者定離",
+    "id": "idiom-회자정리",
+    "language": "ko-KR",
+    "meaning": "만나면 언젠가는 헤어지게 되어 있다는 뜻",
+    "status": "new",
+    "word": "회자정리"
+  },
+  {
+    "hanja": "脣亡齒寒",
+    "id": "idiom-순망치한",
+    "language": "ko-KR",
+    "meaning": "입술이 없으면 이가 시리다는 말로 서로 떨어질 수 없는 밀접한 관계",
+    "status": "new",
+    "word": "순망치한"
+  },
+  {
+    "hanja": "靑天霹靂",
+    "id": "idiom-청천벽력",
+    "language": "ko-KR",
+    "meaning": "맑게 갠 하늘에서 갑자기 떨어지는 벼락이라는 뜻으로, 돌발적인 사태나 사변을 이르는 말",
+    "status": "new",
+    "word": "청천벽력"
+  },
+  {
+    "hanja": "兎死狗烹",
+    "id": "idiom-토사구팽",
+    "language": "ko-KR",
+    "meaning": "토끼가 죽으면 사냥개는 잡혀서 삶아진다는 뜻. 목적을 달성하고 나면 그 목적에 이용된 도구 나 사람은 무용하게 되어 배척되거나 제거된다는 의미.",
+    "status": "new",
+    "word": "토사구팽"
+  },
+  {
+    "hanja": "刮目相對",
+    "id": "idiom-괄목상대",
+    "language": "ko-KR",
+    "meaning": "눈을 비비고 상대를 대한다는 뜻으로, 학식이나 재주가 놀라운 정도로 부쩍 향상되었다는 뜻",
+    "status": "new",
+    "word": "괄목상대"
+  },
+  {
+    "hanja": "百尺竿頭",
+    "id": "idiom-백척간두",
+    "language": "ko-KR",
+    "meaning": "백 척 장대의 꼭대기. 백 척이나 되는 장대 끝에 매달려 있을 정도로 위급하고 어려운 상황",
+    "status": "new",
+    "word": "백척간두"
+  },
+  {
+    "hanja": "九死一生",
+    "id": "idiom-구사일생",
+    "language": "ko-KR",
+    "meaning": "구사일생 죽을 고비를 여러 차례 넘기고 겨우 살아남을 이르는 말.",
+    "status": "new",
+    "word": "구사일생"
+  },
+  {
+    "hanja": "見蚊拔劍",
+    "id": "idiom-견문발검",
+    "language": "ko-KR",
+    "meaning": "작은 일에 지나치게 큰 대책을 세움 혹은 조그만 일에 화를 내는 소견이 좁은 사람을 이름",
+    "status": "new",
+    "word": "견문발검"
+  },
+  {
+    "hanja": "他山之石",
+    "id": "idiom-타산지석",
+    "language": "ko-KR",
+    "meaning": "다른 사람의 하찮은 언행이라도 자기의 지덕을 닦는 데 도움이 됨을 비유",
+    "status": "new",
+    "word": "타산지석"
+  },
+  {
+    "hanja": "十伐之木",
+    "id": "idiom-십벌지목",
+    "language": "ko-KR",
+    "meaning": "열 번 찍어 아니 넘어가는 나무가 없다는 뜻",
+    "status": "new",
+    "word": "십벌지목"
+  },
+  {
+    "hanja": "類類相從",
+    "id": "idiom-유유상종",
+    "language": "ko-KR",
+    "meaning": "사물은 같은 무리끼리 따르고, 같은 사람은 서로 찾아 모인다는 뜻",
+    "status": "new",
+    "word": "유유상종"
+  },
+  {
+    "hanja": "以熱治熱",
+    "id": "idiom-이열치열",
+    "language": "ko-KR",
+    "meaning": "열은 열로써 다스린다는 뜻으로, 힘으로 또는 강한 것에는 강한 것으로 상대함을 이르는 말",
+    "status": "new",
+    "word": "이열치열"
+  },
+  {
+    "hanja": "草綠同色",
+    "id": "idiom-초록동색",
+    "language": "ko-KR",
+    "meaning": "풀빛과 녹색은 같은 빛깔이란 뜻으로, 같은 처지의 사람과 어울리거나 기우는 것",
+    "status": "new",
+    "word": "초록동색"
+  },
+  {
+    "hanja": "桑田碧海",
+    "id": "idiom-상전벽해",
+    "language": "ko-KR",
+    "meaning": "뽕나무밭이 푸른 바다가 되었다라는 뜻으로, 세상이 몰라 볼 정도로 바뀐 것. 세상의 모든 일 이 엄청나게 변해버린 것",
+    "status": "new",
+    "word": "상전벽해"
+  },
+  {
+    "hanja": "塞翁之馬",
+    "id": "idiom-새옹지마",
+    "language": "ko-KR",
+    "meaning": "세상만사는 변화가 많아 어느 것이 화가 되고, 어느 것이 복이 될지 예측하기가 어려워 재앙도 슬퍼할 게 못되고 복도 기뻐할 것이 아님을 이르는 말, 인생의 길흉화복은 늘 바뀌어 변화가 많음을 이르는 말",
+    "status": "new",
+    "word": "새옹지마"
+  },
+  {
+    "hanja": "苛斂誅求",
+    "id": "idiom-가렴주구",
+    "language": "ko-KR",
+    "meaning": "가혹하게 세금을 거두거나 백성의 재물을 억지로 뺏음",
+    "status": "new",
+    "word": "가렴주구"
+  },
+  {
+    "hanja": "換骨奪胎",
+    "id": "idiom-환골탈태",
+    "language": "ko-KR",
+    "meaning": "용모가 환하고 아름다워 딴 사람처럼 됨",
+    "status": "new",
+    "word": "환골탈태"
+  },
+  {
+    "hanja": "自中之亂",
+    "id": "idiom-자중지란",
+    "language": "ko-KR",
+    "meaning": "같은 패 안에서 일어나는 싸움",
+    "status": "new",
+    "word": "자중지란"
+  },
+  {
+    "hanja": "孤立無援",
+    "id": "idiom-고립무원",
+    "language": "ko-KR",
+    "meaning": "고립되어 도움을 받을 데가 없음",
+    "status": "new",
+    "word": "고립무원"
+  },
+  {
+    "hanja": "一進一退",
+    "id": "idiom-일진일퇴",
+    "language": "ko-KR",
+    "meaning": "한 번 나아감과 물러섬, 좋아졌다 나빠졌다함",
+    "status": "new",
+    "word": "일진일퇴"
+  },
+  {
+    "hanja": "五里霧中",
+    "id": "idiom-오리무중",
+    "language": "ko-KR",
+    "meaning": "무슨 일에 대하여 방향이나 상황을 알 길이 없음, 일의 갈피를 잡기 어려움",
+    "status": "new",
+    "word": "오리무중"
+  },
+  {
+    "hanja": "暗中摸索",
+    "id": "idiom-암중모색",
+    "language": "ko-KR",
+    "meaning": "어둠 속에서 손을 더듬어 찾는다라는 뜻으로, 어림짐작으로 사물을 알아내려 함을 이르는말",
+    "status": "new",
+    "word": "암중모색"
+  },
+  {
+    "hanja": "漸入佳境",
+    "id": "idiom-점입가경",
+    "language": "ko-KR",
+    "meaning": "가면 갈수록 경치가 더해진다는 뜻으로, 일이 점점 더 재미있는 지경으로 돌아가는 것을 비유 하는 말로 쓰임",
+    "status": "new",
+    "word": "점입가경"
+  },
+  {
+    "hanja": "氣高萬丈",
+    "id": "idiom-기고만장",
+    "language": "ko-KR",
+    "meaning": "일이 뜻대로 되어 나가 씩씩한 기운이 대단하게 뻗침",
+    "status": "new",
+    "word": "기고만장"
+  },
+  {
+    "hanja": "九牛一毛",
+    "id": "idiom-구우일모",
+    "language": "ko-KR",
+    "meaning": "아홉 마리 소에 털 한가닥이 빠진 정도라는 뜻으로, 아주 큰 물건 속에 있는 아주 작은 물건, 대단히 많은 것 중의 아주 적은 것의 비유",
+    "status": "new",
+    "word": "구우일모"
+  },
+  {
+    "hanja": "能小能大",
+    "id": "idiom-능소능대",
+    "language": "ko-KR",
+    "meaning": "큰 일이나 작은 일이나 임기응변으로 잘 처리 해냄",
+    "status": "new",
+    "word": "능소능대"
+  },
+  {
+    "hanja": "針小棒大",
+    "id": "idiom-침소봉대",
+    "language": "ko-KR",
+    "meaning": "바늘 만한 것을 몽둥이 만하다고 말함이란 뜻으로, 작은 일을 크게 과장하여 말함",
+    "status": "new",
+    "word": "침소봉대"
+  },
+  {
+    "hanja": "進退兩難",
+    "id": "idiom-진퇴양난",
+    "language": "ko-KR",
+    "meaning": "나아갈 수도 물러설 수도 없는 궁지에 빠짐",
+    "status": "new",
+    "word": "진퇴양난"
+  },
+  {
+    "hanja": "甲論乙駁",
+    "id": "idiom-갑론을박",
+    "language": "ko-KR",
+    "meaning": "갑이 논하면 을이 논박한다는 뜻으로, 서로 논란하고 반박함을 이르는 말",
+    "status": "new",
+    "word": "갑론을박"
+  },
+  {
+    "hanja": "兩者擇一",
+    "id": "idiom-양자택일",
+    "language": "ko-KR",
+    "meaning": "둘 중에서 하나를 선택함",
+    "status": "new",
+    "word": "양자택일"
+  },
+  {
+    "hanja": "卓上空論",
+    "id": "idiom-탁상공론",
+    "language": "ko-KR",
+    "meaning": "탁자 위에서만 펼치는 헛된 논설이란 뜻으로, 실현성이 없는 허황된 이론을 일컬음",
+    "status": "new",
+    "word": "탁상공론"
+  },
+  {
+    "hanja": "馬耳東風",
+    "id": "idiom-마이동풍",
+    "language": "ko-KR",
+    "meaning": "남의 비평이나 의견을 조금도 귀담아 듣지 아니하고 흘려버림을 이름",
+    "status": "new",
+    "word": "마이동풍"
+  },
+  {
+    "hanja": "眼下無人",
+    "id": "idiom-안하무인",
+    "language": "ko-KR",
+    "meaning": "태도가 몹시 거만하여 남을 사람같이 대하지 않는 것",
+    "status": "new",
+    "word": "안하무인"
+  },
+  {
+    "hanja": "莫無可奈",
+    "id": "idiom-막무가내",
+    "language": "ko-KR",
+    "meaning": "도무지 어찌할 수 없음, 고집이 너무 세거나 무조건 자기 주장만 내세우는 경우",
+    "status": "new",
+    "word": "막무가내"
+  },
+  {
+    "hanja": "緘口無言",
+    "id": "idiom-함구무언",
+    "language": "ko-KR",
+    "meaning": "입을 다물고 아무런 말이 없음",
+    "status": "new",
+    "word": "함구무언"
+  },
+  {
+    "hanja": "朝變夕改",
+    "id": "idiom-조변석개",
+    "language": "ko-KR",
+    "meaning": "아침, 저녁으로 뜯어고친다는 뜻으로, 계획이나 결정 따위를 자주 바꾸는 것을 이름",
+    "status": "new",
+    "word": "조변석개"
+  },
+  {
+    "hanja": "靑出於藍",
+    "id": "idiom-청출어람",
+    "language": "ko-KR",
+    "meaning": "제자가 스승보다 나은 것을 비유하는 말",
+    "status": "new",
+    "word": "청출어람"
+  },
+  {
+    "hanja": "苦盡甘來",
+    "id": "idiom-고진감래",
+    "language": "ko-KR",
+    "meaning": "쓴 것이 다하면 단 것이 온다라는 뜻으로, 고생 끝에 낙이 온다",
+    "status": "new",
+    "word": "고진감래"
+  },
+  {
+    "hanja": "改過遷善",
+    "id": "idiom-개과천선",
+    "language": "ko-KR",
+    "meaning": "지난날의 잘못을 고치어 착하게 됨",
+    "status": "new",
+    "word": "개과천선"
+  },
+  {
+    "hanja": "百年大計",
+    "id": "idiom-백년대계",
+    "language": "ko-KR",
+    "meaning": "먼 앞날까지 내다보고 먼 뒷날까지 걸쳐 세우는 큰 계획",
+    "status": "new",
+    "word": "백년대계"
+  },
+  {
+    "hanja": "姑息之計",
+    "id": "idiom-고식지계",
+    "language": "ko-KR",
+    "meaning": "근본 해결책이 아닌 임시로 편한 것을 취하는 계책, 당장의 편안함만을 꾀하는 일시적인 방편",
+    "status": "new",
+    "word": "고식지계"
+  },
+  {
+    "hanja": "公平無私",
+    "id": "idiom-공평무사",
+    "language": "ko-KR",
+    "meaning": "어느 쪽에도 치우치지 않아 공평하고 사사로움이 없음",
+    "status": "new",
+    "word": "공평무사"
+  },
+  {
+    "hanja": "東問西答",
+    "id": "idiom-동문서답",
+    "language": "ko-KR",
+    "meaning": "동쪽을 붇는 데 서쪽을 대답한다는 뜻으로, 묻는 말에 대하여 전혀 엉뚱한 대답",
+    "status": "new",
+    "word": "동문서답"
+  },
+  {
+    "hanja": "溫故知新",
+    "id": "idiom-온고지신",
+    "language": "ko-KR",
+    "meaning": "옛것을 익히고 그것을 미루어서 새로운 것을 앎. 온고이지신과 같은 의미",
+    "status": "new",
+    "word": "온고지신"
+  },
+  {
+    "hanja": "一場春夢",
+    "id": "idiom-일장춘몽",
+    "language": "ko-KR",
+    "meaning": "인생의 허무함을 한바탕의 봄꿈에 비유하여 이르는 말",
+    "status": "new",
+    "word": "일장춘몽"
+  },
+  {
+    "hanja": "結草報恩",
+    "id": "idiom-결초보은",
+    "language": "ko-KR",
+    "meaning": "무슨 짓을 하여서든지 잊지 않고 은혜에 보답함",
+    "status": "new",
+    "word": "결초보은"
+  },
+  {
+    "hanja": "興盡悲來",
+    "id": "idiom-흥진비래",
+    "language": "ko-KR",
+    "meaning": "즐거운 일이 지나가면 슬픈 일이 닥쳐온다는 뜻",
+    "status": "new",
+    "word": "흥진비래"
+  },
+  {
+    "hanja": "半信半疑",
+    "id": "idiom-반신반의",
+    "language": "ko-KR",
+    "meaning": "믿으면서도 한편으로는 의심함",
+    "status": "new",
+    "word": "반신반의"
+  },
+  {
+    "hanja": "狐假虎威",
+    "id": "idiom-호가호위",
+    "language": "ko-KR",
+    "meaning": "여우가 호랑이의 위세를 빌려 호기를 부린다는 뜻, 남의 세력을 빌려 위세를 부림",
+    "status": "new",
+    "word": "호가호위"
+  },
+  {
+    "hanja": "戰戰兢兢",
+    "id": "idiom-전전긍긍",
+    "language": "ko-KR",
+    "meaning": "어떤 위기감에 떠는 심정을 비유하는 말",
+    "status": "new",
+    "word": "전전긍긍"
+  },
+  {
+    "hanja": "虛張聲勢",
+    "id": "idiom-허장성세",
+    "language": "ko-KR",
+    "meaning": "헛된 목소리의 기세만 높다는 뜻으로 실력이 없으면서도 허세로만 떠벌림",
+    "status": "new",
+    "word": "허장성세"
+  },
+  {
+    "hanja": "自激之心",
+    "id": "idiom-자격지심",
+    "language": "ko-KR",
+    "meaning": "자기가 일을 해놓고 그 일에 대하여 스스로 미흡하게 여기는 마음",
+    "status": "new",
+    "word": "자격지심"
+  },
+  {
+    "hanja": "安分知足",
+    "id": "idiom-안분지족",
+    "language": "ko-KR",
+    "meaning": "자기 분수에 만족하여 다른데 마음을 두지 아니함",
+    "status": "new",
+    "word": "안분지족"
+  },
+  {
+    "hanja": "面從腹背",
+    "id": "idiom-면종복배",
+    "language": "ko-KR",
+    "meaning": "겉으로는 순종하는 체하고 속으로는 딴 마음을 먹음",
+    "status": "new",
+    "word": "면종복배"
+  },
+  {
+    "hanja": "牽强附會",
+    "id": "idiom-견강부회",
+    "language": "ko-KR",
+    "meaning": "이치에 맞지 않는 말을 억지로 끌어 붙여 자기의 주장에 맞도록 함",
+    "status": "new",
+    "word": "견강부회"
+  },
+  {
+    "hanja": "天壤之差",
+    "id": "idiom-천양지차",
+    "language": "ko-KR",
+    "meaning": "하늘과 땅 사이만큼 엄청난 차이",
+    "status": "new",
+    "word": "천양지차"
+  },
+  {
+    "hanja": "刻骨之痛",
+    "id": "idiom-각골지통",
+    "language": "ko-KR",
+    "meaning": "뼈를 깎는 아픔",
+    "status": "new",
+    "word": "각골지통"
+  },
+  {
+    "hanja": "唯一無二",
+    "id": "idiom-유일무이",
+    "language": "ko-KR",
+    "meaning": "둘이 아니고 오직 하나, 단 하나밖에 없다는 뜻",
+    "status": "new",
+    "word": "유일무이"
+  },
+  {
+    "hanja": "進退維谷",
+    "id": "idiom-진퇴유곡",
+    "language": "ko-KR",
+    "meaning": "앞으로도 뒤로도 나아가거나 물러서지 못한다는 뜻",
+    "status": "new",
+    "word": "진퇴유곡"
+  },
+  {
+    "hanja": "切磋琢磨",
+    "id": "idiom-절차탁마",
+    "language": "ko-KR",
+    "meaning": "학문이나 인격을 갈고 닦음",
+    "status": "new",
+    "word": "절차탁마"
+  },
+  {
+    "hanja": "全人未踏",
+    "id": "idiom-전인미답",
+    "language": "ko-KR",
+    "meaning": "지금까지 아무도 손을 대거나 발을 디딘 일이 없음",
+    "status": "new",
+    "word": "전인미답"
+  },
+  {
+    "hanja": "糊口之策",
+    "id": "idiom-호구지책",
+    "language": "ko-KR",
+    "meaning": "입에 풀칠하듯이 겨우 먹고 살아가는 방책",
+    "status": "new",
+    "word": "호구지책"
+  },
+  {
+    "hanja": "厚顔無恥",
+    "id": "idiom-후안무치",
+    "language": "ko-KR",
+    "meaning": "뻔뻔스러워 부끄러워 할 줄을 모름",
+    "status": "new",
+    "word": "후안무치"
+  },
+  {
+    "hanja": "切齒腐心",
+    "id": "idiom-절치부심",
+    "language": "ko-KR",
+    "meaning": "이를 갈고 마음을 썩힌다는 뜻으로, 대단히 분하게 여기고 마음을 썩임",
+    "status": "new",
+    "word": "절치부심"
+  },
+  {
+    "hanja": "無爲徒食",
+    "id": "idiom-무위도식",
+    "language": "ko-KR",
+    "meaning": "하는 일 없이 헛되이 먹기만 함",
+    "status": "new",
+    "word": "무위도식"
+  },
+  {
+    "hanja": "風餐露宿",
+    "id": "idiom-풍찬노숙",
+    "language": "ko-KR",
+    "meaning": "떠돌아다니며 고생스러운 생활을 함을 비유하는 말",
+    "status": "new",
+    "word": "풍찬노숙"
+  },
+  {
+    "hanja": "悲憤慷慨",
+    "id": "idiom-비분강개",
+    "language": "ko-KR",
+    "meaning": "슬프고 분한 느낌이 마음에 가득 차 있음",
+    "status": "new",
+    "word": "비분강개"
+  },
+  {
+    "hanja": "麥秀之嘆",
+    "id": "idiom-맥수지탄",
+    "language": "ko-KR",
+    "meaning": "고국의 멸망을 안타까워함",
+    "status": "new",
+    "word": "맥수지탄"
+  },
+  {
+    "hanja": "亡羊之歎",
+    "id": "idiom-망양지탄",
+    "language": "ko-KR",
+    "meaning": "달아난 양을 찾다 여러갈래의 길 앞에서 길을 잃었다는 의미. 방침이 많아 할 바를 모르게 됨",
+    "status": "new",
+    "word": "망양지탄"
+  },
+  {
+    "hanja": "後生可畏",
+    "id": "idiom-후생가외",
+    "language": "ko-KR",
+    "meaning": "뒤에 난 사람은 두려워할 만하다는 뜻으로, 후배는 나이가 젊고 의기가 장하므로 학문을 계속 쌓고 덕을 닦으면 그 진보는 선배를 능가하는 경지에 이를 것이라는 말.",
+    "status": "new",
+    "word": "후생가외"
+  },
+  {
+    "hanja": "多多益善",
+    "id": "idiom-다다익선",
+    "language": "ko-KR",
+    "meaning": "많으면 많을수록 더욱 좋다",
+    "status": "new",
+    "word": "다다익선"
+  },
+  {
+    "hanja": "緣木求魚",
+    "id": "idiom-연목구어",
+    "language": "ko-KR",
+    "meaning": "나무에서 물고기를 구한다는 의미로, 목적과 수단이 일치하지 않아 성공이 불가능함",
+    "status": "new",
+    "word": "연목구어"
+  },
+  {
+    "hanja": "一擧兩得",
+    "id": "idiom-일거양득",
+    "language": "ko-KR",
+    "meaning": "한가지의 일로 두가지의 이득을 보는 것",
+    "status": "new",
+    "word": "일거양득"
+  },
+  {
+    "hanja": "同床異夢",
+    "id": "idiom-동상이몽",
+    "language": "ko-KR",
+    "meaning": "같이 행동하면서 속으로는 다른 생각을 하는 것",
+    "status": "new",
+    "word": "동상이몽"
+  },
+  {
+    "hanja": "畵龍點睛",
+    "id": "idiom-화룡점정",
+    "language": "ko-KR",
+    "meaning": "용을 그린 다음 마지막으로 눈동자를 그린다는 뜻으로 가장 요긴한 부분을 마치어 일을 끝냄 을 이르는 말",
+    "status": "new",
+    "word": "화룡점정"
+  },
+  {
+    "hanja": "搖之不動",
+    "id": "idiom-요지부동",
+    "language": "ko-KR",
+    "meaning": "흔들어도 꿈적도 하지 않음",
+    "status": "new",
+    "word": "요지부동"
+  },
+  {
+    "hanja": "吾不關焉",
+    "id": "idiom-오불관언",
+    "language": "ko-KR",
+    "meaning": "나는 관여하지 않는다. 즉 어떤 일에 상관하지 않고 모른 체함",
+    "status": "new",
+    "word": "오불관언"
+  },
+  {
+    "hanja": "三顧草廬",
+    "id": "idiom-삼고초려",
+    "language": "ko-KR",
+    "meaning": "초가집을 세 번 찾아감. 훌륭한 인물을 모시기 위해 최선을 다하는 모습",
+    "status": "new",
+    "word": "삼고초려"
+  },
+  {
+    "hanja": "勞心焦思",
+    "id": "idiom-노심초사",
+    "language": "ko-KR",
+    "meaning": "몹시 마음을 쓰며 애를 태움",
+    "status": "new",
+    "word": "노심초사"
+  },
+  {
+    "hanja": "有口無言",
+    "id": "idiom-유구무언",
+    "language": "ko-KR",
+    "meaning": "입은 있으나 할 말이 없음. 잘못이 분명해 변명하거나 해명할 길이 없음",
+    "status": "new",
+    "word": "유구무언"
+  },
+  {
+    "hanja": "知己之友",
+    "id": "idiom-지기지우",
+    "language": "ko-KR",
+    "meaning": "소리를 알아듣는다는 뜻으로 자기의 속마음을 알아주는 친구를 이르는 말",
+    "status": "new",
+    "word": "지기지우"
+  },
+  {
+    "hanja": "吳越同舟",
+    "id": "idiom-오월동주",
+    "language": "ko-KR",
+    "meaning": "서로 미워하면서도 공통의 어려움이나 이해에 대해서는 협력하는 경우를 비유하는 말",
+    "status": "new",
+    "word": "오월동주"
+  },
+  {
+    "hanja": "近墨者黑",
+    "id": "idiom-근묵자흑",
+    "language": "ko-KR",
+    "meaning": "먹을 가까이 하다 보면 자신도 모르게 검어진다는 뜻. 사람도 주위 환경에 따라 변할 수 있음",
+    "status": "new",
+    "word": "근묵자흑"
+  },
+  {
+    "hanja": "異口同聲",
+    "id": "idiom-이구동성",
+    "language": "ko-KR",
+    "meaning": "입은 다르지만 하는 말은 같다는 뜻으로, 여러 사람의 말이 한결같음",
+    "status": "new",
+    "word": "이구동성"
+  },
+  {
+    "hanja": "衆口難防",
+    "id": "idiom-중구난방",
+    "language": "ko-KR",
+    "meaning": "여러 사람이 각기 말하는 의견이 봇물 터지듯 쏟아져 나옴",
+    "status": "new",
+    "word": "중구난방"
+  },
+  {
+    "hanja": "以心傳心",
+    "id": "idiom-이심전심",
+    "language": "ko-KR",
+    "meaning": "마음과 마음으로 서로 뜻이 통함. 문자나 언어 없이 남을 깨닫게 한다는 말",
+    "status": "new",
+    "word": "이심전심"
+  },
+  {
+    "hanja": "孑孑單身",
+    "id": "idiom-혈혈단신",
+    "language": "ko-KR",
+    "meaning": "의지할 데라곤 없이 오직 자신뿐인 외롭고 고독한 사람.",
+    "status": "new",
+    "word": "혈혈단신"
+  },
+  {
+    "hanja": "四顧無親",
+    "id": "idiom-사고무친",
+    "language": "ko-KR",
+    "meaning": "사방을 둘러 봐도 의지할만한 사람이 도무지 없다는 뜻",
+    "status": "new",
+    "word": "사고무친"
+  },
+  {
+    "hanja": "目不忍見",
+    "id": "idiom-목불인견",
+    "language": "ko-KR",
+    "meaning": "눈으로 볼 수 없을 정도로 비참하거나 안타까운 모습",
+    "status": "new",
+    "word": "목불인견"
+  },
+  {
+    "hanja": "袖手傍觀",
+    "id": "idiom-수수방관",
+    "language": "ko-KR",
+    "meaning": "소매에 손을 넣고 곁에서 보기만 한다는 뜻으로 관여하지 않고 그대로 내버려두는 것을 뜻함",
+    "status": "new",
+    "word": "수수방관"
+  },
+  {
+    "hanja": "刻骨痛恨",
+    "id": "idiom-각골통한",
+    "language": "ko-KR",
+    "meaning": "뼈에 새겨 놓을 만큼 잊을 수 없고 고통스러운 원한.",
+    "status": "new",
+    "word": "각골통한"
+  },
+  {
+    "hanja": "起死回生",
+    "id": "idiom-기사회생",
+    "language": "ko-KR",
+    "meaning": "죽을 고비에서 벗어나 다시 살아남.",
+    "status": "new",
+    "word": "기사회생"
+  },
+  {
+    "hanja": "表裏不同",
+    "id": "idiom-표리부동",
+    "language": "ko-KR",
+    "meaning": "겉과 안이 같지 않음. 즉 겉과 속이 다른 음흉한 품성.",
+    "status": "new",
+    "word": "표리부동"
+  },
+  {
+    "hanja": "輕擧妄動",
+    "id": "idiom-경거망동",
+    "language": "ko-KR",
+    "meaning": "가볍고 망령되게 행동한다는 뜻",
+    "status": "new",
+    "word": "경거망동"
+  },
+  {
+    "hanja": "傍若無人",
+    "id": "idiom-방약무인",
+    "language": "ko-KR",
+    "meaning": "곁에 사람이 없는 것처럼 행동함. 즉 주위 사람을 의식하지 않고 제멋대로 행동하는 것.",
+    "status": "new",
+    "word": "방약무인"
+  },
+  {
+    "hanja": "甘呑苦吐",
+    "id": "idiom-감탄고토",
+    "language": "ko-KR",
+    "meaning": "달면 삼키고 쓰면 뱉는다는 뜻. 자기 비위에 맞으면 좋아하고 맞지 않으면 싫어한다는 의미",
+    "status": "new",
+    "word": "감탄고토"
+  },
+  {
+    "hanja": "先見之明",
+    "id": "idiom-선견지명",
+    "language": "ko-KR",
+    "meaning": "미래에 전개될 일을 남보다 먼저 예견하는 총명함",
+    "status": "new",
+    "word": "선견지명"
+  },
+  {
+    "hanja": "識字憂患",
+    "id": "idiom-식자우환",
+    "language": "ko-KR",
+    "meaning": "글자를 아는 것이 걱정을 끼친다는 말. 너무 많이 알기에 쓸데없는 걱정도 그만큼 많다는 뜻",
+    "status": "new",
+    "word": "식자우환"
+  },
+  {
+    "hanja": "是是非非",
+    "id": "idiom-시시비비",
+    "language": "ko-KR",
+    "meaning": "옳고 그름을 알아보는 것",
+    "status": "new",
+    "word": "시시비비"
+  },
+  {
+    "hanja": "賊反荷杖",
+    "id": "idiom-적반하장",
+    "language": "ko-KR",
+    "meaning": "도둑이 도리어 몽둥이를 든다는 뜻으로, 잘못한 사람이 도리어 잘 한 사람을 나무라는 경우",
+    "status": "new",
+    "word": "적반하장"
+  },
+  {
+    "hanja": "同價紅裳",
+    "id": "idiom-동가홍상",
+    "language": "ko-KR",
+    "meaning": "같은 값이면 다홍치마. 기왕에 같은 조건이면 보기 좋은 것을 골라 가진다",
+    "status": "new",
+    "word": "동가홍상"
+  },
+  {
+    "hanja": "東奔西走",
+    "id": "idiom-동분서주",
+    "language": "ko-KR",
+    "meaning": "동쪽으로 뛰고 서쪽으로 뛴다는 뜻으로, 이리저리 몹시 바쁘게 돌아다님",
+    "status": "new",
+    "word": "동분서주"
+  },
+  {
+    "hanja": "已往之事",
+    "id": "idiom-이왕지사",
+    "language": "ko-KR",
+    "meaning": "이미 지나간 일.",
+    "status": "new",
+    "word": "이왕지사"
+  },
+  {
+    "hanja": "守株待兎",
+    "id": "idiom-수주대토",
+    "language": "ko-KR",
+    "meaning": "나무 그루터기를 지키며 토끼를 기다린다는 뜻으로, 실효성 없는 기대는 공연히 시간만 허비 하고, 우연한 행운 또는 불로소득을 기대하는 어리석음",
+    "status": "new",
+    "word": "수주대토"
+  },
+  {
+    "hanja": "千慮一失",
+    "id": "idiom-천려일실",
+    "language": "ko-KR",
+    "meaning": "천 가지 생각 가운데 한 가지 실책이란 뜻으로, 아무리 지혜롭다 하더라도 생각을 많이 하다보 면 하나쯤 실수가 있게 마련",
+    "status": "new",
+    "word": "천려일실"
+  },
+  {
+    "hanja": "自家撞着",
+    "id": "idiom-자가당착",
+    "language": "ko-KR",
+    "meaning": "스스로 부딪치기도 하고 붙기도 함. 한 사람의 말과 행동이 서로 앞뒤가 맞지 않는 모습",
+    "status": "new",
+    "word": "자가당착"
+  },
+  {
+    "hanja": "四面楚歌",
+    "id": "idiom-사면초가",
+    "language": "ko-KR",
+    "meaning": "사방에서 들려오는 초나라 노래라는 뜻으로, 적에게 포위되거나 몹시 어려운 일을 당하여 극 복할 방법이 전혀 없는 곤경",
+    "status": "new",
+    "word": "사면초가"
+  },
+  {
+    "hanja": "魂飛魄散",
+    "id": "idiom-혼비백산",
+    "language": "ko-KR",
+    "meaning": "넋이 날아가고 넋이 흩어지다라는 뜻으로, 몹시 놀라 어찌할 바를 모름",
+    "status": "new",
+    "word": "혼비백산"
+  },
+  {
+    "hanja": "以卵投石",
+    "id": "idiom-이란투석",
+    "language": "ko-KR",
+    "meaning": "계란으로 바위 치기. 약한 것으로 강한 것에게 덤비다. 무모하고 어리석은 행동을 비유한 것",
+    "status": "new",
+    "word": "이란투석"
+  },
+  {
+    "hanja": "杜門不出",
+    "id": "idiom-두문불출",
+    "language": "ko-KR",
+    "meaning": "문을 닫고 밖으로 나가지 않음. 즉 집에만 박혀 있으면서 결코 바깥출입을 하지 않는 모습.",
+    "status": "new",
+    "word": "두문불출"
+  },
+  {
+    "hanja": "佳人薄命",
+    "id": "idiom-가인박명",
+    "language": "ko-KR",
+    "meaning": "아름다운 여인은 목숨이 짧다.",
+    "status": "new",
+    "word": "가인박명"
+  },
+  {
+    "hanja": "一片丹心",
+    "id": "idiom-일편단심",
+    "language": "ko-KR",
+    "meaning": "한 조각의 붉은 마음. 즉 결코 변하지 않을 충성되고 참된 마음.",
+    "status": "new",
+    "word": "일편단심"
+  },
+  {
+    "hanja": "獨也靑靑",
+    "id": "idiom-독야청청",
+    "language": "ko-KR",
+    "meaning": "모든 것이 변해도 결코 변하지 않으며 제 모습을 지키는 굳은 절개를 가리키는 말",
+    "status": "new",
+    "word": "독야청청"
+  },
+  {
+    "hanja": "首丘初心",
+    "id": "idiom-수구초심",
+    "language": "ko-KR",
+    "meaning": "'여우가 죽을 때 제가 살던 언덕으로 머리를 둔다.'는 뜻. 고향이나 근본을 잊지 않는다는 의미",
+    "status": "new",
+    "word": "수구초심"
+  },
+  {
+    "hanja": "權不十年",
+    "id": "idiom-권불십년",
+    "language": "ko-KR",
+    "meaning": "아무리 막강한 권력도 10년 못 간다는 말인데, 꼭 10년이 아니라 영원할 것 같지만 오래 가지 못해 결국은 무너진다는 의미",
+    "status": "new",
+    "word": "권불십년"
+  },
+  {
+    "hanja": "內憂外患",
+    "id": "idiom-내우외환",
+    "language": "ko-KR",
+    "meaning": "'내부에서 일어나는 근심과 외부로부터 받는 근심'이란 뜻으로, 나라 안팎의 여러 가지 근심 걱정을 이르는 말",
+    "status": "new",
+    "word": "내우외환"
+  },
+  {
+    "hanja": "命在頃刻",
+    "id": "idiom-명재경각",
+    "language": "ko-KR",
+    "meaning": "목숨이 경각에 달려 있음. 즉 목숨이 눈 깜짝할 동안에 사라질 수도 있는 위험한 상황.",
+    "status": "new",
+    "word": "명재경각"
+  },
+  {
+    "hanja": "物我一體",
+    "id": "idiom-물아일체",
+    "language": "ko-KR",
+    "meaning": "'자연물과 자아가 하나가 된다.'는 뜻으로, 대상에 완전히 몰입된 경지",
+    "status": "new",
+    "word": "물아일체"
+  },
+  {
+    "hanja": "天佑神助",
+    "id": "idiom-천우신조",
+    "language": "ko-KR",
+    "meaning": "도저히 이루어질 수 없다고 여긴 일이 이루어지거나, 힘든 상황에서 극적으로 벗어나는 경우",
+    "status": "new",
+    "word": "천우신조"
+  },
+  {
+    "hanja": "左顧右眄",
+    "id": "idiom-좌고우면",
+    "language": "ko-KR",
+    "meaning": "왼쪽을 돌아보고 오른쪽을 곁눈질함. 즉 결정을 내리지 못하고 이것저것 눈치만 살피는 모습.",
+    "status": "new",
+    "word": "좌고우면"
+  },
+  {
+    "hanja": "莫逆之友",
+    "id": "idiom-막역지우",
+    "language": "ko-KR",
+    "meaning": "서로 거스르지 않는 친구라는 뜻으로, 아무 허물없이 친한 친구를 가리키는 말.",
+    "status": "new",
+    "word": "막역지우"
+  },
+  {
+    "hanja": "自畵自讚",
+    "id": "idiom-자화자찬",
+    "language": "ko-KR",
+    "meaning": "자기가 그린 그림을 자기가 칭찬함. 자기가 한 일을 스스로가 칭찬함.",
+    "status": "new",
+    "word": "자화자찬"
+  },
+  {
+    "hanja": "甘言利說",
+    "id": "idiom-감언이설",
+    "language": "ko-KR",
+    "meaning": "입에 발린 말과 이익을 약속하는 말. 즉 상대방을 현혹시키기 위해서 꾸민 달콤한 말과 이득을 내세워 속이는 말.",
+    "status": "new",
+    "word": "감언이설"
+  },
+  {
+    "hanja": "臨機應變",
+    "id": "idiom-임기응변",
+    "language": "ko-KR",
+    "meaning": "'어떤 일을 당하여 적절하게 반응하고 변통하다'라는 뜻으로, 그때그때의 형편에 따라 알맞게 일을 처리하는 것",
+    "status": "new",
+    "word": "임기응변"
+  },
+  {
+    "hanja": "大驚失色",
+    "id": "idiom-대경실색",
+    "language": "ko-KR",
+    "meaning": "너무 크게 놀라 얼굴이 하얗게 변하는 모습.",
+    "status": "new",
+    "word": "대경실색"
+  },
+  {
+    "hanja": "寤寐不忘",
+    "id": "idiom-오매불망",
+    "language": "ko-KR",
+    "meaning": "'자나 깨나 잊지 못하다'라는 뜻으로, 사랑하는 사람을 그리워하여 잠 못 들거나 근심 또는 생 각이 많아 잠 못 드는 것",
+    "status": "new",
+    "word": "오매불망"
+  },
+  {
+    "hanja": "風樹之嘆",
+    "id": "idiom-풍수지탄",
+    "language": "ko-KR",
+    "meaning": "바람이 나무를 흔들 듯, 자식이 효도하려 할 때 부모는 이미 죽어 효행을 다하지 못하는 슬픔",
+    "status": "new",
+    "word": "풍수지탄"
+  },
+  {
+    "hanja": "坐不安席",
+    "id": "idiom-좌불안석",
+    "language": "ko-KR",
+    "meaning": "마음이 불안하거나 걱정스러워서 한군데에 가만히 앉아 있지 못하고 안절부절못하는 모양",
+    "status": "new",
+    "word": "좌불안석"
+  },
+  {
+    "hanja": "肝膽相照",
+    "id": "idiom-간담상조",
+    "language": "ko-KR",
+    "meaning": "간과 쓸개를 서로 비추어 봄. 즉 서로 마음속을 드러내며 나누는 우정",
+    "status": "new",
+    "word": "간담상조"
+  },
+  {
+    "hanja": "輾轉反側",
+    "id": "idiom-전전반측",
+    "language": "ko-KR",
+    "meaning": "수레바퀴가 한없이 돌며 옆으로 뒤척인다는 뜻으로, 근심과 걱정으로 잠을 이루지 못함",
+    "status": "new",
+    "word": "전전반측"
+  },
+  {
+    "hanja": "憤氣䡱天",
+    "id": "idiom-분기탱천",
+    "language": "ko-KR",
+    "meaning": "분한 마음이 하늘을 찌를 듯 격렬하게 북받쳐 오름.",
+    "status": "new",
+    "word": "분기탱천"
+  },
+  {
+    "hanja": "死生決斷",
+    "id": "idiom-사생결단",
+    "language": "ko-KR",
+    "meaning": "죽고 사는 것을 가리지 않고 끝장을 내려고 덤벼듦",
+    "status": "new",
+    "word": "사생결단"
+  },
+  {
+    "hanja": "生死岐路",
+    "id": "idiom-생사기로",
+    "language": "ko-KR",
+    "meaning": "사느냐 죽느냐 하는 갈림길.",
+    "status": "new",
+    "word": "생사기로"
+  },
+  {
+    "hanja": "重言復言",
+    "id": "idiom-중언부언",
+    "language": "ko-KR",
+    "meaning": "같은 말을 계속 되풀이함.",
+    "status": "new",
+    "word": "중언부언"
+  },
+  {
+    "hanja": "以實直告",
+    "id": "idiom-이실직고",
+    "language": "ko-KR",
+    "meaning": "사실 그대로 알림.",
+    "status": "new",
+    "word": "이실직고"
+  },
+  {
+    "hanja": "語不成說",
+    "id": "idiom-어불성설",
+    "language": "ko-KR",
+    "meaning": "말이 이치를 이루지 못하다. 즉, 말이 전혀 사리에 맞지 않음",
+    "status": "new",
+    "word": "어불성설"
+  },
+  {
+    "hanja": "一口二言",
+    "id": "idiom-일구이언",
+    "language": "ko-KR",
+    "meaning": "한 입으로 두 말을 함. 즉 말을 이렇게 했다 저렇게 했다 일관성이 없는 것.",
+    "status": "new",
+    "word": "일구이언"
+  },
+  {
+    "hanja": "橫說竪說",
+    "id": "idiom-횡설수설",
+    "language": "ko-KR",
+    "meaning": "가로로 말했다 세로로 말함. 조리가 없는 말을 되는대로 이러쿵저러쿵 지껄임.",
+    "status": "new",
+    "word": "횡설수설"
+  },
+  {
+    "hanja": "雨後竹筍",
+    "id": "idiom-우후죽순",
+    "language": "ko-KR",
+    "meaning": "비가 온 뒤에 솟는 죽순이라는 뜻으로, 어떤 일이 일시에 많이 일어남을 이르는 말.",
+    "status": "new",
+    "word": "우후죽순"
+  },
+  {
+    "hanja": "明若觀火",
+    "id": "idiom-명약관화",
+    "language": "ko-KR",
+    "meaning": "불을 보는 것 같이 밝게 보인다는 뜻으로 더 말할 나위 없이 명백함",
+    "status": "new",
+    "word": "명약관화"
+  },
+  {
+    "hanja": "一觸卽發",
+    "id": "idiom-일촉즉발",
+    "language": "ko-KR",
+    "meaning": "한 번 닿기만 하여도 곧 폭발한다는 뜻으로 조그만 자극에도 큰 일이 벌어질 것 같은 아슬아슬 한 상태를 이르는 말",
+    "status": "new",
+    "word": "일촉즉발"
+  },
+  {
+    "hanja": "長幼有序",
+    "id": "idiom-장유유서",
+    "language": "ko-KR",
+    "meaning": "어른과 어린이 사이에는 순서와 질서가 있음",
+    "status": "new",
+    "word": "장유유서"
+  },
+  {
+    "hanja": "我田引水",
+    "id": "idiom-아전인수",
+    "language": "ko-KR",
+    "meaning": "자기의 이익을 먼저 생각하고 행동함 또는 억지로 자기에게 이롭도록 꾀함",
+    "status": "new",
+    "word": "아전인수"
+  },
+  {
+    "hanja": "結者解之",
+    "id": "idiom-결자해지",
+    "language": "ko-KR",
+    "meaning": "일을 맺은 사람이 풀어야 한다는 뜻으로 일을 저지른 사람이 그 일을 해결해야 한다는 말",
+    "status": "new",
+    "word": "결자해지"
+  },
+  {
+    "hanja": "赤手空拳",
+    "id": "idiom-적수공권",
+    "language": "ko-KR",
+    "meaning": "맨손과 맨주먹이라는 뜻으로 곧 아무것도 가진 것이 없음",
+    "status": "new",
+    "word": "적수공권"
+  },
+  {
+    "hanja": "金石盟約",
+    "id": "idiom-금석맹약",
+    "language": "ko-KR",
+    "meaning": "쇠와 돌같이 굳게 맹세하여 맺은 약속",
+    "status": "new",
+    "word": "금석맹약"
+  },
+  {
+    "hanja": "手不釋卷",
+    "id": "idiom-수불석권",
+    "language": "ko-KR",
+    "meaning": "손에서 책을 놓지 않는다는 뜻으로 늘 책을 가까이하여 학문을 열심히 함",
+    "status": "new",
+    "word": "수불석권"
+  },
+  {
+    "hanja": "隔世之感",
+    "id": "idiom-격세지감",
+    "language": "ko-KR",
+    "meaning": "아주 바뀐 다른 세상이 된 것 같은 느낌 또는 딴 세대와 같이 많은 변화가 있었음을 비유",
+    "status": "new",
+    "word": "격세지감"
+  },
+  {
+    "hanja": "臥薪嘗膽",
+    "id": "idiom-와신상담",
+    "language": "ko-KR",
+    "meaning": "섶에 눕고 쓸개를 씹는다는 뜻으로 원수를 갚으려고 온갖 괴로움을 참고 견딤을 이르는 말",
+    "status": "new",
+    "word": "와신상담"
+  },
+  {
+    "hanja": "先公後私",
+    "id": "idiom-선공후사",
+    "language": "ko-KR",
+    "meaning": "사보다 공을 앞세움이란 뜻으로 사사로운 일이나 이익보다 공익을 앞세움",
+    "status": "new",
+    "word": "선공후사"
+  },
+  {
+    "hanja": "口蜜腹劍",
+    "id": "idiom-구밀복검",
+    "language": "ko-KR",
+    "meaning": "입으로는 달콤함을 말하나 뱃속에는 칼을 감추고 있다는 뜻. 겉으로는 친절하나 마음속은 음 흉한 것",
+    "status": "new",
+    "word": "구밀복검"
+  },
+  {
+    "hanja": "擧案齊眉",
+    "id": "idiom-거안제미",
+    "language": "ko-KR",
+    "meaning": "‘밥상을 눈썹 높이로 들어 공손히 남편 앞에 가지고 간다’는 뜻으로, 남편을 깍듯이 공경함",
+    "status": "new",
+    "word": "거안제미"
+  },
+  {
+    "hanja": "高臺廣室",
+    "id": "idiom-고대광실",
+    "language": "ko-KR",
+    "meaning": "‘높은 누대와 넓은 집’이라는 뜻으로, 크고도 좋은 집을 이르는 말",
+    "status": "new",
+    "word": "고대광실"
+  },
+  {
+    "hanja": "金科玉條",
+    "id": "idiom-금과옥조",
+    "language": "ko-KR",
+    "meaning": "소중히 여기고 지켜야 할 규칙이나 교훈",
+    "status": "new",
+    "word": "금과옥조"
+  },
+  {
+    "hanja": "獨守空房",
+    "id": "idiom-독수공방",
+    "language": "ko-KR",
+    "meaning": "부부가 서로 별거하여 여자가 남자 없이 혼자 지냄을 뜻함",
+    "status": "new",
+    "word": "독수공방"
+  },
+  {
+    "hanja": "伯仲之勢",
+    "id": "idiom-백중지세",
+    "language": "ko-KR",
+    "meaning": "우열의 차이가 없이 엇비슷함을 이르는 말",
+    "status": "new",
+    "word": "백중지세"
+  },
+  {
+    "hanja": "殺身成仁",
+    "id": "idiom-살신성인",
+    "language": "ko-KR",
+    "meaning": "자기의 몸을 희생하여 옳은 도리를 행함",
+    "status": "new",
+    "word": "살신성인"
+  },
+  {
+    "hanja": "愚公移山",
+    "id": "idiom-우공이산",
+    "language": "ko-KR",
+    "meaning": "남이 보기엔 어리석은 일처럼 보이지만 한 가지 일을 끝까지 밀고 나가면 언젠가는 목적을 달 성할 수 있다는 뜻",
+    "status": "new",
+    "word": "우공이산"
+  },
+  {
+    "hanja": "自强不息",
+    "id": "idiom-자강불식",
+    "language": "ko-KR",
+    "meaning": "스스로 힘을 쓰고 몸과 마음을 가다듬어 쉬지 아니함",
+    "status": "new",
+    "word": "자강불식"
+  },
+  {
+    "hanja": "自業自得",
+    "id": "idiom-자업자득",
+    "language": "ko-KR",
+    "meaning": "자신이 저지른 일의 결과를 자신이 감수함",
+    "status": "new",
+    "word": "자업자득"
+  },
+  {
+    "hanja": "朝三暮四",
+    "id": "idiom-조삼모사",
+    "language": "ko-KR",
+    "meaning": "아침에 세 개, 저녁에 네 개라는 뜻으로, 당장의 차이에 신경 쓰지만 결과는 매한가지라는 뜻",
+    "status": "new",
+    "word": "조삼모사"
+  },
+  {
+    "hanja": "知人之鑑",
+    "id": "idiom-지인지감",
+    "language": "ko-KR",
+    "meaning": "사람을 잘 알아보는 능력",
+    "status": "new",
+    "word": "지인지감"
+  },
+  {
+    "hanja": "千辛萬苦",
+    "id": "idiom-천신만고",
+    "language": "ko-KR",
+    "meaning": "온갖 어려운 고비를 다 겪으며 심하게 고생함을 이르는 말",
+    "status": "new",
+    "word": "천신만고"
+  },
+  {
+    "hanja": "千村萬落",
+    "id": "idiom-천촌만락",
+    "language": "ko-KR",
+    "meaning": "수많은 촌락",
+    "status": "new",
+    "word": "천촌만락"
+  },
+  {
+    "hanja": "風月主人",
+    "id": "idiom-풍월주인",
+    "language": "ko-KR",
+    "meaning": "맑은 바람과 밝은 달 등의 자연을 즐기는 사람을 이르는 말",
+    "status": "new",
+    "word": "풍월주인"
+  },
+  {
+    "hanja": "兄友弟恭",
+    "id": "idiom-형우제공",
+    "language": "ko-KR",
+    "meaning": "형제끼리 우애가 깊음",
+    "status": "new",
+    "word": "형우제공"
+  },
+  {
+    "hanja": "同病相憐",
+    "id": "idiom-동병상련",
+    "language": "ko-KR",
+    "meaning": "같은 병자끼리 가엾게 여긴다는 뜻으로 어려운 처지에 있는 사람끼리 서로 불쌍히 여겨 동정 하고 서로 도움",
+    "status": "new",
+    "word": "동병상련"
+  },
+  {
+    "hanja": "轉禍爲福",
+    "id": "idiom-전화위복",
+    "language": "ko-KR",
+    "meaning": "화가 바뀌어 오히려 복이 된다는 뜻으로, 어떤 불행한 일이라도 끊임없는 노력과 강인한 의지 로 힘쓰면 불행을 행복으로 바꾸어 놓을 수 있다는 말",
+    "status": "new",
+    "word": "전화위복"
+  },
+  {
+    "hanja": "附和雷同",
+    "id": "idiom-부화뇌동",
+    "language": "ko-KR",
+    "meaning": "우레 소리에 맞춰 함께한다는 뜻으로, 자신의 뚜렷한 소신 없이 그저 남이 하는 대로 따라가는 것을 의미함",
+    "status": "new",
+    "word": "부화뇌동"
+  },
+  {
+    "hanja": "自繩自縛",
+    "id": "idiom-자승자박",
+    "language": "ko-KR",
+    "meaning": "자기가 자기를 망치게 한다는 뜻. 즉, 자기의 언행으로 인하여 자신이 꼼짝 못하게 되는 일",
+    "status": "new",
+    "word": "자승자박"
+  },
+  {
+    "hanja": "誇大妄想",
+    "id": "idiom-과대망상",
+    "language": "ko-KR",
+    "meaning": "턱없이 과장하여 엉뚱하게 생각함",
+    "status": "new",
+    "word": "과대망상"
+  },
+  {
+    "hanja": "百年河淸",
+    "id": "idiom-백년하청",
+    "language": "ko-KR",
+    "meaning": "백 년을 기다린다 해도 황하의 흐린 물은 맑아지지 않는다는 뜻으로, 오랫동안 기다려도 바라 는 것이 이루어질 수 없음을 이르는 말",
+    "status": "new",
+    "word": "백년하청"
+  },
+  {
+    "hanja": "安貧樂道",
+    "id": "idiom-안빈낙도",
+    "language": "ko-KR",
+    "meaning": "구차하고 궁색하면서도 그것에 구속되지 않고 평안하게 즐기는 마음으로 살아감, 가난에 구 애받지 않고 도를 즐김",
+    "status": "new",
+    "word": "안빈낙도"
+  },
+  {
+    "hanja": "後悔莫及",
+    "id": "idiom-후회막급",
+    "language": "ko-KR",
+    "meaning": "이미 잘못된 뒤에 아무리 후회하여도 어찌할 수가 없음",
+    "status": "new",
+    "word": "후회막급"
+  },
+  {
+    "hanja": "說往說來",
+    "id": "idiom-설왕설래",
+    "language": "ko-KR",
+    "meaning": "말들이 왔다 갔다 함. 즉 의견이나 입장이 달라 말로 옥신각신하는 모습",
+    "status": "new",
+    "word": "설왕설래"
+  },
+  {
+    "hanja": "騎虎之勢",
+    "id": "idiom-기호지세",
+    "language": "ko-KR",
+    "meaning": "범에 올라탄 기세. 즉 이미 시작한 일이라 도중에 그만둘 수 없는 상황",
+    "status": "new",
+    "word": "기호지세"
+  },
+  {
+    "hanja": "一罰百戒",
+    "id": "idiom-일벌백계",
+    "language": "ko-KR",
+    "meaning": "한 사람을 벌줌으로써, 만인에게 경계가 되도록 한다는 뜻.",
+    "status": "new",
+    "word": "일벌백계"
+  },
+  {
+    "hanja": "自暴自棄",
+    "id": "idiom-자포자기",
+    "language": "ko-KR",
+    "meaning": "절망에 빠져 자기 자신을 학대하며 돌아보지 않음.",
+    "status": "new",
+    "word": "자포자기"
+  },
+  {
+    "hanja": "晩時之歎",
+    "id": "idiom-만시지탄",
+    "language": "ko-KR",
+    "meaning": "때늦은 탄식. 이미 기회를 잃은 후 한탄하는 모습.",
+    "status": "new",
+    "word": "만시지탄"
+  },
+  {
+    "hanja": "三十六計",
+    "id": "idiom-삼십육계",
+    "language": "ko-KR",
+    "meaning": "도망가야 할 때에는 기회를 보고 무조건 도망을 쳐서 몸을 안전하게 하는 일이 병법상의 최상 책이라는 뜻",
+    "status": "new",
+    "word": "삼십육계"
+  },
+  {
+    "hanja": "滅私奉公",
+    "id": "idiom-멸사봉공",
+    "language": "ko-KR",
+    "meaning": "사를 버리고 공을 위하여 힘써 일함",
+    "status": "new",
+    "word": "멸사봉공"
+  },
+  {
+    "hanja": "風飛雹散",
+    "id": "idiom-풍비박산",
+    "language": "ko-KR",
+    "meaning": "바람이 불어 우박져 버림이 이리저리 흩어진다는 뜻으로 엉망으로 깨어져 사방으로 흩어짐",
+    "status": "new",
+    "word": "풍비박산"
+  },
+  {
+    "hanja": "數間茅屋",
+    "id": "idiom-수간모옥",
+    "language": "ko-KR",
+    "meaning": "두서너 칸밖에 안 되는 띠집. 오두막집",
+    "status": "new",
+    "word": "수간모옥"
+  }
+]
