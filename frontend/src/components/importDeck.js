@@ -23,12 +23,12 @@ export async function importDeck(file, report) {
     if (extension === 'docx') {
       text = (await mammoth.extractRawText({ arrayBuffer: await file.arrayBuffer() })).value;
     } else if (extension === 'pdf') {
-      pdf = await pdfjs.getDocument({ data: await file.arrayBuffer() }).promise;
+      pdf = await pdfjs.getDocument({ data: await file.arrayBuffer(), cMapUrl: import.meta.env.BASE_URL + 'pdfjs/cmaps/', cMapPacked: true }).promise;
       for (let number = 1; number <= pdf.numPages; number++) {
         report('PDF 읽는 중 ' + number + '/' + pdf.numPages);
         const page = await pdf.getPage(number);
         const content = await page.getTextContent();
-        let pageText = content.items.map(item => item.str + (item.hasEOL ? '\n' : ' ')).join('');
+        let pageText = content.items.filter(item => !(/^\d+$/.test(item.str.trim()) && item.transform?.[5] < 60)).map(item => item.str + (item.hasEOL ? '\n' : ' ')).join('');
         if (needsVocabularyOcr(pageText, parseVocabulary(pageText))) {
           const viewport = page.getViewport({ scale: 1.8 });
           const canvas = document.createElement('canvas');

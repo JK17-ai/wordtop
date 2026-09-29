@@ -29,3 +29,4 @@ test('Korean metadata survives JSON snapshot and library switching without schem
 });
 
 test('Korean meaning and recall questions have exactly two distinct choices with the answer',()=>{const words=parseVocabulary(text);for(const mode of ['meaning','recall','reverse']){const options=buildQuizChoices(words[0],words,mode);assert.equal(options.length,2);assert.equal(new Set(options).size,2);assert(options.includes(mode==='reverse'?words[0].word:words[0].meaning));}});
+test('wrapped Korean clauses with commas are not mistaken for vocabulary entries',()=>{const words=parseVocabulary('수주대토(守株待兎): 실효성 없는 기대는 시간을 허비\n하고, 우연한 행운을 기대하는 어리석음');assert.equal(words.length,1);assert.match(words[0].meaning,/하고, 우연한/);});

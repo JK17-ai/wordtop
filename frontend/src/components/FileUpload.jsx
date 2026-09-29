@@ -1,3 +1,4 @@
+import AppNotice from './AppNotice';
 import { withFeedExample } from './feedExamples.js';
 import { isKoreanWord } from './koreanVocabulary.js';
 import DeckPicker from './DeckPicker';
@@ -317,7 +318,7 @@ export default function FileUpload({ profile }) {
     };
 
   return (
-    <><div inert={showTutorial ? true : undefined} ref={shellRef} className={`app-shell preview-${viewMode} reel-feed quiet-study`}>
+    <><div inert={showTutorial || !!notice ? true : undefined} ref={shellRef} className={`app-shell preview-${viewMode} reel-feed quiet-study`}>
       <UpdateNotice />
       {reviewHint && !panel && <div className="review-method-hint" role="status" aria-live="polite"><ResceneFace member="liv"/><span>설정에서 학습방법 변경 가능합니다.</span></div>}
       <header className="topbar"><h1 className="moa-brand"><MoaLogo/></h1>{profile && <div className="active-profile">{profile.avatar} {profile.name}</div>}</header>
@@ -325,7 +326,7 @@ export default function FileUpload({ profile }) {
       {!panel && <button type="button" className="quiet-deck" disabled={busy || !ready || syncBlocked || pauseLocked} onClick={openDeckPicker} title={`현재 단어장: ${deckName} · 선택하기`}><span className="quiet-deck-label">현재 단어장</span><strong>{deckName}</strong><span aria-hidden="true">⌄</span></button>}
       <StudySyncStatus sync={sync} snapshot={snapshot} />
       {!panel && mode === "feed" && learnedWords.some(w=>isDue(w)) && <button className="review-invitation" disabled={busy || !ready || syncBlocked} onClick={()=>startQuiz(learnedWords.filter(w=>isDue(w)).slice(0,17), false, '복습할 단어')}><span className="review-invitation-icon" aria-hidden="true">↻</span><span className="review-invitation-copy"><strong>기억을 깨울 시간</strong><small>복습할 {learnedWords.filter(w=>isDue(w)).length}개 중 {Math.min(17,learnedWords.filter(w=>isDue(w)).length)}개만 가볍게</small></span><span className="review-invitation-action">복습 시작 <span aria-hidden="true">→</span></span></button>}
-      {notice && <div className="import-notice" role="status" onClick={() => !busy && setNotice("")}>{notice}</div>}
+      {notice && <AppNotice message={notice} busy={busy} onClose={()=>setNotice("")}/>}
       {/* Previous per-answer streak toast hidden for focused study. */}
        {!panel && mode === "quiz" && <><nav className="feed-tabs" inert={pauseLocked ? true : undefined}><button className={activeTab === "all" ? "active" : ""} onClick={() => selectStudyTab("all")}>학습한 단어<small>({learnedWords.length.toLocaleString()})</small></button><button className={activeTab === "scrap" ? "active" : ""} onClick={() => selectStudyTab("scrap")}>몰라요<small>({quizPool(allWords,"scrap",reviewStage,feedProgress).length.toLocaleString()})</small></button><button className={activeTab === "mastered" ? "active" : ""} onClick={() => selectStudyTab("mastered")}>알아요<small>({quizPool(allWords,"mastered",reviewStage,feedProgress).length.toLocaleString()})</small></button></nav>
       {/* 이전 제목 보관: Today's Mission / Today */}
