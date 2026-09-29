@@ -313,3 +313,11 @@
 
 .reaction-answer-label{display:block;font-size:12px;letter-spacing:.08em;color:#ffb7af;margin-bottom:6px;}
 .reaction-answer-encouragement{display:block;font-size:12px;font-weight:500;color:#f4c9c4;margin-top:12px;}
+
+/* Give sentences their natural wrapped height; the definition takes the remaining space. */
+.app-shell.quiet-study .study-example p{display:block;white-space:normal;overflow:visible;text-overflow:clip;width:100%;box-sizing:border-box;margin:5px 0 0;line-height:1.45;overflow-wrap:anywhere;}
+.app-shell.quiet-study .study-example .study-example-english{font-size:16px;color:#25311e;font-weight:650;word-break:normal;}
+.app-shell.quiet-study .study-example .study-example-korean{font-size:15px;color:#414e35;font-weight:550;word-break:keep-all;}
+.app-shell.quiet-study .moa-feed .moa-slide{grid-template-rows:44px minmax(60px,.8fr) auto minmax(40px,1fr) 44px;}
+.app-shell.quiet-study .moa-feed .moa-definition{overflow-y:auto;touch-action:pan-y;}
+@media(max-height:740px){.app-shell.quiet-study .moa-feed .moa-slide{grid-template-rows:44px minmax(48px,.65fr) auto minmax(36px,1fr) 44px;}.app-shell.quiet-study .study-example .study-example-english{font-size:15px;}.app-shell.quiet-study .study-example .study-example-korean{font-size:14px;}}
