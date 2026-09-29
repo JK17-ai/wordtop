@@ -1,3 +1,5 @@
+import useCardFit from './useCardFit';
+import AccountPanel from './AccountPanel';
 import PortraitOnly, {usePortraitOnly} from './PortraitOnly';
 import AppNotice from './AppNotice';
 import { withFeedExample } from './feedExamples.js';
@@ -38,7 +40,9 @@ import useAccuracy, { AccuracyStats } from "./useAccuracy";
 
 
 export default function FileUpload({ profile }) {
+  useCardFit();
   const landscape = usePortraitOnly();
+  const [showAccount,setShowAccount] = useState(false);
   const deckStorageKey = profileKey(profile?.id, "wordtop-current-deck");
   const accuracy = useAccuracy(profileKey(profile?.id, "wordtop-daily-accuracy-v1"));
   const shellRef = useRef(null);
@@ -320,10 +324,10 @@ export default function FileUpload({ profile }) {
     };
 
   return (
-    <><PortraitOnly active={landscape}/><div inert={landscape || showTutorial || !!notice ? true : undefined} ref={shellRef} className={`app-shell preview-${viewMode} reel-feed quiet-study`}>
+    <><PortraitOnly active={landscape}/><div inert={showAccount || landscape || showTutorial || !!notice ? true : undefined} ref={shellRef} className={`app-shell preview-${viewMode} reel-feed quiet-study`}>
       <UpdateNotice />
       {reviewHint && !panel && <div className="review-method-hint" role="status" aria-live="polite"><ResceneFace member="liv"/><span>설정에서 학습방법 변경 가능합니다.</span></div>}
-      <header className="topbar"><h1 className="moa-brand"><MoaLogo/></h1>{profile && <div className="active-profile">{profile.avatar} {profile.name}</div>}</header>
+      <header className="topbar"><h1 className="moa-brand"><MoaLogo/></h1>{profile && <button className="active-profile" onClick={()=>setShowAccount(true)} aria-label="내 정보 열기">{profile.avatar} {profile.name}</button>}</header>
       <input ref={picker} hidden type="file" accept=".pdf,.docx,.txt,.csv,image/*" onChange={handleFile} />
       {!panel && <button type="button" className="quiet-deck" disabled={busy || !ready || syncBlocked || pauseLocked} onClick={openDeckPicker} title={`현재 단어장: ${deckName} · 선택하기`}><span className="quiet-deck-label">현재 단어장</span><strong>{deckName}</strong><span aria-hidden="true">⌄</span></button>}
       <StudySyncStatus sync={sync} snapshot={snapshot} />
@@ -354,7 +358,7 @@ export default function FileUpload({ profile }) {
         <button className="quiz-complete-secondary" onClick={()=>{setMode('feed');setPauseLocked(false);}}>모아학습으로 {learnedWords.length ? '돌아가기' : '시작하기'} →</button>
       </section> : <>
       {/* Previous inline review controls moved to Settings > 학습방법. */}
-      <main className="reel-stage" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>{pageWords.map(item => <WordCard key={`${deckVersion}-${activeTab}-${reviewStage}-${item.id}`} exercise={activeExercise} item={item} reviewMode={activeTab !== "all"} paused={studyPaused} onPausedChange={setStudyPaused} onFinish={correct => { setPauseLocked(true); reactToAnswer(correct, item, activeExercise); }} suspended={landscape || !!reaction?.example || busy || syncBlocked || !!panel || mode !== "quiz" || reviewHint || showTutorial} choices={allWords} onAnswer={(id, correct, timing) => {
+      <main className="reel-stage" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>{pageWords.map(item => <WordCard key={`${deckVersion}-${activeTab}-${reviewStage}-${item.id}`} exercise={activeExercise} item={item} reviewMode={activeTab !== "all"} paused={studyPaused} onPausedChange={setStudyPaused} onFinish={correct => { setPauseLocked(true); reactToAnswer(correct, item, activeExercise); }} suspended={showAccount || landscape || !!reaction?.example || busy || syncBlocked || !!panel || mode !== "quiz" || reviewHint || showTutorial} choices={allWords} onAnswer={(id, correct, timing) => {
         const next = answerWord(allWords, activeTab, safePage, id, correct, timing);
         setActiveMs(value => value + (timing?.responseMs || 0));
         hadLocalRecords.current = true;
@@ -377,7 +381,7 @@ export default function FileUpload({ profile }) {
   <button className={panel === 'library' ? 'selected' : ''} onClick={() => setPanel('library')}><span>▥</span><small>내 단어장</small></button>
   <button className={panel && panel !== 'library' && panel !== 'decks' ? 'selected' : ''} onClick={() => setPanel('records')}><span>◎</span><small>내 기록</small></button>
 </nav>
-    </div>{showTutorial && <StudyTutorial onClose={closeTutorial}/>}</>
+    </div>{showAccount && <AccountPanel profile={profile} onClose={()=>setShowAccount(false)}/>} {showTutorial && <StudyTutorial onClose={closeTutorial}/>}</>
   );
 }
   // Previous content-driven density resizing removed: stable layout avoids jumping.

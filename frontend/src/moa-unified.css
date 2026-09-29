@@ -418,3 +418,95 @@ button.quiet-deck{width:100%;cursor:pointer;font:inherit;}button.quiet-deck:focu
 .moa-batch-list .batch-term strong{display:block;max-width:none;white-space:normal;overflow:visible;text-overflow:clip;font-size:17px;font-weight:750;line-height:1.4;}
 .moa-batch-list .batch-hanja{display:block;font-family:"Noto Sans CJK KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:25px;font-weight:700;letter-spacing:.08em;line-height:1.4;color:#263a15;margin-top:3px;overflow-wrap:anywhere;}
 .moa-batch-list .batch-result-row .batch-meaning{grid-column:2;font-size:14px;line-height:1.65;white-space:normal;overflow:visible;text-overflow:clip;word-break:keep-all;overflow-wrap:anywhere;}
+.personal-entry form,.account-panel form{display:grid;gap:14px;}
+.personal-entry label,.account-panel label{display:grid;gap:6px;font-size:14px;font-weight:650;}
+.personal-entry input,.personal-entry select,.account-panel input,.account-panel select{box-sizing:border-box;width:100%;min-width:0;min-height:46px;border:1px solid #cddcbb;border-radius:12px;padding:10px;font:inherit;background:#fff;color:#243316;}
+.optional-demographics{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.optional-demographics small{font-weight:400;color:#66745c;}
+.personal-entry button,.account-panel button{min-height:44px;padding:10px 14px;border:1px solid #ccdab8;border-radius:12px;background:#eef6df;color:#243316;font:inherit;font-weight:650;cursor:pointer;}
+.personal-entry .account-primary,.account-panel .account-primary{width:100%;background:#bbff32;border-color:#a4dc26;margin:8px 0;}
+.personal-entry .account-text-button,.account-panel .account-text-button{background:transparent;margin-top:12px;}
+.account-error{color:#9c3030;}
+.account-backdrop{position:fixed;inset:0;z-index:1400;background:#19211366;display:grid;place-items:center;padding:20px;box-sizing:border-box;}
+.account-panel{background:#f8fbf1;border:1px solid #d1dfbd;border-radius:24px;box-sizing:border-box;width:min(100%,480px);max-height:90dvh;overflow:auto;padding:20px;color:#243316;font-family:Pretendard,system-ui,sans-serif;}
+.account-panel header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px;}.account-panel h2{margin:0;}.account-panel p,.personal-entry p{line-height:1.6;}
+.account-recovery{border-top:1px solid #d1dfbd;margin-top:20px;padding-top:8px;}
+.recovery-display{background:#edf5df;border:1px solid #ccdcb8;border-radius:16px;padding:16px;margin:16px 0;}
+.recovery-display code{display:block;font-size:18px;line-height:1.7;font-weight:700;overflow-wrap:anywhere;user-select:all;}
+.recovery-display p{font-size:13px;}.account-actions{display:flex;gap:8px;flex-wrap:wrap;}.account-actions button{flex:1;}
+.app-shell button.active-profile{cursor:pointer;font:inherit;font-size:12px;}
+.external-browser-entry{min-height:100dvh;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;background:#f5faed;text-align:center;font-family:Pretendard,system-ui,sans-serif;}
+.external-browser-link{display:block;padding:18px 28px;border:1px solid #9fce48;border-radius:16px;background:#bbff32;color:#243316;font-size:21px;font-weight:800;text-decoration:none;}
+.external-browser-help{max-width:360px;margin-top:22px;color:#536347;font-size:14px;line-height:1.6;overflow-wrap:anywhere;}
+.external-browser-help button{min-height:44px;padding:8px 18px;border:1px solid #cadbb3;border-radius:12px;background:#fff;font:inherit;}
+.install-entry>img{display:block;margin:24px auto 16px;border-radius:22px;}.install-entry h1{font-size:30px;line-height:1.35;}
+.install-instructions{padding:14px;background:#edf5df;border:1px solid #d1dfbd;border-radius:16px;margin-top:12px;text-align:left;}.install-instructions h2{font-size:17px;}.install-instructions ol{padding-left:22px;font-size:14px;line-height:1.7;}
+.guest-name-preview{display:flex;flex-direction:column;gap:6px;padding:18px;border:1px solid #cadbb3;border-radius:16px;background:#edf5df;}.guest-name-preview strong{font-size:24px;}.guest-name-preview span{font-size:13px;color:#65744f;}
+.optional-demographics{display:flex;flex-direction:column;gap:18px;}
+.demographic-group{border:0;padding:0;margin:0;min-width:0;}
+.demographic-group legend{padding:0;margin-bottom:9px;font-size:15px;font-weight:750;color:#263a15;}
+.demographic-group legend small{margin-left:6px;font-size:12px;font-weight:400;color:#65744f;}
+.demographic-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
+.personal-entry .demographic-options button,.account-panel .demographic-options button{min-height:70px;border:2px solid #d7e3c8;border-radius:16px;background:#f6f9f0;font-size:17px;font-weight:750;color:#36462a;box-shadow:0 3px 0 #23301608;}
+.personal-entry .demographic-options button.is-selected,.account-panel .demographic-options button.is-selected{background:#c0ff42;border-color:#6e9e24;color:#1b2912;box-shadow:0 3px 0 #557c1d24;}
+.demographic-options button:focus-visible{outline:3px solid #527d1b;outline-offset:3px;}
+.recovery-display{text-align:center;}
+.recovery-display code{font-family:Pretendard,"Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:clamp(20px,5.5vw,28px);font-weight:800;letter-spacing:.04em;text-align:center;line-height:1.6;}
+.recovery-display p{text-align:center;margin:12px 0 0;line-height:1.7;}
+
+.onboarding-recovery-title{text-align:center;font-size:16px;margin:20px 0 8px;}
+
+/* Onboarding flows vertically within the viewport, including browser chrome. */
+.profile-screen.personal-entry{
+ box-sizing:border-box;height:100dvh;min-height:0;overflow-y:auto;overflow-x:hidden;
+ padding:max(12px,env(safe-area-inset-top)) clamp(12px,4vw,22px) max(16px,env(safe-area-inset-bottom));
+ overscroll-behavior-y:contain;scroll-padding-block:16px;
+}
+.personal-entry header{gap:3px;margin-bottom:clamp(8px,2dvh,18px);}
+.personal-entry h1{font-size:clamp(22px,5.5vw,28px);line-height:1.25;margin-top:8px;margin-bottom:8px;}
+.personal-entry > p{margin-top:6px;margin-bottom:12px;}
+.personal-entry form{gap:clamp(7px,1.3dvh,12px);min-width:0;}
+.personal-entry .guest-name-preview{padding:clamp(8px,1.6dvh,14px);gap:3px;}
+.personal-entry .guest-name-preview strong{font-size:22px;line-height:1.25;}
+.personal-entry .optional-demographics{gap:clamp(10px,1.8dvh,16px);}
+.personal-entry .demographic-group legend{margin-bottom:6px;}
+.personal-entry .demographic-options{gap:8px;}
+.personal-entry .demographic-options button{min-height:clamp(46px,7dvh,62px);padding:8px;font-size:16px;line-height:1.25;border-radius:14px;}
+.personal-entry .onboarding-recovery-title{margin:4px 0 0;font-size:14px;}
+.personal-entry .recovery-display{margin:0;padding:8px 12px;border-radius:14px;}
+.personal-entry .recovery-display code{font-size:clamp(22px,6vw,28px);line-height:1.3;}
+.personal-entry .recovery-display p{margin:5px 0 0;font-size:12px;line-height:1.5;}
+.personal-entry .account-primary{margin:4px 0;min-height:48px;}
+.personal-entry .account-text-button{margin-top:8px;min-height:44px;}
+@media(max-height:740px){
+ .personal-entry header span{display:none;}
+ .personal-entry header .moa-symbol{width:36px;height:36px;}
+ .personal-entry header .moa-wordmark{font-size:28px;}
+ .personal-entry header{margin-bottom:8px;}
+ .personal-entry > p{margin-bottom:8px;}
+}
+
+.app-shell.quiet-study .study-content:has(>.moa-feed:not(.has-summary)),.app-shell.quiet-study .study-content:has(>.moa-quiz-body:not(:has(.quiz-session-complete))){overflow:hidden;}
+.app-shell.quiet-study .study-content:has(>.moa-feed)>.moa-feed:not(.has-summary),.app-shell.quiet-study .study-content>.moa-quiz-body:not(:has(.quiz-session-complete)){flex:1 1 0;min-height:0;height:100%;margin:0;}
+.app-shell.quiet-study .moa-feed .moa-swipe-viewport{min-height:0;flex:1 1 0;}
+.app-shell.quiet-study .moa-quiz-body:not(:has(.quiz-session-complete))>.reel-stage{min-height:0;height:0;flex:1 1 0;overflow:hidden;}
+.app-shell.reel-feed.quiet-study .moa-quiz-body .reel-stage .word-card{box-sizing:border-box;flex:1 1 0;min-height:0;height:100%!important;max-height:100%;overflow:hidden!important;}
+.app-shell.reel-feed.quiet-study .moa-quiz-body .reel-stage .word-card.korean-quiz{gap:calc(6px * var(--card-fit,1));padding:8px 10px!important;}
+.app-shell.reel-feed.quiet-study .word-card.korean-quiz>.word-heading{flex:1 1 0;min-height:0;gap:4px;}
+.app-shell.reel-feed.quiet-study .word-card.korean-quiz .context-question{font-size:calc(19px * var(--card-fit,1));line-height:1.4;margin:0;padding:0;}
+.app-shell.reel-feed.quiet-study .word-card.korean-quiz .word-term{font-size:calc(32px * var(--card-fit,1))!important;}
+.app-shell.reel-feed.quiet-study .word-card.korean-quiz .korean-quiz-hanja{font-size:calc(30px * var(--card-fit,1));line-height:1.25;}
+.app-shell.reel-feed.quiet-study .moa-quiz-body .word-card.korean-quiz>.choice-grid{flex:0 0 auto;gap:6px;min-height:0;}
+.app-shell.reel-feed.quiet-study .moa-quiz-body .word-card.korean-quiz .choice-grid button{min-height:44px;padding:calc(8px * var(--card-fit,1)) 10px!important;font-size:calc(17px * var(--card-fit,1));line-height:1.4;}
+.app-shell.quiet-study .korean-choice-label{gap:2px;}
+.app-shell.quiet-study .korean-choice-label strong{font-size:calc(18px * var(--card-fit,1));}
+.app-shell.quiet-study .korean-choice-hanja{font-size:calc(24px * var(--card-fit,1));line-height:1.2;}
+.app-shell.quiet-study .moa-feed .korean-study-card{gap:4px;padding:8px 10px;}
+.app-shell.quiet-study .moa-feed .korean-study-content{overflow:hidden;gap:calc(8px * var(--card-fit,1));padding:0;justify-content:center;}
+.app-shell.quiet-study .korean-study-heading{margin:0;}
+.app-shell.quiet-study .korean-study-heading h3{font-size:calc(32px * var(--card-fit,1));margin:3px 0;line-height:1.2;}
+.app-shell.quiet-study .korean-study-hanja{font-size:calc(30px * var(--card-fit,1));line-height:1.25;}
+.app-shell.quiet-study .moa-feed .korean-study-content .korean-study-meaning{padding:calc(8px * var(--card-fit,1)) 10px;margin:0;}
+.app-shell.quiet-study .moa-feed .korean-study-meaning p{font-size:calc(18px * var(--card-fit,1));line-height:1.4;}
+@media(max-height:670px){.app-shell.quiet-study{gap:4px;padding-top:6px;}.app-shell.quiet-study .quiz-session-progress{padding:3px 10px;}.app-shell.quiet-study .moa-quiz-body{gap:4px;}.app-shell.quiet-study .review-invitation{padding:5px 8px;}}
+.app-shell.quiet-study .feed-tabs{height:44px;min-height:44px;gap:6px;}.app-shell.quiet-study .feed-tabs button{height:44px;min-height:44px;padding:3px 4px;font-size:13px;line-height:1.2;border-width:1px;}.app-shell.quiet-study .feed-tabs button small{font-size:11px;line-height:1.2;margin-top:2px;}
