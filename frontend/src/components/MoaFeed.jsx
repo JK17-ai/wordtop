@@ -1,4 +1,3 @@
-import DeckPicker from './DeckPicker';
 import { selfJudgment, quizPool } from './quizSessions.js';
 import StudyExample from './StudyExample';
 import { reviewPriority } from './learningFlow.js';
@@ -173,7 +172,7 @@ function FeedSession({ words:sourceWords, storageKey, disabled, onClassify, onQu
     {(error || message) && <p className="moa-feed-message" role="status">{error || message}</p>}
   </section>;
 }
-export function MoaLibrary({ decks, activeDeckId, onSelectDeck, words, name, onUpload, disabled, onClassify, onQuiz, progress, onProgress }) {
+export function MoaLibrary({ onOpenDecks, words, name, onUpload, disabled, onClassify, onQuiz, progress, onProgress }) {
   const [query,setQuery]=useState('');
   const [filter,setFilter]=useState('all');
   const [sort,setSort]=useState('priority');
@@ -188,7 +187,7 @@ export function MoaLibrary({ decks, activeDeckId, onSelectDeck, words, name, onU
     return result.sort((a,b)=>(ranks.get(a.id)??Infinity)-(ranks.get(b.id)??Infinity));
   },[words,sort,order]);
   const filtered=ordered.filter(w=>(filter==='all'||(filter==='saved'?w.saved:(w.status||'new')===filter))&&`${w.word} ${w.meaning}`.toLowerCase().includes(query.toLowerCase()));
-  return <section className="moa-library"><header className="library-heading"><h2>내 단어장</h2><DeckPicker decks={decks} activeId={activeDeckId} onSelect={onSelectDeck} onUpload={onUpload} disabled={disabled}/></header><p className="library-deck-name"><span>현재 단어장</span> <strong>{name}</strong> · {words.length.toLocaleString()}개</p>
+  return <section className="moa-library"><header className="library-heading"><h2>내 단어장</h2><button className="deck-picker-toggle" onClick={onOpenDecks} disabled={disabled}>단어장 선택하기 <span aria-hidden="true">⌄</span></button></header><p className="library-deck-name"><span>현재 단어장</span> <strong>{name}</strong> · {words.length.toLocaleString()}개</p>
     <input aria-label="단어 검색" placeholder="단어 또는 뜻 검색" value={query} onChange={e=>{setQuery(e.target.value);setLimit(100);}}/>
     <div className="moa-library-filters">{[['all','전체'],['new','새로 익히기'],['scrap','다시 익히기'],['mastered','기억 다지기'],['saved','저장']].map(([key,label])=><button key={key} aria-pressed={filter===key} onClick={()=>{setFilter(key);setLimit(100);}}>{label}</button>)}</div>
     <div className="library-toolbar"><select aria-label="단어 정렬" value={sort} onChange={e=>setSort(e.target.value)}><option value="priority">복습 우선</option><option value="recent">최근 추가</option><option value="alpha">알파벳순</option><option value="random">랜덤</option></select>

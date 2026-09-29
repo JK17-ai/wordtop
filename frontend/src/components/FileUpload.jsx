@@ -1,3 +1,4 @@
+import DeckPicker from './DeckPicker';
 import { emptyDeckLibrary, libraryItems, selectLibraryDeck, addLibraryDeck, localDeckSave } from './deckLibrary.js';
 import { browserUUID } from '../lib/browserCrypto.js';
 import { selfJudgment, quizPool, quizLabel, tabQuizKey, resumeQuiz, recordQuizAnswer, restartQuiz, restoreQuizProgress } from './quizSessions.js';
@@ -76,6 +77,8 @@ export default function FileUpload({ profile }) {
   const [pauseLocked, setPauseLocked] = useState(false);
   const [viewMode, setViewMode] = useState("phone");
   const [panel, setPanel] = useState(null);
+  const [deckPickerReturn,setDeckPickerReturn] = useState(null);
+  const openDeckPicker = () => {setDeckPickerReturn(panel);setPanel('decks');};
   const [recordSection, setRecordSection] = useState(null);
   const [mode, setMode] = useState("feed");
   const bannerIndices = useMotivationRotation(panel ? null : mode);
@@ -307,7 +310,7 @@ export default function FileUpload({ profile }) {
       {reviewHint && !panel && <div className="review-method-hint" role="status" aria-live="polite"><ResceneFace member="liv"/><span>설정에서 학습방법 변경 가능합니다.</span></div>}
       <header className="topbar"><h1 className="moa-brand"><MoaLogo/></h1>{profile && <div className="active-profile">{profile.avatar} {profile.name}</div>}</header>
       <input ref={picker} hidden type="file" accept=".pdf,.docx,.txt,.csv,image/*" onChange={handleFile} />
-      {!panel && <div className="quiet-deck" title={`현재 단어장: ${deckName}`}><span className="quiet-deck-label">현재 단어장</span><strong>{deckName}</strong></div>}
+      {!panel && <button type="button" className="quiet-deck" disabled={busy || !ready || syncBlocked || pauseLocked} onClick={openDeckPicker} title={`현재 단어장: ${deckName} · 선택하기`}><span className="quiet-deck-label">현재 단어장</span><strong>{deckName}</strong><span aria-hidden="true">⌄</span></button>}
       <StudySyncStatus sync={sync} snapshot={snapshot} />
       {!panel && mode === "feed" && learnedWords.some(w=>isDue(w)) && <button className="review-invitation" disabled={busy || !ready || syncBlocked} onClick={()=>startQuiz(learnedWords.filter(w=>isDue(w)).slice(0,17), false, '복습할 단어')}><span className="review-invitation-icon" aria-hidden="true">↻</span><span className="review-invitation-copy"><strong>기억을 깨울 시간</strong><small>복습할 {learnedWords.filter(w=>isDue(w)).length}개 중 {Math.min(17,learnedWords.filter(w=>isDue(w)).length)}개만 가볍게</small></span><span className="review-invitation-action">복습 시작 <span aria-hidden="true">→</span></span></button>}
       {notice && <div className="import-notice" role="status" onClick={() => !busy && setNotice("")}>{notice}</div>}
@@ -315,7 +318,7 @@ export default function FileUpload({ profile }) {
        {!panel && mode === "quiz" && <><nav className="feed-tabs" inert={pauseLocked ? true : undefined}><button className={activeTab === "all" ? "active" : ""} onClick={() => selectStudyTab("all")}>학습한 단어<small>({learnedWords.length.toLocaleString()})</small></button><button className={activeTab === "scrap" ? "active" : ""} onClick={() => selectStudyTab("scrap")}>몰라요<small>({quizPool(allWords,"scrap",reviewStage,feedProgress).length.toLocaleString()})</small></button><button className={activeTab === "mastered" ? "active" : ""} onClick={() => selectStudyTab("mastered")}>알아요<small>({quizPool(allWords,"mastered",reviewStage,feedProgress).length.toLocaleString()})</small></button></nav>
       {/* 이전 제목 보관: Today's Mission / Today */}
       <section className="daily-study-line" aria-label="오늘 학습 현황"><span>오늘 <strong>{today.total}</strong>개 학습</span><span aria-hidden="true">·</span><span>다시 익힐 <strong>{today.scrap}</strong>개</span><span aria-hidden="true">·</span><span>정답 <strong>{today.mastered}</strong>개</span></section></>}
-      <div className={`study-scroll ${panel ? "panel-scroll" : "study-content"}`}>{panel === "library" ? <MoaLibrary key={deckLibrary.activeId} decks={libraryItems(snapshot)} activeDeckId={deckLibrary.activeId} onSelectDeck={selectDeck} onClassify={classify} onQuiz={(words,practice)=>startQuiz(words,practice,'내 단어장 복습')} progress={feedProgress} profileId={profile?.id} words={allWords} name={deckName} onUpload={() => picker.current?.click()} disabled={busy || !ready || syncBlocked} /> : panel === "records" ? <section className="moa-menu"><header className="records-heading"><h2>내 기록</h2><p>가족과 함께 쌓아가는 공부 습관</p></header>
+      <div className={`study-scroll ${panel ? "panel-scroll" : "study-content"}`}>{panel === "decks" ? <DeckPicker decks={libraryItems(snapshot)} activeId={deckLibrary.activeId} onSelect={selectDeck} onUpload={()=>picker.current?.click()} onClose={()=>setPanel(deckPickerReturn)} disabled={busy || !ready || syncBlocked}/> : panel === "library" ? <MoaLibrary onOpenDecks={openDeckPicker} key={deckLibrary.activeId} decks={libraryItems(snapshot)} activeDeckId={deckLibrary.activeId} onSelectDeck={selectDeck} onClassify={classify} onQuiz={(words,practice)=>startQuiz(words,practice,'내 단어장 복습')} progress={feedProgress} profileId={profile?.id} words={allWords} name={deckName} onUpload={() => picker.current?.click()} disabled={busy || !ready || syncBlocked} /> : panel === "records" ? <section className="moa-menu"><header className="records-heading"><h2>내 기록</h2><p>가족과 함께 쌓아가는 공부 습관</p></header>
         {[["family","♧","가족 학습 기록"],["badges","♔","내 배지와 보상"],["settings","⚙","학습 설정"]].map(([key,icon,label]) => <section className="moa-record-section" key={key}>
           <h3><button id={`record-toggle-${key}`} className="moa-record-toggle" aria-expanded={recordSection === key} aria-controls={`record-content-${key}`} onClick={() => setRecordSection(current => current === key ? null : key)}><span>{icon} {label}</span><span aria-hidden="true">{recordSection === key ? '−' : '+'}</span></button></h3>
           {recordSection === key && <div id={`record-content-${key}`} className="moa-record-content" role="region" aria-labelledby={`record-toggle-${key}`}>
@@ -355,7 +358,7 @@ export default function FileUpload({ profile }) {
   <button className={!panel && mode === 'feed' ? 'selected' : ''} aria-current={!panel && mode === 'feed' ? 'page' : undefined} onClick={() => { setPanel(null); setMode('feed'); }}><span>▤</span><small>모아학습</small></button>
   <button className={!panel && mode === 'quiz' ? 'selected' : ''} aria-current={!panel && mode === 'quiz' ? 'page' : undefined} onClick={() => { setPanel(null); setMode('quiz'); if (!quizSession || quizProgress.activeKey?.startsWith('tab:')) selectStudyTab(activeTab); else openQuiz(quizProgress.activeKey, learnedWords.filter(word=>quizSession.ids.includes(word.id)), quizSession); }}><span>ϟ</span><small>모아퀴즈</small></button>
   <button className={panel === 'library' ? 'selected' : ''} onClick={() => setPanel('library')}><span>▥</span><small>내 단어장</small></button>
-  <button className={panel && panel !== 'library' ? 'selected' : ''} onClick={() => setPanel('records')}><span>◎</span><small>내 기록</small></button>
+  <button className={panel && panel !== 'library' && panel !== 'decks' ? 'selected' : ''} onClick={() => setPanel('records')}><span>◎</span><small>내 기록</small></button>
 </nav>
     </div>{showTutorial && <StudyTutorial onClose={closeTutorial}/>}</>
   );
