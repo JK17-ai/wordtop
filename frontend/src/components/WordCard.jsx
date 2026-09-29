@@ -132,13 +132,14 @@ export default function WordCard({ item, onAnswer, suspended = false, choices = 
             {Array.from({ length: item.responseStage }, (_, index) => <span key={index} aria-hidden="true">★</span>)}
           </span>
         )}>{result ? item.word : (exercise === "reverse" || exercise === "context") ? item.meaning : item.word}</FitWord>}
+        {korean && !koreanReverse && item.hanja && <p className="korean-quiz-hanja" lang="ko" aria-label="한자 표기">{item.hanja}</p>}
       </div>
       {USE_WORD_COLOR_TIMER && (
         <div className="thin-timer" role="progressbar" aria-label="남은 시간" aria-valuemin={0} aria-valuemax={10} aria-valuenow={Math.ceil(remaining / 1000)}>
           {[0, 1, 2, 3, 4].map(index => <i key={index} className={index < Math.ceil(remaining / 2000) ? "lit" : ""} />)}
         </div>
       )}
-        {((exercise !== "reverse" && exercise !== "listening" && exercise !== "context" && exercise !== "english-context") || result) && (
+        {!korean && ((exercise !== "reverse" && exercise !== "listening" && exercise !== "context" && exercise !== "english-context") || result) && (
           <div
             lang="en-US"
             aria-label={korean ? "한자 표기" : "미국식 발음기호"}
@@ -159,7 +160,7 @@ export default function WordCard({ item, onAnswer, suspended = false, choices = 
           </div>
         </div>, document.body)}
       <div className="quiz-prompt" role="status">{speechError || (koreanReverse && !result ? '뜻에 맞는 단어를 골라 주세요' : exercise === 'english-context' && !result ? englishExample?.example ? '예문 속 단어에 맞는 한국어 뜻은?' : '영어 단어에 맞는 한국어 뜻은?' : exercise === 'context' && !result ? contextPrompt ? contextPrompt.highlight ? '밑줄 친 부분에 해당하는 영어 단어는?' : '예문의 문맥에 맞는 영어 단어는?' : '준비된 예문이 없어 뜻에 맞는 영어 단어를 골라 주세요' : result ? '\u00a0' : recalling ? '뜻을 떠올린 뒤 시작하세요' : exercise === 'listening' && !heard ? '발음을 들은 뒤 뜻을 선택하세요' : '\u00a0')}</div>
-      <div className="choice-grid">{recalling ? <button className="recall-ready" disabled={suspended} onClick={() => { if (paused) showPauseHint(); else setRecalling(false); }}>떠올렸어요 · 퀴즈 시작</button> : options.map(choice => <button key={choice} data-correct={choice === answer} disabled={!!result || suspended} className={result ? choice === answer ? 'answer-reveal' : choice === result.choice ? 'answer-wrong' : 'answer-muted' : ''} onClick={() => finish(choice === answer, choice)}>{choice}</button>)}</div>
+      <div className="choice-grid">{recalling ? <button className="recall-ready" disabled={suspended} onClick={() => { if (paused) showPauseHint(); else setRecalling(false); }}>떠올렸어요 · 퀴즈 시작</button> : options.map(choice => <button key={choice} data-correct={choice === answer} disabled={!!result || suspended} className={result ? choice === answer ? 'answer-reveal' : choice === result.choice ? 'answer-wrong' : 'answer-muted' : ''} onClick={() => finish(choice === answer, choice)}>{koreanReverse ? <span className="korean-choice-label"><strong>{choice}</strong>{choices.find(word=>word.word===choice)?.hanja && <span lang="ko" className="korean-choice-hanja">{choices.find(word=>word.word===choice).hanja}</span>}</span> : choice}</button>)}</div>
     </article>
 
     {flight && createPortal(<div aria-hidden="true" className={`answer-flight ${result.correct ? 'to-mastered' : 'to-scrap'}`} style={{ left: flight.left, top: flight.top, width: flight.width, minHeight: flight.height, '--fly-x': `${flight.dx}px`, '--fly-y': `${flight.dy}px` }}>{item.meaning}<span>✦</span></div>, document.body)}

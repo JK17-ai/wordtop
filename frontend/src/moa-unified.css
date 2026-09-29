@@ -387,3 +387,9 @@ button.quiet-deck{width:100%;cursor:pointer;font:inherit;}button.quiet-deck:focu
 .app-notice-dialog h2{margin:8px 0 14px;font-size:21px;color:#e3ffb4;}
 .app-notice-dialog p{font-size:17px;line-height:1.65;word-break:keep-all;overflow-wrap:anywhere;margin:0;}
 .app-notice-dialog button{margin-top:22px;width:100%;min-height:48px;background:#bbff32;color:#1c2516;font-size:17px;font-weight:750;border:0;border-radius:14px;cursor:pointer;}
+/* Keep the Korean reading and its characters together above the timer. */
+.app-shell.reel-feed.quiet-study .reel-stage .word-card.korean-quiz>.word-heading{flex-direction:column;gap:8px;}
+.korean-study-hanja,.app-shell.reel-feed.quiet-study .word-card.korean-quiz .korean-quiz-hanja{margin:0;font-family:"Noto Sans CJK KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:clamp(30px,8.5vw,40px);font-weight:700;line-height:1.4;letter-spacing:.08em;color:#263a15;overflow-wrap:anywhere;}
+.korean-choice-label{display:flex;flex-direction:column;align-items:center;gap:4px;}
+.korean-choice-label strong{font-size:19px;line-height:1.3;}
+.korean-choice-hanja{font-family:"Noto Sans CJK KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:25px;font-weight:700;line-height:1.4;letter-spacing:.08em;color:inherit;}
