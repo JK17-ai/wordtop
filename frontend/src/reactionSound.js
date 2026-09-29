@@ -1,178 +1,82 @@
-// Short synthetic cartoon reactions; no recording or external audio requests.
-let context;
-let resuming;
-let lastAudioError = null;
-export function unlockSound(userGesture = false) {
+// Load bytes at startup without claiming an audio session or creating a media player.
+let bytesPromise, decoded, decoding, context, resumePromise, idleTimer;
+let generation=0, lastError=null;
+const active=new Set();
+export function preloadSounds() {
+  if(!bytesPromise && typeof window.fetch==='function') {
+    bytesPromise=window.fetch('/audio/reactions.wav').then(r=>{if(!r.ok)throw Error('Audio preload failed');return r.arrayBuffer();}).catch(error=>{lastError={message:error.message};return null;});
+  }
+  return bytesPromise || Promise.resolve(null);
+}
+function mixSession() {
+  try { if(window.navigator?.audioSession) window.navigator.audioSession.type='ambient'; } catch { /* Optional browser API. */ }
+}
+function releaseWhenIdle() {
+  clearTimeout(idleTimer);
+  idleTimer=setTimeout(()=>{if(!active.size && context?.state==='running') void context.suspend?.().catch(()=>{});},120);
+}
+function decode() {
+  if(decoded || decoding || !context?.decodeAudioData) return;
+  decoding=preloadSounds().then(bytes=>bytes ? context.decodeAudioData(bytes.slice(0)) : null).then(value=>{decoded=value;}).catch(error=>{lastError={message:error.message};}).finally(()=>{decoding=null;});
+}
+export function unlockSound() {
   try {
-    const Audio = window.AudioContext || window.webkitAudioContext;
-    if (!Audio) return Promise.resolve(false);
-    // Supported mobile browsers can route effects through the media audio session.
-    try { if (window.navigator?.audioSession) window.navigator.audioSession.type = 'playback'; } catch { /* Optional API. */ }
-    if (!context || context.state === 'closed') {
-      context = new Audio({ latencyHint: 'interactive' });
-      // Prime the output synchronously inside the initial user gesture.
-      if (context.createBufferSource && context.createBuffer) {
-        const source = context.createBufferSource();
-        source.buffer = context.createBuffer(1, 1, context.sampleRate);
-        source.connect(context.destination);
-        source.onended = () => source.disconnect();
-        source.start(0);
-      }
-    }
-    if (context.state === 'running') return Promise.resolve(true);
-    // A pending resume can remain unresolved on mobile. A new gesture must retry it.
-    if (userGesture && resuming) {
-      void context.resume().catch(error => { lastAudioError = { name:error.name, message:error.message }; });
-    }
-    if (!resuming) {
-      resuming = context.resume().then(() => context.state === 'running', error => { lastAudioError = { name:error.name, message:error.message }; return false; })
-        .finally(() => { resuming = null; });
-    }
-    return resuming;
-  } catch (error) { lastAudioError = { name:error.name, message:error.message }; return Promise.resolve(false); }
+    const AudioContext=window.AudioContext || window.webkitAudioContext;
+    if(!AudioContext) return Promise.resolve(false);
+    mixSession();clearTimeout(idleTimer);
+    if(!context || context.state==='closed') {context=new AudioContext({latencyHint:'interactive'});decoded=null;}
+    decode();
+    if(context.state==='running') return Promise.resolve(true);
+    if(!resumePromise) resumePromise=context.resume().then(()=>{if(!active.size)releaseWhenIdle();return context.state==='running';}).catch(error=>{lastError={name:error.name,message:error.message};return false;}).finally(()=>{resumePromise=null;});
+    return resumePromise;
+  } catch(error) {lastError={name:error.name,message:error.message};return Promise.resolve(false);}
 }
-export function installSoundUnlock(target = document) {
-  prepareMedia();
-  const unlock = () => { void unlockSound(true); };
-  target.addEventListener('pointerdown', unlock, true);
-  target.addEventListener('keydown', unlock, true);
-  target.addEventListener('touchend', unlock, { capture: true, passive: true });
-  return () => {
-    target.removeEventListener('pointerdown', unlock, true);
-    target.removeEventListener('keydown', unlock, true);
-    target.removeEventListener('touchend', unlock, true);
-  };
+export function stopSounds() {
+  generation++;clearTimeout(idleTimer);
+  for(const node of active){try{node.stop();node.disconnect();}catch{/* already stopped */}}
+  active.clear();
+  if(context?.state==='running') void context.suspend?.().catch(()=>{});
 }
-let soundGeneration = 0;
-const activeTones = new Set();
-async function playSynthReaction(correct, { streak = 0, badge = false } = {}) {
-  const generation = ++soundGeneration;
-  // Wait for the first gesture's resume, but never play stale feedback later.
-  let timeout;
-  const ready = await Promise.race([
-    unlockSound(),
-    new Promise(resolve => { timeout = setTimeout(() => resolve(false), 600); }),
-  ]);
-  clearTimeout(timeout);
-  if (!ready || !context || context.state !== 'running') return { outcome:'activation-failed' };
-  if (generation !== soundGeneration) return { outcome:'superseded' };
-  if (window.speechSynthesis?.speaking) return { outcome:'speech-active' };
-  for (const oscillator of activeTones) { try { oscillator.stop(); } catch { /* Already ended. */ } }
-  activeTones.clear();
-  const pitches = !correct ? [260,220] : badge ? [523.25,659.25,783.99,1046.5] : streak >= 5 && streak % 5 === 0 ? [523.25,659.25,783.99,987.77] : [659.25,783.99,987.77];
-  const start = context.currentTime + .008;
-  pitches.forEach((pitch,i) => {
-    const oscillator=context.createOscillator(), gain=context.createGain();
-    oscillator.type='sine';
-    const time=start+i*(badge ? .11 : .065), duration=correct ? .15 : .12;
-    oscillator.frequency.setValueAtTime(pitch,time);
-    gain.gain.setValueAtTime(0,time);
-    gain.gain.linearRampToValueAtTime(correct ? .14 : .10,time+.012);
-    gain.gain.exponentialRampToValueAtTime(.001,time+duration);
-    oscillator.connect(gain); gain.connect(context.destination);
-    oscillator.start(time); oscillator.stop(time+duration+.02);
-    activeTones.add(oscillator);
-    oscillator.onended=()=>{activeTones.delete(oscillator);oscillator.disconnect();gain.disconnect();};
+export function installSoundUnlock(target=document) {
+  void preloadSounds();
+  const hidden=()=>{if(target.visibilityState==='hidden') stopSounds();};
+  target.addEventListener('visibilitychange',hidden);
+  window.addEventListener?.('pagehide',stopSounds);
+  return ()=>{target.removeEventListener('visibilitychange',hidden);window.removeEventListener?.('pagehide',stopSounds);stopSounds();};
+}
+function track(node,gain) {
+  active.add(node);
+  node.onended=()=>{active.delete(node);node.disconnect();gain?.disconnect();if(!active.size)releaseWhenIdle();};
+}
+async function play(kind,options={}) {
+  const token=++generation;let timer;
+  // resume() is requested synchronously from the answer click, before awaiting.
+  const ready=await Promise.race([unlockSound(),new Promise(resolve=>{timer=setTimeout(()=>resolve(false),600);})]);
+  clearTimeout(timer);
+  if(token!==generation) return {outcome:'superseded'};
+  if(!ready || context?.state!=='running'){releaseWhenIdle();return {outcome:'activation-failed'};}
+  if(window.document?.visibilityState==='hidden'){stopSounds();return {outcome:'hidden'};}
+  if(window.speechSynthesis?.speaking){releaseWhenIdle();return {outcome:'speech-active'};}
+  for(const node of active){try{node.stop();}catch{/* already stopped */}}active.clear();
+  if(decoded && kind!=='feed') {
+    const source=context.createBufferSource();source.buffer=decoded;
+    const gain=context.createGain();gain.gain.value=.65;source.connect(gain);gain.connect(context.destination);track(source,gain);
+    const offset=kind==='wrong'?1:options.badge?3:options.streak>=5&&options.streak%5===0?2:0;
+    source.start(0,offset,.75);
+    return {outcome:'scheduled',engine:'web-audio-buffer'};
+  }
+  // Ready immediately even if file download/decode has not finished on the first tap.
+  const pitches=kind==='feed'?[880,659.25]:kind==='wrong'?[260,220]:options.badge?[523.25,659.25,783.99,1046.5]:[659.25,783.99,987.77];
+  pitches.forEach((pitch,i)=>{
+    const node=context.createOscillator(),gain=context.createGain();const start=context.currentTime+.008+i*(kind==='feed'?.16:.065);const duration=kind==='feed'?.25:.15;
+    node.type='sine';node.frequency.setValueAtTime(pitch,start);gain.gain.setValueAtTime(0,start);gain.gain.linearRampToValueAtTime(.09,start+.012);gain.gain.exponentialRampToValueAtTime(.001,start+duration);
+    node.connect(gain);gain.connect(context.destination);track(node,gain);node.start(start);node.stop(start+duration+.02);
   });
-  return { outcome:'scheduled', engine:'web-audio' };
+  return {outcome:'scheduled',engine:'web-audio'};
 }
-
-// Diagnostic only: browser state cannot establish whether the speaker is audible.
+export const playReaction=(correct,options)=>play(correct?'correct':'wrong',options);
+export const playFeedChime=()=>play('feed');
 export async function diagnoseSound() {
-  const started = performance.now();
-  const gesture = window.navigator?.userActivation?.isActive ?? null;
-  lastAudioError = null;
-  void unlockSound(true);
-  let result;
-  try { result = await playReaction(true); }
-  catch (error) { lastAudioError = { name:error.name, message:error.message }; result = { outcome:'exception' }; }
-  const usingMedia = result?.engine === 'audio-file';
-  const audio = usingMedia ? media : context;
-  const before = audio?.currentTime ?? null;
-  await new Promise(resolve => setTimeout(resolve, 300));
-  return {
-    version:'gesture-fallback-3',
-    outcome:result?.outcome,
-    state:usingMedia ? (media?.paused ? 'paused' : 'playing') : audio?.state ?? 'unavailable',
-    clockAdvanced:before === null ? null : audio.currentTime > before,
-    resumePending:!!resuming,
-    error:usingMedia ? mediaFailure : lastAudioError,
-    elapsedMs:Math.round(performance.now() - started),
-    userGesture:gesture,
-    speechActive:!!window.speechSynthesis?.speaking,
-    visibility:document.visibilityState,
-    standalone:window.navigator?.standalone ?? window.matchMedia?.('(display-mode: standalone)').matches ?? false,
-    audioSession:window.navigator?.audioSession?.type ?? 'unsupported',
-    userAgent:window.navigator?.userAgent,
-  };
-}
-let media;
-let mediaStop;
-let mediaToken = 0;
-let mediaFailure = null;
-function prepareMedia() {
-  if (!media && window.Audio) {
-    media = new window.Audio('/audio/reactions.wav');
-    media.preload = 'auto';
-    media.load();
-  }
-  return media;
-}
-export async function playReaction(correct, { streak = 0, badge = false } = {}) {
-  if (!window.Audio || context?.state === 'running') return playSynthReaction(correct, { streak, badge });
-  const token = ++mediaToken;
-  const player = prepareMedia();
-  clearTimeout(mediaStop);
-  player.pause();
-  player.onplaying = null;
-  player.ontimeupdate = null;
-  const offset = !correct ? 1 : badge ? 3 : streak >= 5 && streak % 5 === 0 ? 2 : 0;
-  try {
-    player.currentTime = offset;
-    player.muted = false;
-    player.volume = 1;
-    mediaFailure = null;
-    player.ontimeupdate = () => {
-      if (token === mediaToken && player.currentTime >= offset + .8) {
-        player.pause(); clearTimeout(mediaStop);
-      }
-    };
-    player.onplaying = () => {
-      if (token !== mediaToken) return;
-      // Stop inside the silent tail, before the next reaction in the file.
-      clearTimeout(mediaStop);
-      const remaining = Math.max(0, offset + .8 - player.currentTime);
-      mediaStop = setTimeout(() => { if (token === mediaToken) player.pause(); }, remaining * 1000);
-    };
-    // Called directly inside the answer click: no await before play().
-    await player.play();
-    return { outcome:'scheduled', engine:'audio-file' };
-  } catch (error) {
-    if (token !== mediaToken) return { outcome:'superseded' };
-    mediaFailure = { name:error.name, message:error.message };
-    const fallback = await playSynthReaction(correct, { streak, badge });
-    return fallback.outcome === 'scheduled' ? fallback : { outcome:'media-error', engine:'audio-file' };
-  }
-}
-// Gentle cabin-style confirmation, shared by all feed choices (not a right/wrong cue).
-export async function playFeedChime() {
-  const generation = ++soundGeneration;
-  let timeout;
-  const ready = await Promise.race([unlockSound(true), new Promise(resolve => { timeout=setTimeout(()=>resolve(false),350); })]);
-  clearTimeout(timeout);
-  if (!ready || generation !== soundGeneration || context?.state !== 'running') return;
-  for (const tone of activeTones) { try { tone.stop(); } catch { /* Finished. */ } }
-  activeTones.clear();
-  [880,659.25].forEach((pitch,i) => {
-    const tone=context.createOscillator(), gain=context.createGain();
-    const time=context.currentTime+.008+i*.18;
-    tone.type='sine';tone.frequency.setValueAtTime(pitch,time);
-    gain.gain.setValueAtTime(0,time);
-    gain.gain.linearRampToValueAtTime(.09,time+.015);
-    gain.gain.exponentialRampToValueAtTime(.001,time+.32);
-    tone.connect(gain);gain.connect(context.destination);
-    activeTones.add(tone);
-    tone.onended=()=>{activeTones.delete(tone);tone.disconnect();gain.disconnect();};
-    tone.start(time);tone.stop(time+.34);
-  });
+  const result=await playReaction(true);
+  return {version:'ambient-on-demand-4',...result,state:context?.state||'unavailable',preloaded:!!bytesPromise,decoded:!!decoded,error:lastError,audioSession:window.navigator?.audioSession?.type||'unsupported',userAgent:window.navigator?.userAgent};
 }

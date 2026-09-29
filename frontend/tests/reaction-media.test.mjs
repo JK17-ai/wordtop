@@ -1,57 +1,16 @@
-import { test } from 'node:test';
+import {test} from 'node:test';
 import assert from 'node:assert/strict';
-test('file audio is played synchronously on click, uses one player and selects each reaction', async()=>{
- let instances=0, plays=0, player;
- globalThis.window={Audio:class {
- constructor(){instances++; player=this;} load(){} pause(){} play(){plays++;return Promise.resolve();}
- }};
- const {playReaction}=await import('../src/reactionSound.js?media');
- const first=playReaction(true);
- assert.equal(plays,1); assert.equal(player.currentTime,0); await first;
- await playReaction(false); assert.equal(player.currentTime,1);
- await playReaction(true,{streak:5}); assert.equal(player.currentTime,2);
- await playReaction(true,{badge:true}); assert.equal(player.currentTime,3);
- assert.equal(instances,1);
-});
-test('blocked file playback reports its error without breaking scoring',async()=>{
- globalThis.window={Audio:class {load(){} pause(){} play(){return Promise.reject(Object.assign(Error('blocked'),{name:'NotAllowedError'}));}}};
- const {playReaction}=await import('../src/reactionSound.js?blocked-media');
- assert.equal((await playReaction(true)).outcome,'media-error');
-});
-test('sprite playback stops before the next effect and stale handlers cannot stop a newer effect',async()=>{
- let player, pauses=0;
- globalThis.window={Audio:class {constructor(){player=this;}load(){}pause(){pauses++;}play(){return Promise.resolve();}}};
- const {playReaction}=await import('../src/reactionSound.js?boundaries');
- await playReaction(true); const stale=player.ontimeupdate;
- await playReaction(false); const before=pauses;
- player.currentTime=1.4; stale(); assert.equal(pauses,before);
- player.ontimeupdate(); assert.equal(pauses,before);
- player.currentTime=1.81; player.ontimeupdate(); assert.equal(pauses,before+1);
-});
-
-test('touch primes Web Audio even when HTML Audio exists, so timeout feedback works',async()=>{
- let starts=0;const listeners={};
- const param={setValueAtTime(){},linearRampToValueAtTime(){},exponentialRampToValueAtTime(){}};
- globalThis.window={Audio:class{load(){}},AudioContext:class{
+const param={setValueAtTime(){},linearRampToValueAtTime(){},exponentialRampToValueAtTime(){}};
+function setup(){const calls={created:0,fetch:0,media:0,starts:[],suspended:0,nodes:[],listeners:{}};globalThis.window={navigator:{audioSession:{type:'auto'}},document:{visibilityState:'visible'},fetch:async()=>{calls.fetch++;return {ok:true,arrayBuffer:async()=>new ArrayBuffer(8)};},Audio:class{constructor(){calls.media++;}},AudioContext:class{
  state='suspended';currentTime=0;destination={};
+ constructor(){calls.created++;}
  resume(){this.state='running';return Promise.resolve();}
- createOscillator(){return{frequency:param,connect(){},disconnect(){},start(){starts++;},stop(){}};}
- createGain(){return{gain:param,connect(){},disconnect(){}};}
- }};
- const sound=await import('../src/reactionSound.js?both-engines');
- const cleanup=sound.installSoundUnlock({addEventListener:(name,fn)=>listeners[name]=fn,removeEventListener(){}});
- listeners.pointerdown();
- await Promise.resolve();
- const result=await sound.playReaction(false);
- assert.equal(result.engine,'web-audio');assert.ok(starts>0);cleanup();
-});
-test('blocked media falls back to a resumable Web Audio engine',async()=>{
- const param={setValueAtTime(){},linearRampToValueAtTime(){},exponentialRampToValueAtTime(){}};
- globalThis.window={Audio:class{load(){}pause(){}play(){return Promise.reject(Error('blocked'));}},AudioContext:class{
- state='running';currentTime=0;destination={};
- createOscillator(){return{frequency:param,connect(){},disconnect(){},start(){},stop(){}};}
- createGain(){return{gain:param,connect(){},disconnect(){}};}
- }};
- const sound=await import('../src/reactionSound.js?fallback');
- assert.equal((await sound.playReaction(true)).engine,'web-audio');
-});
+ suspend(){calls.suspended++;this.state='suspended';return Promise.resolve();}
+ decodeAudioData(){return Promise.resolve({duration:4});}
+ createBufferSource(){const n={connect(){},disconnect(){},start(...args){calls.starts.push(args);},stop(){}};calls.nodes.push(n);return n;}
+ createOscillator(){const n={frequency:param,connect(){},disconnect(){},start(){calls.starts.push('tone');},stop(){}};calls.nodes.push(n);return n;}
+ createGain(){return {gain:{...param},connect(){},disconnect(){}};}
+ }};return calls;}
+test('startup fetches reusable bytes without media player, AudioContext, or gesture interception',async()=>{const c=setup();const s=await import('../src/reactionSound.js?preload4');const target={addEventListener:(name,fn)=>c.listeners[name]=fn,removeEventListener(){}};const cleanup=s.installSoundUnlock(target);await s.preloadSounds();assert.equal(c.fetch,1);assert.equal(c.created,0);assert.equal(c.media,0);assert.deepEqual(Object.keys(c.listeners),['visibilitychange']);assert.equal(window.navigator.audioSession.type,'auto');cleanup();});
+test('first answer can play immediately, cached samples use ambient and release idle context',async()=>{const c=setup();const s=await import('../src/reactionSound.js?cached4');await s.preloadSounds();const first=await s.playReaction(true);assert.equal(first.outcome,'scheduled');assert.equal(window.navigator.audioSession.type,'ambient');assert.equal(c.media,0);await Promise.resolve();await s.playReaction(false);assert.deepEqual(c.starts.at(-1),[0,1,.75]);for(const node of c.nodes)node.onended?.();await new Promise(r=>setTimeout(r,150));assert.ok(c.suspended>0);s.stopSounds();});
+test('hidden page cancels effects and does not fall back to exclusive HTML audio',async()=>{const c=setup();const s=await import('../src/reactionSound.js?hidden4');await s.playFeedChime();s.stopSounds();assert.ok(c.suspended>0);assert.equal(c.media,0);});

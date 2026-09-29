@@ -1,5 +1,7 @@
+import DeckPicker from './DeckPicker';
+import { selfJudgment, quizPool } from './quizSessions.js';
+import StudyExample from './StudyExample';
 import { reviewPriority } from './learningFlow.js';
-import { MoaSymbol } from './MoaLogo';
 import MeaningText from './MeaningText';
 import { withFeedExample } from './feedExamples';
 import { playFeedChime } from '../reactionSound';
@@ -16,7 +18,7 @@ function openFeedSession(words, key) {
   return feedSessions.get(key);
 }
 export default function MoaFeed(props) {
-  const storageKey = useMemo(() => feedStorageKey(props.profileId, props.name, props.words), [props.profileId, props.name, props.words]);
+  const storageKey = useMemo(() => feedStorageKey(props.profileId, `${props.name}:${props.deckId || "original"}`, props.words), [props.profileId, props.name, props.deckId, props.words]);
   return <FeedSession key={storageKey} {...props} storageKey={storageKey}/>;
 }
 function FeedSession({ words:sourceWords, storageKey, disabled, onClassify, onQuiz, progress, onProgress }) {
@@ -33,6 +35,9 @@ function FeedSession({ words:sourceWords, storageKey, disabled, onClassify, onQu
   const target = Math.min(17, Math.max(1, session.words.length-daily.base));
   const steps = Math.min(target, daily.keys.length-daily.base);
   const complete = target > 0 && steps >= target;
+  const wordsByKey = new Map(words.map(item => [wordKey(item), item]));
+  const batchWords = daily.keys.slice(daily.base).map(key => wordsByKey.get(key)).filter(Boolean);
+  const knownInBatch = batchWords.filter(item => state.entries[wordKey(item)]?.judgment === 'known').length;
   const touch = useRef(null);
   const wheelLock = useRef(0);
   const viewport = useRef(null);
@@ -52,7 +57,6 @@ function FeedSession({ words:sourceWords, storageKey, disabled, onClassify, onQu
     try { localStorage.setItem(storageKey, JSON.stringify(state)); }
     catch { setError('기기에 진행 기록을 저장하지 못했어요. 저장 공간을 확인해 주세요.'); }
   }, [state, storageKey, session, onProgress]);
-  useEffect(() => () => window.speechSynthesis?.cancel(), []);
   const settle = (target, done) => {
     moving.current = true;
     setSettling(true); setOffset(target);
@@ -68,7 +72,6 @@ function FeedSession({ words:sourceWords, storageKey, disabled, onClassify, onQu
       setMessage(direction > 0 ? '마지막 단어예요. 이전 단어도 다시 볼 수 있어요.' : '첫 번째 단어예요.');
       settle(0); return;
     }
-    window.speechSynthesis?.cancel();
     settle(-direction * ((viewport.current?.clientHeight || 440) + 12), () => {
       setState(value => ({ ...value, cursor:wordKey(words[next]) }));
       setMessage(''); setError('');
@@ -106,25 +109,45 @@ function FeedSession({ words:sourceWords, storageKey, disabled, onClassify, onQu
     const nextDaily = action === 'saved' ? dailySteps(state.daily,feedDay()) : recordFeedStep(state.daily,feedDay(),wordKey(word));
     const finished = nextDaily.keys.length-nextDaily.base >= target;
     setState(value => ({...markFeed(value, word, action === 'saved' ? { saved:true } : { judgment:action }), daily:nextDaily}));
-    window.speechSynthesis?.cancel();
     void playFeedChime().catch(() => {});
     // Let the lime confirmation register before the card starts travelling.
     clearTimeout(motionTimer.current);
     motionTimer.current = setTimeout(() => { moving.current = false; if(finished) setSelection(null); else move(1); }, 240);
   };
-  const listen = () => {
-    if (!window.speechSynthesis || !window.SpeechSynthesisUtterance) { setError('이 브라우저는 듣기를 지원하지 않아요.'); return; }
-    const speech = new SpeechSynthesisUtterance(withFeedExample(word).displayWord || word.word);
-    speech.lang = word.language || 'en-US'; speech.rate = .85;
-    speech.onerror = event => { if (!['canceled','interrupted'].includes(event.error)) setError('발음을 재생하지 못했어요. 다시 눌러 주세요.'); };
-    window.speechSynthesis.cancel(); window.speechSynthesis.speak(speech);
-  };
   if (!word) return <p className="empty-feed">내 단어장에서 학습할 파일을 업로드해 주세요.</p>;
-  return <section className="moa-feed" aria-label="모아학습">
+  return <section className={`moa-feed ${complete && !selection ? 'has-summary' : ''}`} aria-label="모아학습">
 
     <div className="moa-steps" role="progressbar" aria-label="작은 학습 목표" aria-valuemin={0} aria-valuemax={target} aria-valuenow={steps}>{Array.from({length:target},(_,i)=><span key={i} className={i<steps ? 'filled' : ''}>{i<steps ? '✓' : '·'}</span>)}</div>
     <p className="moa-today">오늘 벌써 <strong>{daily.keys.length}개</strong>를 살펴봤어요</p>
-    {complete && !selection ? <section className="moa-celebration" aria-live="polite"><div className="moa-sprout" aria-hidden="true"><MoaSymbol/></div><h3>{resting ? '오늘은 여기까지도 좋아요' : `오, 벌써 ${target}개.`}</h3><p>{resting ? '쌓아둔 걸음은 그대로예요. 다음에 이어가요.' : '알아요도, 몰라요도 모두 한 걸음이에요.'}</p><strong>오늘 쌓은 단어 {daily.keys.length}개</strong><button onClick={()=>onQuiz?.(words.filter(w=>daily.keys.slice(daily.base).includes(wordKey(w))))}>방금 익힌 단어 퀴즈로 확인 →</button>{daily.keys.length < session.words.length ? <button onClick={() => { const next=[...words.slice(index+1),...words.slice(0,index+1)].find(item=>!daily.keys.includes(wordKey(item))); setState(value=>({...value,cursor:next ? wordKey(next) : value.cursor,daily:{...daily,base:daily.keys.length}})); setResting(false); }}> {resting ? '다시 이어가기' : `${Math.min(17,session.words.length-daily.keys.length)}개 더 만나보기`} →</button> : <p>오늘 이 단어장을 모두 살펴봤어요!</p>}{!resting && <button className="moa-rest" onClick={()=>setResting(true)}>오늘은 여기까지</button>}</section> : <>
+    {complete && !selection ? <section className="moa-celebration moa-batch-summary" aria-label="방금 살펴본 단어">
+      <header className="moa-batch-heading">
+        <h3>{resting ? '오늘은 여기까지' : `방금 본 ${batchWords.length}개`}</h3>
+        <p><span className="batch-known">✓ 알아요 {knownInBatch}</span><span className="batch-unknown">× 몰라요 {batchWords.length-knownInBatch}</span></p>
+      </header>
+      <ol className="moa-batch-list">
+        {batchWords.map(item => {
+          const display = withFeedExample(item);
+          const known = state.entries[wordKey(item)]?.judgment === 'known';
+          const label = known ? '알아요' : '몰라요';
+          const term = display.displayWord || display.word;
+          const meaning = display.displayMeaning || display.meaning;
+          return <li key={wordKey(item)} className={known ? 'batch-known' : 'batch-unknown'}>
+            <details><summary title={`${label} · ${term} · ${meaning}`}>
+              <span className="batch-mark" aria-label={label}>{known ? '✓' : '×'}</span>
+              <strong>{term}</strong><span className="batch-meaning">{meaning}</span>
+            </summary><p className="batch-full-meaning"><b>{term}</b> · {meaning}</p></details>
+          </li>;
+        })}
+      </ol>
+      <div className="moa-batch-actions">
+        <button disabled={disabled} onClick={()=>onQuiz?.(batchWords)}>퀴즈로 확인 →</button>
+        {daily.keys.length < session.words.length ? <button disabled={disabled} onClick={() => {
+          const next=[...words.slice(index+1),...words.slice(0,index+1)].find(item=>!daily.keys.includes(wordKey(item)));
+          setState(value=>({...value,cursor:next ? wordKey(next) : value.cursor,daily:{...daily,base:daily.keys.length}})); setResting(false);
+        }}>{resting ? '다시 이어가기' : `${Math.min(17,session.words.length-daily.keys.length)}개 더 보기`} →</button> : <p>단어장 모두 완료!</p>}
+      </div>
+      {!resting && <button className="moa-rest" onClick={()=>setResting(true)}>오늘은 여기까지</button>}
+    </section> : <>
 
     <div ref={viewport} className="moa-swipe-viewport" onTouchStart={startDrag} onTouchMove={drag} onTouchEnd={endDrag}
       onTouchCancel={() => { touch.current = null; if (!moving.current) settle(0); }}
@@ -139,8 +162,9 @@ function FeedSession({ words:sourceWords, storageKey, disabled, onClassify, onQu
       return <article key={relative} className={`moa-feed-card moa-slide ${active ? 'is-current' : relative < 0 ? 'is-previous' : 'is-next'}`} inert={!active || settling || !!selection ? true : undefined} aria-hidden={!active} tabIndex={active ? 0 : -1} aria-label="단어 카드. 위아래 방향키로 이동"
       onKeyDown={event => { if (event.target !== event.currentTarget) return; if (['ArrowDown','ArrowUp'].includes(event.key)) { event.preventDefault(); move(event.key === 'ArrowDown' ? 1 : -1); } }}>
       <div className="moa-card-tools"><span>{entry.judgment === 'known' ? '알아요 ✓' : entry.judgment === 'unknown' ? '다시 익히는 단어' : '새롭게 만나는 단어'}</span><button disabled={disabled} aria-pressed={!!entry.saved} className={active && selection === 'saved' ? 'feed-choice-confirmed' : ''} onClick={() => choose('saved')}>{entry.saved ? '★ 저장됨' : '☆ 저장'}</button></div>
-      <div className="moa-term"><FitWord as="h3" maxSize={54}>{word.displayWord || word.word}</FitWord>{typeof displayIpa === 'string' && displayIpa.trim() && <p className="moa-feed-ipa" style={{fontSize:16,lineHeight:1.5,color:'#606c59',margin:'-4px 0 8px',overflowWrap:'anywhere'}}>{displayIpa}</p>}<button onClick={listen}>♫ 듣기</button></div>
-      <div className="moa-definition"><strong>{word.partOfSpeech || word.pos || ''} <MeaningText meaning={word.displayMeaning || word.meaning}/></strong>{typeof word.example === 'string' && <p className="moa-example"><small>{sourceWord.example ? '예문' : 'AI 작성 예문'}</small><br/>{word.example}</p>}{typeof word.exampleTranslation === 'string' && <p>{word.exampleTranslation}</p>}</div>
+      <div className="moa-term"><FitWord as="h3" maxSize={54}>{word.displayWord || word.word}</FitWord>{typeof displayIpa === 'string' && displayIpa.trim() && <p className="moa-feed-ipa" style={{fontSize:16,lineHeight:1.5,color:'#606c59',margin:'-4px 0 8px',overflowWrap:'anywhere'}}>{displayIpa}</p>}</div>
+      <StudyExample word={word} uploaded={!!sourceWord.example}/>
+      <div className="moa-definition"><strong>{word.partOfSpeech || word.pos || ''} <MeaningText meaning={word.displayMeaning || word.meaning}/></strong></div>
       <div className="moa-judgments"><button disabled={disabled} aria-pressed={entry.judgment === 'unknown'} className={active && selection === 'unknown' ? 'feed-choice-confirmed' : ''} onClick={() => choose('unknown')}>♡ 몰라요</button><button disabled={disabled} aria-pressed={entry.judgment === 'known'} className={active && selection === 'known' ? 'feed-choice-confirmed' : ''} onClick={() => choose('known')}>✓ 알아요</button></div>
     </article>; })}
     </div></div>
@@ -149,7 +173,7 @@ function FeedSession({ words:sourceWords, storageKey, disabled, onClassify, onQu
     {(error || message) && <p className="moa-feed-message" role="status">{error || message}</p>}
   </section>;
 }
-export function MoaLibrary({ words, name, onUpload, disabled, onClassify, onQuiz, progress, onProgress }) {
+export function MoaLibrary({ decks, activeDeckId, onSelectDeck, words, name, onUpload, disabled, onClassify, onQuiz, progress, onProgress }) {
   const [query,setQuery]=useState('');
   const [filter,setFilter]=useState('all');
   const [sort,setSort]=useState('priority');
@@ -164,10 +188,10 @@ export function MoaLibrary({ words, name, onUpload, disabled, onClassify, onQuiz
     return result.sort((a,b)=>(ranks.get(a.id)??Infinity)-(ranks.get(b.id)??Infinity));
   },[words,sort,order]);
   const filtered=ordered.filter(w=>(filter==='all'||(filter==='saved'?w.saved:(w.status||'new')===filter))&&`${w.word} ${w.meaning}`.toLowerCase().includes(query.toLowerCase()));
-  return <section className="moa-library"><header className="library-heading"><h2>내 단어장</h2><button onClick={onUpload} disabled={disabled} title="새 파일을 올리면 현재 단어장이 교체됩니다">＋ 업로드</button></header><p className="library-deck-name">{name} · {words.length.toLocaleString()}개</p><small className="library-upload-note">업로드 시 현재 단어장이 교체됩니다.</small>
+  return <section className="moa-library"><header className="library-heading"><h2>내 단어장</h2><DeckPicker decks={decks} activeId={activeDeckId} onSelect={onSelectDeck} onUpload={onUpload} disabled={disabled}/></header><p className="library-deck-name"><span>현재 단어장</span> <strong>{name}</strong> · {words.length.toLocaleString()}개</p>
     <input aria-label="단어 검색" placeholder="단어 또는 뜻 검색" value={query} onChange={e=>{setQuery(e.target.value);setLimit(100);}}/>
     <div className="moa-library-filters">{[['all','전체'],['new','새로 익히기'],['scrap','다시 익히기'],['mastered','기억 다지기'],['saved','저장']].map(([key,label])=><button key={key} aria-pressed={filter===key} onClick={()=>{setFilter(key);setLimit(100);}}>{label}</button>)}</div>
     <div className="library-toolbar"><select aria-label="단어 정렬" value={sort} onChange={e=>setSort(e.target.value)}><option value="priority">복습 우선</option><option value="recent">최근 추가</option><option value="alpha">알파벳순</option><option value="random">랜덤</option></select>
-    <button disabled={disabled||!words.some(w=>w.status==='scrap')} onClick={()=>onQuiz(words.filter(w=>w.status==='scrap'))}>복습 퀴즈 ({words.filter(w=>w.status==='scrap').length}) →</button></div>
-    <p className="library-result-count">{filtered.length.toLocaleString()}개</p><ul>{filtered.slice(0,limit).map(source=>{const w=withFeedExample(source);return <li key={wordKey(w)} className="compact-word"><div className="compact-word-row"><button className="compact-word-text" aria-expanded={expanded===w.id} onClick={()=>setExpanded(expanded===w.id?null:w.id)}><strong>{w.displayWord||w.word}</strong><span>{w.displayMeaning||w.meaning}</span></button><button disabled={disabled} aria-label={`${w.word} 몰라요`} aria-pressed={w.status==='scrap'} onClick={()=>onClassify(w.id,'unknown')}>{w.status==='scrap'?'✓ 몰라요':'몰라요'}</button><button disabled={disabled} aria-label={`${w.word} 저장`} aria-pressed={!!w.saved} onClick={()=>onClassify(w.id,'saved')}>{w.saved?'★':'☆'}</button></div>{expanded===w.id&&<div className="compact-word-detail"><p>{w.displayIpa??w.ipa}</p><button onClick={()=>{if(!window.speechSynthesis)return; const speech=new SpeechSynthesisUtterance(w.displayWord||w.word);speech.lang=w.language||'en-US';window.speechSynthesis.cancel();window.speechSynthesis.speak(speech);}}>♫ 듣기</button><p>{w.example}</p><p>{w.exampleTranslation}</p><p>{w.statusSource==='quiz'?'퀴즈로 확인한 기록':w.status==='mastered'?'직접 알아요로 표시 · 퀴즈 확인 전':'다시 확인하며 익혀요'}</p><button disabled={disabled} onClick={()=>onQuiz([source],true)}>이 단어 퀴즈</button></div>}</li>})}</ul>{filtered.length>limit&&<button onClick={()=>setLimit(n=>n+100)}>더 보기</button>}</section>;
+    <button disabled={disabled||!quizPool(words,'scrap','all',progress).length} onClick={()=>onQuiz(quizPool(words,'scrap','all',progress))}>복습 퀴즈 ({quizPool(words,'scrap','all',progress).length}) →</button></div>
+    <p className="library-result-count">{filtered.length.toLocaleString()}개</p><ul>{filtered.slice(0,limit).map(source=>{const w=withFeedExample(source);return <li key={wordKey(w)} className="compact-word"><div className="compact-word-row"><button className="compact-word-text" aria-expanded={expanded===w.id} onClick={()=>setExpanded(expanded===w.id?null:w.id)}><strong>{w.displayWord||w.word}</strong><span>{w.displayMeaning||w.meaning}</span></button><button disabled={disabled} aria-label={`${w.word} 몰라요`} aria-pressed={w.status==='scrap'} onClick={()=>onClassify(w.id,'unknown')}>{w.status==='scrap'?'✓ 몰라요':'몰라요'}</button><button disabled={disabled} aria-label={`${w.word} 저장`} aria-pressed={!!w.saved} onClick={()=>onClassify(w.id,'saved')}>{w.saved?'★':'☆'}</button></div>{expanded===w.id&&<div className="compact-word-detail"><p>{w.displayIpa??w.ipa}</p><button onClick={()=>{if(!window.speechSynthesis)return; const speech=new SpeechSynthesisUtterance(w.displayWord||w.word);speech.lang=w.language||'en-US';window.speechSynthesis.cancel();window.speechSynthesis.speak(speech);}}>♫ 듣기</button><p>{w.example}</p><p>{w.exampleTranslation}</p><p>{w.statusSource==='quiz'?'퀴즈로 확인한 기록':w.status==='mastered'?'직접 알아요로 표시 · 퀴즈 확인 전':'다시 확인하며 익혀요'}</p><button disabled={disabled || !selfJudgment(source,progress)} title={!selfJudgment(source,progress) ? "모아학습에서 알아요·몰라요를 먼저 선택해 주세요" : undefined} onClick={()=>onQuiz([source],true)}>이 단어 퀴즈</button></div>}</li>})}</ul>{filtered.length>limit&&<button onClick={()=>setLimit(n=>n+100)}>더 보기</button>}</section>;
 }

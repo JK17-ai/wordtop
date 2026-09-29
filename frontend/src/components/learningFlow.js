@@ -33,7 +33,7 @@ export function mergeLegacyFeed(words, entries = {}) {
     let next = word;
     if (entry?.judgment && (!word.status || word.status === 'new') && !word.checked)
       next = classifyWord([word], word.id, entry.judgment)[0];
-    return {...next, saved:word.saved ?? !!entry?.saved, feedMigrated:true};
+    return {...next, ...(!word.judgment && ['known','unknown'].includes(entry.judgment) ? {judgment:entry.judgment} : {}), saved:word.saved ?? !!entry?.saved, feedMigrated:true};
   });
 }
 export function quizExercise(word, settings) {

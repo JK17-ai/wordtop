@@ -1,0 +1,2 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {exampleParts} from '../src/components/exampleParts.js';
+test('highlights whole words and phrases without matching inside unrelated words',()=>{const p=exampleParts('Take place, take-place; replacement.', 'take place');assert.equal(p.filter(x=>x.highlight).length,2);assert.equal(p.map(x=>x.text).join(''),'Take place, take-place; replacement.');assert.equal(exampleParts('within it','in').some(x=>x.highlight),false);});

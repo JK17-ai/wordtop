@@ -14,6 +14,15 @@ export function validateSnapshot(value) {
   if (value.accuracy && (!Number.isInteger(value.accuracy.total) || !Number.isInteger(value.accuracy.correct)
     || value.accuracy.correct < 0 || value.accuracy.total < value.accuracy.correct || typeof value.accuracy.date !== 'string')) throw Error('정답률 기록 형식이 올바르지 않습니다.');
   if (value.activeMs !== undefined && (!Number.isFinite(value.activeMs) || value.activeMs < 0)) throw Error('학습 시간 형식이 올바르지 않습니다.');
+  if (value.deckLibrary) {
+    const library=value.deckLibrary;
+    if(typeof library.activeId !== 'string' || !Array.isArray(library.decks)) throw Error('단어장 목록 형식을 확인해 주세요.');
+    const deckIds=new Set([library.activeId]);
+    for(const entry of library.decks){
+      if(typeof entry?.id !== 'string' || deckIds.has(entry.id)) throw Error('단어장 식별자를 확인해 주세요.');
+      deckIds.add(entry.id); validateSnapshot({schemaVersion:1,deck:entry.deck});
+    }
+  }
   return value;
 }
 

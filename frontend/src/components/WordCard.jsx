@@ -1,8 +1,12 @@
+import { withFeedExample } from './feedExamples.js';
+import { englishHighlight, registeredHighlight } from './exampleHighlights.js';
+import { contextQuestion } from './contextQuestion.js';
+import { buildQuizChoices } from "./quizChoices.js";
 import { createResponseClock, responseStage } from "./responseTiming.js";
 import FitWord from "./FitWord";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { unlockSound, playReaction } from "../reactionSound";
+import { playReaction } from "../reactionSound";
 // false로 바꾸면 기존 타이머 바·숫자 표시로 되돌립니다.
 const USE_WORD_COLOR_TIMER = true;
 
@@ -18,6 +22,9 @@ export default function WordCard({ item, onAnswer, suspended = false, choices = 
     setPauseHint(true);
     pauseHintTimer.current = setTimeout(() => setPauseHint(false), 2200);
   };
+  const englishExample = exercise === 'english-context' ? withFeedExample(item) : null;
+  const englishParts = englishExample?.example ? registeredHighlight('en',item,englishExample.example) || englishHighlight(englishExample.example,englishExample.displayWord || item.word) : null;
+  const contextPrompt = exercise === 'context' ? contextQuestion(item) : null;
   const [recalling, setRecalling] = useState(exercise === "recall");
   const [heard, setHeard] = useState(false);
   const [speaking, setSpeaking] = useState(false);
@@ -50,7 +57,7 @@ export default function WordCard({ item, onAnswer, suspended = false, choices = 
     window.speechSynthesis?.getVoices();
     return () => { clearTimeout(speechTimeout.current); if (speechRef.current) { speechRef.current.onend = null; speechRef.current.onerror = null; speechRef.current = null; window.speechSynthesis?.cancel(); } };
   }, []);
-  const answer = exercise === "reverse" ? item.word : item.meaning;
+  const answer = (exercise === "reverse" || exercise === "context") ? item.word : item.meaning;
   const [remaining, setRemaining] = useState(10000);
   const setPaused = value => onPausedChange?.(typeof value === "function" ? value(paused) : value);
   const [result, setResult] = useState(null);
@@ -64,23 +71,14 @@ export default function WordCard({ item, onAnswer, suspended = false, choices = 
   const callbacks = useRef({ onAnswer });
   callbacks.current = { onAnswer };
   useEffect(() => () => { clearTimeout(completion.current); clearInterval(timerRef.current); }, []);
-  const [options] = useState(() => {
-    const shuffle = values => {
-      for (let i = values.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [values[i], values[j]] = [values[j], values[i]];
-      }
-      return values;
-    };
-    return shuffle([answer, ...shuffle([...new Set(choices)].filter(x => x && x !== answer)).slice(0, 3)]);
-  });
+  const [options] = useState(() => buildQuizChoices(item, choices, exercise));
   const finish = (correct, choice = null) => {
     if (paused && choice !== null && !done.current && !suspended) { showPauseHint(); return; }
     if (done.current || suspended || speaking || paused || (exercise === "listening" && (!heard || speechError))) return;
     done.current = true;
     responseClock.current.stop();
     const responseMs = choice === null ? 10000 : Math.round(responseClock.current.elapsed());
-    const timing = { exercise, listenCount, responseMs, responseStage: responseStage(responseMs), timedOut: choice === null, selectedMeaning: choice === null ? null : exercise === "reverse" ? (correct ? item.meaning : "[reverse incorrect] " + choice) : choice };
+    const timing = { exercise, listenCount, responseMs, responseStage: responseStage(responseMs), timedOut: choice === null, selectedMeaning: choice === null ? null : (exercise === "reverse" || exercise === "context") ? (correct ? item.meaning : "[reverse incorrect] " + choice) : choice };
     onFinish?.(correct);
     clearInterval(timerRef.current);
     setPaused(false);
@@ -119,25 +117,25 @@ export default function WordCard({ item, onAnswer, suspended = false, choices = 
   const progress = elapsed < 0.5 ? elapsed * 2 : (elapsed - 0.5) * 2;
   const timerColor = !USE_WORD_COLOR_TIMER || result ? '#191919' : 'rgb(' + start.map((value, i) => Math.round(value + (end[i] - value) * progress)).join(',') + ')';
   return <>
-    <article onPointerDown={() => { try { unlockSound(); } catch { /* Audio is optional. */ } }} ref={card} style={{ "--word-timer-color": timerColor }} className={`word-card reel-card ${USE_WORD_COLOR_TIMER ? "color-timer" : "legacy-timer"} ${result ? result.correct ? 'answer-success' : 'answer-miss' : ''}`} onDoubleClick={event => { if (!done.current && !suspended && !event.target.closest('button')) setPaused(v => !v); }}>
+    <article ref={card} style={{ "--word-timer-color": timerColor }} className={`word-card reel-card ${(exercise === "context" || exercise === "english-context") ? "context-quiz" : ""} ${USE_WORD_COLOR_TIMER ? "color-timer" : "legacy-timer"} ${result ? result.correct ? 'answer-success' : 'answer-miss' : ''}`} onDoubleClick={event => { if (!done.current && !suspended && !event.target.closest('button')) setPaused(v => !v); }}>
       {/* 이전 버전 원본 보관: 타이머 바 + 숫자
         <div className="card-topline"><div className="timer-segments" role="progressbar" aria-label="남은 시간" aria-valuemin={0} aria-valuemax={10} aria-valuenow={Math.ceil(remaining / 1000)}>{[0,1,2,3,4].map(index => <i key={index} className={index < Math.ceil(remaining / 2000) ? "lit" : ""} />)}</div><span className="countdown-number">{Math.ceil(remaining / 1000)}</span></div>
       */}
       {!USE_WORD_COLOR_TIMER && (<div className="card-topline"><div className="timer-segments" role="progressbar" aria-label="남은 시간" aria-valuemin={0} aria-valuemax={10} aria-valuenow={Math.ceil(remaining / 1000)}>{[0,1,2,3,4].map(index => <i key={index} className={index < Math.ceil(remaining / 2000) ? "lit" : ""} />)}</div><span className="countdown-number">{Math.ceil(remaining / 1000)}</span></div>)}
       <span className="timer-accessible" role="timer" aria-live="off" aria-label={`남은 시간 ${Math.ceil(remaining / 1000)}초${paused ? ", 일시 정지" : ""}`} />
       <div className="word-heading">
-        {exercise === 'listening' && !result ? <div className="listening-heading">{reviewMode && [1,2,3].includes(item.responseStage) && <span className="listening-stars" aria-label={item.responseStage + '단계'}>{Array.from({length:item.responseStage},(_,i)=><span key={i}>★</span>)}</span>}<button className="listen-button" disabled={speaking || suspended || paused} onClick={listen}>{speaking ? '재생 중…' : heard ? '🔊 다시 듣기' : '🔊 발음 듣기'}</button></div> : <FitWord as="h2" className="word-term" maxSize={54} leading={reviewMode && [1, 2, 3].includes(item.responseStage) && (
+        {englishExample?.example ? <p className="context-question" lang="en">{englishParts ? <>{englishParts.before}<u>{englishParts.highlight}</u>{englishParts.after}</> : englishExample.example}</p> : exercise === 'context' && contextPrompt ? <p className="context-question" lang="ko">{contextPrompt.before}{contextPrompt.highlight && <u>{contextPrompt.highlight}</u>}{contextPrompt.after}</p> : exercise === 'listening' && !result ? <div className="listening-heading">{reviewMode && [1,2,3].includes(item.responseStage) && <span className="listening-stars" aria-label={item.responseStage + '단계'}>{Array.from({length:item.responseStage},(_,i)=><span key={i}>★</span>)}</span>}<button className="listen-button" disabled={speaking || suspended || paused} onClick={listen}>{speaking ? '재생 중…' : heard ? '🔊 다시 듣기' : '🔊 발음 듣기'}</button></div> : <FitWord as="h2" className="word-term" maxSize={54} leading={reviewMode && [1, 2, 3].includes(item.responseStage) && (
           <span className="response-stars" role="img" aria-label={`최근 응답 시간 ${item.responseStage}단계${item.timedOut ? ', 시간 초과' : ''}`} title="별 1개: 3초 이내 · 2개: 3~6초 · 3개: 6초 초과">
             {Array.from({ length: item.responseStage }, (_, index) => <span key={index} aria-hidden="true">★</span>)}
           </span>
-        )}>{result ? item.word : exercise === "reverse" ? item.meaning : item.word}</FitWord>}
+        )}>{result ? item.word : (exercise === "reverse" || exercise === "context") ? item.meaning : item.word}</FitWord>}
       </div>
       {USE_WORD_COLOR_TIMER && (
         <div className="thin-timer" role="progressbar" aria-label="남은 시간" aria-valuemin={0} aria-valuemax={10} aria-valuenow={Math.ceil(remaining / 1000)}>
           {[0, 1, 2, 3, 4].map(index => <i key={index} className={index < Math.ceil(remaining / 2000) ? "lit" : ""} />)}
         </div>
       )}
-        {((exercise !== "reverse" && exercise !== "listening") || result) && (
+        {((exercise !== "reverse" && exercise !== "listening" && exercise !== "context" && exercise !== "english-context") || result) && (
           <div
             lang="en-US"
             aria-label="미국식 발음기호"
@@ -149,7 +147,15 @@ export default function WordCard({ item, onAnswer, suspended = false, choices = 
       {/* 이전 카드 내부 멈춤 버튼 보관
       <button className="pause-button" disabled={!!result || suspended || speaking || paused || (exercise === "listening" && (!heard || !!speechError))} onClick={() => setPaused(v => !v)}>{paused ? '다시 시작' : '멈춤'}</button>
       */}
-      <div className="quiz-prompt" role="status" style={pauseHint ? {fontWeight:800,color:"#38551c",background:"#e5f3ce",borderRadius:8,padding:"6px 8px"} : undefined}>{(pauseHint && "학습 계속하기를 먼저 눌러주세요") || speechError || (result ? '\u00a0' : recalling ? '뜻을 떠올린 뒤 시작하세요' : exercise === 'listening' && !heard ? '발음을 들은 뒤 뜻을 선택하세요' : '\u00a0')}</div>
+      {pauseHint && createPortal(
+        <div className="quiz-pause-notice" role="status" aria-live="polite">
+          <div>
+            <span aria-hidden="true">Ⅱ</span>
+            <strong>잠깐 멈춘 상태예요</strong>
+            <p><b>학습 계속하기</b>를<br/>먼저 눌러 주세요.</p>
+          </div>
+        </div>, document.body)}
+      <div className="quiz-prompt" role="status">{speechError || (exercise === 'english-context' && !result ? englishExample?.example ? '예문 속 단어에 맞는 한국어 뜻은?' : '영어 단어에 맞는 한국어 뜻은?' : exercise === 'context' && !result ? contextPrompt ? contextPrompt.highlight ? '밑줄 친 부분에 해당하는 영어 단어는?' : '예문의 문맥에 맞는 영어 단어는?' : '준비된 예문이 없어 뜻에 맞는 영어 단어를 골라 주세요' : result ? '\u00a0' : recalling ? '뜻을 떠올린 뒤 시작하세요' : exercise === 'listening' && !heard ? '발음을 들은 뒤 뜻을 선택하세요' : '\u00a0')}</div>
       <div className="choice-grid">{recalling ? <button className="recall-ready" disabled={suspended} onClick={() => { if (paused) showPauseHint(); else setRecalling(false); }}>떠올렸어요 · 퀴즈 시작</button> : options.map(choice => <button key={choice} data-correct={choice === answer} disabled={!!result || suspended} className={result ? choice === answer ? 'answer-reveal' : choice === result.choice ? 'answer-wrong' : 'answer-muted' : ''} onClick={() => finish(choice === answer, choice)}>{choice}</button>)}</div>
     </article>
 

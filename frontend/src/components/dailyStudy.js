@@ -9,5 +9,5 @@ export function dailyCounts(value, date = studyDay()) {
   return { total: entries.length, scrap: entries.filter(x => x === 'scrap').length, mastered: entries.filter(x => x === 'mastered').length };
 }
 export function learningSettings(value) {
-  return { scrap: ['recall','meaning'].includes(value?.scrap) ? value.scrap : 'recall', mastered: ['reverse','listening'].includes(value?.mastered) ? value.mastered : 'reverse' };
+  return { scrap: ['recall','meaning'].includes(value?.scrap) ? value.scrap : 'recall', mastered: value?.contextQuizVersion === 1 && value?.mastered === 'reverse' ? 'english-context' : ['english-context','context'].includes(value?.mastered) && value?.contextQuizVersion === 1 ? value.mastered : 'context', contextQuizVersion:1 };
 }

@@ -13,6 +13,6 @@ test('daily counts reset at a new date without changing historical word statuses
  assert.deepEqual(dailyRecord(old,'b',false,'2026-09-27'),{date:'2026-09-27',entries:{b:'scrap'}});
 });
 test('settings allow only the requested learning methods', () => {
- assert.deepEqual(learningSettings({scrap:'meaning',mastered:'listening'}),{scrap:'meaning',mastered:'listening'});
- assert.deepEqual(learningSettings({scrap:'listening',mastered:'recall'}),{scrap:'recall',mastered:'reverse'});
+ assert.deepEqual(learningSettings({scrap:'meaning',mastered:'listening'}),{scrap:'meaning',mastered:'context',contextQuizVersion:1});
+ assert.deepEqual(learningSettings({scrap:'listening',mastered:'recall'}),{scrap:'recall',mastered:'context',contextQuizVersion:1});
 });

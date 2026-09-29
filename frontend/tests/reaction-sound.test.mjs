@@ -29,12 +29,12 @@ test('unavailable or rejected audio does not reject scoring flow', async () => {
   const blocked = await import('../src/reactionSound.js?blocked');
   await blocked.playReaction(true);
 });
-test('gesture listeners are installed early and cleaned up', async () => {
+test('startup only installs visibility cleanup, never global sound gestures', async () => {
   const sound = await import('../src/reactionSound.js?listeners');
   const added=[],removed=[];
   const cleanup=sound.installSoundUnlock({addEventListener:(...args)=>added.push(args),removeEventListener:(...args)=>removed.push(args)});
   cleanup();
-  assert.deepEqual(added.map(x=>x[0]),['pointerdown','keydown','touchend']);
+  assert.deepEqual(added.map(x=>x[0]),['visibilitychange']);
   assert.deepEqual(removed.map(x=>x[0]),added.map(x=>x[0]));
   assert.ok(removed.every((x,i)=>x[1]===added[i][1]));
 });
