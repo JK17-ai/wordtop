@@ -399,3 +399,17 @@ button.quiet-deck{width:100%;cursor:pointer;font:inherit;}button.quiet-deck:focu
 .app-shell.quiet-study .moa-library .compact-word-text .library-hanja{margin-top:3px;font-family:"Noto Sans CJK KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:24px;font-weight:700;line-height:1.4;letter-spacing:.08em;color:#263a15;white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere;}
 .app-shell.quiet-study .moa-library .library-full-meaning{grid-column:1/-1;margin:0;padding:2px 4px 4px;font-size:15px;font-weight:500;line-height:1.65;color:#546047;white-space:normal;overflow:visible;text-overflow:clip;word-break:keep-all;overflow-wrap:anywhere;}
 .app-shell.quiet-study .moa-library .compact-word-row>button:last-of-type{width:44px;min-width:44px;max-width:44px;font-size:20px;}.app-shell.quiet-study .moa-library .compact-word-row>button{box-sizing:border-box;}
+/* Overflow must start at the heading, never above the scrollable area. */
+.korean-study-content{justify-content:flex-start;gap:12px;}
+.korean-study-heading{margin-top:auto;}
+.app-shell.quiet-study .moa-feed .korean-study-content .korean-study-meaning{margin-bottom:auto;}
+@media(max-height:800px){
+ .app-shell.quiet-study .moa-feed .korean-study-card{gap:6px;}
+ .korean-study-content{gap:8px;padding:4px 0;}
+ .korean-study-heading h3{font-size:32px;margin:4px 0;}
+ .korean-study-hanja{font-size:30px;}
+ .app-shell.quiet-study .moa-feed .korean-study-content .korean-study-meaning{padding:10px 12px;}
+ .app-shell.quiet-study .moa-feed .korean-study-meaning p{font-size:18px;line-height:1.5;}
+}
+.portrait-only{position:fixed;inset:0;z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;box-sizing:border-box;padding:24px;background:#1c2516;color:#e3ffb4;text-align:center;font-family:Pretendard,system-ui,sans-serif;}
+.portrait-only>span{font-size:50px;color:#bbff32;}.portrait-only h2{font-size:24px;margin:12px 0;}.portrait-only p{font-size:15px;color:#fff;margin:0;}
