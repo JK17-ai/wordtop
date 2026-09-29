@@ -36,6 +36,18 @@ export function resumeQuiz(previous, words, metadata = {}, random = Math.random)
     correct:results ? results.filter(result => result.correct).length : Math.min(answered.length, previous?.correct || 0),
     ...(results ? { results } : !previous ? { results:[] } : {}), practice:metadata.practice ?? previous?.practice ?? false };
 }
+export function quizVisitedIds(session) {
+  return [...new Set([...(session?.visitedIds || []), ...(session?.ids.slice(0,session.index) || [])])];
+}
+export function remainingQuizWords(session, words, progress) {
+  const visited=new Set(quizVisitedIds(session));
+  return quizPool(words,'all','all',progress).filter(word=>!visited.has(word.id));
+}
+export function nextQuizBatch(session, words, progress, random = Math.random) {
+  const available=remainingQuizWords(session,words,progress);
+  const order=shuffled(available.map(word=>word.id),random).slice(0,17);
+  return {ids:order,index:0,correct:0,results:[],practice:false,tab:'all',stage:'all',label:'학습한 단어',visitedIds:quizVisitedIds(session)};
+}
 export function recordQuizAnswer(session, id, correct) {
   if (!session || session.ids[session.index] !== id) return session;
   return { ...session, index:session.index + 1, correct:session.correct + Number(correct),
@@ -52,9 +64,11 @@ export function restoreQuizProgress(saved, words, progress) {
     const tab = ['all','scrap','mastered'].includes(value.tab) ? value.tab : 'all';
     const stage = ['all','1','2','3','unrated'].includes(value.stage) ? value.stage : 'all';
     const allowed = quizPool(words, tab, stage, progress);
-    const pool = key.startsWith('tab:') ? allowed : allowed.filter(word => restored.ids.includes(word.id));
+    const answeredIds = new Set(restored.ids.slice(0,restored.index));
+    const allowedWithResults = words.filter(word=>answeredIds.has(word.id) || allowed.some(item=>item.id===word.id));
+    const pool = key.startsWith('tab:') ? allowedWithResults : allowedWithResults.filter(word => restored.ids.includes(word.id));
     const results = Array.isArray(value.results) && value.results.length === restored.index && value.results.every((r,i) => r?.id === restored.ids[i] && typeof r.correct === 'boolean') ? value.results : undefined;
-    sessions[key] = resumeQuiz({...restored, ...(results ? {results} : {})}, pool, {tab,stage,label:typeof value.label === 'string' ? value.label : quizLabel(tab)});
+    sessions[key] = resumeQuiz({...restored, ...(Array.isArray(value.visitedIds) ? {visitedIds:value.visitedIds.filter(id=>words.some(word=>word.id===id))} : {}), ...(results ? {results} : {})}, pool, {tab,stage,label:typeof value.label === 'string' ? value.label : quizLabel(tab)});
   }
   let activeKey = Object.hasOwn(sessions, saved?.quizProgress?.activeKey) ? saved.quizProgress.activeKey : null;
   if (!Object.keys(sessions).length) {

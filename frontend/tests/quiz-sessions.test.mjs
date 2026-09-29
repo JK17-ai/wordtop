@@ -60,3 +60,20 @@ test('all tabs shuffle new batches and restarts while resume retains the saved o
   assert.notDeepEqual(restarted.ids,answered.ids);assert.equal(restarted.index,0);assert.equal(answered.index,1);
  }
 });
+
+test('wrong answers move known words to unknown and keep completed known-quiz results on restore',()=>{
+ const known={...words[1]};const before=resumeQuiz(null,[known],{tab:'mastered',stage:'all'});
+ const completed=recordQuizAnswer(before,known.id,false);const after=answerWord([known],'mastered',0,known.id,false).words;
+ assert.equal(after[0].judgment,'unknown');assert.equal(quizPool(after,'mastered').length,0);assert.equal(quizPool(after,'scrap').length,1);
+ const restored=restoreQuizProgress({quizProgress:{activeKey:'tab:mastered:all',sessions:{'tab:mastered:all':completed}}},after);
+ assert.equal(restored.sessions['tab:mastered:all'].index,1);assert.deepEqual(restored.sessions['tab:mastered:all'].results,[{id:known.id,correct:false}]);
+});
+test('continuation exhausts learned words without duplicates and survives snapshot restore',async()=>{
+ const {nextQuizBatch,remainingQuizWords}=await import('../src/components/quizSessions.js');
+ const pool=Array.from({length:40},(_,id)=>({id,word:String(id),meaning:'뜻',judgment:'known'}));
+ let session=nextQuizBatch(null,pool,null,()=>0);const visited=[];
+ while(session.ids.length){visited.push(...session.ids);for(const id of session.ids)session=recordQuizAnswer(session,id,true);
+ const saved={quizProgress:{activeKey:'continue:test',sessions:{'continue:test':session}}};session=restoreQuizProgress(saved,pool).sessions['continue:test'];
+ if(!remainingQuizWords(session,pool).length)break;session=nextQuizBatch(session,pool,null,()=>0);}
+ assert.equal(visited.length,40);assert.equal(new Set(visited).size,40);assert.equal(remainingQuizWords(session,pool).length,0);
+});

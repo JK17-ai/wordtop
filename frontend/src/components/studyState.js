@@ -22,6 +22,7 @@ export function answerWord(words, tab, index, id, correct, timing) {
   const validTiming = timing && Number.isFinite(timing.responseMs) && [1, 2, 3].includes(timing.responseStage);
   const updated = words.map(word => word.id === id
     ? { ...word, status: correct ? "mastered" : "scrap", checked: correct, ...verifiedProgress(word, correct),
+      ...(!correct ? {judgment:"unknown",judgmentAt:new Date().toISOString()} : {}),
       ...(validTiming ? {
         responseMs: timing.responseMs,
         responseStage: timing.responseStage,
