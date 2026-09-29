@@ -33,6 +33,6 @@ export function buildQuizChoices(item,words,exercise='meaning',random=Math.rando
  const same=isKoreanWord(item)||pos==='unknown'?candidates:candidates.filter(word=>wordPartOfSpeech(word)===pos);
  // Do not fill a noun question with verbs merely to force four choices.
  // Unknown targets use the whole deck; known targets stay in their own group.
- const distractors=shuffle(same,random).slice(0,3).map(value);
+ const distractors=shuffle(same,random).slice(0,isKoreanWord(item) ? 1 : 3).map(value);
  return shuffle([answer,...distractors],random);
 }

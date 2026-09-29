@@ -120,7 +120,7 @@ export default function WordCard({ item, onAnswer, suspended = false, choices = 
   const progress = elapsed < 0.5 ? elapsed * 2 : (elapsed - 0.5) * 2;
   const timerColor = !USE_WORD_COLOR_TIMER || result ? '#191919' : 'rgb(' + start.map((value, i) => Math.round(value + (end[i] - value) * progress)).join(',') + ')';
   return <>
-    <article ref={card} style={{ "--word-timer-color": timerColor }} className={`word-card reel-card ${(koreanReverse || exercise === "context" || exercise === "english-context") ? "context-quiz" : ""} ${USE_WORD_COLOR_TIMER ? "color-timer" : "legacy-timer"} ${result ? result.correct ? 'answer-success' : 'answer-miss' : ''}`} onDoubleClick={event => { if (!done.current && !suspended && !event.target.closest('button')) setPaused(v => !v); }}>
+    <article ref={card} style={{ "--word-timer-color": timerColor }} className={`word-card reel-card ${korean ? "korean-quiz" : ""} ${(koreanReverse || exercise === "context" || exercise === "english-context") ? "context-quiz" : ""} ${USE_WORD_COLOR_TIMER ? "color-timer" : "legacy-timer"} ${result ? result.correct ? 'answer-success' : 'answer-miss' : ''}`} onDoubleClick={event => { if (!done.current && !suspended && !event.target.closest('button')) setPaused(v => !v); }}>
       {/* 이전 버전 원본 보관: 타이머 바 + 숫자
         <div className="card-topline"><div className="timer-segments" role="progressbar" aria-label="남은 시간" aria-valuemin={0} aria-valuemax={10} aria-valuenow={Math.ceil(remaining / 1000)}>{[0,1,2,3,4].map(index => <i key={index} className={index < Math.ceil(remaining / 2000) ? "lit" : ""} />)}</div><span className="countdown-number">{Math.ceil(remaining / 1000)}</span></div>
       */}

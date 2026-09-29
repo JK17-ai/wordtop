@@ -1,3 +1,5 @@
+import KoreanStudyContent from './KoreanStudyContent';
+import { isKoreanWord } from './koreanVocabulary.js';
 import { selfJudgment, quizPool } from './quizSessions.js';
 import StudyExample from './StudyExample';
 import { reviewPriority } from './learningFlow.js';
@@ -158,12 +160,14 @@ function FeedSession({ words:sourceWords, storageKey, disabled, onClassify, onQu
       const displayIpa = Object.hasOwn(word, 'displayIpa') ? word.displayIpa : word.ipa;
       const active = relative === 0;
       const entry = {saved:word.saved, judgment:selfJudgment(sourceWord,state)};
-      return <article key={relative} className={`moa-feed-card moa-slide ${active ? 'is-current' : relative < 0 ? 'is-previous' : 'is-next'}`} inert={!active || settling || !!selection ? true : undefined} aria-hidden={!active} tabIndex={active ? 0 : -1} aria-label="단어 카드. 위아래 방향키로 이동"
+      return <article key={relative} className={`moa-feed-card moa-slide ${isKoreanWord(word) ? "korean-study-card" : ""} ${active ? 'is-current' : relative < 0 ? 'is-previous' : 'is-next'}`} inert={!active || settling || !!selection ? true : undefined} aria-hidden={!active} tabIndex={active ? 0 : -1} aria-label="단어 카드. 위아래 방향키로 이동"
       onKeyDown={event => { if (event.target !== event.currentTarget) return; if (['ArrowDown','ArrowUp'].includes(event.key)) { event.preventDefault(); move(event.key === 'ArrowDown' ? 1 : -1); } }}>
       <div className="moa-card-tools"><span>{entry.judgment === 'known' ? '이전 분류 · 알아요' : entry.judgment === 'unknown' ? '현재 분류 · 몰라요' : '새롭게 만나는 단어'}</span><button disabled={disabled} aria-pressed={!!entry.saved} className={active && selection === 'saved' ? 'feed-choice-confirmed' : ''} onClick={() => choose('saved')}>{entry.saved ? '★ 저장됨' : '☆ 저장'}</button></div>
+      {isKoreanWord(word) ? <KoreanStudyContent word={word}/> : <>
       <div className="moa-term"><FitWord as="h3" maxSize={54}>{word.displayWord || word.word}</FitWord>{word.hanja && <p className="word-hanja">{word.hanja}</p>}{typeof displayIpa === 'string' && displayIpa.trim() && <p className="moa-feed-ipa" style={{fontSize:16,lineHeight:1.5,color:'#606c59',margin:'-4px 0 8px',overflowWrap:'anywhere'}}>{displayIpa}</p>}</div>
       <StudyExample word={word} uploaded={!!sourceWord.example}/>
       <div className="moa-definition"><strong>{word.partOfSpeech || word.pos || ''} <MeaningText meaning={word.displayMeaning || word.meaning}/></strong></div>
+      </>}
       <div className="moa-judgments"><button disabled={disabled} aria-pressed={active && selection === 'unknown'} className={active && selection === 'unknown' ? 'feed-choice-confirmed' : ''} onClick={() => choose('unknown')}>♡ 몰라요</button><button disabled={disabled} aria-pressed={active && selection === 'known'} className={active && selection === 'known' ? 'feed-choice-confirmed' : ''} onClick={() => choose('known')}>✓ 알아요</button></div>
     </article>; })}
     </div></div>

@@ -18,7 +18,7 @@ test('unreadable PDF text requires OCR even when it contains isolated Korean cha
 test('Korean known quizzes reverse definitions and include full distractor pool',()=>{
  const words=parseVocabulary(text),settings={scrap:'recall',mastered:'english-context'};
  assert.equal(quizExercise({...words[0],status:'mastered'},settings),'reverse');assert.equal(quizExercise({...words[0],status:'scrap'},settings),'recall');
- assert.equal(buildQuizChoices(words[0],words,'reverse').length,4);assert.equal(quizExercise({word:'apple',status:'mastered'},settings),'english-context');
+ assert.equal(buildQuizChoices(words[0],words,'reverse').length,2);assert.equal(quizExercise({word:'apple',status:'mastered'},settings),'english-context');
 });
 test('Korean metadata survives JSON snapshot and library switching without schema changes',()=>{
  const words=rebuildStudyDeck(classifyWord(parseVocabulary(text),0,'known'));
@@ -27,3 +27,5 @@ test('Korean metadata survives JSON snapshot and library switching without schem
  const restored=selectLibraryDeck(selectLibraryDeck(JSON.parse(JSON.stringify(added)),'original'),'korean');
  assert.deepEqual(localDeckSave(restored).words,words);assert.equal(restored.deck.words[0].judgment,'known');
 });
+
+test('Korean meaning and recall questions have exactly two distinct choices with the answer',()=>{const words=parseVocabulary(text);for(const mode of ['meaning','recall','reverse']){const options=buildQuizChoices(words[0],words,mode);assert.equal(options.length,2);assert.equal(new Set(options).size,2);assert(options.includes(mode==='reverse'?words[0].word:words[0].meaning));}});
