@@ -17,12 +17,19 @@ export function quizPool(words, tab = 'all', stage = 'all', progress) {
 export const quizLabel = tab => tab === 'scrap' ? '몰라요로 고른 단어' : tab === 'mastered' ? '알아요로 고른 단어' : '학습한 단어';
 export const tabQuizKey = (tab, stage = 'all') => `tab:${tab}:${tab === 'all' ? 'all' : stage}`;
 
+function shuffled(ids, random) {
+  const result=[...ids];
+  for(let i=result.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[result[i],result[j]]=[result[j],result[i]];}
+  return result;
+}
 // Keep the existing order and cursor; newly eligible words go after the saved batch.
-export function resumeQuiz(previous, words, metadata = {}) {
+export function resumeQuiz(previous, words, metadata = {}, random = Math.random) {
   const eligible = new Set(words.map(word => word.id));
   const ids = previous ? previous.ids.filter(id => eligible.has(id)) : [];
   const seen = new Set(ids);
-  for (const word of words) if (!seen.has(word.id)) { ids.push(word.id); seen.add(word.id); }
+  const added = [];
+  for (const word of words) if (!seen.has(word.id)) { added.push(word.id); seen.add(word.id); }
+  ids.push(...shuffled(added,random));
   const answered = previous?.ids.slice(0, previous.index).filter(id => eligible.has(id)) || [];
   const results = previous?.results?.filter(result => answered.includes(result.id));
   return { ...previous, ...metadata, ids, index:answered.length,
@@ -34,8 +41,8 @@ export function recordQuizAnswer(session, id, correct) {
   return { ...session, index:session.index + 1, correct:session.correct + Number(correct),
     ...(session.results ? { results:[...session.results, {id, correct:!!correct}] } : {}) };
 }
-export function restartQuiz(session) {
-  return session ? { ...session, index:0, correct:0, results:[] } : session;
+export function restartQuiz(session, random = Math.random) {
+  return session ? { ...session, ids:shuffled(session.ids,random), index:0, correct:0, results:[] } : session;
 }
 export function restoreQuizProgress(saved, words, progress) {
   const sessions = {};

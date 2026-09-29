@@ -1,3 +1,4 @@
+import { isKoreanWord } from './koreanVocabulary.js';
 import { wordKey } from './moaFeedState.js';
 const DAY = 86400000;
 export function classifyWord(words, id, action, now = Date.now()) {
@@ -37,6 +38,7 @@ export function mergeLegacyFeed(words, entries = {}) {
   });
 }
 export function quizExercise(word, settings) {
+  if (isKoreanWord(word)) return word.status === 'mastered' ? 'reverse' : word.status === 'scrap' ? settings.scrap : 'meaning';
   return word.status === 'scrap' ? settings.scrap : word.status === 'mastered' ? settings.mastered : 'meaning';
 }
 export function restoreQuizSession(value, words) {

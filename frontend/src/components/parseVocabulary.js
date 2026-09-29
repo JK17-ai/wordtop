@@ -1,6 +1,9 @@
+import { parseKoreanVocabulary } from './koreanVocabulary.js';
 import { cleanEbsMeaning } from './cleanEbsMeaning.js';
 
 export function parseVocabulary(text) {
+  const korean = parseKoreanVocabulary(text);
+  if (korean.length) return korean;
   const result = [];
   const used = new Set();
   const pattern = /([A-Za-z][A-Za-z'’ -]*?)\s*(?:\[[^\]\n]*\]|\/[^/\n]+\/)?\s*(?:(?:n|v|adj|adv|prep|conj|pron|a|ad|vt|vi)\.)?\s*[:\t,–—-]*\s*([~～∼〜]?\s*[가-힣][^A-Za-z\n]*)/g;

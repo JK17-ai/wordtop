@@ -14,17 +14,17 @@ test('quiz gates untouched and merely saved words, using self choice independent
  assert.equal(quizPool([words[2]],'all','all',{entries:{[wordKey(words[2])]:{judgment:'known'}}}).length,1);
 });
 test('resume preserves order and position, appends newly learned words and restart preserves source records',()=>{
- let session=resumeQuiz(null,words.slice(0,2),{tab:'all',stage:'all',label:'학습한 단어'});
+ let session=resumeQuiz(null,words.slice(0,2),{tab:'all',stage:'all',label:'학습한 단어'},()=>0.999);
  session=recordQuizAnswer(session,1,true);
  assert.equal(recordQuizAnswer(session,1,true),session);
  const resumed=resumeQuiz(session,[words[2],words[1],words[0]]);
  assert.deepEqual(resumed.ids,[1,2,3]);assert.equal(resumed.index,1);assert.equal(resumed.correct,1);
- const restarted=restartQuiz(resumed);
+ const restarted=restartQuiz(resumed,()=>0.999);
  assert.equal(restarted.index,0);assert.equal(restarted.correct,0);assert.deepEqual(restarted.ids,resumed.ids);
  assert.equal(session.index,1);assert.equal(words[0].judgment,'unknown');
 });
 test('removed eligibility does not skip the next question or count a removed answer',()=>{
- let session=resumeQuiz(null,words);session=recordQuizAnswer(session,1,true);
+ let session=resumeQuiz(null,words,{},()=>0.999);session=recordQuizAnswer(session,1,true);
  session=recordQuizAnswer(session,2,false);
  const resumed=resumeQuiz(session,words.slice(1));
  assert.equal(resumed.index,1);assert.equal(resumed.correct,0);assert.equal(resumed.ids[resumed.index],3);
@@ -47,4 +47,16 @@ test('legacy session migrates at its existing position and rejects corrupt sessi
  const restored=restoreQuizProgress(legacy,words);
  assert.equal(restored.sessions.legacy.index,1);assert.equal(restored.sessions.legacy.correct,1);
  assert.equal(restoreQuizProgress({quizSession:{ids:[1,1],index:1}},words).activeKey,null);
+});
+test('all tabs shuffle new batches and restarts while resume retains the saved order',()=>{
+ const pool=Array.from({length:8},(_,id)=>({id,word:String(id),judgment:id%2?'known':'unknown'}));
+ for(const tab of ['all','scrap','mastered']){
+  const eligible=quizPool(pool,tab),source=eligible.map(w=>w.id);
+  const session=resumeQuiz(null,eligible,{tab},()=>0);
+  assert.notDeepEqual(session.ids,source);assert.deepEqual([...session.ids].sort(),[...source].sort());
+  const answered=recordQuizAnswer(session,session.ids[0],true);
+  assert.deepEqual(resumeQuiz(answered,eligible),answered);
+  const restarted=restartQuiz(answered,()=>0);
+  assert.notDeepEqual(restarted.ids,answered.ids);assert.equal(restarted.index,0);assert.equal(answered.index,1);
+ }
 });

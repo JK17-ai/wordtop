@@ -1,6 +1,7 @@
-﻿import * as pdfjs from 'pdfjs-dist';
+import * as pdfjs from 'pdfjs-dist';
 import pdfWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 import mammoth from 'mammoth';
+import { needsVocabularyOcr } from './koreanVocabulary.js';
 import { parseVocabulary } from './parseVocabulary';
 pdfjs.GlobalWorkerOptions.workerSrc = pdfWorker;
 
@@ -11,7 +12,7 @@ export async function importDeck(file, report) {
   const recognize = async image => {
     if (!worker) {
       const { createWorker } = await import('tesseract.js');
-      worker = await createWorker('eng+kor', 1, { logger: info => {
+      worker = await createWorker('eng+kor+chi_tra', 1, { logger: info => {
         if (info.status === 'recognizing text') report('문자 인식 ' + Math.round(info.progress * 100) + '%');
       } });
     }
@@ -28,7 +29,7 @@ export async function importDeck(file, report) {
         const page = await pdf.getPage(number);
         const content = await page.getTextContent();
         let pageText = content.items.map(item => item.str + (item.hasEOL ? '\n' : ' ')).join('');
-        if (!/[가-힣]/.test(pageText)) {
+        if (needsVocabularyOcr(pageText, parseVocabulary(pageText))) {
           const viewport = page.getViewport({ scale: 1.8 });
           const canvas = document.createElement('canvas');
           canvas.width = viewport.width;
@@ -47,7 +48,7 @@ export async function importDeck(file, report) {
       throw new Error('Word는 .docx로 저장해 주세요. PDF, JPG, PNG, WebP, TXT, CSV도 지원합니다.');
     }
     const words = parseVocabulary(text);
-    if (!words.length) throw new Error('영어 단어와 한글 뜻 쌍을 찾지 못했어요. 두 내용이 함께 있는 선명한 파일을 선택해 주세요.');
+    if (!words.length) throw new Error('단어와 뜻 쌍을 찾지 못했어요. 영어·한글 뜻 또는 사자성어(한자): 뜻 형식의 선명한 파일을 선택해 주세요.');
     return words;
   } finally {
     if (worker) await worker.terminate();

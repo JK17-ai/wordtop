@@ -1,3 +1,4 @@
+import { isKoreanWord } from './koreanVocabulary.js';
 const normalize=value=>String(value||'').normalize('NFKC').replace(/\([^)]*\)/g,'').replace(/\s+/g,' ').trim();
 export function wordPartOfSpeech(item) {
  const explicit=String(item.partOfSpeech||item.pos||'').toLowerCase().trim();
@@ -29,7 +30,7 @@ export function buildQuizChoices(item,words,exercise='meaning',random=Math.rando
   seen.add(key);return true;
  });
  const pos=wordPartOfSpeech(item);
- const same=pos==='unknown'?candidates:candidates.filter(word=>wordPartOfSpeech(word)===pos);
+ const same=isKoreanWord(item)||pos==='unknown'?candidates:candidates.filter(word=>wordPartOfSpeech(word)===pos);
  // Do not fill a noun question with verbs merely to force four choices.
  // Unknown targets use the whole deck; known targets stay in their own group.
  const distractors=shuffle(same,random).slice(0,3).map(value);
