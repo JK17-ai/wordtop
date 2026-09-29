@@ -3,23 +3,31 @@ import { withFeedExample } from './feedExamples.js';
 import { englishHighlight, registeredHighlight } from './exampleHighlights.js';
 import { contextQuestion } from './contextQuestion.js';
 import { buildQuizChoices } from "./quizChoices.js";
-import { createResponseClock, responseStage } from "./responseTiming.js";
+import { createResponseClock, responseStage, scoreResponse } from "./responseTiming.js";
 import FitWord from "./FitWord";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { playReaction } from "../reactionSound";
 // false로 바꾸면 기존 타이머 바·숫자 표시로 되돌립니다.
 const USE_WORD_COLOR_TIMER = true;
 
-export default function WordCard({ item, onAnswer, suspended = false, choices = [], paused = false, onPausedChange, onFinish, reviewMode = false, exercise = "meaning" }) {
+export default function WordCard({ item, onAnswer, prepareAward, onVerifiedAnswer, suspended = false, choices = [], paused = false, onPausedChange, onFinish, reviewMode = false, exercise = "meaning" }) {
+  const awardTicket = useRef(null);
+  const awardStarted = useRef(false);
+  useEffect(() => {
+    if(!suspended && !paused && !awardStarted.current && prepareAward){
+      awardStarted.current=true;
+      // Never block the card, answer buttons or local timer on network I/O.
+      awardTicket.current=prepareAward(item);
+    }
+  },[item,paused,suspended,prepareAward]);
   const korean = isKoreanWord(item);
   const koreanReverse = korean && exercise === 'reverse';
   const [pauseHint, setPauseHint] = useState(false);
   const pauseHintTimer = useRef(null);
   useEffect(() => {
-    if (!paused) setPauseHint(false);
     return () => clearTimeout(pauseHintTimer.current);
-  }, [paused]);
+  }, []);
   const showPauseHint = () => {
     clearTimeout(pauseHintTimer.current);
     setPauseHint(true);
@@ -64,24 +72,27 @@ export default function WordCard({ item, onAnswer, suspended = false, choices = 
   const [remaining, setRemaining] = useState(10000);
   const setPaused = value => onPausedChange?.(typeof value === "function" ? value(paused) : value);
   const [result, setResult] = useState(null);
-  const [flight, setFlight] = useState(null);
+
   const card = useRef(null);
   const done = useRef(false);
-  const responseClock = useRef(null);
-  if (!responseClock.current) responseClock.current = createResponseClock();
+  const responseClock = useRef(createResponseClock());
   const completion = useRef(null);
   const timerRef = useRef(null);
   const callbacks = useRef({ onAnswer });
-  callbacks.current = { onAnswer };
+  useLayoutEffect(() => { callbacks.current = { onAnswer }; }, [onAnswer]);
   useEffect(() => () => { clearTimeout(completion.current); clearInterval(timerRef.current); }, []);
   const [options] = useState(() => buildQuizChoices(item, choices, exercise));
   const finish = (correct, choice = null) => {
+    if (document.hidden) return;
     if (paused && choice !== null && !done.current && !suspended) { showPauseHint(); return; }
     if (done.current || suspended || speaking || paused || (exercise === "listening" && (!heard || speechError))) return;
     done.current = true;
     responseClock.current.stop();
-    const responseMs = choice === null ? 10000 : Math.round(responseClock.current.elapsed());
+    const scored = scoreResponse(responseClock.current.elapsed(), correct, choice);
+    correct = scored.correct; choice = scored.choice;
+    const responseMs = scored.responseMs;
     const timing = { exercise, listenCount, responseMs, responseStage: responseStage(responseMs), timedOut: choice === null, selectedMeaning: choice === null ? null : (exercise === "reverse" || exercise === "context") ? (correct ? item.meaning : "[reverse incorrect] " + choice) : choice };
+    onVerifiedAnswer?.(item,timing,awardTicket.current);
     onFinish?.(correct);
     clearInterval(timerRef.current);
     setPaused(false);
@@ -90,29 +101,33 @@ export default function WordCard({ item, onAnswer, suspended = false, choices = 
     const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? true;
     // Score exactly once even if a browser cannot render an optional effect.
     completion.current = setTimeout(() => {
-      setFlight(null);
       callbacks.current.onAnswer?.(item.id, correct, timing);
     }, reduced ? 350 : 650);
-    try {
-      const source = card.current?.querySelector('[data-correct="true"]')?.getBoundingClientRect();
-      const target = document.querySelector('.feed-tabs button:nth-child(' + (correct ? 3 : 2) + ')')?.getBoundingClientRect();
-      if (false && source?.width > 0 && target && !reduced) {
-        setFlight({ left: source.left, top: source.top, width: source.width, height: source.height,
-          dx: target.left + target.width / 2 - source.left - source.width / 2,
-          dy: target.top + target.height / 2 - source.top - source.height / 2 });
-      }
-    } catch { /* Optional visual effect only. */ }
-  };  const finishRef = useRef(finish);
-  finishRef.current = finish;
+
+  };  const finishRef = useRef(null);
+  useLayoutEffect(() => { finishRef.current = finish; });
   useEffect(() => {
-    if (paused || result || suspended || recalling || speaking || (exercise === "listening" && (!heard || speechError))) return;
-    responseClock.current.start();
-    const timer = timerRef.current = setInterval(() => {
-      const left = 10000 - responseClock.current.elapsed();
+    const suspend = () => {
+      responseClock.current.stop(); clearInterval(timerRef.current);
+      if (!done.current) onPausedChange?.(true);
+    };
+    const visibility = () => { if (document.hidden) suspend(); };
+    document.addEventListener('visibilitychange', visibility);
+    window.addEventListener('pagehide', suspend);
+    return () => { document.removeEventListener('visibilitychange', visibility); window.removeEventListener('pagehide', suspend); };
+  }, [onPausedChange]);
+  useEffect(() => {
+    if (document.hidden || paused || result || suspended || recalling || speaking || (exercise === "listening" && (!heard || speechError))) return;
+    const clock = responseClock.current;
+    clock.start();
+    const timer = setInterval(() => {
+      const left = 10000 - clock.elapsed();
       setRemaining(left);
       if (left <= 0) { clearInterval(timer); finishRef.current(false); }
     }, 50);
-    return () => { clearInterval(timer); responseClock.current.stop(); };
+  // eslint-disable-next-line react-hooks/immutability -- This ref owns an imperative timer handle; assigning it in an effect does not mutate React state or props.
+    timerRef.current = timer;
+    return () => { clearInterval(timer); clock.stop(); };
   }, [paused, result, suspended, recalling, speaking, heard, speechError, exercise]);
   const elapsed = Math.max(0, Math.min(1, 1 - remaining / 10000));
   const start = elapsed < 0.5 ? [25, 25, 25] : [112, 43, 43];
@@ -127,7 +142,7 @@ export default function WordCard({ item, onAnswer, suspended = false, choices = 
       {!USE_WORD_COLOR_TIMER && (<div className="card-topline"><div className="timer-segments" role="progressbar" aria-label="남은 시간" aria-valuemin={0} aria-valuemax={10} aria-valuenow={Math.ceil(remaining / 1000)}>{[0,1,2,3,4].map(index => <i key={index} className={index < Math.ceil(remaining / 2000) ? "lit" : ""} />)}</div><span className="countdown-number">{Math.ceil(remaining / 1000)}</span></div>)}
       <span className="timer-accessible" role="timer" aria-live="off" aria-label={`남은 시간 ${Math.ceil(remaining / 1000)}초${paused ? ", 일시 정지" : ""}`} />
       <div className="word-heading">
-        {koreanReverse ? <p className="context-question" lang="ko">{item.meaning}</p> : englishExample?.example ? <p className="context-question" lang="en">{englishParts ? <>{englishParts.before}<u>{englishParts.highlight}</u>{englishParts.after}</> : englishExample.example}</p> : exercise === 'context' && contextPrompt ? <p className="context-question" lang="ko">{contextPrompt.before}{contextPrompt.highlight && <u>{contextPrompt.highlight}</u>}{contextPrompt.after}</p> : exercise === 'listening' && !result ? <div className="listening-heading">{reviewMode && [1,2,3].includes(item.responseStage) && <span className="listening-stars" aria-label={item.responseStage + '단계'}>{Array.from({length:item.responseStage},(_,i)=><span key={i}>★</span>)}</span>}<button className="listen-button" disabled={speaking || suspended || paused} onClick={listen}>{speaking ? '재생 중…' : heard ? '🔊 다시 듣기' : '🔊 발음 듣기'}</button></div> : <FitWord as="h2" className="word-term" maxSize={54} leading={reviewMode && [1, 2, 3].includes(item.responseStage) && (
+        {koreanReverse ? <p className="context-question" lang="ko">{item.meaning}</p> : englishExample?.example ? <p className="context-question" lang="en">{englishParts ? <>{englishParts.before}<u>{englishParts.highlight}</u>{englishParts.after}</> : englishExample.example}</p> : exercise === 'context' && contextPrompt ? <p className="context-question" lang="ko">{contextPrompt.before}{contextPrompt.highlight && <u>{contextPrompt.highlight}</u>}{contextPrompt.after}</p> : exercise === 'listening' && !result ? <div className="listening-heading">{reviewMode && [1,2,3].includes(item.responseStage) && <span className="listening-stars" aria-label={item.responseStage + '단계'}>{Array.from({length:item.responseStage},(_,i)=><span key={i}>★</span>)}</span>}<button className="listen-button" disabled={speaking || suspended || paused} onClick={listen}>{speaking ? '재생 중…' : heard ? '🔊 다시 듣기' : '🔊 발음 듣기'}</button></div> : <FitWord as="h2" className="word-term" maxSize={korean ? 32 : 54} leading={reviewMode && [1, 2, 3].includes(item.responseStage) && (
           <span className="response-stars" role="img" aria-label={`최근 응답 시간 ${item.responseStage}단계${item.timedOut ? ', 시간 초과' : ''}`} title="별 1개: 3초 이내 · 2개: 3~6초 · 3개: 6초 초과">
             {Array.from({ length: item.responseStage }, (_, index) => <span key={index} aria-hidden="true">★</span>)}
           </span>
@@ -151,7 +166,7 @@ export default function WordCard({ item, onAnswer, suspended = false, choices = 
       {/* 이전 카드 내부 멈춤 버튼 보관
       <button className="pause-button" disabled={!!result || suspended || speaking || paused || (exercise === "listening" && (!heard || !!speechError))} onClick={() => setPaused(v => !v)}>{paused ? '다시 시작' : '멈춤'}</button>
       */}
-      {pauseHint && createPortal(
+      {paused && pauseHint && createPortal(
         <div className="quiz-pause-notice" role="status" aria-live="polite">
           <div>
             <span aria-hidden="true">Ⅱ</span>
@@ -159,11 +174,10 @@ export default function WordCard({ item, onAnswer, suspended = false, choices = 
             <p><b>학습 계속하기</b>를<br/>먼저 눌러 주세요.</p>
           </div>
         </div>, document.body)}
-      <div className="quiz-prompt" role="status">{speechError || (koreanReverse && !result ? '뜻에 맞는 단어를 골라 주세요' : exercise === 'english-context' && !result ? englishExample?.example ? '예문 속 단어에 맞는 한국어 뜻은?' : '영어 단어에 맞는 한국어 뜻은?' : exercise === 'context' && !result ? contextPrompt ? contextPrompt.highlight ? '밑줄 친 부분에 해당하는 영어 단어는?' : '예문의 문맥에 맞는 영어 단어는?' : '준비된 예문이 없어 뜻에 맞는 영어 단어를 골라 주세요' : result ? '\u00a0' : recalling ? '뜻을 떠올린 뒤 시작하세요' : exercise === 'listening' && !heard ? '발음을 들은 뒤 뜻을 선택하세요' : '\u00a0')}</div>
+      <div className="quiz-prompt" role="status">{speechError || (koreanReverse && !result ? '뜻에 맞는 단어를 골라 주세요' : exercise === 'english-context' && !result ? englishExample?.example ? '예문 속 단어에 맞는 한국어 뜻은?' : '영어 단어에 맞는 한국어 뜻은?' : exercise === 'context' && !result ? contextPrompt ? contextPrompt.highlight ? '밑줄 친 부분에 해당하는 영어 단어는?' : '예문의 문맥에 맞는 영어 단어는?' : '준비된 예문이 없어 뜻에 맞는 영어 단어를 골라 주세요' : result ? '' : recalling ? '뜻을 떠올린 뒤 시작하세요' : exercise === 'listening' && !heard ? '발음을 들은 뒤 뜻을 선택하세요' : '')}</div>
       <div className="choice-grid">{recalling ? <button className="recall-ready" disabled={suspended} onClick={() => { if (paused) showPauseHint(); else setRecalling(false); }}>떠올렸어요 · 퀴즈 시작</button> : options.map(choice => <button key={choice} data-correct={choice === answer} disabled={!!result || suspended} className={result ? choice === answer ? 'answer-reveal' : choice === result.choice ? 'answer-wrong' : 'answer-muted' : ''} onClick={() => finish(choice === answer, choice)}>{koreanReverse ? <span className="korean-choice-label"><strong>{choice}</strong>{choices.find(word=>word.word===choice)?.hanja && <span lang="ko" className="korean-choice-hanja">{choices.find(word=>word.word===choice).hanja}</span>}</span> : choice}</button>)}</div>
     </article>
 
-    {flight && createPortal(<div aria-hidden="true" className={`answer-flight ${result.correct ? 'to-mastered' : 'to-scrap'}`} style={{ left: flight.left, top: flight.top, width: flight.width, minHeight: flight.height, '--fly-x': `${flight.dx}px`, '--fly-y': `${flight.dy}px` }}>{item.meaning}<span>✦</span></div>, document.body)}
+
   </>;
 }
-

@@ -8,7 +8,7 @@ export function contextQuestion(item) {
   if (!sentence || !word.example) return null;
   const registered=registeredHighlight('ko',item,sentence);
   if(registered)return {...registered,term:word.displayWord || word.word};
-  const senses = String(word.displayMeaning || word.meaning).replace(/\([^)]*\)/g, '').split(/[,;\/]/).map(s => s.replace(/~/g, '').trim()).filter(s => s.length >= 2).sort((a,b)=>b.length-a.length);
+  const senses = String(word.displayMeaning || word.meaning).replace(/\([^)]*\)/g, '').split(/[,;/]/).map(s => s.replace(/~/g, '').trim()).filter(s => s.length >= 2).sort((a,b)=>b.length-a.length);
   for (const sense of senses) {
     const escaped = sense.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const match = new RegExp(`(^|[\\s“”"'‘’])(${escaped})(?=$|[\\s.,!?은는이가을를의에와과도만으로이다])`, 'u').exec(sentence);

@@ -1,6 +1,7 @@
-import {readRecovery,saveRecovery,validRecovery,normalizeRecovery} from './recoveryCode.js';
-import { readProfileCache, saveProfileCache } from './profileCache.js';
+import {readRecovery,saveRecovery,validRecovery,normalizeRecovery,recoveryKey} from './recoveryCode.js';
+import { readProfileCache, saveProfileCache, PROFILE_CACHE_KEY } from './profileCache.js';
 import { getSupabase } from './supabase';
+import {openStudyBackupStore} from './studyBackup.js';
 
 const remember = profile => { try { saveProfileCache(localStorage,profile); } catch { /* Server identity remains valid when storage is unavailable. */ } return profile; };
 export async function loadProfile() {
@@ -17,10 +18,13 @@ export async function loadProfile() {
     }
     const {data:profile,error:failure}=await client.rpc('wordtop_my_profile').abortSignal(AbortSignal.timeout(8000));
     if(failure)throw failure;
-    return profile?.id ? remember(profile) : null;
+    if(profile?.id)return remember(profile);
+    localStorage.removeItem(PROFILE_CACHE_KEY);
+    if(cached)localStorage.removeItem(recoveryKey(cached.id));
+    return null;
   } catch(error) {
     if(cached)return cached; // Offline access stays scoped to its existing profile.
-    throw Error('연결을 확인하지 못했어요. 인터넷 연결 후 다시 시도해 주세요.');
+    throw Error('연결을 확인하지 못했어요. 인터넷 연결 후 다시 시도해 주세요.', {cause:error});
   }
 }
 async function deviceClient(){
@@ -44,6 +48,23 @@ export async function createPersonal(name,gender=null,age=null,code=null){return
 export async function recoverPersonal(code){if(!validRecovery(code))throw Error('복구 코드를 정확하게 입력했는지 확인해 주세요.');return rememberAccount(await accountRpc('wordtop_recover_personal',{recovery_code:normalizeRecovery(code)}));}
 export async function issueRecovery(){return rememberAccount(await accountRpc('wordtop_issue_recovery'));}
 export async function updatePersonal(name,gender=null,age=null){return remember(await accountRpc('wordtop_update_personal',{display_name:name.trim(),gender_value:gender||null,age_value:age||null}));}
+export const listDevices=()=>accountRpc('wordtop_list_devices');
+export const revokeDevice=id=>accountRpc('wordtop_revoke_device',{device_id:id}).then(rememberAccount);
+export async function leaveAccount(profileId,confirmation=null){
+ await accountRpc(confirmation===null?'wordtop_disconnect_device':'wordtop_delete_account',confirmation===null?undefined:{confirmation});
+ // Clear identity first so a failed browser cleanup cannot reconnect using a cached code.
+ localStorage.removeItem(PROFILE_CACHE_KEY);
+ localStorage.removeItem(recoveryKey(profileId));
+ const keys=[];for(let i=0;i<localStorage.length;i++){const key=localStorage.key(i);if(key?.startsWith(`wordtop:${profileId}:`))keys.push(key);}
+ for(const key of keys)localStorage.removeItem(key);
+ try{
+  const archive=await openStudyBackupStore();
+  if(archive)try{await archive.removePrefix(`wordtop:${profileId}:`);}finally{archive.close();}
+ }finally{
+  const client=getSupabase();await client.auth.signOut({scope:'local'});
+  window.dispatchEvent(new CustomEvent('wordtop-profile-updated',{detail:null}));
+ }
+}
 // Previous invite-code API retained for rollback; the character picker no longer calls it.
 export async function claimProfile(name, code) {
   const client = getSupabase();

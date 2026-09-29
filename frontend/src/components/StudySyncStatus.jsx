@@ -1,17 +1,10 @@
-import { useEffect, useState } from 'react';
+
 
 const summary = snapshot => {
   const words = snapshot?.deck?.words || [];
   return `마스터 ${words.filter(w => w.status === 'mastered' || (!w.status && w.checked)).length} · 스크랩 ${words.filter(w => w.status === 'scrap').length}`;
 };
 export default function StudySyncStatus({ sync, snapshot }) {
-  const [showUploaded, setShowUploaded] = useState(false);
-  useEffect(() => {
-    if (!sync.uploadSequence) return;
-    setShowUploaded(true);
-    const timer = setTimeout(() => setShowUploaded(false), 1600);
-    return () => clearTimeout(timer);
-  }, [sync.uploadSequence]);
   if (sync.state === 'storage-full') return <div className="study-sync" role="alert"><strong>기기 저장 공간 확인이 필요해요</strong><p>{sync.message}</p><button onClick={sync.retry}>저장 다시 시도</button></div>;
   if (sync.state === 'conflict') return <div className="study-sync conflict" role="alert">
     <strong>두 기기의 기록이 달라요.</strong>

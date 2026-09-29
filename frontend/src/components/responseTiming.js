@@ -1,6 +1,11 @@
 export function responseStage(ms) {
   return ms <= 3000 ? 1 : ms <= 6000 ? 2 : 3;
 }
+export function scoreResponse(elapsed, correct, choice) {
+  const timedOut = choice === null || elapsed >= 10000;
+  return {correct:!!correct && !timedOut, choice:timedOut ? null : choice,
+    responseMs:timedOut ? 10000 : Math.max(0, Math.floor(elapsed)), timedOut};
+}
 
 // Only active quiz time counts; pauses and answer animations are excluded.
 export function createResponseClock(now = () => performance.now()) {

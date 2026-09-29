@@ -1,9 +1,5 @@
 import { useEffect, useState } from 'react';
-
-const day = () => {
-  const now = new Date();
-  return `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
-};
+import {studyDay as day} from './dailyStudy.js';
 const empty = () => ({ date: day(), total: 0, correct: 0 });
 function read(key) {
   try {
@@ -34,7 +30,4 @@ export default function useAccuracy(key = "wordtop-daily-accuracy-v1") {
     setLive({ total: 0, correct: 0 });
   };
   return { live, today, record, restore };
-}
-export function AccuracyStats({ live, today }) {
-  return <div className="accuracy-stats">{[['실시간 정답률', live], ['오늘의 정답률', today]].map(([label, value]) => <div key={label}><span>{label}</span><strong>{value.total ? `${Math.round(value.correct / value.total * 100)}%` : '—'}</strong>{/* 기존 집계 문구 보관: <small>{value.correct} / {value.total} 정답</small> */}</div>)}</div>;
 }

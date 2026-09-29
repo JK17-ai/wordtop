@@ -1,7 +1,11 @@
 import { sha256Hex, browserUUID } from './browserCrypto.js';
 import { openStudyBackupStore, migrateStudyBackups } from './studyBackup.js';
+import { validateWords, validateProgress, MAX_SNAPSHOT_BYTES } from './studyValidation.js';
 // Snapshot sync deliberately stops on conflicting device edits instead of merging guesses.
 export function validateSnapshot(value) {
+  validateWords(value?.deck?.words);
+  validateProgress(value);
+  if (new TextEncoder().encode(JSON.stringify(value)).length > MAX_SNAPSHOT_BYTES) throw Error('단어장 저장 용량(8MB)을 초과했어요.');
   if (value?.schemaVersion !== 1 || !Array.isArray(value.deck?.words) || !value.deck.words.length
       || value.deck.words.length > 10000 || typeof value.deck.name !== 'string') throw Error('서버 학습 기록 형식을 확인해 주세요.');
   const ids = new Set();
@@ -20,7 +24,7 @@ export function validateSnapshot(value) {
     const deckIds=new Set([library.activeId]);
     for(const entry of library.decks){
       if(typeof entry?.id !== 'string' || deckIds.has(entry.id)) throw Error('단어장 식별자를 확인해 주세요.');
-      deckIds.add(entry.id); validateSnapshot({schemaVersion:1,deck:entry.deck});
+      deckIds.add(entry.id); validateSnapshot({...entry,schemaVersion:1});
     }
   }
   return value;
@@ -141,6 +145,13 @@ export function createStudySync({ rpc, storage, key, profileId, status = () => {
       try { await running; }
       catch (error) { status({ state: 'error', message: error.message }); throw error; }
       finally { running = null; }
+    },
+    async importBackup(snapshot, local) {
+      validateSnapshot(snapshot);
+      if(revision===null || remoteConflict)throw Error('서버 동기화와 충돌 해결을 먼저 완료해 주세요.');
+      if(running)await running;
+      await backup(local,snapshot);
+      this.queue(snapshot);
     },
     async resolve(choice, local) {
       if (!remoteConflict) return null;

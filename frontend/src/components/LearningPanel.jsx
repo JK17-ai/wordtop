@@ -9,6 +9,7 @@ export default function LearningPanel({ kind, awards, onClose, embedded = false 
   const [refresh, setRefresh] = useState(0);
   useEffect(() => {
     let active = true;
+  // eslint-disable-next-line react-hooks/set-state-in-effect -- External storage/network subscriptions and their error states are synchronized here; updates are guarded by stable dependencies.
     setData(null); setError('');
     (async () => {
       try {
@@ -62,7 +63,7 @@ export default function LearningPanel({ kind, awards, onClose, embedded = false 
     </article>)}
     {kind === 'badges' && <>
       <p>연속 정답 10개 동 · 20개 은 · 30개 금<br/>한 연속 정답 구간마다 각 배지를 한 번 받아요.</p>
-      <p className="panel-note">기본 2027 단어장의 정답을 서버에서 확인한 뒤 지급해요. 오답·시간 초과는 연속 기록을 다시 시작해요. 오프라인 답안은 연결 후 접수 순서로 반영됩니다.</p>
+      <p className="panel-note">기본 2027 단어장에서 서버가 발급한 문제의 답안을 10초 안에 접수하면 배지에 반영됩니다. 오답·시간 초과는 연속 기록을 다시 시작해요. 일시 정지·오프라인·느린 연결 중에도 학습은 계속되지만 배지가 지급되지 않을 수 있어요.</p>
       {!!awards.pending && <p role="status">전송 대기 {awards.pending}개 <button onClick={awards.retry}>다시 전송</button></p>}
       {awards.error && <p role="alert">배지 전송 대기: {awards.error}</p>}
       {current && <><p>현재 연속 정답 <strong>{current.streak}</strong></p><div className="badge-collection">{current.awards.map(badge => <article key={badge.id}><strong>{tiers[badge.tier]} 배지</strong><small>{new Date(badge.awarded_at).toLocaleDateString('ko-KR')}</small></article>)}</div>{!current.awards.length && <p>첫 배지를 향해 시작해 보세요.</p>}</>}

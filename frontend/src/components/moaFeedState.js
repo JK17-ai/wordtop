@@ -1,3 +1,4 @@
+import {studyDay} from './dailyStudy.js';
 // Feed judgments are deliberately separate from quiz status and cloud quiz snapshots.
 export const wordKey = word => JSON.stringify([word.id, word.word, word.meaning]);
 export function feedStorageKey(profileId, name, words) {
@@ -27,9 +28,7 @@ export function shuffleFeed(words, random = Math.random) {
   return shuffled;
 }
 
-export function feedDay() {
-  return new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
-}
+export const feedDay = studyDay;
 export function dailySteps(daily, day) {
   if (daily?.day !== day) return {day, keys:[], base:0};
   const keys = [...new Set(Array.isArray(daily.keys) ? daily.keys.filter(k=>typeof k==='string') : [])];

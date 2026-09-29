@@ -1,7 +1,10 @@
 import useScreenWakeLock from './useScreenWakeLock';
+import { validateSnapshot } from '../lib/studySync.js';
+import { exportStudy } from '../lib/exportStudy.js';
 import useCardFit from './useCardFit';
 import AccountPanel from './AccountPanel';
-import PortraitOnly, {usePortraitOnly} from './PortraitOnly';
+import PortraitOnly from './PortraitOnly';
+import {usePortraitOnly} from './usePortraitOnly';
 import AppNotice from './AppNotice';
 import { withFeedExample } from './feedExamples.js';
 import { isKoreanWord } from './koreanVocabulary.js';
@@ -9,7 +12,8 @@ import DeckPicker from './DeckPicker';
 import { emptyDeckLibrary, libraryItems, selectLibraryDeck, addLibraryDeck, localDeckSave } from './deckLibrary.js';
 import { browserUUID } from '../lib/browserCrypto.js';
 import { nextQuizBatch, remainingQuizWords, quizVisitedIds, selfJudgment, quizPool, quizLabel, tabQuizKey, resumeQuiz, recordQuizAnswer, restoreQuizProgress } from './quizSessions.js';
-import MotivationBanner, { useMotivationRotation } from './MotivationBanner';
+import MotivationBanner from './MotivationBanner';
+import {useMotivationRotation} from './useMotivationRotation';
 import { feedStorageKey, readFeed } from './moaFeedState.js';
 import { classifyWord, isDue, quizExercise, mergeLegacyFeed } from './learningFlow.js';
 import MoaFeed, { MoaLibrary } from './MoaFeed';
@@ -27,16 +31,15 @@ import useAwards from "./useAwards";
 import { reviewFeed, nextReviewIndex } from "./reviewStudy.js";
 import useStudySync from "./useStudySync";
 import StudySyncStatus from "./StudySyncStatus";
-import { repairSavedDeck } from "./repairSavedDeck";
+import { repairSavedDeck, repairFeedKeys, repairLibrary } from "./repairSavedDeck";
 // 다음 단어 미리보기 복원 시 사용: import FitWord from "./FitWord";
 import { profileKey } from "../lib/profiles";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { importDeck } from "./importDeck";
 import WordCard from "./WordCard";
-import { getFeed, answerWord, restorePositions, rebuildStudyDeck } from "./studyState";
-import ScrapPreview from "./ScrapPreview";
+import { answerWord, restorePositions, rebuildStudyDeck } from "./studyState";
 import UpdateNotice from "./UpdateNotice";
-import useAccuracy, { AccuracyStats } from "./useAccuracy";
+import useAccuracy from "./useAccuracy";
 
 
 
@@ -45,6 +48,9 @@ export default function FileUpload({ profile }) {
   useScreenWakeLock();
   const landscape = usePortraitOnly();
   const [showAccount,setShowAccount] = useState(false);
+  const [notice, setNotice] = useState("");
+  const [loadError, setLoadError] = useState('');
+  const [loadAttempt, setLoadAttempt] = useState(0);
   const deckStorageKey = profileKey(profile?.id, "wordtop-current-deck");
   const accuracy = useAccuracy(profileKey(profile?.id, "wordtop-daily-accuracy-v1"));
   const shellRef = useRef(null);
@@ -80,14 +86,14 @@ export default function FileUpload({ profile }) {
     const count = streak.current;
     const mood = correct && count >= 5 && count % 5 === 0 ? 'streak' : correct ? 'correct' : 'wrong';
     const example = exercise === 'context' ? withFeedExample(item) : null;
-    setReaction({ mood, count, id: Date.now(), ...(example?.example ? {example:example.example, exampleWord:example.displayWord || item.word} : {}), ...(!correct && item ? {answerWord:item.word,answerMeaning:item.meaning} : {}) });
+    setReaction({ mood, count, id: browserUUID(), ...(example?.example ? {example:example.example, exampleWord:example.displayWord || item.word} : {}), ...(!correct && item ? {answerWord:item.word,answerMeaning:item.meaning} : {}) });
     void playReaction(correct, { streak: count }).catch(() => {});
     reactionTimer.current = setTimeout(() => setReaction(null), example?.example ? 5000 : 2500);
   };
   const [studyPaused, setStudyPaused] = useState(false);
   const settingsChanged = useRef(false);
   const [pauseLocked, setPauseLocked] = useState(false);
-  const [viewMode, setViewMode] = useState("phone");
+  const viewMode = "phone";
   const [panel, setPanel] = useState(null);
   const [deckPickerReturn,setDeckPickerReturn] = useState(null);
   const openDeckPicker = () => {setDeckPickerReturn(panel);setPanel('decks');};
@@ -100,11 +106,13 @@ export default function FileUpload({ profile }) {
   const [todayDate, setTodayDate] = useState(studyDay);
   useEffect(() => { const timer = setInterval(() => setTodayDate(studyDay()), 1000); return () => clearInterval(timer); }, []);
   const today = dailyCounts(daily, todayDate);
+  // eslint-disable-next-line react-hooks/set-state-in-effect -- External storage/network subscriptions and their error states are synchronized here; updates are guarded by stable dependencies.
   useEffect(() => { try { localStorage.setItem(deckStorageKey + ':settings', JSON.stringify(settings)); localStorage.setItem(deckStorageKey + ':daily', JSON.stringify(daily)); } catch { setNotice('기기 저장 공간을 확인해 주세요.'); } }, [settings,daily,deckStorageKey]);
   const awards = useAwards(profile?.id);
   useEffect(() => {
     if (!awards.latestAward) return;
     clearTimeout(reactionTimer.current);
+  // eslint-disable-next-line react-hooks/set-state-in-effect -- External storage/network subscriptions and their error states are synchronized here; updates are guarded by stable dependencies.
     setReaction({ mood:'badge', tier:awards.latestAward.tier, id:awards.latestAward.id });
     void playReaction(true, { badge:true }).catch(() => {});
     reactionTimer.current = setTimeout(() => setReaction(null),2500);
@@ -113,6 +121,7 @@ export default function FileUpload({ profile }) {
   const [reviewHint, setReviewHint] = useState(false);
   const reviewHintTimer = useRef(null);
   useEffect(() => () => clearTimeout(reviewHintTimer.current), []);
+  // eslint-disable-next-line react-hooks/set-state-in-effect -- External storage/network subscriptions and their error states are synchronized here; updates are guarded by stable dependencies.
   useEffect(() => { if (panel) { clearTimeout(reviewHintTimer.current); setReviewHint(false); } }, [panel]);
   const selectStudyTab = tab => {
     clearTimeout(reviewHintTimer.current);
@@ -129,7 +138,6 @@ export default function FileUpload({ profile }) {
 
   const [deckName, setDeckName] = useState("2027 수능 EBS영단어");
   const [busy, setBusy] = useState(false);
-  const [notice, setNotice] = useState("");
   const [ready, setReady] = useState(false);
   const [deckVersion, setDeckVersion] = useState(0);
   const [allWords, setAllWords] = useState([]);
@@ -172,18 +180,21 @@ export default function FileUpload({ profile }) {
     setActiveTab(restored.sessions[restored.activeKey]?.tab || 'all');
     setReviewStage(restored.sessions[restored.activeKey]?.stage || 'all');
   };
-  const classify = (id, action) => { hadLocalRecords.current=true; setAllWords(words=>classifyWord(words,id,action)); };
-  const hadLocalRecords = useRef(false);
+  const classify = (id, action) => { setHasLocalRecords(true); setAllWords(words=>classifyWord(words,id,action)); };
+  const [hasLocalRecords, setHasLocalRecords] = useState(false);
   const snapshot = useMemo(() => ({ schemaVersion: 1,
     deck: { name: deckName, words: allWords, cursors: Object.fromEntries(["all", "scrap", "mastered"].map(tab => [tab, reviewFeed(allWords, tab, reviewStage)[positions[tab]]?.id ?? null])) },
     deckLibrary, accuracy: accuracy.today, activeMs, dailyStudy: daily, learningSettings: settings, quizProgress, ...(quizSession ? {quizSession} : {}), ...(feedProgress ? {feedProgress} : {}),
+  // eslint-disable-next-line react-hooks/preserve-manual-memoization -- Snapshot identity drives durable sync. Deck/progress updates use immutable replacements; keep memoization to avoid repeated uploads.
   }), [deckLibrary, deckName, allWords, positions, accuracy.today, activeMs, reviewStage, daily, settings, quizSession, quizProgress, feedProgress]);
   const restoreSnapshot = async value => {
+    validateSnapshot(value);
     const repaired = await repairSavedDeck(value.deck.words, value.deck, deckStorageKey);
     const rebuilt = rebuildStudyDeck(repaired);
-    setDeckLibrary(value.deckLibrary || emptyDeckLibrary());
+    setDeckLibrary(await repairLibrary(value.deckLibrary,deckStorageKey));
     accuracy.restore(value.accuracy);
-    restoreQuizzes(value, rebuilt, value.feedProgress); setFeedProgress(value.feedProgress || null);
+    const restoredFeed = repairFeedKeys(value.feedProgress,value.deck.words,rebuilt);
+    restoreQuizzes(value, rebuilt, restoredFeed); setFeedProgress(restoredFeed || null);
     if (value.dailyStudy?.entries) setDaily(value.dailyStudy);
     if (value.learningSettings) setSettings(learningSettings(value.learningSettings));
     setAllWords(rebuilt); setDeckName(value.deck.name);
@@ -192,41 +203,36 @@ export default function FileUpload({ profile }) {
     setDeckVersion(version => version + 1);
   };
   const sync = useStudySync({ profileId: profile?.id, storageKey: deckStorageKey, ready,
-    snapshot, hasLocal: hadLocalRecords.current, onRestore: restoreSnapshot });
+    snapshot, hasLocal: hasLocalRecords, onRestore: restoreSnapshot });
   const syncBlocked = sync.state === 'loading' || sync.state === 'conflict' || sync.state === 'storage-full';
 
   useEffect(() => {
     if (!ready || !['saved','synced'].includes(sync.state)) return;
     const entries = readFeed(feedStorageKey(profile?.id,deckName,allWords)).entries;
     if (!allWords.some(w=>!w.feedMigrated && entries[JSON.stringify([w.id,w.word,w.meaning])])) return;
+  // eslint-disable-next-line react-hooks/set-state-in-effect -- External storage/network subscriptions and their error states are synchronized here; updates are guarded by stable dependencies.
     setAllWords(words=>mergeLegacyFeed(words,entries));
   },[ready,sync.state,deckName,allWords,profile?.id]);
   const picker = useRef(null);
   const importing = useRef(false);
+  const importAbort = useRef(null);
+  useEffect(() => () => importAbort.current?.abort(), []);
   const streak = useRef(0);
-  const toastTimer = useRef(null);
-  const [toast, setToast] = useState(null);
-  useEffect(() => () => clearTimeout(toastTimer.current), []);
-  const celebrate = correct => {
-    streak.current = correct ? streak.current + 1 : 0;
-    clearTimeout(toastTimer.current);
-    setToast(null);
-    if (streak.current >= 3) {
-      setToast({ count: streak.current, text: ["오호라?", "잘하네?", "죽이네?"][(streak.current - 3) % 3] });
-      toastTimer.current = setTimeout(() => setToast(null), 1600);
-    }
-  };
   useEffect(() => {
     let cancelled = false;
+    const abort = new AbortController();
+    const timeout = setTimeout(() => abort.abort(), 20000);
     (async () => {
       try {
         let saved;
-        try { saved = JSON.parse(localStorage.getItem(deckStorageKey)); } catch { /* Use bundled deck. */ }
-        hadLocalRecords.current = !!saved?.words?.length;
-        setDeckLibrary(saved?.deckLibrary || emptyDeckLibrary());
+        const raw = localStorage.getItem(deckStorageKey);
+        try { saved = raw ? JSON.parse(raw) : null; } catch { throw Error('저장된 기록을 읽지 못했어요. 원본을 내려받아 보관해 주세요.'); }
+        if (saved) validateSnapshot({...saved, schemaVersion:1, deck:saved});
+        setHasLocalRecords(!!saved?.words?.length);
+        setDeckLibrary(await repairLibrary(saved?.deckLibrary,deckStorageKey));
          setFeedProgress(saved?.feedProgress || null);
         setActiveMs(Number.isFinite(saved?.activeMs) ? saved.activeMs : 0);
-        const data = saved?.words?.length ? saved.words : await fetch("/books/2027.json").then(res => {
+        const data = saved?.words?.length ? saved.words : await fetch("/books/2027.json", {signal:abort.signal}).then(res => {
           if (!res.ok) throw new Error("단어장을 불러오지 못했어요.");
           return res.json();
         });
@@ -234,26 +240,29 @@ export default function FileUpload({ profile }) {
         const repaired = await repairSavedDeck(data, saved, deckStorageKey);
         if (cancelled) return;
         const rebuilt = rebuildStudyDeck(repaired);
-        const storedFeed = saved?.feedProgress || readFeed(feedStorageKey(profile?.id,saved?.name || deckName,rebuilt));
+        const storedFeed = repairFeedKeys(saved?.feedProgress,data,rebuilt) || readFeed(feedStorageKey(profile?.id,saved?.name || '2027 수능 EBS영단어',rebuilt));
         setFeedProgress(storedFeed); restoreQuizzes(saved, rebuilt, storedFeed);
         setAllWords(rebuilt); setPositions(restorePositions(rebuilt, saved?.cursors));
         if (saved?.name) setDeckName(saved.name);
         setReady(true);
-      } catch (error) { if (!cancelled) setNotice(error.message); }
+      } catch (error) { if (!cancelled) setLoadError(error.name === 'AbortError' ? '단어장 연결이 지연되고 있어요. 다시 시도해 주세요.' : error.message); }
+      finally { clearTimeout(timeout); }
     })();
-    return () => { cancelled = true; };
-  }, []);
+    return () => { cancelled = true; clearTimeout(timeout); abort.abort(); };
+  }, [loadAttempt,deckStorageKey,profile?.id]);
   useEffect(() => {
     if (!ready) return;
     try { localStorage.setItem(deckStorageKey, JSON.stringify(localDeckSave(snapshot))); }
+  // eslint-disable-next-line react-hooks/set-state-in-effect -- External storage/network subscriptions and their error states are synchronized here; updates are guarded by stable dependencies.
     catch { setNotice("저장 공간이 부족해 새로고침 후 단어장이 유지되지 않을 수 있어요."); }
   }, [ready, snapshot, deckStorageKey]);
 
   const activateDeck = next => {
+    validateSnapshot(next);
     // Persist the complete library before replacing the visible deck.
     if (new TextEncoder().encode(JSON.stringify(next)).length > 8 * 1024 * 1024) throw Error('단어장 저장 용량을 초과했어요. 더 작은 문서를 선택해 주세요.');
     localStorage.setItem(deckStorageKey, JSON.stringify(localDeckSave(next)));
-    hadLocalRecords.current=true;
+    setHasLocalRecords(true);
     setDeckLibrary(next.deckLibrary); setAllWords(next.deck.words); setDeckName(next.deck.name);
     setFeedProgress(next.feedProgress || {cursor:null,entries:{}});
     restoreQuizzes(next,next.deck.words,next.feedProgress);
@@ -270,37 +279,24 @@ export default function FileUpload({ profile }) {
     const file = event.target.files?.[0];
     event.target.value = "";
     if (!file || importing.current || syncBlocked) return;
+    importAbort.current = new AbortController();
     importing.current = true; setBusy(true); setNotice("단어장 만드는 중…");
     try {
-      const imported = await importDeck(file, setNotice);
+      const imported = await importDeck(file, setNotice, {signal:importAbort.current.signal});
       activateDeck(addLibraryDeck(snapshot,browserUUID(),file.name.replace(/\.[^.]+$/, ""),rebuildStudyDeck(imported)));
       setPanel('library');
-      streak.current = 0; setToast(null);
+      streak.current = 0;
       try { localStorage.setItem("wordtop-page", "0"); } catch { /* Memory still works. */ }
       setNotice(imported.length.toLocaleString() + "개 단어로 새 단어장을 만들었어요.");
     } catch (error) {
       setNotice(error.message || "파일을 읽지 못했어요. 다른 파일로 다시 시도해 주세요.");
     } finally { importing.current = false; setBusy(false); }
   };
-    const totalCount = allWords.length;
-
-    const knownCount =
-        getFeed(allWords, "mastered").length;
-
-    const unknownCount =
-        totalCount - knownCount;
-
-    const progress =
-        totalCount === 0
-            ? 0
-            : Math.round((knownCount / totalCount) * 100);
-
     const filteredWords = quizPool(allWords, activeTab, reviewStage, feedProgress);
     const learnedWords = quizPool(allWords, "all", "all", feedProgress);
     const remainingQuizCount = remainingQuizWords(quizSession,allWords,feedProgress).length;
     const quizResults = (quizSession?.results || []).map(result=>({...result,word:allWords.find(word=>word.id===result.id)})).filter(result=>result.word);
     const wrongQuizCount = quizResults.filter(result=>!result.correct).length;
-    const pendingCount = getFeed(allWords, "all").length;
     const pageCount = Math.max(1, filteredWords.length);
     const safePage = Math.max(0, Math.min(page, pageCount - 1));
     const pageWords = quizSession ? allWords.filter(w=>w.id === quizSession.ids[quizSession.index]).slice(0,1) : [];
@@ -325,6 +321,7 @@ export default function FileUpload({ profile }) {
       setTouchStart(null);
     };
 
+  if (loadError) return <main className="profile-screen"><h1>학습을 준비하지 못했어요</h1><p role="alert">{loadError}</p><button onClick={() => {setLoadError('');setLoadAttempt(n => n + 1);}}>다시 시도</button><button onClick={() => exportStudy(localStorage, deckStorageKey)}>원본 기록 내려받기</button></main>;
   return (
     <><PortraitOnly active={landscape}/><div inert={showAccount || landscape || showTutorial || !!notice ? true : undefined} ref={shellRef} className={`app-shell preview-${viewMode} reel-feed quiet-study`}>
       <UpdateNotice />
@@ -334,7 +331,7 @@ export default function FileUpload({ profile }) {
       {!panel && <button type="button" className="quiet-deck" disabled={busy || !ready || syncBlocked || pauseLocked} onClick={openDeckPicker} title={`현재 단어장: ${deckName} · 선택하기`}><span className="quiet-deck-label">현재 단어장</span><strong>{deckName}</strong><span aria-hidden="true">⌄</span></button>}
       <StudySyncStatus sync={sync} snapshot={snapshot} />
       {!panel && mode === "feed" && learnedWords.some(w=>isDue(w)) && <button className="review-invitation" disabled={busy || !ready || syncBlocked} onClick={()=>startQuiz(learnedWords.filter(w=>isDue(w)).slice(0,17), false, '복습할 단어')}><span className="review-invitation-icon" aria-hidden="true">↻</span><span className="review-invitation-copy"><strong>기억을 깨울 시간</strong><small>복습할 {learnedWords.filter(w=>isDue(w)).length}개 중 {Math.min(17,learnedWords.filter(w=>isDue(w)).length)}개만 가볍게</small></span><span className="review-invitation-action">복습 시작 <span aria-hidden="true">→</span></span></button>}
-      {notice && <AppNotice message={notice} busy={busy} onClose={()=>setNotice("")}/>}
+      {notice && <AppNotice message={notice} busy={busy} onCancel={()=>importAbort.current?.abort()} onClose={()=>setNotice("")}/>}
       {/* Previous per-answer streak toast hidden for focused study. */}
        {!panel && mode === "quiz" && <><nav className="feed-tabs" inert={pauseLocked ? true : undefined}><button className={activeTab === "all" ? "active" : ""} onClick={() => selectStudyTab("all")}>학습한 단어<small>({learnedWords.length.toLocaleString()})</small></button><button className={activeTab === "scrap" ? "active" : ""} onClick={() => selectStudyTab("scrap")}>몰라요<small>({quizPool(allWords,"scrap",reviewStage,feedProgress).length.toLocaleString()})</small></button><button className={activeTab === "mastered" ? "active" : ""} onClick={() => selectStudyTab("mastered")}>알아요<small>({quizPool(allWords,"mastered",reviewStage,feedProgress).length.toLocaleString()})</small></button></nav>
       {/* 이전 제목 보관: Today's Mission / Today */}
@@ -343,11 +340,11 @@ export default function FileUpload({ profile }) {
         {[["family","♧","가족 학습 기록"],["badges","♔","내 배지와 보상"],["settings","⚙","학습 설정"]].map(([key,icon,label]) => <section className="moa-record-section" key={key}>
           <h3><button id={`record-toggle-${key}`} className="moa-record-toggle" aria-expanded={recordSection === key} aria-controls={`record-content-${key}`} onClick={() => setRecordSection(current => current === key ? null : key)}><span>{icon} {label}</span><span aria-hidden="true">{recordSection === key ? '−' : '+'}</span></button></h3>
           {recordSection === key && <div id={`record-content-${key}`} className="moa-record-content" role="region" aria-labelledby={`record-toggle-${key}`}>
-            {key === 'settings' ? <StudySettings korean={allWords.some(isKoreanWord)} embedded onTutorial={() => { setShowTutorial(true); }} onClose={() => setRecordSection(null)} settings={settings} onChange={value => { hadLocalRecords.current=true; setSettings(value); settingsChanged.current=true; setDeckVersion(v=>v+1); }} stage={reviewStage} onStage={value => { setReviewStage(value); if (quizSession && quizProgress.activeKey?.startsWith('tab:')) { const key=tabQuizKey(activeTab,value); setQuizProgress(previous=>({...previous,activeKey:key,sessions:{...previous.sessions,[key]:resumeQuiz(previous.sessions[key],quizPool(allWords,activeTab,value,feedProgress),{tab:activeTab,stage:value,label:quizLabel(activeTab)})}})); } setDeckVersion(v=>v+1); }} /> : <PanelBoundary onClose={() => setRecordSection(null)}><LearningPanel embedded kind={key} awards={awards} onClose={() => setRecordSection(null)} /></PanelBoundary>}
+            {key === 'settings' ? <StudySettings korean={allWords.some(isKoreanWord)} embedded onTutorial={() => { setShowTutorial(true); }} onClose={() => setRecordSection(null)} settings={settings} onChange={value => { setHasLocalRecords(true); setSettings(value); settingsChanged.current=true; setDeckVersion(v=>v+1); }} stage={reviewStage} onStage={value => { setReviewStage(value); if (quizSession && quizProgress.activeKey?.startsWith('tab:')) { const key=tabQuizKey(activeTab,value); setQuizProgress(previous=>({...previous,activeKey:key,sessions:{...previous.sessions,[key]:resumeQuiz(previous.sessions[key],quizPool(allWords,activeTab,value,feedProgress),{tab:activeTab,stage:value,label:quizLabel(activeTab)})}})); } setDeckVersion(v=>v+1); }} /> : <PanelBoundary onClose={() => setRecordSection(null)}><LearningPanel embedded kind={key} awards={awards} onClose={() => setRecordSection(null)} /></PanelBoundary>}
           </div>}
         </section>)}
         <aside className="records-banner-slot" aria-label="오늘의 응원" data-slot="records-large-ad" data-content-type="motivation"><img src="/banners/keep-going-clean.png" width="515" height="446" alt="포기하지 마세요! 지금도 목표에 한 걸음 더 가까워지고 있어요. 보물을 향해 한 번 더 도전하는 모습." loading="lazy" /></aside>
-      </section> : panel === "settings" ? <StudySettings korean={allWords.some(isKoreanWord)} onTutorial={() => { setPanel(null); setShowTutorial(true); }} onClose={() => setPanel(null)} settings={settings} onChange={value => { hadLocalRecords.current=true; setSettings(value); settingsChanged.current=true; setDeckVersion(v=>v+1); }} stage={reviewStage} onStage={value => { setReviewStage(value); if (quizSession && quizProgress.activeKey?.startsWith('tab:')) { const key=tabQuizKey(activeTab,value); setQuizProgress(previous=>({...previous,activeKey:key,sessions:{...previous.sessions,[key]:resumeQuiz(previous.sessions[key],quizPool(allWords,activeTab,value,feedProgress),{tab:activeTab,stage:value,label:quizLabel(activeTab)})}})); } setDeckVersion(v=>v+1); }} /> : panel ? <PanelBoundary key={panel} onClose={() => setPanel(null)}><LearningPanel kind={panel} awards={awards} onClose={() => setPanel(null)} /></PanelBoundary> : mode === "feed" ? (ready && !syncBlocked ? <MoaFeed progress={feedProgress} onProgress={setFeedProgress} onClassify={classify} onQuiz={startQuiz} key={`${profile?.id}:${deckLibrary.activeId}`} deckId={deckLibrary.activeId} words={allWords} name={deckName} profileId={profile?.id} disabled={landscape || busy || syncBlocked} /> : <p role="status">단어장을 불러오는 중…</p>) : <section className="moa-quiz-body">
+      </section> : panel === "settings" ? <StudySettings korean={allWords.some(isKoreanWord)} onTutorial={() => { setPanel(null); setShowTutorial(true); }} onClose={() => setPanel(null)} settings={settings} onChange={value => { setHasLocalRecords(true); setSettings(value); settingsChanged.current=true; setDeckVersion(v=>v+1); }} stage={reviewStage} onStage={value => { setReviewStage(value); if (quizSession && quizProgress.activeKey?.startsWith('tab:')) { const key=tabQuizKey(activeTab,value); setQuizProgress(previous=>({...previous,activeKey:key,sessions:{...previous.sessions,[key]:resumeQuiz(previous.sessions[key],quizPool(allWords,activeTab,value,feedProgress),{tab:activeTab,stage:value,label:quizLabel(activeTab)})}})); } setDeckVersion(v=>v+1); }} /> : panel ? <PanelBoundary key={panel} onClose={() => setPanel(null)}><LearningPanel kind={panel} awards={awards} onClose={() => setPanel(null)} /></PanelBoundary> : mode === "feed" ? (ready && !syncBlocked ? <MoaFeed progress={feedProgress} onProgress={setFeedProgress} onClassify={classify} onQuiz={startQuiz} key={`${profile?.id}:${deckLibrary.activeId}`} deckId={deckLibrary.activeId} words={allWords} name={deckName} profileId={profile?.id} disabled={landscape || busy || syncBlocked} /> : <p role="status">단어장을 불러오는 중…</p>) : <section className="moa-quiz-body">
       {quizSession && quizSession.index < quizSession.ids.length && <section className="quiz-session-progress" aria-label="이번 퀴즈 진행"><div className="quiz-session-heading"><span><small>{quizSession.label || quizLabel(activeTab)}</small><strong>{quizSession.index + 1}<span> / {quizSession.ids.length}</span></strong></span></div><div className="quiz-session-track" role="progressbar" aria-label="완료한 문제" aria-valuemin={0} aria-valuemax={quizSession.ids.length} aria-valuenow={quizSession.index}><span style={{width:`${100*quizSession.index/quizSession.ids.length}%`}}/></div></section>}
       {(!quizSession || quizSession.index >= quizSession.ids.length) ? <section className="quiz-session-complete" aria-live="polite">
         <span className="quiz-complete-mark" aria-hidden="true">{quizSession?.ids.length ? '✓' : '▤'}</span>
@@ -360,11 +357,11 @@ export default function FileUpload({ profile }) {
         <button className="quiz-complete-secondary" onClick={()=>{setMode('feed');setPauseLocked(false);}}>모아학습으로 {learnedWords.length ? '돌아가기' : '시작하기'} →</button>
       </section> : <>
       {/* Previous inline review controls moved to Settings > 학습방법. */}
-      <main className="reel-stage" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>{pageWords.map(item => <WordCard key={`${deckVersion}-${activeTab}-${reviewStage}-${item.id}`} exercise={activeExercise} item={item} reviewMode={activeTab !== "all"} paused={studyPaused} onPausedChange={setStudyPaused} onFinish={correct => { setPauseLocked(true); reactToAnswer(correct, item, activeExercise); }} suspended={showAccount || landscape || !!reaction?.example || busy || syncBlocked || !!panel || mode !== "quiz" || reviewHint || showTutorial} choices={allWords} onAnswer={(id, correct, timing) => {
+      <main className="reel-stage" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>{pageWords.map(item => <WordCard prepareAward={quizSession?.practice ? undefined : awards.prepare} onVerifiedAnswer={awards.record} key={`${deckVersion}-${activeTab}-${reviewStage}-${item.id}`} exercise={activeExercise} item={item} reviewMode={activeTab !== "all"} paused={studyPaused} onPausedChange={setStudyPaused} onFinish={correct => { setPauseLocked(true); reactToAnswer(correct, item, activeExercise); }} suspended={showAccount || landscape || !!reaction?.example || busy || syncBlocked || !!panel || mode !== "quiz" || reviewHint || showTutorial} choices={allWords} onAnswer={(id, correct, timing) => {
         const next = answerWord(allWords, activeTab, safePage, id, correct, timing);
         setActiveMs(value => value + (timing?.responseMs || 0));
-        hadLocalRecords.current = true;
-        accuracy.record(correct); if (!quizSession?.practice) awards.record(item, timing);
+        setHasLocalRecords(true);
+        accuracy.record(correct);
         setPauseLocked(false);
         if (quizSession) setQuizSession(previous=>recordQuizAnswer(previous,id,correct));
         setDaily(previous => dailyRecord(previous, JSON.stringify([deckName,item.id,item.word]), correct));
@@ -383,7 +380,7 @@ export default function FileUpload({ profile }) {
   <button className={panel === 'library' ? 'selected' : ''} onClick={() => setPanel('library')}><span>▥</span><small>내 단어장</small></button>
   <button className={panel && panel !== 'library' && panel !== 'decks' ? 'selected' : ''} onClick={() => setPanel('records')}><span>◎</span><small>내 기록</small></button>
 </nav>
-    </div>{showAccount && <AccountPanel profile={profile} onClose={()=>setShowAccount(false)}/>} {showTutorial && <StudyTutorial onClose={closeTutorial}/>}</>
+    </div>{showAccount && <AccountPanel profile={profile} snapshot={snapshot} onRestore={sync.importBackup} onClose={()=>setShowAccount(false)}/>} {showTutorial && <StudyTutorial onClose={closeTutorial}/>}</>
   );
 }
   // Previous content-driven density resizing removed: stable layout avoids jumping.

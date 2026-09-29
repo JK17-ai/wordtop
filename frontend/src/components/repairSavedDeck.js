@@ -1,5 +1,6 @@
 import { cleanEbsMeaning, cleanDanglingBrackets } from './cleanEbsMeaning.js';
 import { vocabularyCorrections } from './vocabularyCorrections.js';
+import {idiomCorrections} from './idiomCorrections.js';
 
 export async function repairSavedDeck(data, saved, storageKey) {
   const reference = vocabularyCorrections;
@@ -7,7 +8,9 @@ export async function repairSavedDeck(data, saved, storageKey) {
   let changed = false;
   const repaired = data.map(original => {
     const meaning = cleanDanglingBrackets(original.meaning);
-    const item = meaning === original.meaning ? original : { ...original, meaning };
+    const idiom = idiomCorrections.find(patch => patch.id === original.id && patch.word === original.word && patch.oldMeaning === meaning);
+    const nextMeaning = idiom?.meaning || meaning;
+    const item = nextMeaning === original.meaning ? original : { ...original, meaning:nextMeaning };
     if (item !== original) changed = true;
     const target = byId.get(item.id);
     if (!target || target.word !== item.word || typeof item.meaning !== 'string') return item;
@@ -36,4 +39,23 @@ export async function repairSavedDeck(data, saved, storageKey) {
     }
   }
   return repaired;
+}
+
+// Feed keys include meanings; transfer only known vocabulary corrections, keeping learned state.
+export function repairFeedKeys(progress, before, after) {
+  if (!progress?.entries) return progress;
+  const key = w => JSON.stringify([w.id,w.word,w.meaning]);
+  const remap = new Map(before.map((word,i) => [key(word),key(after[i])]));
+  return {...progress, cursor:remap.get(progress.cursor) || progress.cursor,
+    entries:Object.fromEntries(Object.entries(progress.entries).map(([k,v]) => [remap.get(k) || k,v])),
+    ...(progress.daily ? {daily:{...progress.daily, keys:Array.isArray(progress.daily.keys) ? progress.daily.keys.map(k => remap.get(k) || k) : []}} : {})};
+}
+export async function repairLibrary(library, storageKey) {
+  if (!library) return {activeId:'original',decks:[]};
+  const decks = [];
+  for (const entry of library.decks) {
+    const words = await repairSavedDeck(entry.deck.words,entry.deck,storageKey+':library:'+encodeURIComponent(entry.id));
+    decks.push({...entry,deck:{...entry.deck,words},feedProgress:repairFeedKeys(entry.feedProgress,entry.deck.words,words)});
+  }
+  return {...library,decks};
 }

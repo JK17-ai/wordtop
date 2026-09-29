@@ -1,5 +1,5 @@
 import { isStorageQuotaError } from '../lib/studyBackup.js';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { getSupabase } from '../lib/supabase';
 import { createStudySync } from '../lib/studySync.js';
 import { retryDelay } from '../lib/syncRetry.js';
@@ -7,7 +7,7 @@ import { retryDelay } from '../lib/syncRetry.js';
 export default function useStudySync({ profileId, storageKey, ready, snapshot, hasLocal, onRestore }) {
   const [status, setStatus] = useState({ state: 'loading' });
   const refs = useRef({ snapshot, onRestore, hasLocal });
-  refs.current = { snapshot, onRestore, hasLocal };
+  useLayoutEffect(() => { refs.current = { snapshot, onRestore, hasLocal }; }, [snapshot,onRestore,hasLocal]);
   const controller = useRef(null);
   const initialized = useRef(false);
   const initializing = useRef(false);
@@ -55,7 +55,7 @@ export default function useStudySync({ profileId, storageKey, ready, snapshot, h
     } catch (error) { report({ state: 'error', message: error.message }); }
     finally { initializing.current = false; }
   };
-  retryRef.current = retry;
+  useLayoutEffect(() => { retryRef.current = retry; });
   useEffect(() => {
     active.current = true;
     const client = getSupabase();
@@ -64,7 +64,7 @@ export default function useStudySync({ profileId, storageKey, ready, snapshot, h
       key: storageKey, profileId, status: report });
     return () => { active.current = false; clearTimeout(dirtyTimer.current); clearTimeout(retryTimer.current); };
   }, [profileId, storageKey]);
-  useEffect(() => { if (ready) void retry(); }, [ready]);
+  useEffect(() => { if (ready) void retryRef.current?.(); }, [ready]);
   useEffect(() => {
     if (!ready || !initialized.current || restoring.current || ['conflict','storage-full'].includes(statusRef.current)) return;
     try { controller.current.queue(snapshot); }
@@ -89,5 +89,12 @@ export default function useStudySync({ profileId, storageKey, ready, snapshot, h
       if (value) await restore(value);
     } catch (error) { report({ state: 'error', message: error.message }); }
   };
-  return { ...status, retry, resolve };
+  const importBackup = async snapshot => {
+    if(!initialized.current || !['saved','synced'].includes(statusRef.current))throw Error('동기화 완료 후 복원해 주세요.');
+    clearTimeout(dirtyTimer.current);
+    await controller.current.importBackup(snapshot,refs.current.snapshot);
+    await restore(snapshot);
+    await controller.current.flush();
+  };
+  return { ...status, retry, resolve, importBackup };
 }

@@ -17,7 +17,7 @@ export default function StudyTutorial({ onClose }) {
   const dialog = useRef(null);
   const heading = useRef(null);
   const close = useRef(onClose);
-  close.current = onClose;
+  useEffect(() => { close.current = onClose; }, [onClose]);
   useEffect(() => {
     const previous = document.activeElement;
     return () => { if (previous?.isConnected) previous.focus(); };

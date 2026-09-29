@@ -1,4 +1,5 @@
 import {commonDecks,commonDeck} from './commonDecks.js';
+import { validateWords } from '../lib/studyValidation.js';
 // Active deck stays in the legacy snapshot fields; other decks retain their own progress.
 export const emptyDeckLibrary = () => ({activeId:'original', decks:[]});
 export function captureDeck(snapshot) {
@@ -21,6 +22,7 @@ export function selectLibraryDeck(snapshot, id) {
   return {...snapshot,...captureDeck(selected),deckLibrary:{activeId:id,decks:[{id:library.activeId,...captureDeck(snapshot)},...library.decks.filter(item=>item.id!==id)]}};
 }
 export function addLibraryDeck(snapshot, id, name, words) {
+  validateWords(words);
   const library=snapshot.deckLibrary || emptyDeckLibrary();
   if(library.activeId===id || library.decks.some(item=>item.id===id))throw Error('중복된 단어장입니다.');
   return {...snapshot,deck:{name,words,cursors:{}},quizProgress:{activeKey:null,sessions:{}},quizSession:null,feedProgress:{cursor:null,entries:{}},

@@ -21,7 +21,7 @@ export function englishHighlight(sentence,term){
   const m=regex.exec(sentence);return m?{before:sentence.slice(0,m.index),highlight:m[0],after:sentence.slice(m.index+m[0].length)}:null;
 }
 export function koreanHighlight(sentence,meaning){
-  const senses=String(meaning).replace(/\([^)]*\)/g,'').replace(/\[|\]/g,',').replace(/(?:~|…|\.{2,})\s*[을를에과와의]?/g,'').split(/[,;\/]/).map(s=>s.trim()).filter(Boolean);
+  const senses=String(meaning).replace(/\([^)]*\)/g,'').replace(/\[|\]/g,',').replace(/(?:~|…|\.{2,})\s*[을를에과와의]?/g,'').split(/[,;/]/).map(s=>s.trim()).filter(Boolean);
   const stems=[];
   for(const sense of senses){
     stems.push(sense);

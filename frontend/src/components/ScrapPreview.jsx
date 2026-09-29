@@ -9,10 +9,9 @@ export default function ScrapPreview({ words, cardKey }) {
   const scraps = words.filter(word => word.status === 'scrap');
   const pool = useMemo(() => {
     const candidates = words.filter(word => rating(word) >= 4).map(word => word.id);
-    for (let i = candidates.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [candidates[i], candidates[j]] = [candidates[j], candidates[i]];
-    }
+    // Stable rotation keeps preview selection deterministic across renders.
+    const offset=String(cardKey).length % Math.max(1,candidates.length);
+    candidates.push(...candidates.splice(0,offset));
     return candidates;
   }, [cardKey, words]);
   const start = scraps.length ? (cycle.step * 4) % scraps.length : 0;

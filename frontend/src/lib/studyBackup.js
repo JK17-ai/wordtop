@@ -15,9 +15,19 @@ export async function openStudyBackupStore() {
     tx.onerror = tx.onabort = () => reject(tx.error || Error('백업 저장에 실패했습니다.'));
   });
   return {
+    async list(prefix) {
+      const keys = await operation('readonly',store=>store.getAllKeys());
+      const entries = [];
+      for (const key of keys) if (typeof key === 'string' && key.startsWith(prefix)) entries.push({key,value:await operation('readonly',store=>store.get(key))});
+      return entries;
+    },
     async put(key, value) {
       await operation('readwrite', store => store.put(value, key));
       if (await operation('readonly', store => store.get(key)) !== value) throw Error('백업 검증에 실패했습니다.');
+    },
+    async removePrefix(prefix) {
+      const keys=await operation('readonly',store=>store.getAllKeys());
+      for(const key of keys)if(typeof key==='string'&&key.startsWith(prefix))await operation('readwrite',store=>store.delete(key));
     },
     close: () => db.close(),
   };

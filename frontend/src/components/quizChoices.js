@@ -4,7 +4,7 @@ export function wordPartOfSpeech(item) {
  const explicit=String(item.partOfSpeech||item.pos||'').toLowerCase().trim();
  const tags={noun:'noun',n:'noun','n.':'noun','명사':'noun',verb:'verb',v:'verb','v.':'verb','동사':'verb',adjective:'adjective',adj:'adjective','adj.':'adjective','형용사':'adjective',adverb:'adverb',adv:'adverb','adv.':'adverb','부사':'adverb'};
  if(tags[explicit]) return tags[explicit];
- const parts=normalize(item.meaning).split(/[,;\/·]/).map(s=>s.trim()).filter(Boolean);
+ const parts=normalize(item.meaning).split(/[,;/·]/).map(s=>s.trim()).filter(Boolean);
  const inferred=parts.map(s=>{
   if(/(적인|스러운|로운|한|된|있는|없는|같은|않은|스런|의)$/.test(s))return 'adjective';
   if(/(하게|히|으로|로|껏)$/.test(s))return 'adverb';

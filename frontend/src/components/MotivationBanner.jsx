@@ -1,11 +1,6 @@
-import { useEffect, useState } from 'react';
+import {MOTIVATION_BANNERS} from './motivationData.js';
 import './MotivationBanner.css';
 
-export const MOTIVATION_BANNERS = [
-  { id:'sprout', title:'작아도, 매일 자라는 중.', text:'오늘 만난 단어가 내일의 실력이 돼요.' },
-  { id:'steps', title:'멀리 말고, 한 걸음만.', text:'지금 익힌 한 단어면 충분한 시작이에요.' },
-  { id:'gem', title:'몰랐던 단어가 내 보물로.', text:'틀려도 괜찮아요. 다시 만나면 더 익숙해져요.' },
-];
 function Illustration({kind}) {
   return <svg viewBox="0 0 104 64" fill="none" aria-hidden="true" focusable="false">
     <ellipse cx="56" cy="56" rx="37" ry="5" fill="#dceabb"/>
@@ -32,25 +27,6 @@ function Illustration({kind}) {
 // Replace this slot's content with a clearly labelled ad when an ad provider is added.
 // No ad SDK, tracking or external requests are loaded here.
 // Keep both assignments alive across menu changes. Rotate only the visible slot.
-export function useMotivationRotation(activeMode) {
-  const [indices,setIndices]=useState(()=>{
-    const feed=Math.floor(Math.random()*MOTIVATION_BANNERS.length);
-    return {feed,quiz:(feed+1+Math.floor(Math.random()*2))%3};
-  });
-  useEffect(()=>{
-    if(!['feed','quiz'].includes(activeMode)) return;
-    const timer=setInterval(()=>{
-      if(document.visibilityState!=='visible') return;
-      setIndices(previous=>{
-        const other=activeMode==='feed'?'quiz':'feed';
-        const candidates=MOTIVATION_BANNERS.map((_,i)=>i).filter(i=>i!==previous[activeMode] && i!==previous[other]);
-        return {...previous,[activeMode]:candidates[Math.floor(Math.random()*candidates.length)]};
-      });
-    },20000);
-    return ()=>clearInterval(timer);
-  },[activeMode]);
-  return indices;
-}
 export default function MotivationBanner({index=0}) {
   const banner=MOTIVATION_BANNERS[index];
   return <aside className="feed-message-slot motivation-slot" aria-label="오늘의 응원" data-slot="learning-message-ad" data-content-type="motivation">

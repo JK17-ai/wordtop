@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import {offlinePlugin} from './offlinePlugin.mjs'
 
 export default defineConfig({
-  plugins: [react()],
+  cacheDir: './.vite-cache',
+  plugins: [react(),offlinePlugin()],
 })

@@ -26,7 +26,7 @@ function FeedSession({ words:sourceWords, storageKey, disabled, onClassify, onQu
   const [session] = useState(() => openFeedSession(sourceWords, storageKey));
   const currentWords = new Map(sourceWords.map(w=>[w.id,w]));
   const words = session.words.map(original=>currentWords.get(original.id) || original);
-  const [state, setState] = useState(() => progress || session.state);
+  const [state, setState] = useState(() => ({...(progress || session.state), entries:(progress || session.state).entries || {}}));
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const [day, setDay] = useState(feedDay);
@@ -50,12 +50,11 @@ function FeedSession({ words:sourceWords, storageKey, disabled, onClassify, onQu
   useEffect(() => () => clearTimeout(motionTimer.current), []);
   const index = Math.max(0, words.findIndex(word => wordKey(word) === state.cursor));
   const word = words[index];
-  const entry = state.entries[word ? wordKey(word) : ''] || {};
-  const judged = words.filter(item => state.entries[wordKey(item)]?.judgment).length;
   useEffect(() => {
-    session.state = state;
+    feedSessions.set(storageKey, {...session,state});
     onProgress?.(state);
     try { localStorage.setItem(storageKey, JSON.stringify(state)); }
+  // eslint-disable-next-line react-hooks/set-state-in-effect -- External storage/network subscriptions and their error states are synchronized here; updates are guarded by stable dependencies.
     catch { setError('기기에 진행 기록을 저장하지 못했어요. 저장 공간을 확인해 주세요.'); }
   }, [state, storageKey, session, onProgress]);
   const settle = (target, done) => {
@@ -81,7 +80,7 @@ function FeedSession({ words:sourceWords, storageKey, disabled, onClassify, onQu
   const startDrag = event => {
     if (disabled || moving.current || event.touches.length !== 1) return;
     const definition = event.target.closest('.moa-definition,.korean-study-content');
-    touch.current = { x:event.touches[0].clientX, y:event.touches[0].clientY, time:performance.now(),
+    touch.current = { x:event.touches[0].clientX, y:event.touches[0].clientY, time:event.timeStamp,
       ignore:!!event.target.closest('button') || !!(definition && definition.scrollHeight > definition.clientHeight + 2) };
   };
   const drag = event => {
@@ -97,7 +96,7 @@ function FeedSession({ words:sourceWords, storageKey, disabled, onClassify, onQu
     const start = touch.current; touch.current = null;
     if (!start || start.ignore || moving.current) return;
     const dy = event.changedTouches[0].clientY-start.y, dx = event.changedTouches[0].clientX-start.x;
-    const velocity = Math.abs(dy) / Math.max(1, performance.now()-start.time);
+    const velocity = Math.abs(dy) / Math.max(1, event.timeStamp-start.time);
     if (Math.abs(dy)>Math.abs(dx) && (Math.abs(dy)>85 || (Math.abs(dy)>25 && velocity>.45))) move(dy<0 ? 1 : -1);
     else settle(0);
   };
@@ -152,7 +151,7 @@ function FeedSession({ words:sourceWords, storageKey, disabled, onClassify, onQu
 
     <div ref={viewport} className="moa-swipe-viewport" onTouchStart={startDrag} onTouchMove={drag} onTouchEnd={endDrag}
       onTouchCancel={() => { touch.current = null; if (!moving.current) settle(0); }}
-      onWheel={event => { if (Math.abs(event.deltaY) < 20 || event.target.closest('.moa-definition,.korean-study-content')) return; if (Date.now() - wheelLock.current > 550) { wheelLock.current = Date.now(); move(event.deltaY > 0 ? 1 : -1); } }}>
+      onWheel={event => { if (Math.abs(event.deltaY) < 20 || event.target.closest('.moa-definition,.korean-study-content')) return; if (event.timeStamp - wheelLock.current > 550) { wheelLock.current = event.timeStamp; move(event.deltaY > 0 ? 1 : -1); } }}>
     <div className={`moa-swipe-track ${settling ? 'is-settling' : ''}`} style={{transform:`translate3d(0, ${offset}px, 0)`}}>
     {[-1,0,1].map(relative => {
       const sourceWord = words[index+relative]; if (!sourceWord) return null;
@@ -176,7 +175,7 @@ function FeedSession({ words:sourceWords, storageKey, disabled, onClassify, onQu
     {(error || message) && <p className="moa-feed-message" role="status">{error || message}</p>}
   </section>;
 }
-export function MoaLibrary({ onOpenDecks, words, name, onUpload, disabled, onClassify, onQuiz, progress, onProgress }) {
+export function MoaLibrary({ onOpenDecks, words, name,  disabled, onClassify, onQuiz, progress }) {
   const [query,setQuery]=useState('');
   const [filter,setFilter]=useState('all');
   const [sort,setSort]=useState('priority');
