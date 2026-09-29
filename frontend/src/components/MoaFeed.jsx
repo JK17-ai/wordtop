@@ -133,10 +133,10 @@ function FeedSession({ words:sourceWords, storageKey, disabled, onClassify, onQu
           const term = display.displayWord || display.word;
           const meaning = display.displayMeaning || display.meaning;
           return <li key={wordKey(item)} className={known ? 'batch-known' : 'batch-unknown'}>
-            <details><summary title={`${label} · ${term} · ${meaning}`}>
+            <div className="batch-result-row">
               <span className="batch-mark" aria-label={label}>{known ? '✓' : '×'}</span>
-              <strong>{term}</strong><span className="batch-meaning">{meaning}</span>
-            </summary><p className="batch-full-meaning"><b>{term}</b> · {meaning}</p></details>
+              <div className="batch-term"><strong>{term}</strong>{display.hanja && <span className="batch-hanja" lang="ko">{display.hanja}</span>}</div><span className="batch-meaning">{meaning}</span>
+            </div>
           </li>;
         })}
       </ol>
