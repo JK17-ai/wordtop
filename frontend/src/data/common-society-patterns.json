@@ -1,0 +1,802 @@
+[
+  {
+    "id": "society-pattern-001",
+    "word": "소수와 소수자",
+    "meaning": "인원이 적다는 뜻의 소수와 차별받는 사회적 소수자는 다르다. 인원수만으로 소수자 여부를 결정하지 않는다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-002",
+    "word": "권력의 열세",
+    "meaning": "사회적 소수자는 자원과 권력에 접근하기 어려운 위치에 놓일 수 있다. 수가 많아도 불리한 위치에 있으면 소수자일 수 있다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-003",
+    "word": "신체적 특징과 차별",
+    "meaning": "외모의 차이가 있다는 사실만으로 소수자가 되는 것은 아니다. 그 차이가 사회적 차별과 불리한 대우에 연결되는지 확인한다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-004",
+    "word": "선천적 요인과 후천적 요인",
+    "meaning": "소수자 지위는 태어날 때의 특징뿐 아니라 이주나 종교 선택 같은 후천적 요인과도 관련될 수 있다. 선천적 요인만으로 한정하지 않는다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-005",
+    "word": "상황에 따른 소수자",
+    "meaning": "동일한 특징을 가진 사람도 사회와 시대에 따라 소수자 지위가 달라질 수 있다. 어느 사회에서나 같은 기준이 적용된다고 단정하지 않는다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-006",
+    "word": "중첩된 소수자 지위",
+    "meaning": "한 사람이 여러 차별 요인에 동시에 해당할 수 있다. 이주민이면서 장애인인 경우처럼 소수자 지위는 하나로만 제한되지 않는다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-007",
+    "word": "집단의식과 단순한 공통점",
+    "meaning": "공통된 특징만이 아니라 차별받는 집단에 속한다는 인식도 살핀다. 같은 취미를 가졌다는 사실만으로 사회적 소수자라고 하지는 않는다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-008",
+    "word": "차이와 차별",
+    "meaning": "차이는 서로 다른 특성이고 차별은 특정 특성을 이유로 불리하게 대우하는 것이다. 차이가 존재한다는 사실과 차별의 정당성은 별개이다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-009",
+    "word": "적극적 차별 시정 조치",
+    "meaning": "누적된 불이익을 줄이기 위해 불리한 집단을 우대하는 정책이다. 같은 대우만 하는 방식과 실질적 기회를 보완하는 방식을 구별한다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-010",
+    "word": "역차별 논란",
+    "meaning": "불이익을 보완하는 우대 조치가 다른 집단에 부당한 불이익을 주는지에 관한 논란이다. 우대가 있다는 사실만으로 언제나 정당하거나 부당하다고 단정하지 않는다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-011",
+    "word": "사회 명목론",
+    "meaning": "사회는 개인들의 집합에 붙인 이름이며 실제로 존재하는 것은 개인이라고 보는 관점이다. 사회적 관계나 현상을 관찰할 수 없다는 뜻은 아니다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-012",
+    "word": "사회 실재론",
+    "meaning": "사회가 개인의 단순 합을 넘어 독자적 특성과 영향력을 지닌다고 보는 관점이다. 개인이 물리적으로 존재하지 않는다는 주장이 아니다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-013",
+    "word": "환원과 설명 수준",
+    "meaning": "사회의 성질을 개인의 성질로 환원한다는 것은 개인들의 특성으로 설명한다는 뜻이다. 환원을 사회 자체를 없애는 행동으로 읽지 않는다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-014",
+    "word": "단순 합과 고유한 성질",
+    "meaning": "개인의 특성을 더한 것과 사회 전체의 독자적 성질을 구별한다. 실재론은 집합 전체의 특성이 개인 특성의 합만으로 설명되지 않을 수 있다고 본다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-015",
+    "word": "외재성과 강제성",
+    "meaning": "사회 규범은 개인 바깥에서 이미 존재하며 개인의 행동을 제약할 수 있다. 강제성이 있다는 말이 언제나 물리적 폭력만을 뜻하지는 않는다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-016",
+    "word": "자율성과 무영향",
+    "meaning": "개인의 능동성과 자율성을 강조한다고 사회적 영향을 전혀 받지 않는다는 뜻은 아니다. 강조점을 모든 영향의 부정으로 확대하지 않는다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-017",
+    "word": "사회 문제의 원인",
+    "meaning": "명목론은 개인의 의식과 행동에, 실재론은 사회 구조와 제도에 원인 설명의 무게를 둔다. 강조하는 원인과 유일하게 가능한 원인을 구별한다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-018",
+    "word": "변화의 주체와 제약",
+    "meaning": "개인이 사회를 변화시킨다는 설명과 사회가 개인을 제약한다는 설명을 구별한다. 지문에서 어느 방향의 영향력을 강조하는지 확인한다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-019",
+    "word": "사회화",
+    "meaning": "사회생활에 필요한 지식·규범·가치를 배우는 과정이다. 학교 수업뿐 아니라 가족과 또래 관계에서도 이루어진다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-020",
+    "word": "사회화의 지속성",
+    "meaning": "사회화는 아동기에 끝나지 않고 생애에 걸쳐 계속된다. 성인이 새로운 직업과 역할을 배우는 것도 사회화에 해당할 수 있다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-021",
+    "word": "예기 사회화",
+    "meaning": "앞으로 맡을 역할이나 소속될 집단의 생활 방식을 미리 배우는 것이다. 이미 바뀐 환경에 적응하는 재사회화와 시간적 맥락을 구별한다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-022",
+    "word": "재사회화",
+    "meaning": "새로운 환경이나 변화된 지위에 적응하기 위해 새로운 규범과 행동 방식을 배우는 것이다. 익숙한 내용을 단순 반복하는 것과 구별한다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-023",
+    "word": "공식적 사회화 기관",
+    "meaning": "사회화를 주된 목적으로 설립된 기관이다. 학교가 대표적이며, 여기서 공식적이라는 말은 단순히 규모가 크거나 법인이란 뜻이 아니다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-024",
+    "word": "비공식적 사회화 기관",
+    "meaning": "사회화를 주된 목적으로 설립되지는 않았지만 사회화 기능을 하는 집단이나 기관이다. 가족과 대중 매체처럼 조직의 공식성 여부와 다른 기준으로 분류한다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-025",
+    "word": "공식 조직",
+    "meaning": "특정 목표를 위해 지위와 역할, 규칙을 명시적으로 정한 조직이다. 구성원이 자발적으로 가입했다는 이유만으로 공식 조직이 아니라고 하지는 않는다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-026",
+    "word": "비공식 조직",
+    "meaning": "공식 조직 안에서 친밀감이나 공통 관심에 따라 자생적으로 생긴 조직이다. 회사 내 친목 모임이 예이며 모든 사적 모임과 같은 뜻은 아니다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-027",
+    "word": "자발적 결사체",
+    "meaning": "공통 관심이나 목표를 위해 자발적으로 만든 집단이다. 자발적 결사체이면서 공식 조직인 경우도 있으므로 두 분류를 양자택일하지 않는다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-028",
+    "word": "가입 방식과 조직 구조",
+    "meaning": "자발적으로 가입했는지는 가입의 기준이고 공식적 역할 체계가 있는지는 구조의 기준이다. 서로 다른 기준의 분류는 동시에 성립할 수 있다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-029",
+    "word": "준거 집단과 소속 집단",
+    "meaning": "준거 집단은 판단과 행동의 기준이 되는 집단이고 소속 집단은 실제 속한 집단이다. 아직 들어가지 않은 집단을 준거로 삼을 수도 있다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-030",
+    "word": "역할 갈등과 개인 고민",
+    "meaning": "서로 다른 지위에서 요구되는 역할이 충돌하면 역할 갈등이다. 어느 옷을 입을지 고민하는 것처럼 모든 선택의 어려움이 역할 갈등은 아니다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-031",
+    "word": "절대적 빈곤",
+    "meaning": "기본적 생활을 유지하는 데 필요한 자원이 부족한 상태이다. 사회의 소득 순위가 낮다는 사실만으로 정의하지 않는다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-032",
+    "word": "상대적 빈곤",
+    "meaning": "그 사회의 일반적인 생활 수준과 비교하여 자원이 부족한 상태이다. 비교 기준이 상대적이라는 말과 측정이 불가능하다는 말은 다르다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-033",
+    "word": "상대적 박탈감",
+    "meaning": "다른 사람과 비교하여 자신이 불리하다고 느끼는 감정이다. 상대적 빈곤이라는 통계적 분류와 같지 않으며 빈곤층이 아니어도 느낄 수 있다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-034",
+    "word": "객관화된 기준",
+    "meaning": "소득 등 관찰 가능한 기준을 정하여 분류한다는 뜻이다. 상대적 빈곤도 중위 소득의 일정 비율 같은 객관화된 기준으로 측정할 수 있다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-035",
+    "word": "중위 소득과 평균 소득",
+    "meaning": "중위 소득은 소득 순서의 가운데 값이고 평균 소득은 총소득을 사람 수로 나눈 값이다. 고소득자 한 명의 소득 급증은 두 값에 같은 영향을 주지 않을 수 있다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-036",
+    "word": "빈곤선과 빈곤율",
+    "meaning": "빈곤선은 빈곤 여부를 가르는 기준이고 빈곤율은 그 기준에 해당하는 사람이나 가구의 비율이다. 기준 금액과 해당 비율을 혼동하지 않는다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-037",
+    "word": "빈곤선의 포함 관계",
+    "meaning": "동일한 소득 자료와 비교 방식에서 낮은 빈곤선 아래의 집단은 높은 빈곤선 아래 집단에 포함된다. 절대·상대라는 명칭만으로 포함 방향을 정하지 않는다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-038",
+    "word": "빈곤율과 빈곤 인원",
+    "meaning": "빈곤율이 같아도 전체 인구가 다르면 빈곤 인원이 다를 수 있다. 100명의 10%는 10명이고 200명의 10%는 20명이다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-039",
+    "word": "빈곤선 상승의 조건",
+    "meaning": "같은 소득 자료에서 빈곤선만 높아지면 빈곤 인원은 줄지 않는다. 그 사이에 해당하는 사람이 없으면 늘지 않을 수도 있어 반드시 증가라고 단정하면 안 된다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-040",
+    "word": "소득 증가와 상대적 위치",
+    "meaning": "내 소득이 늘어도 사회의 기준 소득이 더 많이 늘면 상대적 위치는 나빠질 수 있다. 소득 증가만으로 상대적 빈곤 탈출을 단정하지 않는다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-041",
+    "word": "독립 변수와 종속 변수",
+    "meaning": "독립 변수는 원인으로 설정한 요인이고 종속 변수는 그 영향으로 달라질 것으로 보는 결과이다. 문장에 먼저 나온 변수가 항상 독립 변수는 아니다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-042",
+    "word": "개념의 조작적 정의",
+    "meaning": "추상적인 개념을 관찰하거나 측정할 수 있는 방식으로 구체화하는 것이다. 행복을 설문 점수로 측정하는 경우처럼 개념 이름과 측정 지표를 구별한다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-043",
+    "word": "가설과 검증 결과",
+    "meaning": "가설은 검증할 잠정적 예상이고 결과는 조사·실험에서 얻은 내용이다. 연구자가 세운 가설이라고 언제나 지지되는 것은 아니다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-044",
+    "word": "정의 관계와 부의 관계",
+    "meaning": "정의 관계는 두 변수가 같은 방향으로, 부의 관계는 반대 방향으로 변하는 것이다. 정은 좋다는 뜻, 부는 나쁘다는 뜻이 아니다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-045",
+    "word": "상관관계와 인과관계",
+    "meaning": "함께 변하는 상관관계가 확인되어도 원인과 결과가 입증된 것은 아니다. 제3의 변수나 인과 방향을 추가로 살펴야 한다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-046",
+    "word": "실험 집단과 통제 집단",
+    "meaning": "실험 처치를 받는 집단과 비교를 위해 해당 처치를 받지 않는 집단을 구별한다. 통제 집단도 사전·사후 검사를 받을 수 있다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-047",
+    "word": "사전 검사와 사후 검사",
+    "meaning": "처치 전과 후에 같은 결과 변수를 측정하여 변화를 살핀다. 사후 점수만 높은 집단이 반드시 처치 효과도 큰 것은 아니다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-048",
+    "word": "외생 변수의 통제",
+    "meaning": "결과에 영향을 줄 수 있는 다른 요인을 관리하여 독립 변수의 효과를 구별하려는 것이다. 모든 변수를 제거한다는 뜻은 아니다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-049",
+    "word": "무작위 표집과 무작위 배정",
+    "meaning": "표집은 모집단에서 조사 대상을 뽑는 것이고 배정은 참여자를 실험 조건에 나누는 것이다. 대표성 확보와 집단 간 동질성 확보의 목적을 구별한다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-050",
+    "word": "모집단과 표본",
+    "meaning": "모집단은 결론을 적용하려는 전체이고 표본은 실제 조사한 일부이다. 표본 수가 많다는 이유만으로 추출 과정의 편향이 자동 사라지지는 않는다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-051",
+    "word": "가설 기각과 반대 명제",
+    "meaning": "가설을 기각했다는 사실만으로 정반대 가설이 완전히 입증되는 것은 아니다. 관찰 결과가 무엇을 지지하고 무엇을 지지하지 않는지 구별한다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-052",
+    "word": "변화량의 비교",
+    "meaning": "처치 효과를 볼 때 두 집단의 전후 변화를 함께 비교한다. 실험 집단이 10점, 통제 집단이 8점 올랐다면 단순 비교상 변화량 차이는 2점이다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-053",
+    "word": "직접 전파",
+    "meaning": "사람 사이의 직접 접촉을 통해 문화 요소가 전달되는 것이다. 외국인에게 직접 배운 조리법처럼 접촉 경로를 확인한다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-054",
+    "word": "간접 전파",
+    "meaning": "매체 등을 통해 문화 요소가 전달되는 것이다. 외국 방송을 보고 춤을 배운 경우처럼 사람의 직접 방문과 구별한다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-055",
+    "word": "자극 전파",
+    "meaning": "다른 문화에서 아이디어를 얻어 새로운 문화 요소를 만들어 내는 것이다. 외래 요소를 그대로 받아들이는 경우와 구별한다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-056",
+    "word": "발명과 발견",
+    "meaning": "발명은 없던 문화 요소를 만들어 내는 것이고 발견은 이미 존재했지만 몰랐던 것을 알아내는 것이다. 자연현상의 발견을 기계의 제작과 같은 것으로 보지 않는다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-057",
+    "word": "내재적 변동과 외재적 변동",
+    "meaning": "내재적 변동은 사회 내부의 발명·발견 등에, 외재적 변동은 외부 문화와의 접촉 등에 기인한다. 한 사례에 두 원인이 함께 나타날 수도 있다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-058",
+    "word": "전파 경로와 접변 결과",
+    "meaning": "직접·간접 전파는 전달 방식이고 동화·융합·병존은 문화 접촉의 결과이다. 직접 전파가 있었다고 결과가 반드시 동화인 것은 아니다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-059",
+    "word": "문화 동화",
+    "meaning": "외래 문화와 접촉한 뒤 기존 문화의 정체성이 약해지거나 사라지고 외래 문화에 흡수되는 양상이다. 외래 요소가 하나 들어왔다는 것만으로 판단하지 않는다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-060",
+    "word": "문화 융합",
+    "meaning": "서로 다른 문화 요소가 결합하여 새로운 문화 요소가 형성되는 것이다. 두 음식이 메뉴판에 나란히 있다는 사실만으로 융합은 아니다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-061",
+    "word": "문화 병존",
+    "meaning": "서로 다른 문화 요소가 고유한 특성을 유지하며 함께 존재하는 것이다. 한쪽이 완전히 사라지는 동화와 구별한다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-062",
+    "word": "강제적 문화 접변",
+    "meaning": "우세한 집단의 강제에 의해 문화가 이식되는 맥락을 뜻한다. 정부의 어떤 금지 조치가 등장했다는 이유만으로 항상 강제적 문화 접변이라고 판단하지 않는다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-063",
+    "word": "자발적 문화 접변",
+    "meaning": "구성원들이 외래 문화를 자발적으로 받아들이는 문화 접촉이다. 자발적 수용이라고 해서 기존 문화가 반드시 그대로 유지되는 것은 아니다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-064",
+    "word": "문화 지체",
+    "meaning": "물질문화의 변화 속도를 비물질문화가 따라가지 못해 생기는 부조화이다. 기술 도입 뒤 관련 규범이 늦게 마련되는 경우처럼 변화 속도의 방향을 확인한다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-065",
+    "word": "사회 보험",
+    "meaning": "사회적 위험에 공동으로 대비하는 제도로 원칙적으로 강제 가입과 보험료 부담이 적용된다. 가입자가 위험을 겪었는지와 빈곤한지를 같은 기준으로 보지 않는다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-066",
+    "word": "공공 부조",
+    "meaning": "생활이 어려운 사람의 최저 생활 보장과 자립을 지원하며 비용은 국가와 지방 자치 단체가 부담한다. 수급자가 보험료를 냈는지가 기본 요건은 아니다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-067",
+    "word": "사회 서비스",
+    "meaning": "돌봄·상담·재활 등 필요한 서비스를 지원하는 제도이다. 사회 보장의 모든 지원을 현금 지급으로만 생각하지 않는다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-068",
+    "word": "상호 부조",
+    "meaning": "여러 사람이 위험에 대비해 공동으로 부담하는 원리이다. 사회 보험에서 내가 낸 보험료와 내가 받는 급여가 반드시 같은 금액인 것은 아니다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-069",
+    "word": "사전 예방과 사후 처방",
+    "meaning": "사회 보험은 위험에 미리 대비하는 성격, 공공 부조는 발생한 생활 곤란에 대응하는 성격이 강하다. 실제 급여 지급 시점만 보고 구분하지 않는다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-070",
+    "word": "보편성과 선별성",
+    "meaning": "넓은 범위를 대상으로 하는 성격과 일정한 요건에 따라 대상을 가리는 성격을 구별한다. 보편적이라는 말이 모든 사람이 같은 급여를 받는다는 뜻은 아니다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-071",
+    "word": "급여와 보험료",
+    "meaning": "보험료는 제도에 내는 돈이고 급여는 요건에 따라 받는 지원이다. 많이 냈는지와 많이 받았는지는 제도 조건을 확인해야 한다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-072",
+    "word": "소득 재분배",
+    "meaning": "부담과 급여를 통해 사람들 사이의 소득 분포가 달라지는 것이다. 공공 부조뿐 아니라 사회 보험도 재분배 기능을 할 수 있다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-073",
+    "word": "수혜자와 단독 수혜자",
+    "meaning": "A 수혜자에는 A만 받는 사람과 A·B를 모두 받는 사람이 포함된다. A 수혜자 30명 중 중복 수혜자가 10명이면 A만 받는 사람은 20명이다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-074",
+    "word": "중복 수혜와 합집합",
+    "meaning": "A 또는 B를 받는 인원은 A 인원과 B 인원의 합에서 중복 인원을 한 번 뺀다. A 30명, B 40명, 중복 10명이면 적어도 하나를 받는 사람은 60명이다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-075",
+    "word": "비수혜자와 여집합",
+    "meaning": "A·B 어느 것도 받지 않는 사람은 전체에서 적어도 하나를 받는 사람을 뺀 나머지이다. 전체 100명 중 합집합이 60명이면 비수혜자는 40명이다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-076",
+    "word": "지역별 비율과 인원",
+    "meaning": "같은 수혜율이라도 지역 인구가 다르면 수혜자 수가 다르다. 지역별 인원이 같다는 조건 없이 비율을 단순 평균하여 전체 수혜율로 삼지 않는다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-077",
+    "word": "유소년 인구의 범위",
+    "meaning": "유소년 부양비 계산에서 유소년 인구는 보통 0~14세이다. 15세를 포함하면 생산 가능 인구와 중복되므로 문제의 연령 구분을 확인한다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-078",
+    "word": "생산 가능 인구",
+    "meaning": "통상 15~64세 인구를 뜻한다. 실제 취업자 수가 아니므로 학생·실업자 등이 포함될 수 있다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-079",
+    "word": "노년 인구의 범위",
+    "meaning": "노년 부양비 계산에서 노년 인구는 보통 65세 이상이다. 65세를 생산 가능 인구에 넣지 않도록 경계를 확인한다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-080",
+    "word": "유소년 부양비",
+    "meaning": "유소년 인구를 생산 가능 인구로 나누고 100을 곱한 값이다. 전체 인구를 분모로 쓰면 유소년 인구 비율이 되어 다른 지표이다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-081",
+    "word": "노년 부양비",
+    "meaning": "노년 인구를 생산 가능 인구로 나누고 100을 곱한 값이다. 노년 인구가 그대로여도 생산 가능 인구가 줄면 값이 커질 수 있다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-082",
+    "word": "총부양비",
+    "meaning": "유소년 인구와 노년 인구의 합을 생산 가능 인구로 나누고 100을 곱한 값이다. 같은 자료의 유소년 부양비와 노년 부양비를 더해 구할 수 있다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-083",
+    "word": "노령화 지수",
+    "meaning": "노년 인구를 유소년 인구로 나누고 100을 곱한 값이다. 노년 부양비와 분자는 같지만 분모가 다르다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-084",
+    "word": "부양비 50의 뜻",
+    "meaning": "부양비가 50이면 생산 가능 인구 100명당 해당 피부양 인구가 50명이라는 뜻이다. 전체 인구 중 50%라는 뜻은 아니다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-085",
+    "word": "총부양비와 생산 가능 비율",
+    "meaning": "총부양비가 50이면 생산 가능 인구 100명에 피부양 인구 50명으로 생각할 수 있다. 전체 중 생산 가능 인구 비율은 100/150, 약 66.7%이다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-086",
+    "word": "총부양비와 피부양 비율",
+    "meaning": "총부양비가 100이면 생산 가능 인구와 피부양 인구의 합계가 같다. 피부양 인구는 전체의 100%가 아니라 50%이다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-087",
+    "word": "노령화 지수 100",
+    "meaning": "노령화 지수가 100이면 노년 인구와 유소년 인구가 같다. 노년 인구와 생산 가능 인구가 같다는 뜻은 아니다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-088",
+    "word": "부양비의 비로 구하기",
+    "meaning": "같은 생산 가능 인구를 분모로 쓴 노년 부양비를 유소년 부양비로 나누고 100을 곱하면 노령화 지수이다. 유소년 부양비가 0인 경우에는 나눌 수 없다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-089",
+    "word": "분모 감소와 지표 상승",
+    "meaning": "노년 인구가 20명으로 같아도 생산 가능 인구가 100명에서 80명으로 줄면 노년 부양비는 20에서 25로 오른다. 지표 상승이 반드시 노년 인구 증가 때문은 아니다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-090",
+    "word": "비율 상승과 인원 감소",
+    "meaning": "전체 100명 중 노년 20명에서 전체 50명 중 노년 15명으로 변하면 노년 비율은 20%에서 30%로 오른다. 비율은 올랐지만 노년 인원은 줄었다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-091",
+    "word": "고령화와 출생 감소",
+    "meaning": "유소년 인구 감소도 노령화 지수를 높일 수 있다. 지수가 올랐다는 사실만으로 노년 인구가 증가했다고 단정하지 않는다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-092",
+    "word": "총부양비와 구성 변화",
+    "meaning": "총부양비가 같아도 유소년과 노년의 비중은 달라질 수 있다. 유소년 부양비 30·노년 20과 유소년 20·노년 30은 합이 모두 50이다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-093",
+    "word": "증가율과 증가량",
+    "meaning": "증가량은 늘어난 수이고 증가율은 그 증가량을 원래 수로 나눈 비율이다. 10에서 20으로 늘면 증가량은 10, 증가율은 100%이다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-094",
+    "word": "200%와 200% 증가",
+    "meaning": "원래의 200%가 되면 2배이고 200% 증가하면 원래 값에 2배를 더해 3배이다. 100명이 200% 증가하면 300명이다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-095",
+    "word": "퍼센트와 퍼센트포인트",
+    "meaning": "비율이 20%에서 30%가 되면 10%p 상승이고 상대적 증가율은 50%이다. 비율의 차이와 상대적 변화를 구별한다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-096",
+    "word": "절반 감소와 원상 회복",
+    "meaning": "100이 50으로 줄면 50% 감소이지만 50에서 100으로 돌아오려면 100% 증가해야 한다. 계산의 기준값이 달라진다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-097",
+    "word": "전체 비율의 가중 평균",
+    "meaning": "100명 집단의 10%와 300명 집단의 30%를 합치면 100명/400명으로 25%이다. 집단 크기가 다르면 두 비율의 단순 평균은 맞지 않을 수 있다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-098",
+    "word": "이상과 초과",
+    "meaning": "이상·이하는 경곗값을 포함하고 초과·미만은 포함하지 않는다. 65세 이상에는 65세가 들어가지만 65세 초과에는 들어가지 않는다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-099",
+    "word": "일부와 모든",
+    "meaning": "모든 사람이 그렇다는 주장은 반례 한 명으로도 부정할 수 있다. 일부가 그렇다는 사실만으로 나머지까지 모두 그렇다고 확대하지 않는다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  },
+  {
+    "id": "society-pattern-100",
+    "word": "가능과 필연",
+    "meaning": "가능하다는 말은 그런 경우가 있을 수 있다는 뜻이고 반드시라는 말은 예외가 없다는 뜻이다. 가능한 사례 하나를 모든 경우의 법칙으로 바꾸지 않는다.",
+    "language": "ko-KR",
+    "subject": "사회문화",
+    "status": "new"
+  }
+]
