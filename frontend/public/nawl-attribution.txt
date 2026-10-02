@@ -8,8 +8,8 @@ License: Creative Commons Attribution-ShareAlike 4.0 International
 https://creativecommons.org/licenses/by-sa/4.0/
 
 Adaptation by 단어모아, 2026-10-02:
-The original 957 headwords are retained. Korean glosses and short original
-AI-authored English examples have been added. These additions are not
+The original 957 headwords are retained. Korean glosses, short original
+AI-authored English examples and Korean translations have been added. These additions are not
 official NAWL definitions or examples. This adapted dataset is distributed
 under CC BY-SA 4.0. This license notice applies to the dataset, not the app code.
 Dataset: https://github.com/JK17-ai/wordtop/blob/main/frontend/src/data/common-nawl.json
