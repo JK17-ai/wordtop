@@ -1,0 +1,7658 @@
+[
+  {
+    "id": "nawl-en-abdominal",
+    "word": "abdominal",
+    "meaning": "복부의",
+    "example": "She felt abdominal pain.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-absorb",
+    "word": "absorb",
+    "meaning": "흡수하다",
+    "example": "Plants absorb sunlight.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-absorption",
+    "word": "absorption",
+    "meaning": "흡수",
+    "example": "Heat increases water absorption.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-accelerate",
+    "word": "accelerate",
+    "meaning": "가속하다",
+    "example": "Exercise can accelerate recovery.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-acceleration",
+    "word": "acceleration",
+    "meaning": "가속",
+    "example": "The car's acceleration was impressive.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-accent",
+    "word": "accent",
+    "meaning": "억양; 강세",
+    "example": "Her accent sounded familiar.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-accumulate",
+    "word": "accumulate",
+    "meaning": "축적하다",
+    "example": "Dust can accumulate quickly.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-accumulation",
+    "word": "accumulation",
+    "meaning": "축적",
+    "example": "Snow accumulation blocked the road.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-accuracy",
+    "word": "accuracy",
+    "meaning": "정확성",
+    "example": "Check the data for accuracy.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-accurately",
+    "word": "accurately",
+    "meaning": "정확하게",
+    "example": "The sensor measures temperature accurately.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-acid",
+    "word": "acid",
+    "meaning": "산",
+    "example": "This acid dissolves metal.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-acidic",
+    "word": "acidic",
+    "meaning": "산성의",
+    "example": "Lemons have an acidic taste.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-activate",
+    "word": "activate",
+    "meaning": "활성화하다",
+    "example": "Press here to activate the device.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-actively",
+    "word": "actively",
+    "meaning": "적극적으로",
+    "example": "Students actively discussed the issue.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-acute",
+    "word": "acute",
+    "meaning": "급성의; 극심한",
+    "example": "He developed acute chest pain.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-adaptation",
+    "word": "adaptation",
+    "meaning": "적응",
+    "example": "Adaptation takes time.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-adaptive",
+    "word": "adaptive",
+    "meaning": "적응하는",
+    "example": "Adaptive behavior improves survival.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-adjacent",
+    "word": "adjacent",
+    "meaning": "인접한",
+    "example": "The adjacent room was empty.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-admission",
+    "word": "admission",
+    "meaning": "입장; 입학 허가",
+    "example": "Museum admission is free.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-adolescent",
+    "word": "adolescent",
+    "meaning": "청소년",
+    "example": "The adolescent needed support.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-adverse",
+    "word": "adverse",
+    "meaning": "불리한; 해로운",
+    "example": "The drug caused adverse effects.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-aerosol",
+    "word": "aerosol",
+    "meaning": "에어로졸; 분무제",
+    "example": "Avoid breathing in the aerosol.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-aesthetic",
+    "word": "aesthetic",
+    "meaning": "미적인",
+    "example": "The building has aesthetic appeal.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-affirm",
+    "word": "affirm",
+    "meaning": "확언하다; 지지하다",
+    "example": "The results affirm our conclusion.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-afterward",
+    "word": "afterward",
+    "meaning": "그 후에",
+    "example": "We discussed the results afterward.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-aggregate",
+    "word": "aggregate",
+    "meaning": "총합의; 합계",
+    "example": "Aggregate demand fell sharply.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-agriculture",
+    "word": "agriculture",
+    "meaning": "농업",
+    "example": "Agriculture depends on healthy soil.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-airplane",
+    "word": "airplane",
+    "meaning": "비행기",
+    "example": "The airplane landed safely.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-algebra",
+    "word": "algebra",
+    "meaning": "대수학",
+    "example": "She studies algebra every day.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-algorithm",
+    "word": "algorithm",
+    "meaning": "알고리즘",
+    "example": "The algorithm sorts the data.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-alien",
+    "word": "alien",
+    "meaning": "외계의; 외계인",
+    "example": "The story describes an alien planet.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-alliance",
+    "word": "alliance",
+    "meaning": "동맹",
+    "example": "The countries formed an alliance.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-allocate",
+    "word": "allocate",
+    "meaning": "할당하다",
+    "example": "We allocate funds to research.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-allocation",
+    "word": "allocation",
+    "meaning": "할당",
+    "example": "Resource allocation requires careful planning.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-altitude",
+    "word": "altitude",
+    "meaning": "고도",
+    "example": "Temperature drops at high altitude.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-aluminum",
+    "word": "aluminum",
+    "meaning": "알루미늄",
+    "example": "Aluminum is light and strong.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-amino",
+    "word": "amino",
+    "meaning": "아미노기의",
+    "example": "Proteins contain amino acids.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-amongst",
+    "word": "amongst",
+    "meaning": "~사이에",
+    "example": "She stood amongst her friends.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-amplitude",
+    "word": "amplitude",
+    "meaning": "진폭",
+    "example": "The wave's amplitude increased.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-analogy",
+    "word": "analogy",
+    "meaning": "유추; 비유",
+    "example": "The teacher used a helpful analogy.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-ancestor",
+    "word": "ancestor",
+    "meaning": "조상",
+    "example": "Our ancestors used simple tools.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-anthropology",
+    "word": "anthropology",
+    "meaning": "인류학",
+    "example": "Anthropology explores human cultures.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-anti",
+    "word": "anti",
+    "meaning": "~에 반대하는 접두사",
+    "example": "The campaign promotes anti-smoking policies.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-antibiotic",
+    "word": "antibiotic",
+    "meaning": "항생제",
+    "example": "The doctor prescribed an antibiotic.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-antibody",
+    "word": "antibody",
+    "meaning": "항체",
+    "example": "Each antibody targets a specific substance.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-antiquity",
+    "word": "antiquity",
+    "meaning": "고대",
+    "example": "This custom dates back to antiquity.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-appendix",
+    "word": "appendix",
+    "meaning": "부록; 충수",
+    "example": "The appendix contains extra tables.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-applause",
+    "word": "applause",
+    "meaning": "박수",
+    "example": "Her speech received warm applause.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-apple",
+    "word": "apple",
+    "meaning": "사과",
+    "example": "He sliced an apple.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-approximate",
+    "word": "approximate",
+    "meaning": "대략적인",
+    "example": "We calculated the approximate cost.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-approximation",
+    "word": "approximation",
+    "meaning": "근사치",
+    "example": "This number is an approximation.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-arbitrary",
+    "word": "arbitrary",
+    "meaning": "임의적인",
+    "example": "The rule seemed arbitrary.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-archaeology",
+    "word": "archaeology",
+    "meaning": "고고학",
+    "example": "Archaeology reveals ancient ways of life.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-architect",
+    "word": "architect",
+    "meaning": "건축가",
+    "example": "The architect designed a library.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-array",
+    "word": "array",
+    "meaning": "배열; 다양한 집합",
+    "example": "The museum displays an array of tools.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-arrow",
+    "word": "arrow",
+    "meaning": "화살표; 화살",
+    "example": "Follow the arrow on the map.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-articulate",
+    "word": "articulate",
+    "meaning": "명확하게 표현하다",
+    "example": "She can articulate her ideas clearly.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-artifact",
+    "word": "artifact",
+    "meaning": "인공 유물",
+    "example": "The artifact was carefully preserved.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-artificial",
+    "word": "artificial",
+    "meaning": "인공의",
+    "example": "The room had artificial lighting.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-artistic",
+    "word": "artistic",
+    "meaning": "예술적인",
+    "example": "She showed artistic talent.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-artwork",
+    "word": "artwork",
+    "meaning": "예술 작품",
+    "example": "The gallery displayed local artwork.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-aspect",
+    "word": "aspect",
+    "meaning": "측면",
+    "example": "Consider every aspect of the problem.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-assembly",
+    "word": "assembly",
+    "meaning": "조립; 집회",
+    "example": "Assembly took two hours.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-assert",
+    "word": "assert",
+    "meaning": "주장하다",
+    "example": "They assert that the method works.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-assignment",
+    "word": "assignment",
+    "meaning": "과제",
+    "example": "The assignment is due tomorrow.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-athletic",
+    "word": "athletic",
+    "meaning": "운동 능력이 좋은",
+    "example": "She comes from an athletic family.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-atom",
+    "word": "atom",
+    "meaning": "원자",
+    "example": "An atom contains a nucleus.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-atomic",
+    "word": "atomic",
+    "meaning": "원자의",
+    "example": "Scientists studied atomic structure.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-auction",
+    "word": "auction",
+    "meaning": "경매",
+    "example": "The painting sold at auction.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-audio",
+    "word": "audio",
+    "meaning": "음성; 오디오",
+    "example": "The audio quality was poor.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-audit",
+    "word": "audit",
+    "meaning": "회계 감사",
+    "example": "An audit revealed missing records.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-authority",
+    "word": "authority",
+    "meaning": "권한; 당국",
+    "example": "She has authority to approve requests.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-autonomy",
+    "word": "autonomy",
+    "meaning": "자율성",
+    "example": "Students need some autonomy.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-availability",
+    "word": "availability",
+    "meaning": "이용 가능성",
+    "example": "Check room availability online.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-axiom",
+    "word": "axiom",
+    "meaning": "공리",
+    "example": "The proof begins with an axiom.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-axis",
+    "word": "axis",
+    "meaning": "축",
+    "example": "Earth rotates on its axis.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-backward",
+    "word": "backward",
+    "meaning": "뒤로",
+    "example": "He stepped backward slowly.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-bacteria",
+    "word": "bacteria",
+    "meaning": "세균들",
+    "example": "Some bacteria help digestion.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-bacterial",
+    "word": "bacterial",
+    "meaning": "세균의",
+    "example": "The test detected a bacterial infection.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-bang",
+    "word": "bang",
+    "meaning": "쾅 하는 소리",
+    "example": "We heard a loud bang.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-bargain",
+    "word": "bargain",
+    "meaning": "싸게 산 물건; 거래",
+    "example": "This used bicycle was a bargain.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-barrel",
+    "word": "barrel",
+    "meaning": "통; 배럴",
+    "example": "The barrel contains water.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-basin",
+    "word": "basin",
+    "meaning": "분지; 대야",
+    "example": "Rainwater collects in the basin.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-bat",
+    "word": "bat",
+    "meaning": "박쥐; 방망이",
+    "example": "A bat flew out of the cave.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-beam",
+    "word": "beam",
+    "meaning": "광선; 들보",
+    "example": "A beam of light crossed the room.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-behavioral",
+    "word": "behavioral",
+    "meaning": "행동의",
+    "example": "The study examined behavioral changes.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-bilingual",
+    "word": "bilingual",
+    "meaning": "두 언어를 사용하는",
+    "example": "The school offers bilingual classes.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-binary",
+    "word": "binary",
+    "meaning": "이진의; 둘로 이루어진",
+    "example": "Computers use binary numbers.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-biodiversity",
+    "word": "biodiversity",
+    "meaning": "생물 다양성",
+    "example": "Forests support rich biodiversity.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-biologist",
+    "word": "biologist",
+    "meaning": "생물학자",
+    "example": "The biologist studied insects.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-biology",
+    "word": "biology",
+    "meaning": "생물학",
+    "example": "Biology explains how organisms function.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-bizarre",
+    "word": "bizarre",
+    "meaning": "기이한",
+    "example": "The experiment produced bizarre results.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-blank",
+    "word": "blank",
+    "meaning": "빈; 공란",
+    "example": "Leave this section blank.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-bleed",
+    "word": "bleed",
+    "meaning": "피를 흘리다",
+    "example": "Small cuts may bleed briefly.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-bodily",
+    "word": "bodily",
+    "meaning": "신체적으로; 몸째로",
+    "example": "They lifted him bodily from the chair.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-bonus",
+    "word": "bonus",
+    "meaning": "보너스",
+    "example": "Workers received a small bonus.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-bound",
+    "word": "bound",
+    "meaning": "묶인; 반드시 ~할",
+    "example": "Errors are bound to occur.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-bracket",
+    "word": "bracket",
+    "meaning": "괄호",
+    "example": "Put the number in brackets.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-breakdown",
+    "word": "breakdown",
+    "meaning": "고장; 붕괴",
+    "example": "A breakdown stopped production.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-broadly",
+    "word": "broadly",
+    "meaning": "대체로; 폭넓게",
+    "example": "The findings are broadly consistent.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-bubble",
+    "word": "bubble",
+    "meaning": "거품",
+    "example": "A bubble rose to the surface.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-bucket",
+    "word": "bucket",
+    "meaning": "양동이",
+    "example": "Fill the bucket with water.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-bulk",
+    "word": "bulk",
+    "meaning": "대부분; 대량",
+    "example": "We buy paper in bulk.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-bullet",
+    "word": "bullet",
+    "meaning": "총알",
+    "example": "The bullet struck the wall.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-bundle",
+    "word": "bundle",
+    "meaning": "묶음",
+    "example": "She carried a bundle of papers.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-calcium",
+    "word": "calcium",
+    "meaning": "칼슘",
+    "example": "Milk contains calcium.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-calculation",
+    "word": "calculation",
+    "meaning": "계산",
+    "example": "The calculation includes transport costs.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-calculator",
+    "word": "calculator",
+    "meaning": "계산기",
+    "example": "Use a calculator to check your answer.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-calculus",
+    "word": "calculus",
+    "meaning": "미적분학",
+    "example": "Calculus helps describe changing quantities.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-campus",
+    "word": "campus",
+    "meaning": "캠퍼스",
+    "example": "Trees surround the campus.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-capillary",
+    "word": "capillary",
+    "meaning": "모세혈관",
+    "example": "Blood flows through tiny capillaries.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-capitalism",
+    "word": "capitalism",
+    "meaning": "자본주의",
+    "example": "The course examines modern capitalism.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-capitalist",
+    "word": "capitalist",
+    "meaning": "자본주의의; 자본가",
+    "example": "They compared capitalist economies.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-carrier",
+    "word": "carrier",
+    "meaning": "운송 회사; 운반체",
+    "example": "The carrier delayed our shipment.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-cattle",
+    "word": "cattle",
+    "meaning": "소 떼",
+    "example": "The farmer raises cattle.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-censor",
+    "word": "censor",
+    "meaning": "검열하다",
+    "example": "Officials tried to censor the report.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-characterization",
+    "word": "characterization",
+    "meaning": "특성 묘사",
+    "example": "The novel's characterization is convincing.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-cheat",
+    "word": "cheat",
+    "meaning": "부정행위를 하다",
+    "example": "Never cheat on an exam.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-cheer",
+    "word": "cheer",
+    "meaning": "환호하다",
+    "example": "Fans cheer for their team.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-chemistry",
+    "word": "chemistry",
+    "meaning": "화학",
+    "example": "Chemistry explains this reaction.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-chemotherapy",
+    "word": "chemotherapy",
+    "meaning": "화학 요법",
+    "example": "Chemotherapy can cause fatigue.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-chess",
+    "word": "chess",
+    "meaning": "체스",
+    "example": "Chess requires careful planning.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-chloride",
+    "word": "chloride",
+    "meaning": "염화물",
+    "example": "Table salt contains sodium chloride.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-chromosome",
+    "word": "chromosome",
+    "meaning": "염색체",
+    "example": "Genes are carried on chromosomes.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-chronic",
+    "word": "chronic",
+    "meaning": "만성의",
+    "example": "She suffers from chronic pain.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-chunk",
+    "word": "chunk",
+    "meaning": "덩어리",
+    "example": "He broke off a chunk of bread.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-cinema",
+    "word": "cinema",
+    "meaning": "영화관; 영화",
+    "example": "The cinema opens at noon.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-circa",
+    "word": "circa",
+    "meaning": "대략 ~년경",
+    "example": "The vase was made circa 1800.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-circulate",
+    "word": "circulate",
+    "meaning": "순환하다",
+    "example": "Blood must circulate continuously.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-circulation",
+    "word": "circulation",
+    "meaning": "순환",
+    "example": "Exercise improves blood circulation.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-civilization",
+    "word": "civilization",
+    "meaning": "문명",
+    "example": "The river supported an ancient civilization.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-clarify",
+    "word": "clarify",
+    "meaning": "명확히 하다",
+    "example": "Please clarify the instructions.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-classification",
+    "word": "classification",
+    "meaning": "분류",
+    "example": "Classification helps organize the samples.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-classify",
+    "word": "classify",
+    "meaning": "분류하다",
+    "example": "Scientists classify organisms by shared traits.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-classroom",
+    "word": "classroom",
+    "meaning": "교실",
+    "example": "The classroom was quiet.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-clay",
+    "word": "clay",
+    "meaning": "점토",
+    "example": "Wet clay is easy to shape.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-clever",
+    "word": "clever",
+    "meaning": "영리한",
+    "example": "She found a clever solution.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-client",
+    "word": "client",
+    "meaning": "고객",
+    "example": "The client approved the design.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-clinic",
+    "word": "clinic",
+    "meaning": "진료소",
+    "example": "The clinic provides basic care.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-clip",
+    "word": "clip",
+    "meaning": "클립; 짧은 영상",
+    "example": "Watch this short video clip.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-clone",
+    "word": "clone",
+    "meaning": "복제하다; 복제 개체",
+    "example": "Scientists can clone certain plants.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-closure",
+    "word": "closure",
+    "meaning": "폐쇄; 종결",
+    "example": "The factory closure affected many families.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-clue",
+    "word": "clue",
+    "meaning": "단서",
+    "example": "The footprint provided a clue.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-coefficient",
+    "word": "coefficient",
+    "meaning": "계수",
+    "example": "The coefficient measures the relationship's strength.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-cognitive",
+    "word": "cognitive",
+    "meaning": "인지의",
+    "example": "Sleep supports cognitive function.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-coherent",
+    "word": "coherent",
+    "meaning": "일관된; 논리적인",
+    "example": "She presented a coherent argument.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-collective",
+    "word": "collective",
+    "meaning": "집단의; 공동의",
+    "example": "Success requires collective effort.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-colonial",
+    "word": "colonial",
+    "meaning": "식민지의",
+    "example": "The building dates from colonial times.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-colony",
+    "word": "colony",
+    "meaning": "식민지; 군집",
+    "example": "The island was once a colony.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-comma",
+    "word": "comma",
+    "meaning": "쉼표",
+    "example": "Add a comma here.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-commentary",
+    "word": "commentary",
+    "meaning": "해설; 논평",
+    "example": "The article offers political commentary.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-commodity",
+    "word": "commodity",
+    "meaning": "상품; 원자재",
+    "example": "Coffee is an important commodity.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-commonly",
+    "word": "commonly",
+    "meaning": "흔히",
+    "example": "This method is commonly used.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-communicative",
+    "word": "communicative",
+    "meaning": "의사소통의; 말하기 좋아하는",
+    "example": "The course develops communicative skills.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-communist",
+    "word": "communist",
+    "meaning": "공산주의의; 공산주의자",
+    "example": "The book examines communist ideology.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-compact",
+    "word": "compact",
+    "meaning": "소형의; 조밀한",
+    "example": "The device has a compact design.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-comparable",
+    "word": "comparable",
+    "meaning": "비교할 만한",
+    "example": "The two groups had comparable results.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-comparative",
+    "word": "comparative",
+    "meaning": "비교의; 상대적인",
+    "example": "We conducted a comparative study.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-compensate",
+    "word": "compensate",
+    "meaning": "보상하다",
+    "example": "The company will compensate injured workers.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-competence",
+    "word": "competence",
+    "meaning": "능력; 역량",
+    "example": "Practice builds professional competence.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-competent",
+    "word": "competent",
+    "meaning": "유능한",
+    "example": "She is a competent researcher.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-complement",
+    "word": "complement",
+    "meaning": "보완하다",
+    "example": "These two methods complement each other.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-complication",
+    "word": "complication",
+    "meaning": "합병증; 복잡한 문제",
+    "example": "The patient developed a complication.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-comply",
+    "word": "comply",
+    "meaning": "준수하다",
+    "example": "All workers must comply with regulations.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-composer",
+    "word": "composer",
+    "meaning": "작곡가",
+    "example": "The composer wrote a new symphony.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-composite",
+    "word": "composite",
+    "meaning": "복합의",
+    "example": "The bridge uses composite materials.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-comprehension",
+    "word": "comprehension",
+    "meaning": "이해",
+    "example": "Reading improves language comprehension.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-computation",
+    "word": "computation",
+    "meaning": "계산",
+    "example": "The computation took several seconds.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-conceive",
+    "word": "conceive",
+    "meaning": "생각해 내다",
+    "example": "They conceived a new research method.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-conception",
+    "word": "conception",
+    "meaning": "개념; 구상",
+    "example": "Our conception of space has changed.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-conceptual",
+    "word": "conceptual",
+    "meaning": "개념적인",
+    "example": "The diagram shows a conceptual model.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-conditional",
+    "word": "conditional",
+    "meaning": "조건부의",
+    "example": "Approval is conditional on further testing.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-conduction",
+    "word": "conduction",
+    "meaning": "전도",
+    "example": "Metals transfer heat by conduction.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-cone",
+    "word": "cone",
+    "meaning": "원뿔",
+    "example": "The cone has a circular base.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-configuration",
+    "word": "configuration",
+    "meaning": "배치; 구성",
+    "example": "Check the network configuration.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-confine",
+    "word": "confine",
+    "meaning": "제한하다",
+    "example": "Confine your answer to one paragraph.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-confound",
+    "word": "confound",
+    "meaning": "혼란시키다; 뒤섞다",
+    "example": "Unexpected factors can confound the results.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-congruent",
+    "word": "congruent",
+    "meaning": "합동인; 일치하는",
+    "example": "These triangles are congruent.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-connector",
+    "word": "connector",
+    "meaning": "연결 장치",
+    "example": "The connector joins two cables.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-connotation",
+    "word": "connotation",
+    "meaning": "함축적 의미",
+    "example": "The word has a negative connotation.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-conscious",
+    "word": "conscious",
+    "meaning": "의식이 있는; 의식하는",
+    "example": "The patient remained conscious.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-consciousness",
+    "word": "consciousness",
+    "meaning": "의식",
+    "example": "He briefly lost consciousness.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-consensus",
+    "word": "consensus",
+    "meaning": "합의",
+    "example": "The committee reached a consensus.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-consent",
+    "word": "consent",
+    "meaning": "동의",
+    "example": "Participants gave written consent.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-conservation",
+    "word": "conservation",
+    "meaning": "보존",
+    "example": "Water conservation is essential.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-conserve",
+    "word": "conserve",
+    "meaning": "보존하다; 아끼다",
+    "example": "We must conserve natural resources.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-consonant",
+    "word": "consonant",
+    "meaning": "자음",
+    "example": "The word begins with a consonant.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-constitution",
+    "word": "constitution",
+    "meaning": "헌법; 구성",
+    "example": "The constitution protects basic rights.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-constrain",
+    "word": "constrain",
+    "meaning": "제약하다",
+    "example": "Limited funds constrain our choices.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-consultation",
+    "word": "consultation",
+    "meaning": "상담; 협의",
+    "example": "The decision followed public consultation.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-consumption",
+    "word": "consumption",
+    "meaning": "소비",
+    "example": "Energy consumption rose this year.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-container",
+    "word": "container",
+    "meaning": "용기",
+    "example": "Keep the sample in a sealed container.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-continent",
+    "word": "continent",
+    "meaning": "대륙",
+    "example": "Africa is a large continent.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-continuity",
+    "word": "continuity",
+    "meaning": "연속성",
+    "example": "The policy ensures continuity of care.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-contour",
+    "word": "contour",
+    "meaning": "윤곽; 등고선",
+    "example": "The map shows the mountain's contours.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-contradict",
+    "word": "contradict",
+    "meaning": "반박하다; 모순되다",
+    "example": "These findings contradict earlier studies.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-contradiction",
+    "word": "contradiction",
+    "meaning": "모순",
+    "example": "There is a contradiction in his argument.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-contradictory",
+    "word": "contradictory",
+    "meaning": "모순되는",
+    "example": "The witnesses gave contradictory accounts.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-contrary",
+    "word": "contrary",
+    "meaning": "반대의",
+    "example": "The results were contrary to expectations.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-controversy",
+    "word": "controversy",
+    "meaning": "논란",
+    "example": "The proposal caused public controversy.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-converge",
+    "word": "converge",
+    "meaning": "한곳으로 모이다",
+    "example": "The paths converge near the river.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-convergence",
+    "word": "convergence",
+    "meaning": "수렴; 합류",
+    "example": "The study examines technological convergence.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-coordinate",
+    "word": "coordinate",
+    "meaning": "조정하다",
+    "example": "We coordinate activities across departments.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-coordination",
+    "word": "coordination",
+    "meaning": "조정; 협응",
+    "example": "The task requires hand-eye coordination.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-cord",
+    "word": "cord",
+    "meaning": "끈; 코드",
+    "example": "Tie the package with cord.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-coronary",
+    "word": "coronary",
+    "meaning": "관상동맥의",
+    "example": "Smoking increases coronary disease risk.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-corpus",
+    "word": "corpus",
+    "meaning": "말뭉치; 자료 집합",
+    "example": "The corpus contains academic articles.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-correction",
+    "word": "correction",
+    "meaning": "수정",
+    "example": "The report needs one correction.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-correctly",
+    "word": "correctly",
+    "meaning": "올바르게",
+    "example": "She answered the question correctly.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-correlate",
+    "word": "correlate",
+    "meaning": "상관관계가 있다",
+    "example": "Income may correlate with education.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-correlation",
+    "word": "correlation",
+    "meaning": "상관관계",
+    "example": "Correlation does not prove causation.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-correspondence",
+    "word": "correspondence",
+    "meaning": "서신; 대응 관계",
+    "example": "Their correspondence lasted many years.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-corruption",
+    "word": "corruption",
+    "meaning": "부패",
+    "example": "The investigation exposed corruption.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-cortex",
+    "word": "cortex",
+    "meaning": "피질",
+    "example": "The cortex processes sensory information.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-credibility",
+    "word": "credibility",
+    "meaning": "신뢰성",
+    "example": "Evidence strengthens the claim's credibility.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-critically",
+    "word": "critically",
+    "meaning": "비판적으로",
+    "example": "Read the argument critically.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-critique",
+    "word": "critique",
+    "meaning": "비평",
+    "example": "She wrote a critique of the theory.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-crude",
+    "word": "crude",
+    "meaning": "조잡한; 원유의",
+    "example": "They built a crude shelter.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-crystal",
+    "word": "crystal",
+    "meaning": "결정",
+    "example": "Salt forms a crystal structure.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-cue",
+    "word": "cue",
+    "meaning": "신호; 단서",
+    "example": "The bell was our cue to leave.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-cure",
+    "word": "cure",
+    "meaning": "치료하다; 치료법",
+    "example": "There is no simple cure.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-curriculum",
+    "word": "curriculum",
+    "meaning": "교육과정",
+    "example": "The curriculum includes science and art.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-cyclic",
+    "word": "cyclic",
+    "meaning": "주기적인",
+    "example": "The data show cyclic changes.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-cylinder",
+    "word": "cylinder",
+    "meaning": "원통",
+    "example": "The gas is stored in a cylinder.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-damp",
+    "word": "damp",
+    "meaning": "축축한",
+    "example": "The soil is still damp.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-deadline",
+    "word": "deadline",
+    "meaning": "마감 기한",
+    "example": "The deadline is Friday.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-decay",
+    "word": "decay",
+    "meaning": "부패하다; 쇠퇴",
+    "example": "Leaves decay in the soil.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-deceive",
+    "word": "deceive",
+    "meaning": "속이다",
+    "example": "False numbers can deceive readers.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-defect",
+    "word": "defect",
+    "meaning": "결함",
+    "example": "The test revealed a defect.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-deficiency",
+    "word": "deficiency",
+    "meaning": "결핍",
+    "example": "Iron deficiency causes fatigue.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-definite",
+    "word": "definite",
+    "meaning": "확실한",
+    "example": "We need a definite answer.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-deflection",
+    "word": "deflection",
+    "meaning": "편향; 굴절",
+    "example": "The sensor measures beam deflection.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-degrade",
+    "word": "degrade",
+    "meaning": "분해되다; 저하시키다",
+    "example": "Plastic can degrade slowly.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-deliberately",
+    "word": "deliberately",
+    "meaning": "의도적으로",
+    "example": "She deliberately changed the order.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-delta",
+    "word": "delta",
+    "meaning": "삼각주",
+    "example": "The river forms a delta.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-demonstrator",
+    "word": "demonstrator",
+    "meaning": "시위자",
+    "example": "A demonstrator held a sign.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-denominator",
+    "word": "denominator",
+    "meaning": "분모",
+    "example": "The denominator is six.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-denote",
+    "word": "denote",
+    "meaning": "나타내다",
+    "example": "Red dots denote major cities.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-dense",
+    "word": "dense",
+    "meaning": "빽빽한; 밀도가 높은",
+    "example": "The forest is dense.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-dependence",
+    "word": "dependence",
+    "meaning": "의존",
+    "example": "Reduce dependence on imported fuel.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-depict",
+    "word": "depict",
+    "meaning": "묘사하다",
+    "example": "The paintings depict daily life.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-derivative",
+    "word": "derivative",
+    "meaning": "파생된; 도함수",
+    "example": "Find the derivative of this function.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-descendent",
+    "word": "descendent",
+    "meaning": "후손",
+    "example": "She is a descendent of settlers.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-descriptor",
+    "word": "descriptor",
+    "meaning": "기술어; 설명 요소",
+    "example": "Each sample has a unique descriptor.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-destination",
+    "word": "destination",
+    "meaning": "목적지",
+    "example": "The island is our destination.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-detection",
+    "word": "detection",
+    "meaning": "탐지",
+    "example": "Early detection improves outcomes.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-developmental",
+    "word": "developmental",
+    "meaning": "발달의",
+    "example": "Sleep supports developmental changes.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-deviation",
+    "word": "deviation",
+    "meaning": "편차; 일탈",
+    "example": "We measured deviation from the average.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-diagnose",
+    "word": "diagnose",
+    "meaning": "진단하다",
+    "example": "Doctors diagnose diseases using several tests.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-diagnosis",
+    "word": "diagnosis",
+    "meaning": "진단",
+    "example": "The diagnosis required further tests.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-diagnostic",
+    "word": "diagnostic",
+    "meaning": "진단의",
+    "example": "This is a diagnostic tool.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-diagram",
+    "word": "diagram",
+    "meaning": "도표",
+    "example": "The diagram shows water flow.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-dialect",
+    "word": "dialect",
+    "meaning": "방언",
+    "example": "They speak a local dialect.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-diameter",
+    "word": "diameter",
+    "meaning": "지름",
+    "example": "Measure the diameter of the circle.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-diary",
+    "word": "diary",
+    "meaning": "일기",
+    "example": "She kept a research diary.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-dictate",
+    "word": "dictate",
+    "meaning": "지시하다; 좌우하다",
+    "example": "Costs often dictate our choices.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-dictionary",
+    "word": "dictionary",
+    "meaning": "사전",
+    "example": "Check the word in a dictionary.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-differential",
+    "word": "differential",
+    "meaning": "차등의; 차이",
+    "example": "The study measured differential growth.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-differentiate",
+    "word": "differentiate",
+    "meaning": "구별하다",
+    "example": "We must differentiate fact from opinion.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-differentiation",
+    "word": "differentiation",
+    "meaning": "분화; 구별",
+    "example": "Cell differentiation creates specialized cells.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-diffusion",
+    "word": "diffusion",
+    "meaning": "확산",
+    "example": "Diffusion spreads molecules through a liquid.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-dilemma",
+    "word": "dilemma",
+    "meaning": "딜레마; 진퇴양난",
+    "example": "The decision created an ethical dilemma.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-dilute",
+    "word": "dilute",
+    "meaning": "희석하다",
+    "example": "Dilute the solution with water.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-dimensional",
+    "word": "dimensional",
+    "meaning": "차원의",
+    "example": "The model uses three-dimensional coordinates.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-dioxide",
+    "word": "dioxide",
+    "meaning": "이산화물",
+    "example": "Plants absorb carbon dioxide.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-directive",
+    "word": "directive",
+    "meaning": "지시; 지침",
+    "example": "The directive requires regular inspections.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-disability",
+    "word": "disability",
+    "meaning": "장애",
+    "example": "Disability should not limit educational access.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-disadvantage",
+    "word": "disadvantage",
+    "meaning": "불리한 점",
+    "example": "High costs are a disadvantage.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-discharge",
+    "word": "discharge",
+    "meaning": "방출하다",
+    "example": "Factories discharge waste into the river.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-discourse",
+    "word": "discourse",
+    "meaning": "담론; 담화",
+    "example": "The topic shaped public discourse.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-discrete",
+    "word": "discrete",
+    "meaning": "별개의; 불연속적인",
+    "example": "The data contain discrete categories.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-discrimination",
+    "word": "discrimination",
+    "meaning": "차별; 구별",
+    "example": "The law prohibits racial discrimination.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-displacement",
+    "word": "displacement",
+    "meaning": "이동; 변위",
+    "example": "Measure the object's displacement.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-dissection",
+    "word": "dissection",
+    "meaning": "해부",
+    "example": "Dissection reveals the organ's structure.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-dissertation",
+    "word": "dissertation",
+    "meaning": "학위 논문",
+    "example": "Her dissertation examines urban poverty.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-dissolve",
+    "word": "dissolve",
+    "meaning": "녹다",
+    "example": "Sugar will dissolve in warm water.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-distribution",
+    "word": "distribution",
+    "meaning": "분포; 분배",
+    "example": "The map shows population distribution.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-disturbance",
+    "word": "disturbance",
+    "meaning": "방해; 교란",
+    "example": "Noise causes sleep disturbance.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-diverse",
+    "word": "diverse",
+    "meaning": "다양한",
+    "example": "The city has diverse communities.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-domain",
+    "word": "domain",
+    "meaning": "영역",
+    "example": "This problem lies within her domain.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-dominance",
+    "word": "dominance",
+    "meaning": "우세; 지배",
+    "example": "The firm maintained market dominance.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-dominant",
+    "word": "dominant",
+    "meaning": "지배적인",
+    "example": "One species became dominant.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-domination",
+    "word": "domination",
+    "meaning": "지배",
+    "example": "They resisted foreign domination.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-donor",
+    "word": "donor",
+    "meaning": "기증자",
+    "example": "The donor provided blood.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-dose",
+    "word": "dose",
+    "meaning": "복용량",
+    "example": "The nurse checked the dose.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-drain",
+    "word": "drain",
+    "meaning": "배수하다",
+    "example": "These channels drain excess water.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-drift",
+    "word": "drift",
+    "meaning": "표류하다",
+    "example": "Clouds drift across the sky.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-duration",
+    "word": "duration",
+    "meaning": "지속 기간",
+    "example": "Record the duration of each trial.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-dye",
+    "word": "dye",
+    "meaning": "염료; 염색하다",
+    "example": "The dye turned the fabric blue.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-dynamic",
+    "word": "dynamic",
+    "meaning": "역동적인",
+    "example": "Markets form a dynamic system.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-ecological",
+    "word": "ecological",
+    "meaning": "생태학의",
+    "example": "The dam changed ecological conditions.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-ecology",
+    "word": "ecology",
+    "meaning": "생태학",
+    "example": "Ecology studies relationships among living things.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-economically",
+    "word": "economically",
+    "meaning": "경제적으로",
+    "example": "The project is economically viable.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-economist",
+    "word": "economist",
+    "meaning": "경제학자",
+    "example": "The economist studied inflation.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-effectiveness",
+    "word": "effectiveness",
+    "meaning": "효과",
+    "example": "We tested the method's effectiveness.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-elaborate",
+    "word": "elaborate",
+    "meaning": "정교한; 상세히 설명하다",
+    "example": "They designed an elaborate experiment.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-elastic",
+    "word": "elastic",
+    "meaning": "탄력 있는",
+    "example": "The band is highly elastic.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-elasticity",
+    "word": "elasticity",
+    "meaning": "탄력성",
+    "example": "Heat changes the material's elasticity.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-electron",
+    "word": "electron",
+    "meaning": "전자",
+    "example": "An electron carries a negative charge.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-elementary",
+    "word": "elementary",
+    "meaning": "기초적인",
+    "example": "The course covers elementary physics.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-elevate",
+    "word": "elevate",
+    "meaning": "높이다",
+    "example": "Exercise can elevate heart rate.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-elevation",
+    "word": "elevation",
+    "meaning": "고도; 상승",
+    "example": "The map shows changes in elevation.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-elimination",
+    "word": "elimination",
+    "meaning": "제거",
+    "example": "Elimination of waste reduces costs.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-elite",
+    "word": "elite",
+    "meaning": "엘리트; 정예",
+    "example": "The school trained an academic elite.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-embed",
+    "word": "embed",
+    "meaning": "끼워 넣다",
+    "example": "Embed the sensor in the wall.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-emergence",
+    "word": "emergence",
+    "meaning": "출현",
+    "example": "The discovery explains the emergence of life.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-emission",
+    "word": "emission",
+    "meaning": "배출",
+    "example": "The policy limits carbon emission.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-emit",
+    "word": "emit",
+    "meaning": "방출하다",
+    "example": "Hot objects emit infrared radiation.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-emperor",
+    "word": "emperor",
+    "meaning": "황제",
+    "example": "The emperor controlled a vast territory.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-empirical",
+    "word": "empirical",
+    "meaning": "경험적; 실증적인",
+    "example": "The claim needs empirical evidence.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-encode",
+    "word": "encode",
+    "meaning": "암호화하다; 부호화하다",
+    "example": "Computers encode text as numbers.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-enforcement",
+    "word": "enforcement",
+    "meaning": "집행",
+    "example": "Effective enforcement requires clear rules.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-enormously",
+    "word": "enormously",
+    "meaning": "엄청나게",
+    "example": "The population increased enormously.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-entity",
+    "word": "entity",
+    "meaning": "독립체; 존재",
+    "example": "Each company is a separate entity.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-entrant",
+    "word": "entrant",
+    "meaning": "신규 참가자",
+    "example": "A new entrant joined the market.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-enzyme",
+    "word": "enzyme",
+    "meaning": "효소",
+    "example": "This enzyme breaks down starch.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-epidemic",
+    "word": "epidemic",
+    "meaning": "유행병",
+    "example": "The epidemic spread rapidly.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-epidemiology",
+    "word": "epidemiology",
+    "meaning": "역학",
+    "example": "Epidemiology examines patterns of disease.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-equality",
+    "word": "equality",
+    "meaning": "평등",
+    "example": "Education can promote social equality.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-equilibrium",
+    "word": "equilibrium",
+    "meaning": "평형",
+    "example": "The system reached thermal equilibrium.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-equivalence",
+    "word": "equivalence",
+    "meaning": "동등성",
+    "example": "The test checks mathematical equivalence.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-erase",
+    "word": "erase",
+    "meaning": "지우다",
+    "example": "Erase the incorrect answer.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-essence",
+    "word": "essence",
+    "meaning": "본질",
+    "example": "Trust is the essence of cooperation.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-essentially",
+    "word": "essentially",
+    "meaning": "본질적으로",
+    "example": "The two methods are essentially similar.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-estimation",
+    "word": "estimation",
+    "meaning": "추정",
+    "example": "Our estimation used recent data.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-ethical",
+    "word": "ethical",
+    "meaning": "윤리적인",
+    "example": "The study raises ethical questions.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-ethics",
+    "word": "ethics",
+    "meaning": "윤리학; 윤리",
+    "example": "Research ethics protect participants.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-evident",
+    "word": "evident",
+    "meaning": "명백한",
+    "example": "The difference became evident.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-evolutionary",
+    "word": "evolutionary",
+    "meaning": "진화의",
+    "example": "The trait offers an evolutionary advantage.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-ex",
+    "word": "ex",
+    "meaning": "전임의; 이전의",
+    "example": "Her ex-colleague joined the project.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-execute",
+    "word": "execute",
+    "meaning": "실행하다",
+    "example": "The computer can execute these instructions.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-execution",
+    "word": "execution",
+    "meaning": "실행",
+    "example": "Careful execution improved the results.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-exit",
+    "word": "exit",
+    "meaning": "출구; 나가다",
+    "example": "Use the nearest exit.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-expertise",
+    "word": "expertise",
+    "meaning": "전문 지식",
+    "example": "The team needs technical expertise.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-explicit",
+    "word": "explicit",
+    "meaning": "명시적인",
+    "example": "The instructions are explicit.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-explicitly",
+    "word": "explicitly",
+    "meaning": "명확하게",
+    "example": "The report explicitly states its limitations.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-exploit",
+    "word": "exploit",
+    "meaning": "이용하다; 착취하다",
+    "example": "Some firms exploit cheap labor.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-exponential",
+    "word": "exponential",
+    "meaning": "기하급수적인",
+    "example": "The graph shows exponential growth.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-fabric",
+    "word": "fabric",
+    "meaning": "직물",
+    "example": "This fabric absorbs water.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-facet",
+    "word": "facet",
+    "meaning": "측면",
+    "example": "We examined each facet of the problem.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-facilitate",
+    "word": "facilitate",
+    "meaning": "촉진하다",
+    "example": "Clear diagrams facilitate learning.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-factorial",
+    "word": "factorial",
+    "meaning": "계승",
+    "example": "The factorial of four is twenty-four.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-faculty",
+    "word": "faculty",
+    "meaning": "교수진; 능력",
+    "example": "The faculty approved the new course.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-fatigue",
+    "word": "fatigue",
+    "meaning": "피로",
+    "example": "Long working hours cause fatigue.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-feedback",
+    "word": "feedback",
+    "meaning": "피드백",
+    "example": "Students received useful feedback.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-fertility",
+    "word": "fertility",
+    "meaning": "생식력; 비옥도",
+    "example": "The study measured soil fertility.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-fetal",
+    "word": "fetal",
+    "meaning": "태아의",
+    "example": "The scan monitors fetal growth.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-fever",
+    "word": "fever",
+    "meaning": "열",
+    "example": "The patient developed a fever.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-fiber",
+    "word": "fiber",
+    "meaning": "섬유",
+    "example": "Beans contain dietary fiber.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-fin",
+    "word": "fin",
+    "meaning": "지느러미",
+    "example": "The fish has a damaged fin.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-finite",
+    "word": "finite",
+    "meaning": "유한한",
+    "example": "Earth has finite resources.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-flesh",
+    "word": "flesh",
+    "meaning": "살; 과육",
+    "example": "The fruit has soft flesh.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-flexibility",
+    "word": "flexibility",
+    "meaning": "유연성",
+    "example": "The schedule allows greater flexibility.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-flip",
+    "word": "flip",
+    "meaning": "뒤집다",
+    "example": "Flip the card to check your answer.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-fluid",
+    "word": "fluid",
+    "meaning": "유체; 액체",
+    "example": "The fluid moves through a pipe.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-flux",
+    "word": "flux",
+    "meaning": "흐름; 끊임없는 변화",
+    "example": "The system remains in flux.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-footnote",
+    "word": "footnote",
+    "meaning": "각주",
+    "example": "The footnote explains the term.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-formally",
+    "word": "formally",
+    "meaning": "공식적으로",
+    "example": "The proposal was formally approved.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-formulation",
+    "word": "formulation",
+    "meaning": "공식화; 구성",
+    "example": "The formulation combines several ingredients.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-forum",
+    "word": "forum",
+    "meaning": "토론의 장",
+    "example": "The forum encouraged open discussion.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-fossil",
+    "word": "fossil",
+    "meaning": "화석",
+    "example": "The fossil reveals an ancient species.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-fraction",
+    "word": "fraction",
+    "meaning": "분수; 일부",
+    "example": "Only a fraction of the energy remains.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-fracture",
+    "word": "fracture",
+    "meaning": "골절; 균열",
+    "example": "The scan revealed a fracture.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-freely",
+    "word": "freely",
+    "meaning": "자유롭게",
+    "example": "Participants could speak freely.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-friction",
+    "word": "friction",
+    "meaning": "마찰",
+    "example": "Friction slows the moving object.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-fringe",
+    "word": "fringe",
+    "meaning": "가장자리",
+    "example": "Trees grow along the forest fringe.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-fundamentally",
+    "word": "fundamentally",
+    "meaning": "근본적으로",
+    "example": "The discovery fundamentally changed our view.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-fungus",
+    "word": "fungus",
+    "meaning": "균류",
+    "example": "The fungus grows on damp wood.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-fusion",
+    "word": "fusion",
+    "meaning": "융합",
+    "example": "Nuclear fusion releases energy.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-gauge",
+    "word": "gauge",
+    "meaning": "측정하다; 계기",
+    "example": "We gauge progress using monthly tests.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-generalization",
+    "word": "generalization",
+    "meaning": "일반화",
+    "example": "One example cannot support this generalization.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-generalize",
+    "word": "generalize",
+    "meaning": "일반화하다",
+    "example": "Do not generalize from a small sample.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-genetically",
+    "word": "genetically",
+    "meaning": "유전적으로",
+    "example": "These plants are genetically similar.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-genetics",
+    "word": "genetics",
+    "meaning": "유전학",
+    "example": "Genetics explains inherited traits.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-ghost",
+    "word": "ghost",
+    "meaning": "유령",
+    "example": "The story features a friendly ghost.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-globalization",
+    "word": "globalization",
+    "meaning": "세계화",
+    "example": "Globalization connects distant markets.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-goat",
+    "word": "goat",
+    "meaning": "염소",
+    "example": "The goat ate dry leaves.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-goodness",
+    "word": "goodness",
+    "meaning": "선함",
+    "example": "The story celebrates human goodness.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-goods",
+    "word": "goods",
+    "meaning": "상품",
+    "example": "The port handles imported goods.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-gradient",
+    "word": "gradient",
+    "meaning": "기울기",
+    "example": "The road has a steep gradient.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-gram",
+    "word": "gram",
+    "meaning": "그램",
+    "example": "The sample weighs one gram.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-grammatical",
+    "word": "grammatical",
+    "meaning": "문법의",
+    "example": "The sentence contains a grammatical error.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-graph",
+    "word": "graph",
+    "meaning": "그래프",
+    "example": "The graph shows rising temperatures.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-grasp",
+    "word": "grasp",
+    "meaning": "파악하다; 움켜쥐다",
+    "example": "Students grasp the concept through examples.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-gravity",
+    "word": "gravity",
+    "meaning": "중력",
+    "example": "Gravity keeps planets in orbit.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-grid",
+    "word": "grid",
+    "meaning": "격자",
+    "example": "Draw the pattern on a grid.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-gross",
+    "word": "gross",
+    "meaning": "총체의; 총액의",
+    "example": "Gross income includes all earnings.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-gut",
+    "word": "gut",
+    "meaning": "장; 내장",
+    "example": "Bacteria live in the human gut.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-habitat",
+    "word": "habitat",
+    "meaning": "서식지",
+    "example": "The wetland is a bird habitat.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-halfway",
+    "word": "halfway",
+    "meaning": "중간에",
+    "example": "We stopped halfway through the experiment.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-handout",
+    "word": "handout",
+    "meaning": "유인물",
+    "example": "The handout summarizes the lecture.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-harvest",
+    "word": "harvest",
+    "meaning": "수확",
+    "example": "The harvest was smaller this year.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-hawk",
+    "word": "hawk",
+    "meaning": "매",
+    "example": "A hawk circled above the field.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-headquarter",
+    "word": "headquarter",
+    "meaning": "본부를 두다",
+    "example": "They plan to headquarter the organization here.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-hedge",
+    "word": "hedge",
+    "meaning": "울타리",
+    "example": "A hedge surrounds the garden.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-helix",
+    "word": "helix",
+    "meaning": "나선",
+    "example": "DNA forms a double helix.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-hepatitis",
+    "word": "hepatitis",
+    "meaning": "간염",
+    "example": "The test checks for hepatitis.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-herbicide",
+    "word": "herbicide",
+    "meaning": "제초제",
+    "example": "The farmer applied a herbicide.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-hierarchy",
+    "word": "hierarchy",
+    "meaning": "계층 구조",
+    "example": "The diagram shows an organizational hierarchy.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-hip",
+    "word": "hip",
+    "meaning": "엉덩이; 고관절",
+    "example": "The joint connects the leg and hip.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-historically",
+    "word": "historically",
+    "meaning": "역사적으로",
+    "example": "The region was historically isolated.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-homework",
+    "word": "homework",
+    "meaning": "숙제",
+    "example": "The homework reviews today's lesson.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-horizon",
+    "word": "horizon",
+    "meaning": "수평선; 지평",
+    "example": "The sun appeared above the horizon.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-horizontal",
+    "word": "horizontal",
+    "meaning": "수평의",
+    "example": "Draw a horizontal line.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-hormone",
+    "word": "hormone",
+    "meaning": "호르몬",
+    "example": "This hormone regulates growth.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-hydrogen",
+    "word": "hydrogen",
+    "meaning": "수소",
+    "example": "Water contains hydrogen and oxygen.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-identical",
+    "word": "identical",
+    "meaning": "동일한",
+    "example": "The two samples are identical.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-identification",
+    "word": "identification",
+    "meaning": "식별",
+    "example": "Accurate identification requires careful observation.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-ideology",
+    "word": "ideology",
+    "meaning": "이념",
+    "example": "The movement promoted a new ideology.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-illusion",
+    "word": "illusion",
+    "meaning": "환상; 착각",
+    "example": "The image creates an optical illusion.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-immune",
+    "word": "immune",
+    "meaning": "면역의",
+    "example": "The immune system fights infection.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-impact",
+    "word": "impact",
+    "meaning": "영향; 충격",
+    "example": "Pollution has a lasting impact.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-implicit",
+    "word": "implicit",
+    "meaning": "암묵적인",
+    "example": "The agreement includes an implicit promise.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-importantly",
+    "word": "importantly",
+    "meaning": "중요하게",
+    "example": "Most importantly, the results were consistent.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-impulse",
+    "word": "impulse",
+    "meaning": "충동; 자극",
+    "example": "She resisted the impulse to interrupt.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-incidence",
+    "word": "incidence",
+    "meaning": "발생률",
+    "example": "The incidence of disease declined.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-incline",
+    "word": "incline",
+    "meaning": "경사지다; 기울다",
+    "example": "The path begins to incline sharply.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-inclusion",
+    "word": "inclusion",
+    "meaning": "포함",
+    "example": "The policy encourages social inclusion.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-incredible",
+    "word": "incredible",
+    "meaning": "믿기 어려운",
+    "example": "The team made incredible progress.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-incredibly",
+    "word": "incredibly",
+    "meaning": "믿기 어려울 만큼",
+    "example": "The sample is incredibly small.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-incumbent",
+    "word": "incumbent",
+    "meaning": "현직자; 현직의",
+    "example": "The incumbent mayor won again.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-independently",
+    "word": "independently",
+    "meaning": "독립적으로",
+    "example": "The teams worked independently.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-indicator",
+    "word": "indicator",
+    "meaning": "지표",
+    "example": "Income is one indicator of living standards.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-indifference",
+    "word": "indifference",
+    "meaning": "무관심",
+    "example": "Her silence suggested indifference.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-indigenous",
+    "word": "indigenous",
+    "meaning": "토착의",
+    "example": "Indigenous plants adapt to local conditions.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-indirect",
+    "word": "indirect",
+    "meaning": "간접적인",
+    "example": "The policy had an indirect effect.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-individually",
+    "word": "individually",
+    "meaning": "개별적으로",
+    "example": "Each sample was tested individually.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-induce",
+    "word": "induce",
+    "meaning": "유발하다",
+    "example": "Stress can induce physical changes.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-induction",
+    "word": "induction",
+    "meaning": "유도; 귀납",
+    "example": "The lesson explains electromagnetic induction.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-industrialization",
+    "word": "industrialization",
+    "meaning": "산업화",
+    "example": "Industrialization transformed the city's economy.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-industrialize",
+    "word": "industrialize",
+    "meaning": "산업화하다",
+    "example": "The region began to industrialize rapidly.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-inequality",
+    "word": "inequality",
+    "meaning": "불평등",
+    "example": "The study examines income inequality.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-inevitably",
+    "word": "inevitably",
+    "meaning": "불가피하게",
+    "example": "Demand will inevitably change over time.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-infect",
+    "word": "infect",
+    "meaning": "감염시키다",
+    "example": "The virus can infect healthy cells.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-infectious",
+    "word": "infectious",
+    "meaning": "전염성의",
+    "example": "The illness is highly infectious.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-inference",
+    "word": "inference",
+    "meaning": "추론",
+    "example": "The evidence supports this inference.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-inferior",
+    "word": "inferior",
+    "meaning": "열등한",
+    "example": "This material is inferior in quality.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-infinite",
+    "word": "infinite",
+    "meaning": "무한한",
+    "example": "The sequence contains infinite possibilities.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-infinity",
+    "word": "infinity",
+    "meaning": "무한대",
+    "example": "The curve approaches infinity.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-influential",
+    "word": "influential",
+    "meaning": "영향력 있는",
+    "example": "She wrote an influential paper.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-informal",
+    "word": "informal",
+    "meaning": "비공식적인",
+    "example": "We held an informal discussion.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-inhibit",
+    "word": "inhibit",
+    "meaning": "억제하다",
+    "example": "Low temperatures inhibit bacterial growth.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-inhibition",
+    "word": "inhibition",
+    "meaning": "억제",
+    "example": "The drug causes enzyme inhibition.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-initiate",
+    "word": "initiate",
+    "meaning": "시작하다",
+    "example": "The team will initiate a new study.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-initiation",
+    "word": "initiation",
+    "meaning": "시작; 개시",
+    "example": "Funding allowed the project's initiation.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-inject",
+    "word": "inject",
+    "meaning": "주입하다",
+    "example": "Scientists inject dye into the tissue.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-injection",
+    "word": "injection",
+    "meaning": "주사; 주입",
+    "example": "The patient received an injection.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-innate",
+    "word": "innate",
+    "meaning": "타고난",
+    "example": "The reflex is an innate response.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-insect",
+    "word": "insect",
+    "meaning": "곤충",
+    "example": "The insect has six legs.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-insert",
+    "word": "insert",
+    "meaning": "삽입하다",
+    "example": "Insert the key into the lock.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-instability",
+    "word": "instability",
+    "meaning": "불안정",
+    "example": "Political instability reduced investment.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-instinct",
+    "word": "instinct",
+    "meaning": "본능",
+    "example": "The animal follows its instinct.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-integral",
+    "word": "integral",
+    "meaning": "필수적인; 적분",
+    "example": "Water is integral to life.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-integration",
+    "word": "integration",
+    "meaning": "통합",
+    "example": "The policy supports social integration.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-intensity",
+    "word": "intensity",
+    "meaning": "강도",
+    "example": "Light intensity decreases with distance.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-intensive",
+    "word": "intensive",
+    "meaning": "집중적인",
+    "example": "The course provides intensive training.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-interact",
+    "word": "interact",
+    "meaning": "상호 작용하다",
+    "example": "These chemicals interact with water.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-interestingly",
+    "word": "interestingly",
+    "meaning": "흥미롭게도",
+    "example": "Interestingly, both groups improved.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-interface",
+    "word": "interface",
+    "meaning": "접점; 인터페이스",
+    "example": "The interface connects two systems.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-interfere",
+    "word": "interfere",
+    "meaning": "방해하다",
+    "example": "Noise can interfere with communication.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-intermediate",
+    "word": "intermediate",
+    "meaning": "중간의",
+    "example": "The reaction produces an intermediate compound.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-interrupt",
+    "word": "interrupt",
+    "meaning": "중단시키다",
+    "example": "Please do not interrupt the speaker.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-interval",
+    "word": "interval",
+    "meaning": "간격",
+    "example": "Record measurements at each interval.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-intervene",
+    "word": "intervene",
+    "meaning": "개입하다",
+    "example": "Teachers intervene when conflicts arise.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-interviewer",
+    "word": "interviewer",
+    "meaning": "면접관; 인터뷰 진행자",
+    "example": "The interviewer asked an open question.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-invade",
+    "word": "invade",
+    "meaning": "침입하다",
+    "example": "Bacteria can invade damaged tissue.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-invasion",
+    "word": "invasion",
+    "meaning": "침입; 침략",
+    "example": "The invasion changed the region.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-inversion",
+    "word": "inversion",
+    "meaning": "역전",
+    "example": "Temperature inversion can trap polluted air.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-invert",
+    "word": "invert",
+    "meaning": "뒤집다",
+    "example": "Invert the image before printing.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-ion",
+    "word": "ion",
+    "meaning": "이온",
+    "example": "An ion carries an electrical charge.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-irrelevant",
+    "word": "irrelevant",
+    "meaning": "관련 없는",
+    "example": "That detail is irrelevant here.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-irrigation",
+    "word": "irrigation",
+    "meaning": "관개",
+    "example": "Irrigation supplies water to crops.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-jazz",
+    "word": "jazz",
+    "meaning": "재즈",
+    "example": "The students studied jazz history.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-junior",
+    "word": "junior",
+    "meaning": "하급의; 어린",
+    "example": "A junior researcher collected the data.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-justification",
+    "word": "justification",
+    "meaning": "정당화; 타당한 이유",
+    "example": "The decision needs clear justification.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-kidney",
+    "word": "kidney",
+    "meaning": "신장",
+    "example": "The kidney filters blood.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-kilometer",
+    "word": "kilometer",
+    "meaning": "킬로미터",
+    "example": "The station is one kilometer away.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-lab",
+    "word": "lab",
+    "meaning": "실험실",
+    "example": "The samples arrived at the lab.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-lateral",
+    "word": "lateral",
+    "meaning": "측면의",
+    "example": "The diagram shows lateral movement.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-layout",
+    "word": "layout",
+    "meaning": "배치",
+    "example": "The new layout improves access.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-leaf",
+    "word": "leaf",
+    "meaning": "잎",
+    "example": "Each leaf absorbs sunlight.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-lecturer",
+    "word": "lecturer",
+    "meaning": "강사",
+    "example": "The lecturer explained the theory.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-legend",
+    "word": "legend",
+    "meaning": "전설; 범례",
+    "example": "The map legend explains each symbol.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-legitimate",
+    "word": "legitimate",
+    "meaning": "정당한; 합법적인",
+    "example": "Students raised legitimate concerns.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-leisure",
+    "word": "leisure",
+    "meaning": "여가",
+    "example": "Reading is her favorite leisure activity.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-lever",
+    "word": "lever",
+    "meaning": "지렛대",
+    "example": "The lever lifts a heavy load.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-lexical",
+    "word": "lexical",
+    "meaning": "어휘의",
+    "example": "The test measures lexical knowledge.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-liable",
+    "word": "liable",
+    "meaning": "책임이 있는; 하기 쉬운",
+    "example": "The company is liable for damages.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-lifestyle",
+    "word": "lifestyle",
+    "meaning": "생활 방식",
+    "example": "Exercise supports a healthy lifestyle.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-lifetime",
+    "word": "lifetime",
+    "meaning": "일생; 수명",
+    "example": "The device has a short lifetime.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-likelihood",
+    "word": "likelihood",
+    "meaning": "가능성",
+    "example": "The likelihood of rain is high.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-likewise",
+    "word": "likewise",
+    "meaning": "마찬가지로",
+    "example": "The second group likewise showed improvement.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-limb",
+    "word": "limb",
+    "meaning": "팔다리",
+    "example": "The animal has an injured limb.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-linear",
+    "word": "linear",
+    "meaning": "선형의",
+    "example": "The graph shows a linear relationship.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-linguistic",
+    "word": "linguistic",
+    "meaning": "언어의",
+    "example": "The study explores linguistic differences.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-linguistics",
+    "word": "linguistics",
+    "meaning": "언어학",
+    "example": "Linguistics examines how languages work.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-liter",
+    "word": "liter",
+    "meaning": "리터",
+    "example": "The bottle holds one liter.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-liver",
+    "word": "liver",
+    "meaning": "간",
+    "example": "The liver processes nutrients.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-locally",
+    "word": "locally",
+    "meaning": "지역적으로",
+    "example": "The food is produced locally.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-locus",
+    "word": "locus",
+    "meaning": "위치; 중심지",
+    "example": "The city became a locus of trade.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-logical",
+    "word": "logical",
+    "meaning": "논리적인",
+    "example": "Her conclusion is logical.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-longitudinal",
+    "word": "longitudinal",
+    "meaning": "종단의; 세로의",
+    "example": "The longitudinal study followed children for years.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-loop",
+    "word": "loop",
+    "meaning": "고리; 반복 구조",
+    "example": "The wire forms a loop.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-lump",
+    "word": "lump",
+    "meaning": "덩어리",
+    "example": "A lump of clay lay nearby.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-lung",
+    "word": "lung",
+    "meaning": "폐",
+    "example": "The scan shows the left lung.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-machinery",
+    "word": "machinery",
+    "meaning": "기계류",
+    "example": "New machinery increased production.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-magnetic",
+    "word": "magnetic",
+    "meaning": "자기의",
+    "example": "The compass detects a magnetic field.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-magnitude",
+    "word": "magnitude",
+    "meaning": "크기; 규모",
+    "example": "We measured the earthquake's magnitude.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-mall",
+    "word": "mall",
+    "meaning": "쇼핑몰",
+    "example": "The mall attracts local shoppers.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-manipulate",
+    "word": "manipulate",
+    "meaning": "조작하다",
+    "example": "Researchers manipulate one variable at a time.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-manipulation",
+    "word": "manipulation",
+    "meaning": "조작",
+    "example": "Data manipulation can distort results.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-manual",
+    "word": "manual",
+    "meaning": "수동의; 설명서",
+    "example": "The device requires manual adjustment.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-manuscript",
+    "word": "manuscript",
+    "meaning": "원고",
+    "example": "She revised the manuscript.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-marble",
+    "word": "marble",
+    "meaning": "대리석",
+    "example": "The statue is made of marble.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-marginal",
+    "word": "marginal",
+    "meaning": "미미한; 한계의",
+    "example": "The change produced a marginal improvement.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-marker",
+    "word": "marker",
+    "meaning": "표지; 표시 도구",
+    "example": "The marker indicates the boundary.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-marrow",
+    "word": "marrow",
+    "meaning": "골수",
+    "example": "Bone marrow produces blood cells.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-maternal",
+    "word": "maternal",
+    "meaning": "어머니의",
+    "example": "The study examines maternal health.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-mathematical",
+    "word": "mathematical",
+    "meaning": "수학의",
+    "example": "The theory uses a mathematical model.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-matrix",
+    "word": "matrix",
+    "meaning": "행렬",
+    "example": "Each row belongs to the matrix.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-maximize",
+    "word": "maximize",
+    "meaning": "극대화하다",
+    "example": "We aim to maximize efficiency.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-meaningful",
+    "word": "meaningful",
+    "meaning": "의미 있는",
+    "example": "The results show a meaningful difference.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-mechanic",
+    "word": "mechanic",
+    "meaning": "정비사",
+    "example": "The mechanic repaired the engine.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-mechanical",
+    "word": "mechanical",
+    "meaning": "기계적인",
+    "example": "The device converts mechanical energy.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-media",
+    "word": "media",
+    "meaning": "매체",
+    "example": "Social media spread the news.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-mediate",
+    "word": "mediate",
+    "meaning": "중재하다",
+    "example": "A teacher helped mediate the dispute.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-membrane",
+    "word": "membrane",
+    "meaning": "막",
+    "example": "The membrane surrounds the cell.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-memorize",
+    "word": "memorize",
+    "meaning": "암기하다",
+    "example": "Students memorize the key terms.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-mentor",
+    "word": "mentor",
+    "meaning": "지도자; 조언자",
+    "example": "Her mentor offered practical advice.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-mercury",
+    "word": "mercury",
+    "meaning": "수은",
+    "example": "Mercury is liquid at room temperature.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-merge",
+    "word": "merge",
+    "meaning": "합치다",
+    "example": "The two streams merge here.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-messenger",
+    "word": "messenger",
+    "meaning": "전달자",
+    "example": "The messenger delivered the report.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-metabolism",
+    "word": "metabolism",
+    "meaning": "신진대사",
+    "example": "Exercise can affect metabolism.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-metaphor",
+    "word": "metaphor",
+    "meaning": "은유",
+    "example": "The poem uses a powerful metaphor.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-methodology",
+    "word": "methodology",
+    "meaning": "연구 방법론",
+    "example": "The paper describes its methodology.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-micro",
+    "word": "micro",
+    "meaning": "미세한; 아주 작은",
+    "example": "The device detects micro-scale changes.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-mid",
+    "word": "mid",
+    "meaning": "중간의",
+    "example": "The survey began in mid-June.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-migrate",
+    "word": "migrate",
+    "meaning": "이동하다; 이주하다",
+    "example": "Birds migrate south in winter.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-migration",
+    "word": "migration",
+    "meaning": "이동; 이주",
+    "example": "Migration changes population patterns.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-millimeter",
+    "word": "millimeter",
+    "meaning": "밀리미터",
+    "example": "The gap is one millimeter wide.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-mineral",
+    "word": "mineral",
+    "meaning": "광물",
+    "example": "Quartz is a common mineral.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-minimal",
+    "word": "minimal",
+    "meaning": "최소의",
+    "example": "The process requires minimal energy.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-minimize",
+    "word": "minimize",
+    "meaning": "최소화하다",
+    "example": "We must minimize measurement errors.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-minus",
+    "word": "minus",
+    "meaning": "빼기; 마이너스",
+    "example": "Five minus two equals three.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-missile",
+    "word": "missile",
+    "meaning": "미사일",
+    "example": "The missile followed a curved path.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-mobility",
+    "word": "mobility",
+    "meaning": "이동성",
+    "example": "Public transport improves urban mobility.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-modification",
+    "word": "modification",
+    "meaning": "변경",
+    "example": "The design needs a minor modification.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-mole",
+    "word": "mole",
+    "meaning": "몰; 두더지",
+    "example": "One mole contains many particles.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-molecular",
+    "word": "molecular",
+    "meaning": "분자의",
+    "example": "Scientists studied the molecular structure.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-molecule",
+    "word": "molecule",
+    "meaning": "분자",
+    "example": "A water molecule contains three atoms.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-momentum",
+    "word": "momentum",
+    "meaning": "운동량; 추진력",
+    "example": "The campaign gained momentum.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-monetary",
+    "word": "monetary",
+    "meaning": "화폐의",
+    "example": "The bank changed monetary policy.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-monkey",
+    "word": "monkey",
+    "meaning": "원숭이",
+    "example": "The monkey climbed the tree.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-monopoly",
+    "word": "monopoly",
+    "meaning": "독점",
+    "example": "One company holds a monopoly.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-morality",
+    "word": "morality",
+    "meaning": "도덕성",
+    "example": "The debate concerns public morality.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-morphological",
+    "word": "morphological",
+    "meaning": "형태의",
+    "example": "The species show morphological differences.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-morphology",
+    "word": "morphology",
+    "meaning": "형태학",
+    "example": "Plant morphology examines physical structures.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-mortality",
+    "word": "mortality",
+    "meaning": "사망률",
+    "example": "The study measured infant mortality.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-motif",
+    "word": "motif",
+    "meaning": "주제; 반복 무늬",
+    "example": "Water is a recurring motif.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-motive",
+    "word": "motive",
+    "meaning": "동기",
+    "example": "Profit was their main motive.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-multi",
+    "word": "multi",
+    "meaning": "다수의; 여러",
+    "example": "The team uses a multi-stage process.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-multinational",
+    "word": "multinational",
+    "meaning": "다국적의",
+    "example": "She works for a multinational company.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-multiply",
+    "word": "multiply",
+    "meaning": "곱하다; 증가하다",
+    "example": "Multiply the total by three.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-mutation",
+    "word": "mutation",
+    "meaning": "돌연변이",
+    "example": "The mutation changed the protein.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-myth",
+    "word": "myth",
+    "meaning": "신화; 근거 없는 믿음",
+    "example": "The evidence challenges a common myth.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-naked",
+    "word": "naked",
+    "meaning": "벌거벗은",
+    "example": "The cells are invisible to the naked eye.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-namely",
+    "word": "namely",
+    "meaning": "즉",
+    "example": "Two factors matter, namely cost and time.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-nasty",
+    "word": "nasty",
+    "meaning": "불쾌한",
+    "example": "The chemical has a nasty smell.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-nationalism",
+    "word": "nationalism",
+    "meaning": "민족주의",
+    "example": "The movement encouraged nationalism.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-neat",
+    "word": "neat",
+    "meaning": "깔끔한",
+    "example": "Her notes are neat and clear.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-necessity",
+    "word": "necessity",
+    "meaning": "필요성",
+    "example": "The report stresses the necessity of reform.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-neo",
+    "word": "neo",
+    "meaning": "새로운; 신",
+    "example": "The book examines neo-classical architecture.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-nest",
+    "word": "nest",
+    "meaning": "둥지",
+    "example": "The birds built a nest.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-neural",
+    "word": "neural",
+    "meaning": "신경의",
+    "example": "The model uses a neural network.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-neuron",
+    "word": "neuron",
+    "meaning": "신경 세포",
+    "example": "A neuron transmits electrical signals.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-neutral",
+    "word": "neutral",
+    "meaning": "중립적인",
+    "example": "The observer remained neutral.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-nicely",
+    "word": "nicely",
+    "meaning": "잘; 보기 좋게",
+    "example": "The diagram nicely illustrates the process.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-niche",
+    "word": "niche",
+    "meaning": "틈새; 생태적 지위",
+    "example": "The species occupies a unique niche.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-nitrogen",
+    "word": "nitrogen",
+    "meaning": "질소",
+    "example": "Air contains mostly nitrogen.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-noble",
+    "word": "noble",
+    "meaning": "고귀한",
+    "example": "Helping others is a noble goal.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-node",
+    "word": "node",
+    "meaning": "마디; 연결점",
+    "example": "Each node connects to two others.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-noisy",
+    "word": "noisy",
+    "meaning": "시끄러운",
+    "example": "The classroom was unusually noisy.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-nominal",
+    "word": "nominal",
+    "meaning": "명목상의",
+    "example": "The charge is only nominal.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-non",
+    "word": "non",
+    "meaning": "비; 아닌",
+    "example": "The policy supports non-profit groups.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-nonetheless",
+    "word": "nonetheless",
+    "meaning": "그럼에도 불구하고",
+    "example": "Costs rose; nonetheless, demand remained strong.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-nonlinear",
+    "word": "nonlinear",
+    "meaning": "비선형의",
+    "example": "The data show a nonlinear pattern.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-norm",
+    "word": "norm",
+    "meaning": "규범; 기준",
+    "example": "Sharing is a social norm.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-notation",
+    "word": "notation",
+    "meaning": "표기법",
+    "example": "The equation uses standard notation.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-novice",
+    "word": "novice",
+    "meaning": "초보자",
+    "example": "The guide helps a novice learn quickly.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-nucleus",
+    "word": "nucleus",
+    "meaning": "핵",
+    "example": "The nucleus contains genetic material.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-null",
+    "word": "null",
+    "meaning": "무효의; 영의",
+    "example": "The test examines the null hypothesis.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-numerical",
+    "word": "numerical",
+    "meaning": "수치의",
+    "example": "The table presents numerical data.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-nutrient",
+    "word": "nutrient",
+    "meaning": "영양소",
+    "example": "Iron is an essential nutrient.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-objection",
+    "word": "objection",
+    "meaning": "반대; 이의",
+    "example": "She raised an objection to the plan.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-obscure",
+    "word": "obscure",
+    "meaning": "불분명한",
+    "example": "The origin of the word is obscure.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-observer",
+    "word": "observer",
+    "meaning": "관찰자",
+    "example": "The observer recorded each response.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-obtain",
+    "word": "obtain",
+    "meaning": "얻다",
+    "example": "Researchers obtain data through interviews.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-occupation",
+    "word": "occupation",
+    "meaning": "직업; 점유",
+    "example": "Teaching is a demanding occupation.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-occurrence",
+    "word": "occurrence",
+    "meaning": "발생",
+    "example": "The occurrence of storms increased.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-offspring",
+    "word": "offspring",
+    "meaning": "자손",
+    "example": "The parents protect their offspring.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-onset",
+    "word": "onset",
+    "meaning": "시작; 발병",
+    "example": "Symptoms appeared at the onset of illness.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-onwards",
+    "word": "onwards",
+    "meaning": "이후로",
+    "example": "From Monday onwards, classes start earlier.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-optical",
+    "word": "optical",
+    "meaning": "빛의; 광학의",
+    "example": "The device uses an optical sensor.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-optimal",
+    "word": "optimal",
+    "meaning": "최적의",
+    "example": "These are optimal growing conditions.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-optimum",
+    "word": "optimum",
+    "meaning": "최적의; 최적 상태",
+    "example": "The temperature reached its optimum level.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-oral",
+    "word": "oral",
+    "meaning": "구두의; 입의",
+    "example": "The exam includes an oral presentation.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-organ",
+    "word": "organ",
+    "meaning": "기관; 장기",
+    "example": "The heart is a vital organ.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-organism",
+    "word": "organism",
+    "meaning": "생물",
+    "example": "Each organism needs energy.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-orient",
+    "word": "orient",
+    "meaning": "방향을 잡다",
+    "example": "Use the map to orient yourself.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-orientation",
+    "word": "orientation",
+    "meaning": "방향; 오리엔테이션",
+    "example": "The compass shows the building's orientation.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-oscillation",
+    "word": "oscillation",
+    "meaning": "진동",
+    "example": "The sensor measures oscillation frequency.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-outer",
+    "word": "outer",
+    "meaning": "바깥의",
+    "example": "The outer layer protects the seed.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-outlet",
+    "word": "outlet",
+    "meaning": "출구; 배출구",
+    "example": "Water flows through the outlet.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-overhead",
+    "word": "overhead",
+    "meaning": "머리 위의; 간접비",
+    "example": "Birds flew overhead.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-overlap",
+    "word": "overlap",
+    "meaning": "겹치다",
+    "example": "The two categories overlap.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-overview",
+    "word": "overview",
+    "meaning": "개요",
+    "example": "The introduction gives an overview.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-oxidize",
+    "word": "oxidize",
+    "meaning": "산화하다",
+    "example": "Iron can oxidize in moist air.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-oxygen",
+    "word": "oxygen",
+    "meaning": "산소",
+    "example": "Cells need oxygen to release energy.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-painful",
+    "word": "painful",
+    "meaning": "고통스러운",
+    "example": "The injury was painful.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-par",
+    "word": "par",
+    "meaning": "동등한 수준",
+    "example": "Her results are on par with ours.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-paradigm",
+    "word": "paradigm",
+    "meaning": "패러다임; 사고의 틀",
+    "example": "The discovery challenged the existing paradigm.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-paradox",
+    "word": "paradox",
+    "meaning": "역설",
+    "example": "The result presents an interesting paradox.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-parameter",
+    "word": "parameter",
+    "meaning": "매개변수",
+    "example": "Change one parameter at a time.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-parcel",
+    "word": "parcel",
+    "meaning": "꾸러미; 구획",
+    "example": "The parcel contains laboratory supplies.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-pardon",
+    "word": "pardon",
+    "meaning": "용서하다",
+    "example": "Please pardon the interruption.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-parental",
+    "word": "parental",
+    "meaning": "부모의",
+    "example": "The study required parental consent.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-parenthesis",
+    "word": "parenthesis",
+    "meaning": "괄호",
+    "example": "Use a parenthesis to add extra information.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-partial",
+    "word": "partial",
+    "meaning": "부분적인",
+    "example": "The evidence provides only partial support.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-partially",
+    "word": "partially",
+    "meaning": "부분적으로",
+    "example": "The building was partially restored.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-particle",
+    "word": "particle",
+    "meaning": "입자",
+    "example": "Each particle carries energy.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-partition",
+    "word": "partition",
+    "meaning": "분할; 칸막이",
+    "example": "A partition divides the room.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-pathway",
+    "word": "pathway",
+    "meaning": "경로",
+    "example": "The diagram shows a metabolic pathway.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-peasant",
+    "word": "peasant",
+    "meaning": "농민",
+    "example": "The peasant worked on rented land.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-periodic",
+    "word": "periodic",
+    "meaning": "주기적인",
+    "example": "The signal shows periodic changes.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-peripheral",
+    "word": "peripheral",
+    "meaning": "주변의",
+    "example": "The damage affected peripheral nerves.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-pest",
+    "word": "pest",
+    "meaning": "해충",
+    "example": "The pest damaged the crops.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-pesticide",
+    "word": "pesticide",
+    "meaning": "살충제; 농약",
+    "example": "The pesticide reduced insect numbers.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-phenomenal",
+    "word": "phenomenal",
+    "meaning": "경이로운",
+    "example": "The team achieved phenomenal growth.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-philosopher",
+    "word": "philosopher",
+    "meaning": "철학자",
+    "example": "The philosopher questioned common beliefs.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-philosophical",
+    "word": "philosophical",
+    "meaning": "철학적인",
+    "example": "The question has philosophical significance.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-phonological",
+    "word": "phonological",
+    "meaning": "음운의",
+    "example": "The task measures phonological awareness.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-phosphate",
+    "word": "phosphate",
+    "meaning": "인산염",
+    "example": "The fertilizer contains phosphate.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-photographic",
+    "word": "photographic",
+    "meaning": "사진의",
+    "example": "The report includes photographic evidence.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-physically",
+    "word": "physically",
+    "meaning": "신체적으로",
+    "example": "The job is physically demanding.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-physician",
+    "word": "physician",
+    "meaning": "의사",
+    "example": "The physician examined the patient.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-physics",
+    "word": "physics",
+    "meaning": "물리학",
+    "example": "Physics explains motion and energy.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-physiological",
+    "word": "physiological",
+    "meaning": "생리적인",
+    "example": "Stress causes physiological changes.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-pi",
+    "word": "pi",
+    "meaning": "원주율",
+    "example": "Pi is approximately 3.14.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-planner",
+    "word": "planner",
+    "meaning": "계획자; 계획 수첩",
+    "example": "The planner proposed a new park.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-plantation",
+    "word": "plantation",
+    "meaning": "대규모 농장",
+    "example": "Workers harvested tea on the plantation.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-plausible",
+    "word": "plausible",
+    "meaning": "그럴듯한",
+    "example": "Her explanation is plausible.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-plug",
+    "word": "plug",
+    "meaning": "마개; 플러그",
+    "example": "Remove the plug to drain water.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-plural",
+    "word": "plural",
+    "meaning": "복수의",
+    "example": "The noun has a plural form.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-polar",
+    "word": "polar",
+    "meaning": "극지의",
+    "example": "Polar regions have long winters.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-pole",
+    "word": "pole",
+    "meaning": "극; 막대",
+    "example": "The magnet has a north pole.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-politically",
+    "word": "politically",
+    "meaning": "정치적으로",
+    "example": "The decision was politically controversial.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-portfolio",
+    "word": "portfolio",
+    "meaning": "작품집; 투자 자산 구성",
+    "example": "Her portfolio includes several research projects.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-portray",
+    "word": "portray",
+    "meaning": "묘사하다",
+    "example": "The films portray urban life.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-portrayal",
+    "word": "portrayal",
+    "meaning": "묘사",
+    "example": "The portrayal of poverty was realistic.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-positively",
+    "word": "positively",
+    "meaning": "긍정적으로",
+    "example": "Students responded positively to the change.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-poster",
+    "word": "poster",
+    "meaning": "포스터",
+    "example": "The poster summarizes our findings.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-postgraduate",
+    "word": "postgraduate",
+    "meaning": "대학원생; 대학원 과정의",
+    "example": "She enrolled in a postgraduate course.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-potassium",
+    "word": "potassium",
+    "meaning": "칼륨",
+    "example": "Bananas contain potassium.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-powder",
+    "word": "powder",
+    "meaning": "가루",
+    "example": "Mix the powder with water.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-practitioner",
+    "word": "practitioner",
+    "meaning": "실무자; 개업 의사",
+    "example": "The practitioner shared practical experience.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-pragmatic",
+    "word": "pragmatic",
+    "meaning": "실용적인",
+    "example": "We need a pragmatic solution.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-pre",
+    "word": "pre",
+    "meaning": "이전의; 사전의",
+    "example": "Students completed a pre-course survey.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-precede",
+    "word": "precede",
+    "meaning": "앞서다",
+    "example": "These events precede the revolution.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-precipitate",
+    "word": "precipitate",
+    "meaning": "촉발하다; 침전시키다",
+    "example": "Rapid changes can precipitate a crisis.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-precipitation",
+    "word": "precipitation",
+    "meaning": "강수; 침전",
+    "example": "Annual precipitation varies across regions.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-predator",
+    "word": "predator",
+    "meaning": "포식자",
+    "example": "The fox is a skilled predator.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-prediction",
+    "word": "prediction",
+    "meaning": "예측",
+    "example": "The prediction matched the observed result.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-predominantly",
+    "word": "predominantly",
+    "meaning": "주로",
+    "example": "The area is predominantly rural.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-prejudice",
+    "word": "prejudice",
+    "meaning": "편견",
+    "example": "Education can reduce prejudice.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-preliminary",
+    "word": "preliminary",
+    "meaning": "예비의",
+    "example": "The preliminary results look promising.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-presume",
+    "word": "presume",
+    "meaning": "추정하다",
+    "example": "We presume the samples are identical.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-prevalence",
+    "word": "prevalence",
+    "meaning": "유병률; 널리 퍼짐",
+    "example": "The survey measured disease prevalence.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-prey",
+    "word": "prey",
+    "meaning": "먹이",
+    "example": "The owl catches its prey at night.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-primer",
+    "word": "primer",
+    "meaning": "입문서",
+    "example": "This primer introduces basic economics.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-primitive",
+    "word": "primitive",
+    "meaning": "원시적인",
+    "example": "The tool has a primitive design.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-probe",
+    "word": "probe",
+    "meaning": "조사하다; 탐사 장치",
+    "example": "Researchers probe the causes of disease.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-problematic",
+    "word": "problematic",
+    "meaning": "문제가 있는",
+    "example": "The assumption is problematic.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-processor",
+    "word": "processor",
+    "meaning": "처리 장치",
+    "example": "The processor handles incoming data.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-productive",
+    "word": "productive",
+    "meaning": "생산적인",
+    "example": "The meeting was productive.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-productivity",
+    "word": "productivity",
+    "meaning": "생산성",
+    "example": "New tools increased productivity.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-profound",
+    "word": "profound",
+    "meaning": "심오한; 큰",
+    "example": "The discovery had a profound effect.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-progression",
+    "word": "progression",
+    "meaning": "진행",
+    "example": "The study tracks disease progression.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-progressive",
+    "word": "progressive",
+    "meaning": "점진적인; 진보적인",
+    "example": "The patient showed progressive improvement.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-projection",
+    "word": "projection",
+    "meaning": "예측; 투영",
+    "example": "The projection suggests slower growth.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-prominent",
+    "word": "prominent",
+    "meaning": "두드러진; 저명한",
+    "example": "She is a prominent scientist.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-pronounce",
+    "word": "pronounce",
+    "meaning": "발음하다",
+    "example": "How do you pronounce this word?",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-proposition",
+    "word": "proposition",
+    "meaning": "명제; 제안",
+    "example": "The evidence supports the proposition.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-protocol",
+    "word": "protocol",
+    "meaning": "규약; 절차",
+    "example": "Follow the safety protocol.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-proton",
+    "word": "proton",
+    "meaning": "양성자",
+    "example": "A proton carries a positive charge.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-psychiatric",
+    "word": "psychiatric",
+    "meaning": "정신 의학의",
+    "example": "The hospital provides psychiatric care.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-psychologist",
+    "word": "psychologist",
+    "meaning": "심리학자",
+    "example": "The psychologist studied memory.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-psychology",
+    "word": "psychology",
+    "meaning": "심리학",
+    "example": "Psychology examines behavior and thought.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-publish",
+    "word": "publish",
+    "meaning": "출판하다; 발표하다",
+    "example": "They plan to publish their findings.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-pulse",
+    "word": "pulse",
+    "meaning": "맥박; 파동",
+    "example": "The nurse checked her pulse.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-punch",
+    "word": "punch",
+    "meaning": "주먹으로 치다; 구멍을 뚫다",
+    "example": "Punch a hole in the paper.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-punish",
+    "word": "punish",
+    "meaning": "벌하다",
+    "example": "The rules punish dishonest behavior.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-punishment",
+    "word": "punishment",
+    "meaning": "처벌",
+    "example": "The punishment matched the offense.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-purely",
+    "word": "purely",
+    "meaning": "순전히",
+    "example": "The decision was purely practical.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-puzzle",
+    "word": "puzzle",
+    "meaning": "퍼즐; 수수께끼",
+    "example": "The result remains a puzzle.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-qualitative",
+    "word": "qualitative",
+    "meaning": "질적인",
+    "example": "Interviews provide qualitative data.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-quantitative",
+    "word": "quantitative",
+    "meaning": "양적인",
+    "example": "The study uses quantitative measurements.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-quantum",
+    "word": "quantum",
+    "meaning": "양자",
+    "example": "The course introduces quantum physics.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-questionnaire",
+    "word": "questionnaire",
+    "meaning": "설문지",
+    "example": "Participants completed a short questionnaire.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-quiz",
+    "word": "quiz",
+    "meaning": "퀴즈",
+    "example": "The quiz checks basic knowledge.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-quotation",
+    "word": "quotation",
+    "meaning": "인용문",
+    "example": "The essay begins with a quotation.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-rack",
+    "word": "rack",
+    "meaning": "선반",
+    "example": "Place the tubes in the rack.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-radar",
+    "word": "radar",
+    "meaning": "레이더",
+    "example": "Radar detects distant objects.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-radiation",
+    "word": "radiation",
+    "meaning": "방사선; 복사",
+    "example": "The device measures radiation levels.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-radius",
+    "word": "radius",
+    "meaning": "반지름",
+    "example": "The circle has a small radius.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-rainfall",
+    "word": "rainfall",
+    "meaning": "강우량",
+    "example": "Rainfall declined during the summer.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-randomize",
+    "word": "randomize",
+    "meaning": "무작위로 배정하다",
+    "example": "Researchers randomize participants into two groups.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-randomly",
+    "word": "randomly",
+    "meaning": "무작위로",
+    "example": "The computer selected samples randomly.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-rational",
+    "word": "rational",
+    "meaning": "합리적인",
+    "example": "Her choice was rational.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-rationality",
+    "word": "rationality",
+    "meaning": "합리성",
+    "example": "The model assumes human rationality.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-ray",
+    "word": "ray",
+    "meaning": "광선",
+    "example": "A ray of light entered the room.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-reactive",
+    "word": "reactive",
+    "meaning": "반응성이 있는",
+    "example": "This metal is highly reactive.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-reactor",
+    "word": "reactor",
+    "meaning": "원자로; 반응기",
+    "example": "The reactor produces heat.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-readily",
+    "word": "readily",
+    "meaning": "쉽게; 기꺼이",
+    "example": "The material readily absorbs water.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-realism",
+    "word": "realism",
+    "meaning": "사실주의; 현실성",
+    "example": "The novel is known for its realism.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-realistic",
+    "word": "realistic",
+    "meaning": "현실적인",
+    "example": "We set realistic goals.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-realm",
+    "word": "realm",
+    "meaning": "영역",
+    "example": "The issue belongs to the political realm.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-receptor",
+    "word": "receptor",
+    "meaning": "수용체",
+    "example": "The receptor responds to a chemical signal.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-recipe",
+    "word": "recipe",
+    "meaning": "조리법",
+    "example": "The recipe uses simple ingredients.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-reconstruct",
+    "word": "reconstruct",
+    "meaning": "재구성하다",
+    "example": "Historians reconstruct events from records.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-regime",
+    "word": "regime",
+    "meaning": "체제",
+    "example": "The regime introduced new laws.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-regression",
+    "word": "regression",
+    "meaning": "회귀; 퇴행",
+    "example": "Regression estimates relationships between variables.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-rehabilitation",
+    "word": "rehabilitation",
+    "meaning": "재활",
+    "example": "Rehabilitation helped her walk again.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-reinforce",
+    "word": "reinforce",
+    "meaning": "강화하다",
+    "example": "Examples reinforce the main idea.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-rejection",
+    "word": "rejection",
+    "meaning": "거부",
+    "example": "The proposal faced immediate rejection.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-reliability",
+    "word": "reliability",
+    "meaning": "신뢰성",
+    "example": "Repeated tests confirmed the device's reliability.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-render",
+    "word": "render",
+    "meaning": "만들다; 제공하다",
+    "example": "The error can render the results invalid.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-repertoire",
+    "word": "repertoire",
+    "meaning": "레퍼토리; 가능한 활동의 범위",
+    "example": "The singer expanded her repertoire.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-replacement",
+    "word": "replacement",
+    "meaning": "대체물; 교체",
+    "example": "The damaged part needs replacement.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-replicate",
+    "word": "replicate",
+    "meaning": "복제하다; 반복 검증하다",
+    "example": "Other teams tried to replicate the findings.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-replication",
+    "word": "replication",
+    "meaning": "복제; 반복 검증",
+    "example": "Replication strengthened confidence in the results.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-reproduce",
+    "word": "reproduce",
+    "meaning": "재현하다; 번식하다",
+    "example": "We could reproduce the result.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-reproduction",
+    "word": "reproduction",
+    "meaning": "번식; 재생산",
+    "example": "Water is essential for reproduction.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-republic",
+    "word": "republic",
+    "meaning": "공화국",
+    "example": "The country became a republic.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-resemble",
+    "word": "resemble",
+    "meaning": "닮다",
+    "example": "These plants resemble each other.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-reservoir",
+    "word": "reservoir",
+    "meaning": "저수지; 저장소",
+    "example": "The reservoir supplies drinking water.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-residual",
+    "word": "residual",
+    "meaning": "잔여의",
+    "example": "The test detected residual heat.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-residue",
+    "word": "residue",
+    "meaning": "잔류물",
+    "example": "A white residue remained.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-resistant",
+    "word": "resistant",
+    "meaning": "저항력이 있는",
+    "example": "The plants are resistant to drought.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-respiratory",
+    "word": "respiratory",
+    "meaning": "호흡의",
+    "example": "The illness affects the respiratory system.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-retrieve",
+    "word": "retrieve",
+    "meaning": "되찾다; 검색하다",
+    "example": "The program can retrieve stored data.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-revolutionary",
+    "word": "revolutionary",
+    "meaning": "혁명적인",
+    "example": "The invention was revolutionary.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-rewrite",
+    "word": "rewrite",
+    "meaning": "다시 쓰다",
+    "example": "Rewrite the sentence more clearly.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-rhetoric",
+    "word": "rhetoric",
+    "meaning": "수사법; 미사여구",
+    "example": "The speech relied on emotional rhetoric.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-rhythm",
+    "word": "rhythm",
+    "meaning": "리듬",
+    "example": "The poem has a steady rhythm.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-ridiculous",
+    "word": "ridiculous",
+    "meaning": "터무니없는",
+    "example": "The claim sounds ridiculous.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-ritual",
+    "word": "ritual",
+    "meaning": "의식",
+    "example": "The ritual marks the beginning of spring.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-robot",
+    "word": "robot",
+    "meaning": "로봇",
+    "example": "The robot assembled small parts.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-rope",
+    "word": "rope",
+    "meaning": "밧줄",
+    "example": "The rope secured the equipment.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-rotate",
+    "word": "rotate",
+    "meaning": "회전하다",
+    "example": "The blades rotate rapidly.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-rotation",
+    "word": "rotation",
+    "meaning": "회전",
+    "example": "Earth's rotation causes day and night.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-rub",
+    "word": "rub",
+    "meaning": "문지르다",
+    "example": "Rub the surface gently.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-ruler",
+    "word": "ruler",
+    "meaning": "자; 통치자",
+    "example": "Measure the line with a ruler.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-scatter",
+    "word": "scatter",
+    "meaning": "흩뿌리다",
+    "example": "Scatter the seeds across the soil.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-scenario",
+    "word": "scenario",
+    "meaning": "시나리오; 예상 상황",
+    "example": "The model tests each scenario.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-scholarship",
+    "word": "scholarship",
+    "meaning": "장학금; 학문",
+    "example": "The scholarship covers tuition fees.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-scripture",
+    "word": "scripture",
+    "meaning": "성서; 경전",
+    "example": "The course examines ancient scripture.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-scroll",
+    "word": "scroll",
+    "meaning": "스크롤하다; 두루마리",
+    "example": "Scroll down to read more.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-secrete",
+    "word": "secrete",
+    "meaning": "분비하다",
+    "example": "These glands secrete hormones.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-sediment",
+    "word": "sediment",
+    "meaning": "퇴적물",
+    "example": "Sediment collected at the river's mouth.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-selective",
+    "word": "selective",
+    "meaning": "선별적인",
+    "example": "The membrane is selectively permeable.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-semantic",
+    "word": "semantic",
+    "meaning": "의미의",
+    "example": "The words have a semantic connection.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-semester",
+    "word": "semester",
+    "meaning": "학기",
+    "example": "The course lasts one semester.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-semi",
+    "word": "semi",
+    "meaning": "반; 부분적인",
+    "example": "The device uses a semi-automatic system.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-seminar",
+    "word": "seminar",
+    "meaning": "세미나",
+    "example": "The seminar focused on climate change.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-sensation",
+    "word": "sensation",
+    "meaning": "감각",
+    "example": "The treatment caused a warm sensation.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-sensible",
+    "word": "sensible",
+    "meaning": "분별 있는",
+    "example": "Saving energy is a sensible choice.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-sensitivity",
+    "word": "sensitivity",
+    "meaning": "민감도",
+    "example": "The test has high sensitivity.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-sensory",
+    "word": "sensory",
+    "meaning": "감각의",
+    "example": "The brain processes sensory information.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-separately",
+    "word": "separately",
+    "meaning": "따로",
+    "example": "The samples were stored separately.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-separation",
+    "word": "separation",
+    "meaning": "분리",
+    "example": "The process involves separation of liquids.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-sexuality",
+    "word": "sexuality",
+    "meaning": "성; 성적 특성",
+    "example": "The study examines attitudes toward sexuality.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-shallow",
+    "word": "shallow",
+    "meaning": "얕은",
+    "example": "The roots grow in shallow soil.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-shortly",
+    "word": "shortly",
+    "meaning": "곧",
+    "example": "The lecture will begin shortly.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-shuttle",
+    "word": "shuttle",
+    "meaning": "왕복 운송 수단",
+    "example": "A shuttle connects the two campuses.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-similarity",
+    "word": "similarity",
+    "meaning": "유사성",
+    "example": "The results show a striking similarity.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-simplify",
+    "word": "simplify",
+    "meaning": "단순화하다",
+    "example": "Diagrams simplify complex ideas.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-simulate",
+    "word": "simulate",
+    "meaning": "모의 실험하다",
+    "example": "Computers simulate weather patterns.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-simulation",
+    "word": "simulation",
+    "meaning": "모의 실험",
+    "example": "The simulation predicts traffic flow.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-simultaneously",
+    "word": "simultaneously",
+    "meaning": "동시에",
+    "example": "Both reactions occur simultaneously.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-sin",
+    "word": "sin",
+    "meaning": "죄",
+    "example": "The text discusses the concept of sin.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-singular",
+    "word": "singular",
+    "meaning": "단수의; 유일한",
+    "example": "Use a singular verb here.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-sketch",
+    "word": "sketch",
+    "meaning": "스케치",
+    "example": "The sketch shows the basic design.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-skip",
+    "word": "skip",
+    "meaning": "건너뛰다",
+    "example": "Do not skip the final step.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-slab",
+    "word": "slab",
+    "meaning": "두꺼운 판",
+    "example": "The sample is a concrete slab.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-slash",
+    "word": "slash",
+    "meaning": "긋다; 대폭 줄이다",
+    "example": "The company plans to slash costs.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-slavery",
+    "word": "slavery",
+    "meaning": "노예 제도",
+    "example": "The law abolished slavery.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-slot",
+    "word": "slot",
+    "meaning": "좁은 구멍; 시간대",
+    "example": "Insert the card into the slot.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-snake",
+    "word": "snake",
+    "meaning": "뱀",
+    "example": "The snake moved through the grass.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-sneeze",
+    "word": "sneeze",
+    "meaning": "재채기하다",
+    "example": "Dust can make people sneeze.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-sniff",
+    "word": "sniff",
+    "meaning": "냄새를 맡다",
+    "example": "Dogs sniff the air for clues.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-socialize",
+    "word": "socialize",
+    "meaning": "어울리다; 사회화하다",
+    "example": "Students socialize during lunch.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-socially",
+    "word": "socially",
+    "meaning": "사회적으로",
+    "example": "The activity is socially beneficial.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-sodium",
+    "word": "sodium",
+    "meaning": "나트륨",
+    "example": "Salt contains sodium.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-soluble",
+    "word": "soluble",
+    "meaning": "용해되는",
+    "example": "The compound is soluble in water.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-solute",
+    "word": "solute",
+    "meaning": "용질",
+    "example": "Sugar is the solute in this solution.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-solvent",
+    "word": "solvent",
+    "meaning": "용매",
+    "example": "Water acts as a solvent.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-sometime",
+    "word": "sometime",
+    "meaning": "언젠가",
+    "example": "We will repeat the test sometime next week.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-sophisticate",
+    "word": "sophisticate",
+    "meaning": "정교하게 만들다",
+    "example": "New tools can sophisticate the analysis.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-span",
+    "word": "span",
+    "meaning": "범위; 기간",
+    "example": "The study covers a ten-year span.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-spatial",
+    "word": "spatial",
+    "meaning": "공간의",
+    "example": "The map shows spatial patterns.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-specialty",
+    "word": "specialty",
+    "meaning": "전문 분야",
+    "example": "Marine biology is her specialty.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-specification",
+    "word": "specification",
+    "meaning": "명세; 사양",
+    "example": "The specification lists required materials.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-specimen",
+    "word": "specimen",
+    "meaning": "표본",
+    "example": "The specimen was carefully preserved.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-spectrum",
+    "word": "spectrum",
+    "meaning": "스펙트럼; 범위",
+    "example": "The light contains a broad spectrum.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-sperm",
+    "word": "sperm",
+    "meaning": "정자",
+    "example": "A sperm cell carries genetic information.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-sphere",
+    "word": "sphere",
+    "meaning": "구; 영역",
+    "example": "The object is a perfect sphere.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-splice",
+    "word": "splice",
+    "meaning": "이어 붙이다",
+    "example": "Technicians splice the two cables.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-sponsorship",
+    "word": "sponsorship",
+    "meaning": "후원",
+    "example": "The program relies on corporate sponsorship.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-spontaneous",
+    "word": "spontaneous",
+    "meaning": "자발적인",
+    "example": "The audience gave spontaneous applause.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-spray",
+    "word": "spray",
+    "meaning": "뿌리다; 분무",
+    "example": "Spray water over the plants.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-stabilize",
+    "word": "stabilize",
+    "meaning": "안정시키다",
+    "example": "The new support will stabilize the structure.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-stack",
+    "word": "stack",
+    "meaning": "더미; 쌓다",
+    "example": "A stack of books covered the desk.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-stadium",
+    "word": "stadium",
+    "meaning": "경기장",
+    "example": "The stadium holds many spectators.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-stance",
+    "word": "stance",
+    "meaning": "입장; 자세",
+    "example": "The report explains the government's stance.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-standardize",
+    "word": "standardize",
+    "meaning": "표준화하다",
+    "example": "We standardize procedures across laboratories.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-static",
+    "word": "static",
+    "meaning": "정적인",
+    "example": "The image remains static.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-statistical",
+    "word": "statistical",
+    "meaning": "통계의",
+    "example": "The study uses statistical analysis.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-statistically",
+    "word": "statistically",
+    "meaning": "통계적으로",
+    "example": "The difference was statistically significant.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-statistics",
+    "word": "statistics",
+    "meaning": "통계학; 통계",
+    "example": "Statistics help us interpret data.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-stereotype",
+    "word": "stereotype",
+    "meaning": "고정관념",
+    "example": "The story challenges a familiar stereotype.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-stimulus",
+    "word": "stimulus",
+    "meaning": "자극",
+    "example": "Light acts as a visual stimulus.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-straightforward",
+    "word": "straightforward",
+    "meaning": "간단한; 명확한",
+    "example": "The instructions are straightforward.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-strand",
+    "word": "strand",
+    "meaning": "가닥",
+    "example": "A strand of DNA was isolated.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-strategic",
+    "word": "strategic",
+    "meaning": "전략적인",
+    "example": "The location has strategic importance.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-strictly",
+    "word": "strictly",
+    "meaning": "엄격히",
+    "example": "The rules are strictly enforced.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-stripe",
+    "word": "stripe",
+    "meaning": "줄무늬",
+    "example": "The flag has a red stripe.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-sub",
+    "word": "sub",
+    "meaning": "하위의; 부차적인",
+    "example": "The report lists several sub-categories.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-subjective",
+    "word": "subjective",
+    "meaning": "주관적인",
+    "example": "Beauty is a subjective judgment.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-subset",
+    "word": "subset",
+    "meaning": "부분 집합",
+    "example": "We analyzed a subset of the data.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-substitution",
+    "word": "substitution",
+    "meaning": "대체",
+    "example": "The substitution reduced material costs.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-substrate",
+    "word": "substrate",
+    "meaning": "기질; 바탕",
+    "example": "The enzyme binds to its substrate.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-subtle",
+    "word": "subtle",
+    "meaning": "미묘한",
+    "example": "The samples show subtle differences.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-subtract",
+    "word": "subtract",
+    "meaning": "빼다",
+    "example": "Subtract five from the total.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-sufficiently",
+    "word": "sufficiently",
+    "meaning": "충분히",
+    "example": "The samples were sufficiently large.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-suicide",
+    "word": "suicide",
+    "meaning": "자살",
+    "example": "The program focuses on suicide prevention.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-super",
+    "word": "super",
+    "meaning": "초; 매우",
+    "example": "The material has super-absorbent fibers.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-superior",
+    "word": "superior",
+    "meaning": "더 나은; 상급의",
+    "example": "This method produces superior results.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-supposedly",
+    "word": "supposedly",
+    "meaning": "추정상; 소문에 따르면",
+    "example": "The device supposedly saves energy.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-surgeon",
+    "word": "surgeon",
+    "meaning": "외과 의사",
+    "example": "The surgeon explained the operation.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-surgical",
+    "word": "surgical",
+    "meaning": "외과 수술의",
+    "example": "The hospital needs surgical equipment.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-surplus",
+    "word": "surplus",
+    "meaning": "잉여",
+    "example": "The farm produced a surplus of grain.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-susceptible",
+    "word": "susceptible",
+    "meaning": "취약한; 영향을 받기 쉬운",
+    "example": "Young plants are susceptible to frost.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-sustainable",
+    "word": "sustainable",
+    "meaning": "지속 가능한",
+    "example": "The city promotes sustainable transport.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-swap",
+    "word": "swap",
+    "meaning": "교환하다",
+    "example": "Students swap notes after class.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-swell",
+    "word": "swell",
+    "meaning": "부풀다",
+    "example": "The material can swell in water.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-sword",
+    "word": "sword",
+    "meaning": "검",
+    "example": "The museum displays an ancient sword.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-syllable",
+    "word": "syllable",
+    "meaning": "음절",
+    "example": "This word has one syllable.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-syllabus",
+    "word": "syllabus",
+    "meaning": "강의 계획서",
+    "example": "The syllabus lists weekly topics.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-symbolic",
+    "word": "symbolic",
+    "meaning": "상징적인",
+    "example": "The gesture has symbolic meaning.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-syndrome",
+    "word": "syndrome",
+    "meaning": "증후군",
+    "example": "The syndrome has several symptoms.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-syntactic",
+    "word": "syntactic",
+    "meaning": "통사적인",
+    "example": "The sentence has a syntactic error.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-syntax",
+    "word": "syntax",
+    "meaning": "구문; 통사법",
+    "example": "The course introduces English syntax.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-synthesis",
+    "word": "synthesis",
+    "meaning": "합성; 종합",
+    "example": "The report provides a synthesis of findings.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-synthetic",
+    "word": "synthetic",
+    "meaning": "합성의",
+    "example": "The fabric contains synthetic fibers.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-systematic",
+    "word": "systematic",
+    "meaning": "체계적인",
+    "example": "We need a systematic approach.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-tech",
+    "word": "tech",
+    "meaning": "기술",
+    "example": "The city attracts tech companies.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-technically",
+    "word": "technically",
+    "meaning": "기술적으로",
+    "example": "The project is technically feasible.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-temporal",
+    "word": "temporal",
+    "meaning": "시간의",
+    "example": "The analysis reveals temporal patterns.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-tempt",
+    "word": "tempt",
+    "meaning": "유혹하다",
+    "example": "Low prices can tempt buyers.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-tense",
+    "word": "tense",
+    "meaning": "긴장한; 시제",
+    "example": "The room became tense.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-terminal",
+    "word": "terminal",
+    "meaning": "말기의; 종착역",
+    "example": "The bus arrived at the terminal.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-terminology",
+    "word": "terminology",
+    "meaning": "전문 용어",
+    "example": "Learn the basic medical terminology.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-terribly",
+    "word": "terribly",
+    "meaning": "몹시",
+    "example": "The instructions were terribly confusing.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-textbook",
+    "word": "textbook",
+    "meaning": "교과서",
+    "example": "The textbook explains each concept.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-theorem",
+    "word": "theorem",
+    "meaning": "정리",
+    "example": "The theorem applies to right triangles.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-theorist",
+    "word": "theorist",
+    "meaning": "이론가",
+    "example": "The theorist proposed a new model.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-thereby",
+    "word": "thereby",
+    "meaning": "그렇게 함으로써",
+    "example": "The change reduced waste, thereby saving resources.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-thermal",
+    "word": "thermal",
+    "meaning": "열의",
+    "example": "The walls provide thermal insulation.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-thesis",
+    "word": "thesis",
+    "meaning": "학위 논문; 논지",
+    "example": "Her thesis examines language learning.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-thickness",
+    "word": "thickness",
+    "meaning": "두께",
+    "example": "Measure the thickness of the sheet.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-thread",
+    "word": "thread",
+    "meaning": "실; 가닥",
+    "example": "A thin thread connects the pieces.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-threshold",
+    "word": "threshold",
+    "meaning": "문턱; 기준점",
+    "example": "The signal exceeded the detection threshold.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-thumb",
+    "word": "thumb",
+    "meaning": "엄지손가락",
+    "example": "She pressed the button with her thumb.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-tolerance",
+    "word": "tolerance",
+    "meaning": "관용; 내성",
+    "example": "The policy promotes tolerance of differences.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-ton",
+    "word": "ton",
+    "meaning": "톤",
+    "example": "The machine weighs one ton.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-toxic",
+    "word": "toxic",
+    "meaning": "유독한",
+    "example": "The factory released toxic chemicals.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-tract",
+    "word": "tract",
+    "meaning": "관; 넓은 지역",
+    "example": "Food moves through the digestive tract.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-traditionally",
+    "word": "traditionally",
+    "meaning": "전통적으로",
+    "example": "The festival traditionally marks the harvest.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-trait",
+    "word": "trait",
+    "meaning": "특성",
+    "example": "Eye color is an inherited trait.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-trajectory",
+    "word": "trajectory",
+    "meaning": "궤적",
+    "example": "The graph shows the object's trajectory.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-trans",
+    "word": "trans",
+    "meaning": "가로질러; 넘어",
+    "example": "The study examines trans-border trade.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-transaction",
+    "word": "transaction",
+    "meaning": "거래",
+    "example": "The bank recorded each transaction.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-transcribe",
+    "word": "transcribe",
+    "meaning": "받아 적다",
+    "example": "Researchers transcribe the interviews.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-transcription",
+    "word": "transcription",
+    "meaning": "전사; 받아쓰기",
+    "example": "The transcription contains several errors.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-transformation",
+    "word": "transformation",
+    "meaning": "변화; 변환",
+    "example": "The city underwent a major transformation.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-translation",
+    "word": "translation",
+    "meaning": "번역",
+    "example": "The translation preserves the original meaning.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-transmission",
+    "word": "transmission",
+    "meaning": "전달; 전파",
+    "example": "The study examines disease transmission.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-transmit",
+    "word": "transmit",
+    "meaning": "전송하다; 전파하다",
+    "example": "These cables transmit electrical signals.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-transparency",
+    "word": "transparency",
+    "meaning": "투명성",
+    "example": "Public reports improve transparency.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-transplant",
+    "word": "transplant",
+    "meaning": "이식",
+    "example": "The transplant restored organ function.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-trauma",
+    "word": "trauma",
+    "meaning": "외상; 정신적 충격",
+    "example": "The accident caused serious trauma.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-treaty",
+    "word": "treaty",
+    "meaning": "조약",
+    "example": "The treaty established new borders.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-tremendous",
+    "word": "tremendous",
+    "meaning": "엄청난",
+    "example": "The project required tremendous effort.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-triangle",
+    "word": "triangle",
+    "meaning": "삼각형",
+    "example": "A triangle has three sides.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-tribe",
+    "word": "tribe",
+    "meaning": "부족",
+    "example": "The tribe preserved its language.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-tricky",
+    "word": "tricky",
+    "meaning": "까다로운",
+    "example": "The final question is tricky.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-trivial",
+    "word": "trivial",
+    "meaning": "사소한",
+    "example": "The difference is trivial.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-tropical",
+    "word": "tropical",
+    "meaning": "열대의",
+    "example": "Tropical forests support diverse species.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-tumor",
+    "word": "tumor",
+    "meaning": "종양",
+    "example": "The scan revealed a small tumor.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-turbulent",
+    "word": "turbulent",
+    "meaning": "격동의; 난류의",
+    "example": "The aircraft entered turbulent air.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-tutor",
+    "word": "tutor",
+    "meaning": "개인 교사",
+    "example": "The tutor helped with mathematics.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-ultimate",
+    "word": "ultimate",
+    "meaning": "최종적인",
+    "example": "Our ultimate goal is better understanding.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-undergraduate",
+    "word": "undergraduate",
+    "meaning": "학부생",
+    "example": "The undergraduate joined a research team.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-undermine",
+    "word": "undermine",
+    "meaning": "약화시키다",
+    "example": "False claims undermine public trust.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-underneath",
+    "word": "underneath",
+    "meaning": "아래에",
+    "example": "The sensor sits underneath the platform.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-unemployed",
+    "word": "unemployed",
+    "meaning": "실직한",
+    "example": "The program supports unemployed workers.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-unify",
+    "word": "unify",
+    "meaning": "통합하다",
+    "example": "The policy aims to unify the system.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-unintelligible",
+    "word": "unintelligible",
+    "meaning": "이해할 수 없는",
+    "example": "The recording was almost unintelligible.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-unity",
+    "word": "unity",
+    "meaning": "단결; 통일",
+    "example": "The event strengthened community unity.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-unstable",
+    "word": "unstable",
+    "meaning": "불안정한",
+    "example": "The structure is unstable.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-uplift",
+    "word": "uplift",
+    "meaning": "들어 올리다; 융기",
+    "example": "The study examines geological uplift.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-upward",
+    "word": "upward",
+    "meaning": "위로",
+    "example": "The graph shows an upward trend.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-urine",
+    "word": "urine",
+    "meaning": "소변",
+    "example": "The lab analyzed a urine sample.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-usage",
+    "word": "usage",
+    "meaning": "사용법; 사용량",
+    "example": "The meter records water usage.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-utility",
+    "word": "utility",
+    "meaning": "유용성; 효용",
+    "example": "The study evaluates the tool's utility.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-utilize",
+    "word": "utilize",
+    "meaning": "활용하다",
+    "example": "Plants utilize sunlight for growth.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-utterance",
+    "word": "utterance",
+    "meaning": "발화",
+    "example": "Each utterance was recorded.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-vague",
+    "word": "vague",
+    "meaning": "모호한",
+    "example": "The explanation is too vague.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-valid",
+    "word": "valid",
+    "meaning": "타당한; 유효한",
+    "example": "The argument is valid.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-validity",
+    "word": "validity",
+    "meaning": "타당성; 유효성",
+    "example": "The study tests the theory's validity.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-valve",
+    "word": "valve",
+    "meaning": "밸브",
+    "example": "The valve controls water flow.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-variability",
+    "word": "variability",
+    "meaning": "변동성",
+    "example": "The samples show considerable variability.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-variance",
+    "word": "variance",
+    "meaning": "분산; 차이",
+    "example": "Variance measures the spread of data.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-variant",
+    "word": "variant",
+    "meaning": "변형; 변종",
+    "example": "The team identified a new variant.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-vector",
+    "word": "vector",
+    "meaning": "벡터; 매개체",
+    "example": "A vector has magnitude and direction.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-vegetation",
+    "word": "vegetation",
+    "meaning": "초목",
+    "example": "Dense vegetation covers the slope.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-vein",
+    "word": "vein",
+    "meaning": "정맥",
+    "example": "The needle entered a vein.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-velocity",
+    "word": "velocity",
+    "meaning": "속도",
+    "example": "Velocity includes both speed and direction.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-verbal",
+    "word": "verbal",
+    "meaning": "언어의; 구두의",
+    "example": "The test measures verbal ability.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-vertical",
+    "word": "vertical",
+    "meaning": "수직의",
+    "example": "Draw a vertical line.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-viable",
+    "word": "viable",
+    "meaning": "실행 가능한",
+    "example": "The proposal is financially viable.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-virtue",
+    "word": "virtue",
+    "meaning": "미덕",
+    "example": "Patience is a valuable virtue.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-vitamin",
+    "word": "vitamin",
+    "meaning": "비타민",
+    "example": "This fruit contains vitamin C.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-vocabulary",
+    "word": "vocabulary",
+    "meaning": "어휘",
+    "example": "Reading expands your vocabulary.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-volition",
+    "word": "volition",
+    "meaning": "의지",
+    "example": "She joined of her own volition.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-vowel",
+    "word": "vowel",
+    "meaning": "모음",
+    "example": "The word begins with a vowel.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-watershed",
+    "word": "watershed",
+    "meaning": "유역; 전환점",
+    "example": "The invention marked a watershed in communication.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-wavelength",
+    "word": "wavelength",
+    "meaning": "파장",
+    "example": "Color depends on light's wavelength.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-weave",
+    "word": "weave",
+    "meaning": "짜다",
+    "example": "Workers weave cotton into cloth.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-wheat",
+    "word": "wheat",
+    "meaning": "밀",
+    "example": "The region produces wheat.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-whereby",
+    "word": "whereby",
+    "meaning": "그것에 의해",
+    "example": "They devised a system whereby everyone could participate.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-whichever",
+    "word": "whichever",
+    "meaning": "어느 것이든",
+    "example": "Choose whichever method works best.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-whoever",
+    "word": "whoever",
+    "meaning": "누구든지",
+    "example": "Whoever finishes first can help others.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-widespread",
+    "word": "widespread",
+    "meaning": "널리 퍼진",
+    "example": "The policy received widespread support.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-wisdom",
+    "word": "wisdom",
+    "meaning": "지혜",
+    "example": "Experience can bring wisdom.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-workshop",
+    "word": "workshop",
+    "meaning": "워크숍",
+    "example": "The workshop teaches practical skills.",
+    "language": "en-US",
+    "status": "new"
+  },
+  {
+    "id": "nawl-en-yeast",
+    "word": "yeast",
+    "meaning": "효모",
+    "example": "Yeast helps bread rise.",
+    "language": "en-US",
+    "status": "new"
+  }
+]
