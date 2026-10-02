@@ -6,7 +6,7 @@ import {validateSnapshot} from '../src/lib/studySync.js';
 const original={schemaVersion:1,deck:{name:'My deck',words:[{id:1,word:'one',meaning:'하나',judgment:'known'}],cursors:{all:1}},quizProgress:{activeKey:'x',sessions:{x:{ids:[1],index:1,correct:1}}},feedProgress:{entries:{one:{judgment:'known'}}},activeMs:123};
 test('existing and new libraries see common idioms without altering their current deck',()=>{
  const copy=JSON.stringify(original),items=libraryItems(original);
- assert.equal(items.filter(d=>d.common).length,1);
+ assert.equal(items.filter(d=>d.common).length,commonDecks.length);
  assert.equal(items.find(d=>d.common).deck.words.length,186);
  assert.equal(JSON.stringify(original),copy);
 });
