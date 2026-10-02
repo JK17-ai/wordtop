@@ -620,7 +620,7 @@ button.quiet-deck{width:100%;cursor:pointer;font:inherit;}button.quiet-deck:focu
 /* Reserve judgment actions independently of English content length. */
 .app-shell.quiet-study[data-feed-compact="true"] > .feed-message-slot { display:none; }
 .app-shell.quiet-study .moa-feed .moa-slide:not(.korean-study-card) {
-  grid-template-rows:44px auto minmax(0,.8fr) minmax(40px,1fr) 44px;
+  grid-template-rows:44px auto minmax(0,auto) minmax(40px,1fr) 44px;
   overflow:hidden;
 }
 .app-shell.quiet-study .moa-feed .moa-slide:not(.korean-study-card) > .moa-card-tools { grid-row:1; }
