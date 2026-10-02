@@ -1,0 +1,20 @@
+고급 독해·학술 영단어 — NAWL 1.2
+
+Original word list: New Academic Word List (NAWL), version 1.2
+Creators: Charles Browne, Brent Culligan, Joseph Phillips
+Official source: https://www.newgeneralservicelist.com/new-academic-word-list
+Original download: https://www.newgeneralservicelist.com/s/NAWL_12_alphabetized_description.txt
+License: Creative Commons Attribution-ShareAlike 4.0 International
+https://creativecommons.org/licenses/by-sa/4.0/
+
+Adaptation by 단어모아, 2026-10-02:
+The original 957 headwords are retained. Korean glosses and short original
+AI-authored English examples have been added. These additions are not
+official NAWL definitions or examples. This adapted dataset is distributed
+under CC BY-SA 4.0. This license notice applies to the dataset, not the app code.
+Dataset: https://github.com/JK17-ai/wordtop/blob/main/frontend/src/data/common-nawl.json
+
+NAWL은 학술 영어에서 자주 쓰이는 어휘를 정리한 목록입니다.
+학술 지문, 대학 교재, 영어 논문을 읽기 위한 어휘 학습에 도움이 됩니다.
+수능 기출 어휘 목록이나 난도 순위 목록은 아니며, 일부 익숙한 단어도 포함합니다.
+한국어 뜻과 짧은 예문은 단어모아에서 추가한 AI 작성 자료입니다.
