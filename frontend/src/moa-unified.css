@@ -609,3 +609,38 @@ button.quiet-deck{width:100%;cursor:pointer;font:inherit;}button.quiet-deck:focu
 
 .account-tools{display:grid;gap:12px;margin-top:24px;border-top:1px solid #d1dfbd;padding-top:16px;overflow-wrap:anywhere;}
 .account-tools h3{margin:12px 0 0}.account-tools p{margin:6px 0}.account-tools button{max-width:100%}.account-tools [role="group"]{display:grid;gap:10px;padding:12px;border:1px solid #d5bea9;border-radius:12px;}
+
+/* Reserve judgment actions independently of English content length. */
+.app-shell.quiet-study[data-feed-compact="true"] > .feed-message-slot { display:none; }
+.app-shell.quiet-study .moa-feed .moa-slide:not(.korean-study-card) {
+  grid-template-rows:44px auto minmax(0,.8fr) minmax(40px,1fr) 44px;
+  overflow:hidden;
+}
+.app-shell.quiet-study .moa-feed .moa-slide:not(.korean-study-card) > .moa-card-tools { grid-row:1; }
+.app-shell.quiet-study .moa-feed .moa-slide:not(.korean-study-card) > .moa-term { grid-row:2; min-height:0; }
+.app-shell.quiet-study .moa-feed .moa-slide:not(.korean-study-card) > .study-example { grid-row:3; min-height:0; overflow-y:auto; }
+.app-shell.quiet-study .moa-feed .moa-slide:not(.korean-study-card) > .moa-definition { grid-row:4; min-height:0; }
+.app-shell.quiet-study .moa-feed .moa-slide:not(.korean-study-card) > .moa-judgments { grid-row:5; min-height:44px; }
+.app-shell.quiet-study .moa-feed .moa-slide:not(.korean-study-card) > .moa-judgments button { height:44px; min-height:44px; box-sizing:border-box; }
+/* The moving track is a viewport, not a scroll container. */
+.app-shell.quiet-study .moa-feed .moa-swipe-viewport { overflow:clip; }
+.app-shell.quiet-study .moa-swipe-viewport:has(.study-example),
+.app-shell.quiet-study .moa-slide:has(.study-example) { touch-action:pan-y; }
+.app-shell.quiet-study .study-example { overscroll-behavior:contain; touch-action:pan-y; }
+.feed-choice-toast { position:absolute;z-index:4;left:50%;top:42%;transform:translate(-50%,-50%);padding:12px 22px;border-radius:18px;background:#b5ff24;color:#171c18;border:2px solid #719d21;box-shadow:0 8px 24px #17230f26;font-size:24px;font-weight:850;white-space:nowrap;pointer-events:none; }
+.feed-choice-toast.choice-saved { background:#ffe5eb;border-color:#c76885; }
+@media(prefers-reduced-motion:no-preference) { .feed-choice-toast { animation:feed-choice-pop 160ms ease-out; } }
+@keyframes feed-choice-pop { from { opacity:0;transform:translate(-50%,-50%) scale(.85); } to { opacity:1;transform:translate(-50%,-50%) scale(1); } }
+.learning-gesture-backdrop { position:fixed;inset:0;z-index:500;display:grid;place-items:center;background:rgba(23,31,19,.52);padding:20px;box-sizing:border-box;overflow-y:auto; }
+.learning-gesture-guide { width:min(100%,360px);box-sizing:border-box;border:1px solid #ffffff70;border-radius:24px;background:rgba(251,255,243,.30);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:24px 20px;color:#203014;text-align:center;box-shadow:0 16px 50px #0003;font-family:Pretendard,system-ui,sans-serif; }
+.learning-gesture-guide>small { color:#172311;font-size:13px;font-weight:750; }
+.learning-gesture-guide h2 { margin:10px 0 22px;font-size:28px;color:#101b0c;font-weight:900;text-shadow:0 1px 2px #fff9; }
+.learning-gesture-directions { display:grid;grid-template-columns:1fr 1fr;gap:12px; }
+.learning-gesture-directions>div { padding:16px 6px;border-radius:16px;background:#ffffff70; }
+.learning-gesture-directions span { display:block;font-size:30px;margin-bottom:12px; }
+.learning-gesture-guide strong { font-size:15px;font-weight:850;color:#101b0c; }
+.learning-gesture-guide p { font-size:14px;font-weight:700;color:#15220f;line-height:1.6;margin:6px 0;text-shadow:0 1px 2px #fff8; }
+.learning-gesture-save { display:flex;align-items:center;justify-content:center;gap:16px;padding:16px;margin:12px 0 20px;border-radius:16px;background:#ffe8ef80; }
+.learning-gesture-save>span { font-size:38px;color:#ae4367; }
+.learning-gesture-guide>button { width:100%;min-height:48px;margin-top:18px;border:1px solid #9adc34;border-radius:14px;background:#b5ff24;color:#203014;font:inherit;font-weight:800;cursor:pointer; }
+
