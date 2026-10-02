@@ -18,6 +18,7 @@ export default function StudySettings({ settings, onChange, stage, onStage, onCl
     <button className="panel-refresh" disabled={testingAudio} onClick={testAudio}>{testingAudio ? '소리 상태 확인 중…' : '🔊 효과음 확인'}</button>
     {audioReport && <section className="audio-diagnostics" aria-label="효과음 진단"><p role="status">{audioReport.outcome === 'scheduled' ? '브라우저에 재생을 요청했습니다. 실제 소리가 들리는지는 직접 확인해 주세요.' : '재생이 진행되지 않았습니다. 아래 진단 정보를 보내주세요.'}</p><textarea readOnly aria-label="복사할 오디오 진단 정보" value={JSON.stringify(audioReport,null,2)} rows={9} style={{width:'100%',boxSizing:'border-box',fontSize:12}}/><button onClick={async()=>{try{await navigator.clipboard.writeText(JSON.stringify(audioReport,null,2));setCopyStatus('복사했습니다.');}catch{setCopyStatus('위 내용을 길게 눌러 복사해 주세요.');}}}>진단 정보 복사</button><span role="status">{copyStatus}</span></section>}
 
+    <h3>단어장 관리</h3><p>단어장 선택하기에서 내가 업로드한 단어장을 길게 누르면 “삭제하시겠습니까?” 안내가 나와요. “예 · 삭제”를 누르면 목록에서 삭제됩니다. 기본 제공 단어장은 삭제되지 않아요. 실수로 삭제했다면 단어장 화면 아래의 “삭제한 단어장 · 복원”에서 학습 기록과 함께 되돌릴 수 있어요.</p>
     <button className="panel-refresh" onClick={onTutorial}>사용 가이드 다시 보기</button>
   </section>;
 }

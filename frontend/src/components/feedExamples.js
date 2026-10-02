@@ -12889,7 +12889,13 @@ export const feedExamples = [
 ];
 // Exact-sense lookup avoids attaching the wrong example to an uploaded homograph.
 const bySense = new Map(feedExamples.map(item => [JSON.stringify([item.word, item.meaning]), item]));
+const nawlById = new Map(nawl.map(item=>[item.id,item]));
 export function withFeedExample(word) {
+  // Fill missing translations in NAWL decks already saved on a device, without
+  // replacing uploaded examples or changing word identity and learning progress.
+  const academic=nawlById.get(word.id);
+  if (academic && word.word===academic.word && word.meaning===academic.meaning && word.example===academic.example && !word.exampleTranslation)
+    return {...word,exampleTranslation:academic.exampleTranslation};
   if (word.example) return word;
   const sample = bySense.get(JSON.stringify([word.word, word.meaning]));
   if (!sample) return word;
@@ -12901,3 +12907,5 @@ export function withFeedExample(word) {
     displayIpa: Object.hasOwn(sample, 'displayIpa') ? sample.displayIpa : word.ipa,
   };
 }
+import nawl from '../data/common-nawl.json' with {type:'json'};
+
