@@ -26,6 +26,13 @@ export function validateSnapshot(value) {
       if(typeof entry?.id !== 'string' || deckIds.has(entry.id)) throw Error('단어장 식별자를 확인해 주세요.');
       deckIds.add(entry.id); validateSnapshot({...entry,schemaVersion:1});
     }
+    if (library.archived !== undefined) {
+      if (!Array.isArray(library.archived)) throw Error('삭제한 단어장 목록을 확인해 주세요.');
+      for (const entry of library.archived) {
+        if (typeof entry?.id !== 'string' || deckIds.has(entry.id)) throw Error('삭제한 단어장 식별자를 확인해 주세요.');
+        deckIds.add(entry.id); validateSnapshot({...entry,schemaVersion:1});
+      }
+    }
   }
   return value;
 }
