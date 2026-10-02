@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {commonDecks} from '../src/components/commonDecks.js';
 import {archiveLibraryDeck,restoreLibraryDeck,selectLibraryDeck,libraryItems} from '../src/components/deckLibrary.js';
 import {validateSnapshot} from '../src/lib/studySync.js';
+import {withFeedExample} from '../src/components/feedExamples.js';
 
 test('NAWL is selectable with 957 distinct words, Korean glosses and short examples',()=>{
   const nawl=commonDecks.find(item=>item.id==='common:en-nawl-v1');
@@ -12,12 +13,22 @@ test('NAWL is selectable with 957 distinct words, Korean glosses and short examp
   assert.equal(nawl.deck.words.at(-1).word,'yeast');
   for(const word of nawl.deck.words){
     assert.match(word.meaning,/[가-힣]/);
+    assert.match(word.exampleTranslation,/[가-힣]/);
     assert(word.example.trim().split(/\s+/).length<=12);
     assert.equal(word.language,'en-US');
     assert.equal(word.saved,undefined);
   }
   const state={schemaVersion:1,deck:{name:'내 자료',words:[{id:'one',word:'one',meaning:'하나'}]}};
   assert.equal(validateSnapshot(selectLibraryDeck(state,nawl.id)).deck.words.length,957);
+});
+test('previously saved NAWL examples gain translations without overwriting private content',()=>{
+  const word=commonDecks.find(item=>item.id==='common:en-nawl-v1').deck.words[0];
+  const {exampleTranslation,...saved}=word;
+  const enriched=withFeedExample({...saved,saved:true,judgment:'known'});
+  assert.equal(enriched.exampleTranslation,exampleTranslation);
+  assert.equal(enriched.saved,true);assert.equal(enriched.judgment,'known');
+  const privateWord={...saved,example:'My own example.'};
+  assert.equal(withFeedExample(privateWord),privateWord);
 });
 const personal={schemaVersion:1,deck:{name:'생활과윤리',words:Array.from({length:27},(_,i)=>({id:`p${i}`,word:`개념${i}`,meaning:'설명',saved:true}))},feedProgress:{cursor:'p1',entries:{p1:{judgment:'unknown'}}},activeMs:100};
 test('deleting an active personal 27-word deck preserves its progress for restoration',()=>{
